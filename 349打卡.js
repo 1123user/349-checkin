@@ -1,4 +1,9 @@
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: deep-purple; icon-glyph: magic;
 // 349三科打卡 · Scriptable 小组件 + 可滑动清单
+// ⚠️ 改完这个文件后，不要在 iPhone 的 Scriptable 里打开脚本编辑器，
+//    否则它会用手机上的旧副本回写，把这里的改动覆盖掉。
 // 数据源：https://1123user.github.io/349-checkin/plan3.json（本地缓存兜底）
 // 进度存 iCloud Drive：Scriptable/349打卡/progress.json（两设备自动同步）
 
@@ -7,6 +12,22 @@ const fm = FileManager.iCloud()
 const DIR = fm.joinPath(fm.documentsDirectory(), "349打卡")
 const F_PLAN = fm.joinPath(DIR, "plan3.json")
 const F_PROG = fm.joinPath(DIR, "progress.json")
+const F_AI = fm.joinPath(DIR, "ai.json")   // Mac 端每天预生成的 AI 文字（组件只读）
+
+/* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
+   同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
+   不用再来回截图。 */
+const BUILD = "v2-20261016"
+function trace(tag) {
+  try {
+    const p = fm.joinPath(DIR, "run-log.txt")
+    let old = ""
+    try { old = fm.readString(p) } catch (e) {}
+    if (old.indexOf(BUILD) === 0) return
+    fm.writeString(p, new Date().toISOString().slice(5, 16).replace("T", " ") + "  " +
+      BUILD + "  " + tag + "  " + (config.widgetFamily || "app") + "\n" + old)
+  } catch (e) {}
+}
 
 const SUBS = ["org", "pharm", "ana"]
 const SUB = {
@@ -111,30 +132,76 @@ function shortTitle(t) {
   return s.length > 22 ? s.slice(0, 22) + "…" : s
 }
 
-/* ---------- 进度条（纯 Stack 实现，不依赖绘图） ---------- */
-function bar(parent, color, frac, w) {
-  const s = parent.addStack()
-  s.layoutHorizontally()
-  s.size = new Size(w, 5)
-  s.backgroundColor = new Color("#FFFFFF", 0.16)
-  s.cornerRadius = 2.5
-  if (frac > 0) {
-    const f = s.addStack()
-    f.size = new Size(Math.max(4, w * frac), 5)
-    f.backgroundColor = color
-    f.cornerRadius = 2.5
+/* 按字数截断：小号组件一行放不下整句寄语（实测一行 ~12 个汉字到边） */
+function shrink(s, n) {
+  s = String(s || "")
+  return s.length > n ? s.slice(0, n) + "…" : s
+}
+
+/* ---------- 圆环：Path 没有 addArc，用 36 段折线逼近 ---------- */
+/* 只用官方文档里确实存在的 API：Path.addLines(points) 会自己从第一个点起步。
+   ⚠️ 不要用 moveTo —— Scriptable 的 Path 没有 moveTo（只有 move），调用即抛
+   TypeError，小组件会直接显示一堆红字。2026-10-16 踩过。 */
+function arcPath(cx, cy, r, from, to) {
+  const N = 36, pts = []
+  for (let i = 0; i <= N; i++) {
+    const a = from + (to - from) * (i / N)
+    pts.push(new Point(cx + r * Math.cos(a), cy + r * Math.sin(a)))
   }
-  s.addSpacer()
-  return s
+  const p = new Path()
+  p.addLines(pts)
+  if (to - from >= Math.PI * 2 - 0.001) p.closeSubpath()
+  return p
+}
+function drawRing(pct, color, size, sw, label) {
+  const dc = new DrawContext()
+  dc.size = new Size(size, size)
+  dc.opaque = false
+  dc.respectScreenScale = true   // 只有这个属性，没有 respectFlipped
+  const r = (size - sw) / 2, c = size / 2
+  dc.setStrokeColor(new Color("#FFFFFF", 0.15))
+  dc.setLineWidth(sw)
+  dc.addPath(arcPath(c, c, r, -Math.PI / 2, Math.PI * 1.5))
+  dc.strokePath()
+  const f = Math.max(0, Math.min(100, pct)) / 100
+  if (f > 0.002) {
+    dc.setStrokeColor(color)
+    dc.setLineWidth(sw)
+    dc.addPath(arcPath(c, c, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * f))
+    dc.strokePath()
+  }
+  if (label) {
+    dc.setTextColor(color)
+    dc.setFont(Font.boldSystemFont(size <= 34 ? 8 : 14))
+    dc.setTextAlignedCenter()
+    dc.drawTextInRect(label, new Rect(0, c - size * 0.17, size, size * 0.34))
+  }
+  return dc.getImage()
+}
+
+/* ---------- AI 文字：Mac 端每天预生成写进 iCloud，组件只读（读不到用本地兜底） ---------- */
+const AI_FALLBACK = [
+  "今天不求快，求每一步都算数。",
+  "先把手上这一讲看完，剩下的自然会顺。",
+  "看不懂的先画出来，画着画着就通了。",
+  "三科轮着来，别在一科上耗到烦。",
+  "按计划走，今天这些做完就算赢。",
+  "背不下来的先理解，理解了的不用背。",
+]
+async function loadAI(d) {
+  try {
+    if (fm.fileExists(F_AI)) {
+      await ready(F_AI)
+      const o = JSON.parse(fm.readString(F_AI))
+      if (o && typeof o.text === "string" && o.text.trim()) return o
+    }
+  } catch (e) {}
+  return { text: AI_FALLBACK[(d ? d.day : 0) % AI_FALLBACK.length], src: "local" }
 }
 
 /* ---------- 小组件 ---------- */
-function widgetHeader(w, P, S, iso, fam) {
-  const d = dayOf(P, iso)
-  const st = stats(P, S)
-  const ex = new Date(P.meta.exam + "T00:00:00")
-  const left = Math.max(0, Math.ceil((ex - new Date()) / 86400000))
-
+/* 头部：第 N 天 + 日期 + 今日进度（不显示倒计时/考试日期） | 右侧三科进度圆环 */
+function widgetHead(w, P, S, d) {
   const row = w.addStack()
   row.layoutHorizontally()
   row.centerAlignContent()
@@ -142,87 +209,106 @@ function widgetHeader(w, P, S, iso, fam) {
   const lf = row.addStack()
   lf.layoutVertically()
   const t1 = lf.addText(d ? "第 " + d.day + " 天" : "已收口")
-  t1.font = Font.boldSystemFont(fam === "small" ? 22 : 26)
+  t1.font = Font.boldSystemFont(18)
   t1.textColor = TXT
-  const t2 = lf.addText(d ? d.date.slice(5).replace("-", "/") + " " + d.wd : "阶段一结束")
-  t2.font = Font.mediumSystemFont(11)
+  const dc = d ? d.tasks.filter(t => S.done[tid(t)]).length : 0
+  const t2 = lf.addText(d ? d.date.slice(5).replace("-", "/") + " " + d.wd + " · " + dc + "/" + d.tasks.length + " 条" : "阶段一结束")
+  t2.font = Font.mediumSystemFont(9)
   t2.textColor = DIM
 
   row.addSpacer()
 
-  const rf = row.addStack()
-  rf.layoutVertically()
-  rf.centerAlignContent()
-  const r1 = rf.addText(st.pct + "%")
-  r1.font = Font.boldSystemFont(fam === "small" ? 20 : 24)
-  r1.textColor = TXT
-  const r2 = rf.addText("D-" + left + " · " + st.done + "/" + st.total)
-  r2.font = Font.mediumSystemFont(10)
-  r2.textColor = DIM
+  const rings = row.addStack()
+  rings.layoutHorizontally()
+  rings.centerAlignContent()
+  rings.spacing = 7
+  SUBS.forEach(k => {
+    const ss = subStat(P, S, k, d)
+    const g = rings.addStack()
+    g.layoutHorizontally()
+    g.centerAlignContent()
+    g.spacing = 4
+    g.addImage(drawRing(ss.pct, SUB[k].c, 30, 3, ss.pct + "%"))
+    const col = g.addStack()
+    col.layoutVertically()
+    const nm = col.addText(SUB[k].name)
+    nm.font = Font.semiboldSystemFont(9.5)
+    nm.textColor = SUB[k].c
+    const ct = col.addText(ss.done + "/" + ss.n)
+    ct.font = Font.mediumSystemFont(8.5)
+    ct.textColor = DIM
+  })
   return d
 }
 
-function widgetSubjects(w, P, S, d, barW) {
-  SUBS.forEach(k => {
-    const ss = subStat(P, S, k, d)
-    const r = w.addStack()
-    r.layoutHorizontally()
-    r.centerAlignContent()
-    const nm = r.addText(SUB[k].name)
-    nm.font = Font.semiboldSystemFont(12)
-    nm.textColor = SUB[k].c
-    r.addSpacer(6)
-    bar(r, SUB[k].c, ss.pct / 100, barW)
-    r.addSpacer(6)
-    const ct = r.addText(ss.done + "/" + ss.n)
-    ct.font = Font.mediumSystemFont(11)
-    ct.textColor = DIM
-  })
-}
-
-function widgetTasks(w, P, S, d, maxN) {
+/* 任务行：整行点一下直通 B站；底部一张 AI 文字卡 */
+function widgetTasks(w, P, S, d, maxN, ai) {
   const list = d.tasks.filter(t => !S.done[tid(t)])
   const shown = (list.length ? list : d.tasks).slice(0, maxN)
+  const rest = list.length ? list.length - shown.length : 0
+
+  const rows = w.addStack()
+  rows.layoutVertically()
+  rows.spacing = 2
   if (!list.length) {
-    const t = w.addText("今天全部打完了 ✓")
-    t.font = Font.semiboldSystemFont(13)
+    const t = rows.addText("今天全部打完了 ✓")
+    t.font = Font.semiboldSystemFont(12)
     t.textColor = new Color("#30D158")
-    return
   }
   shown.forEach(t => {
-    const r = w.addStack()
+    const on = !!S.done[tid(t)]
+    const r = rows.addStack()
     r.layoutHorizontally()
-    const dot = r.addText(S.done[tid(t)] ? "✓" : "○")
-    dot.font = Font.boldSystemFont(12)
-    dot.textColor = S.done[tid(t)] ? new Color("#30D158") : SUB[t.sub].c
-    r.addSpacer(5)
+    r.centerAlignContent()
+    r.url = t.url                                  // 整行点一下 = 直通 B站
+    const dot = r.addText(on ? "✓" : "○")
+    dot.font = Font.boldSystemFont(10)
+    dot.textColor = on ? new Color("#30D158") : SUB[t.sub].c
+    r.addSpacer(4)
     const tx = r.addText(t.key + " " + shortTitle(t))
-    tx.font = Font.systemFont(11)
-    tx.textColor = new Color("#D1D1D6")
+    tx.font = Font.systemFont(10.5)
+    tx.textColor = on ? new Color("#30D158") : new Color("#D1D1D6")
     tx.lineLimit = 1
-    r.addSpacer(5)
-    const du = r.addText(t.dur)
-    du.font = Font.mediumSystemFont(10)
-    du.textColor = DIM
+    r.addSpacer(4)
+    const b = r.addText("▶ B站")
+    b.font = Font.semiboldSystemFont(9)
+    b.textColor = new Color("#0A84FF")
   })
-  const rest = list.length - shown.length
+
+  w.addSpacer(3)
+  const card = w.addStack()
+  card.layoutHorizontally()
+  card.centerAlignContent()
+  card.spacing = 5
+  card.backgroundColor = new Color("#FFFFFF", 0.06)
+  card.cornerRadius = 9
+  card.setPadding(4, 7, 4, 7)
+  card.url = "scriptable:///run/" + encodeURIComponent(Script.name())
+  const sp = card.addText("✦")
+  sp.font = Font.boldSystemFont(9.5)
+  sp.textColor = new Color("#FF9F0A")
+  const tx = card.addText(ai.text)
+  tx.font = Font.systemFont(10)
+  tx.textColor = new Color("#EDEDF0")
+  tx.lineLimit = 1
+  card.addSpacer()
   if (rest > 0) {
-    const t = w.addText("还有 " + rest + " 项")
-    t.font = Font.mediumSystemFont(10)
-    t.textColor = DIM
+    const m = card.addText("还 " + rest + " 条 →")
+    m.font = Font.semiboldSystemFont(9)
+    m.textColor = new Color("#0A84FF")
   }
 }
 
-function buildWidget(P, S) {
+async function buildWidget(P, S) {
   const fam = config.widgetFamily || "medium"
   const iso = todayISO()
   const w = new ListWidget()
-  w.setPadding(14, 15, 14, 15)
+  w.setPadding(12, 15, 12, 15)
   const g = new LinearGradient()
   g.colors = [new Color("#1C1C1E"), new Color("#0A0A0C")]
   g.locations = [0, 1]
   w.backgroundGradient = g
-  w.refreshAfterDate = new Date(Date.now() + 30 * 60 * 1000)
+  w.refreshAfterDate = new Date(Date.now() + 60 * 60 * 1000)
 
   if (!P) {
     w.addSpacer()
@@ -233,18 +319,57 @@ function buildWidget(P, S) {
     return w
   }
 
-  const d = widgetHeader(w, P, S, iso, fam)
-  w.addSpacer(fam === "small" ? 6 : 8)
-  widgetSubjects(w, P, S, d, fam === "small" ? 34 : 62)
-  if (fam === "large") {
-    w.addSpacer(10)
-    widgetTasks(w, P, S, d, 8)
-  }
-  if (fam === "small" && d) {
+  const d = dayOf(P, iso)
+  const runURL = "scriptable:///run/" + encodeURIComponent(Script.name())
+
+  /* 小号：只放「第 N 天 + 日期 + 今日进度环」，整块点开进清单（系统只给一个点击目标） */
+  if (fam === "small") {
+    // ListWidget 没有 centerAlignContent（那是 WidgetStack 的方法）。
+    // 上下各放一个弹性弹簧 = 垂直居中，且都是官方文档里确实存在的 API。
+    w.addSpacer()
+    w.url = runURL
+    const t1 = w.addText(d ? "第 " + d.day + " 天" : "已收口")
+    t1.font = Font.semiboldSystemFont(11)
+    t1.textColor = DIM
+    t1.centerAlignText()
+    const t2 = w.addText(d ? d.date.slice(5).replace("-", "/") + " " + d.wd : "")
+    t2.font = Font.mediumSystemFont(9.5)
+    t2.textColor = DIM
+    t2.centerAlignText()
+    const done = d ? d.tasks.filter(t => S.done[tid(t)]).length : 0
+    const total = d ? d.tasks.length : 0
     w.addSpacer(6)
-    const done = d.tasks.filter(t => S.done[tid(t)]).length
-    const t = w.addText("今日 " + done + "/" + d.tasks.length + " · " + hm(d.min * 60))
-    t.font = Font.mediumSystemFont(10)
+    const c = w.addStack()
+    c.layoutHorizontally()
+    c.addSpacer()
+    c.addImage(drawRing(total ? Math.round(done / total * 100) : 0, new Color("#FF9F0A"), 64, 6, done + "/" + total))
+    c.addSpacer()
+    w.addSpacer(5)
+    const t3 = w.addText(d ? "3 科 · 今天 " + total + " 条" : "")
+    t3.font = Font.mediumSystemFont(9.5)
+    t3.textColor = DIM
+    t3.centerAlignText()
+    /* 小号也放一行 AI 寄语：环缩了 8pt 换来的高度。一行放不下整句，按字数截断。 */
+    const ai = await loadAI(d)
+    w.addSpacer(3)
+    const t4 = w.addText("✦ " + shrink(ai.text, 12))
+    t4.font = Font.systemFont(9)
+    t4.textColor = new Color("#C7C7CC")
+    t4.lineLimit = 1
+    t4.centerAlignText()
+    w.addSpacer()
+    return w
+  }
+
+  /* 中号 / 大号：头部 + 任务行（整行可点直通 B站）+ AI 文字卡 */
+  widgetHead(w, P, S, d)
+  w.addSpacer(5)
+  if (d) {
+    const ai = await loadAI(d)
+    widgetTasks(w, P, S, d, fam === "large" ? 12 : 5, ai)
+  } else {
+    const t = w.addText("这个阶段已经收口了")
+    t.font = Font.systemFont(11)
     t.textColor = DIM
   }
   return w
@@ -352,11 +477,24 @@ function mainTable(P, S) {
 }
 
 /* ---------- 入口 ---------- */
+trace("start")
 const S = await loadProg()
 const P = await loadPlan()
 
 if (config.runsInWidget) {
-  Script.setWidget(buildWidget(P, S))
+  /* 组件里出错时不要糊一屏红色堆栈：兜成一行可读提示，并把错误写进 run-log.txt */
+  let w
+  try {
+    w = await buildWidget(P, S)
+  } catch (e) {
+    const msg = e && e.message ? e.message : String(e)
+    trace("ERROR " + msg)
+    w = new ListWidget()
+    const t = w.addText("脚本出错：\n" + msg)
+    t.font = Font.systemFont(11)
+    t.textColor = new Color("#FF453A")
+  }
+  Script.setWidget(w)
   Script.complete()
 } else {
   if (!P) {
