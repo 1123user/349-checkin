@@ -36,18 +36,27 @@ async function ready(path) {
 }
 
 /* ---------- 数据 ---------- */
-function loadProg() {
+let PROG_OK = false
+async function loadProg() {
   try {
     if (fm.fileExists(F_PROG)) {
+      await ready(F_PROG)          // iCloud 占位文件必须先下载，否则读不到
       const o = JSON.parse(fm.readString(F_PROG))
+      PROG_OK = true
       if (o && o.done) return o
+    } else {
+      PROG_OK = true               // 文件不存在 = 全新开始，允许写入
     }
-  } catch (e) {}
+  } catch (e) {
+    PROG_OK = false                // 读失败就锁死写入，避免把真实进度覆盖成空
+  }
   return { done: {} }
 }
 function saveProg(p) {
+  if (!PROG_OK) return false
   ensureDir()
   fm.writeString(F_PROG, JSON.stringify(p))
+  return true
 }
 async function loadPlan() {
   let cached = null
@@ -339,7 +348,7 @@ function mainTable(P, S) {
 }
 
 /* ---------- 入口 ---------- */
-const S = loadProg()
+const S = await loadProg()
 const P = await loadPlan()
 
 if (config.runsInWidget) {
@@ -353,6 +362,13 @@ if (config.runsInWidget) {
     a.addAction("好")
     await a.present()
   } else {
+    if (!PROG_OK) {
+      const a = new Alert()
+      a.title = "进度文件还没同步下来"
+      a.message = "iCloud 里的 progress.json 还没下载完，这次先看排期；为避免覆盖，打勾暂时不保存。稍后再运行一次即可。"
+      a.addAction("知道了")
+      await a.present()
+    }
     await mainTable(P, S).present(true)
   }
   Script.complete()
