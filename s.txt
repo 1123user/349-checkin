@@ -180,7 +180,8 @@
     return dc.getImage()
   }
   
-  /* ---------- AI 文字：Mac 端每天预生成写进 iCloud，组件只读（读不到用本地兜底） ---------- */
+  /* ---------- AI 文字：Mac 端每天预生成写进 iCloud，组件只读（读不到就用内置池） ---------- */
+  /* 内置池按「日历天」轮换兜底：Mac 没生成、ai.json 是昨天的、断网，都不会连着两天同一句。 */
   const AI_FALLBACK = [
     "今天不求快，求每一步都算数。",
     "先把手上这一讲看完，剩下的自然会顺。",
@@ -188,16 +189,44 @@
     "三科轮着来，别在一科上耗到烦。",
     "按计划走，今天这些做完就算赢。",
     "背不下来的先理解，理解了的不用背。",
+    "听不懂就倒回去，别硬着头皮往下赶。",
+    "一道题多想三分钟，比翻答案有用。",
+    "今天先把最不想看的那科开个头。",
+    "笔记记骨架，细节回头再补。",
+    "错题先翻一遍，再开新的一讲。",
+    "累了就换一科，别停。",
+    "这讲慢一点没事，别留坑。",
+    "把昨天没懂的补上，比多刷一讲值。",
+    "先做题再回看，思路会清楚很多。",
+    "卡住就先标记，别耗在这一句上。",
+    "今天的量不大，安静做完就好。",
+    "别边看边刷手机，效率差很多。",
+    "一章看完回头默一遍，才知道记住没。",
+    "状态差就把任务拆小，先做十分钟。",
+    "会的快速过，不会的多留一会儿。",
+    "把今天的疑问写下来，明天一起解决。",
+    "进度慢不要紧，别断。",
+    "先完成再看时间，别老盯着进度条。",
+    "今天这一讲听明白，比赶完三讲强。",
+    "困了就站起来走两步再回来。",
+    "随手记下的东西，考前最值钱。",
+    "傍晚状态最好，把难的那科放那时候。",
   ]
+  /* 天数序号取模：相邻两天必然不同（池子长度 ≥ 2），所以「每天变化」是硬的 */
+  function fallbackAI() {
+    const dayIdx = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000)
+    return AI_FALLBACK[dayIdx % AI_FALLBACK.length]
+  }
   async function loadAI(d) {
     try {
       if (fm.fileExists(F_AI)) {
         await ready(F_AI)
         const o = JSON.parse(fm.readString(F_AI))
-        if (o && typeof o.text === "string" && o.text.trim()) return o
+        // 只认「当天」的：Mac 若停了一天没生成，昨天的句子不能接着用，那就不叫每天变化了
+        if (o && typeof o.text === "string" && o.text.trim() && o.date === todayISO()) return o
       }
     } catch (e) {}
-    return { text: AI_FALLBACK[(d ? d.day : 0) % AI_FALLBACK.length], src: "local" }
+    return { text: fallbackAI(), src: "local" }
   }
   
   /* ---------- 小组件 ---------- */
