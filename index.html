@@ -289,6 +289,22 @@ fetch('plan3.json').then(r=>r.json()).then(j=>{P=j;render();}).catch(()=>{
     '<div class="card"><div class="empty">plan3.json 未加载：请用文件夹里的「启动打卡小组件.command」打开，或确认网页已完整上传。</div></div>';
 });
 
+/* iPhone 首次访问：引导加到主屏幕 */
+(function(){
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+  const sa=window.navigator.standalone===true||window.matchMedia('(display-mode:standalone)').matches;
+  if(!ios||sa||localStorage.getItem('t349_hint'))return;
+  const d=document.createElement('div');
+  d.className='card';
+  d.style.cssText='border-color:rgba(255,209,102,.45);background:rgba(255,209,102,.10)';
+  d.innerHTML='<div class="shead"><b>加到桌面，当小组件用</b></div>'
+    +'<p class="hint">点 Safari 底部中间「分享」按钮 → 菜单往下滑 → 选「添加到主屏幕」→ 右上角「添加」。<br>'
+    +'以后从桌面图标进，全屏无地址栏，断网也能打开。</p>'
+    +'<div class="tools" style="margin-top:10px"><button id="hx">知道了，不再提示</button></div>';
+  document.querySelector('.wrap').insertBefore(d,document.getElementById('view'));
+  d.querySelector('#hx').onclick=function(){localStorage.setItem('t349_hint','1');d.remove();};
+})();
+
 /* 离线可用：网络优先，断网回落缓存 */
 if('serviceWorker' in navigator&&location.protocol==='https:'){
   navigator.serviceWorker.register('sw.js').catch(()=>{});
