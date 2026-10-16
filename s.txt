@@ -13,12 +13,12 @@
   const DIR = fm.joinPath(fm.documentsDirectory(), "349打卡")
   const F_PLAN = fm.joinPath(DIR, "plan3.json")
   const F_PROG = fm.joinPath(DIR, "progress.json")
-  const F_AI = fm.joinPath(DIR, "ai.json")   // Mac 端每天预生成的 AI 文字（组件只读）
+  const F_AI = fm.joinPath(DIR, "ai.json")   // Mac 端每晚 21:00 预生成的 AI 寄语（含明天那条；组件只读）
   
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v2-20261016"
+  const BUILD = "v3-20261017-ai"
   function trace(tag) {
     try {
       const p = fm.joinPath(DIR, "run-log.txt")
@@ -222,8 +222,14 @@
       if (fm.fileExists(F_AI)) {
         await ready(F_AI)
         const o = JSON.parse(fm.readString(F_AI))
-        // 只认「当天」的：Mac 若停了一天没生成，昨天的句子不能接着用，那就不叫每天变化了
-        if (o && typeof o.text === "string" && o.text.trim() && o.date === todayISO()) return o
+        const t = todayISO()
+        /* 新格式：Mac 每晚 21:00 生成「明天」那句，写进 quotes 表（今天、明天同时在），
+           所以 0 点一过组件自然就取到新的一句，不用等 Mac 醒来再跑。 */
+        const q = o && o.quotes ? o.quotes[t] : null
+        if (q && typeof q.text === "string" && q.text.trim()) return q
+        /* 旧格式兜底：只有顶层 text/date 的文件。只认当天的，
+           免得 Mac 停了一天没生成、昨天的句子接着用，那就不叫每天变化了。 */
+        if (o && typeof o.text === "string" && o.text.trim() && o.date === t) return o
       }
     } catch (e) {}
     return { text: fallbackAI(), src: "local" }

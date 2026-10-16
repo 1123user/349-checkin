@@ -6,6 +6,8 @@
  body{margin:0;padding:20px 18px;background:#0A0A0C;color:#E5E5EA;font:15px/1.6 -apple-system,'PingFang SC',sans-serif}
  h1{font-size:19px;margin:0 0 8px}
  p{color:#8E8E93;font-size:13px;margin:0 0 16px}
+ ol{color:#8E8E93;font-size:13px;padding-left:20px;margin:0 0 16px}
+ ol b{color:#E5E5EA}
  button,a.btn{display:block;width:100%;box-sizing:border-box;margin:12px 0;padding:16px;border:0;border-radius:13px;
    font-size:16px;font-weight:600;text-align:center;text-decoration:none;color:#fff;background:#0A84FF;cursor:pointer}
  a.btn{background:#30D158;color:#04140A}
@@ -13,8 +15,14 @@
  textarea{width:100%;box-sizing:border-box;height:140px;background:#1C1C1E;color:#8E8E93;border:0;border-radius:10px;
    padding:10px;font:11px/1.4 ui-monospace,Menlo,monospace;-webkit-user-select:text;user-select:text}
 </style>
-<h1>349 打卡 · 脚本安装</h1>
-<p>按顺序点：① 复制脚本 → ② 打开 Scriptable 新建脚本 → 在编辑区长按「粘贴」。<br>若自动复制不生效，用最下面那个框：长按 → 全选 → 拷贝。</p>
+<h1>349 打卡 · 脚本安装 / 更新</h1>
+<p>脚本版本 <b id="ver">v3-20261017-ai</b>（页脚也写着，粘贴完可以对一眼）</p>
+<ol>
+  <li>点 <b>① 复制脚本</b>（自动复制被拦就用最下面那个框：长按 → 全选 → 拷贝）</li>
+  <li>点 <b>② 打开 Scriptable</b>，在编辑区<b>长按 → 粘贴</b>，覆盖掉原来的内容</li>
+  <li>点左上角返回保存（名字保持 <b>349</b> 不要改，小组件点开靠它找脚本）</li>
+  <li>等几秒小组件自己刷新；不刷新就长按小组件 → 编辑小组件 → 重新选一次</li>
+</ol>
 <button id="copy">① 复制脚本到剪贴板</button>
 <a class="btn" id="open" href="scriptable:///add">② 打开 Scriptable 新建脚本</a>
 <p id="tip"></p>
@@ -33,12 +41,12 @@
   const DIR = fm.joinPath(fm.documentsDirectory(), &quot;349打卡&quot;)
   const F_PLAN = fm.joinPath(DIR, &quot;plan3.json&quot;)
   const F_PROG = fm.joinPath(DIR, &quot;progress.json&quot;)
-  const F_AI = fm.joinPath(DIR, &quot;ai.json&quot;)   // Mac 端每天预生成的 AI 文字（组件只读）
+  const F_AI = fm.joinPath(DIR, &quot;ai.json&quot;)   // Mac 端每晚 21:00 预生成的 AI 寄语（含明天那条；组件只读）
   
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = &quot;v2-20261016&quot;
+  const BUILD = &quot;v3-20261017-ai&quot;
   function trace(tag) {
     try {
       const p = fm.joinPath(DIR, &quot;run-log.txt&quot;)
@@ -242,8 +250,14 @@
       if (fm.fileExists(F_AI)) {
         await ready(F_AI)
         const o = JSON.parse(fm.readString(F_AI))
-        // 只认「当天」的：Mac 若停了一天没生成，昨天的句子不能接着用，那就不叫每天变化了
-        if (o &amp;&amp; typeof o.text === &quot;string&quot; &amp;&amp; o.text.trim() &amp;&amp; o.date === todayISO()) return o
+        const t = todayISO()
+        /* 新格式：Mac 每晚 21:00 生成「明天」那句，写进 quotes 表（今天、明天同时在），
+           所以 0 点一过组件自然就取到新的一句，不用等 Mac 醒来再跑。 */
+        const q = o &amp;&amp; o.quotes ? o.quotes[t] : null
+        if (q &amp;&amp; typeof q.text === &quot;string&quot; &amp;&amp; q.text.trim()) return q
+        /* 旧格式兜底：只有顶层 text/date 的文件。只认当天的，
+           免得 Mac 停了一天没生成、昨天的句子接着用，那就不叫每天变化了。 */
+        if (o &amp;&amp; typeof o.text === &quot;string&quot; &amp;&amp; o.text.trim() &amp;&amp; o.date === t) return o
       }
     } catch (e) {}
     return { text: fallbackAI(), src: &quot;local&quot; }
@@ -572,3 +586,4 @@ document.getElementById('copy').addEventListener('click',function(){
   tipEl.textContent = ok ? '已复制 ✓ 现在点 ② 打开 Scriptable，长按编辑区选「粘贴」' : '自动复制被系统拦了：下面的框已全选，长按选「拷贝」';
 });
 </script>
+<!-- 页脚版本戳，用来肉眼确认手机上贴的是不是这一版：v3-20261017-ai -->
