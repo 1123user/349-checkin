@@ -95,12 +95,16 @@ function subStat(P, S, sub, day) {
   return { n: ts.length, done: dn, pct: ts.length ? Math.round(dn / ts.length * 100) : 0 }
 }
 
-/* 小组件用的短标题：去掉课号前缀、B站标题的尾巴与口水词 */
+/* 去掉与课号重复的前缀（[L5-2] Lecture 5-2 … / [第三讲] 第三讲：…） */
+function stripPrefix(s) {
+  return String(s)
+    .replace(/^Lecture\s*\d+\s*-\s*\d+\s*/i, "")
+    .replace(/^第[一二三四五六七八九十百]+讲[：:\s]*/, "")
+}
+
+/* 小组件用的短标题：再去掉 B站标题的尾巴与口水词 */
 function shortTitle(t) {
-  let s = String(t.title)
-  s = s.replace(/^Lecture\s*\d+\s*-\s*\d+\s*/, "")
-  s = s.replace(/^第[一二三四五六七八九十百]+讲[：:\s]*/, "")
-  s = s.replace(/^【[^】]*】\s*/, "")
+  let s = stripPrefix(t.title).replace(/^【[^】]*】\s*/, "")
   const noise = /^(带你背诵|期末复习|考研|学习分享|药理学背诵|必看|考点)/
   const segs = s.split(/[｜|]/).map(x => x.trim()).filter(x => x && !noise.test(x))
   s = segs.length ? segs[0] : s
@@ -273,7 +277,7 @@ function taskRows(t, P, S, d, rerender) {
   d.tasks.forEach(task => {
     const on = !!S.done[tid(task)]
     const r = mrow(
-      (on ? "✓ " : "○ ") + "[" + task.key + "] " + task.title,
+      (on ? "✓ " : "○ ") + "[" + task.key + "] " + stripPrefix(task.title),
       SUB[task.sub].name + " · " + task.dur + " · " + task.level + (task.note ? " · " + task.note : ""),
       on ? new Color("#30D158") : SUB[task.sub].c
     )
@@ -283,8 +287,8 @@ function taskRows(t, P, S, d, rerender) {
       saveProg(S)
       rerender()
     }
-    const b = r.addButton("▶")
-    b.titleColor = DIM
+    const b = r.addButton("▶ B站")
+    b.titleColor = new Color("#0A84FF")
     b.onTap = () => Safari.open(task.url)
     t.addRow(r)
   })
