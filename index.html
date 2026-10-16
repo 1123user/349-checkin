@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="349打卡">
+<meta name="theme-color" content="#12101c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>349 三科打卡</title>
+<style>
+:root{--bg:#12101c;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);
+  --txt:#f2f0ff;--dim:#a49ec4;--ok:#4ade80;--gold:#ffd166;
+  --org:#ff4d4f;--pharm:#ffa940;--ana:#40a9ff;--r:20px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+body{font:14px/1.5 -apple-system,"PingFang SC","Helvetica Neue",sans-serif;color:var(--txt);
+  background:radial-gradient(1200px 700px at 12% -8%,#3b2b6b 0,transparent 55%),
+             radial-gradient(900px 600px at 108% 110%,#0e4a52 0,transparent 55%),var(--bg);
+  min-height:100vh;padding:18px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  backdrop-filter:blur(22px) saturate(160%);padding:15px;box-shadow:0 12px 34px rgba(0,0,0,.34)}
+.top{display:flex;align-items:center;gap:14px}
+.ring{position:relative;width:74px;height:74px;flex:0 0 auto}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;font-size:15px}
+.ring b i{font-style:normal;font-size:9px;color:var(--dim)}
+.hd h1{font-size:16.5px;font-weight:700}
+.hd p{font-size:11.5px;color:var(--dim);margin-top:4px;line-height:1.6}
+.count{margin-left:auto;text-align:right}
+.count strong{font-size:26px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.count span{display:block;font-size:10.5px;color:var(--dim)}
+.tabs{display:flex;gap:6px;background:rgba(0,0,0,.26);padding:4px;border-radius:13px;
+  align-self:flex-start;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;color:var(--dim);font:600 12px/1 inherit;
+  padding:7px 12px;border-radius:9px;cursor:pointer;transition:.18s}
+.tabs button.on{background:rgba(255,255,255,.14);color:var(--txt)}
+.shead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.shead b{font-size:14.5px}
+.shead .pill{font-size:10px;padding:2.5px 8px;border-radius:20px;background:rgba(255,255,255,.1);color:var(--dim)}
+.shead em{margin-left:auto;font-style:normal;font-size:11px;color:var(--dim)}
+.sub-block{margin-bottom:14px}
+.sub-block:last-child{margin-bottom:0}
+.bar-mini{height:4px;border-radius:3px;background:rgba(255,255,255,.13);overflow:hidden;flex:1;max-width:120px}
+.bar-mini i{display:block;height:100%;width:0;transition:.3s}
+.task{display:flex;gap:11px;padding:10px;border-radius:14px;border:1px solid var(--line);
+  background:rgba(255,255,255,.035);margin-bottom:8px;position:relative;overflow:hidden;transition:.2s}
+.task:last-child{margin-bottom:0}
+.task .bar{position:absolute;left:0;top:0;bottom:0;width:3px}
+.task.done{opacity:.5;background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.3)}
+.task.done .tt{text-decoration:line-through}
+.chk{flex:0 0 auto;width:22px;height:22px;border-radius:8px;border:2px solid rgba(255,255,255,.3);
+  background:rgba(0,0,0,.2);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:transparent;margin-top:2px;transition:.18s}
+.task.done .chk{background:var(--ok);border-color:var(--ok);color:#0b2b18}
+.tbody{min-width:0;flex:1}
+.tline{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tkey{font:700 11px/1 ui-monospace,Menlo,monospace;color:#12101c;background:var(--gold);
+  padding:3px 6px;border-radius:6px}
+.tt{font-size:13.5px;font-weight:600;line-height:1.45}
+.tmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:5px}
+.tag{font-size:10px;padding:2.5px 7px;border-radius:20px;background:rgba(255,255,255,.1);color:var(--dim)}
+.tag.b{background:rgba(255,77,79,.22);color:#ffb3b3}
+.tag.s{background:rgba(64,169,255,.2);color:#a8d8ff}
+.min{font-size:10.5px;color:var(--dim)}
+.play{margin-left:auto;font-size:11px;color:#a8d8ff;text-decoration:none;
+  border:1px solid rgba(64,169,255,.35);padding:3px 9px;border-radius:20px;white-space:nowrap}
+.play:hover{background:rgba(64,169,255,.16)}
+.note{font-size:11.5px;color:var(--dim);margin-top:5px;line-height:1.55}
+.day{border:1px solid var(--line);border-radius:14px;margin-bottom:7px;background:rgba(255,255,255,.03);overflow:hidden}
+.dhead{display:flex;align-items:center;gap:9px;padding:9px 11px;cursor:pointer;font-size:12.5px}
+.dhead b{font-size:12px;color:var(--dim);min-width:34px}
+.dhead .dprog{margin-left:auto;font-size:11px;color:var(--dim)}
+.dbody{padding:0 11px 10px}
+.dots{display:flex;gap:3px}
+.dots i{width:16px;height:4px;border-radius:3px;background:rgba(255,255,255,.3)}
+.ph{display:flex;gap:11px;padding:11px;border-radius:14px;border:1px solid var(--line);
+  background:rgba(255,255,255,.03);margin-bottom:8px}
+.ph .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;margin-top:5px}
+.ph h4{font-size:13px}
+.ph .rng{font-size:10.5px;color:var(--dim);margin-left:7px}
+.ph p{font-size:11.5px;color:var(--dim);margin-top:5px;line-height:1.6}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button,.tools label{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--txt);
+  font:600 11.5px/1 inherit;padding:9px 13px;border-radius:11px;cursor:pointer}
+.tools button:hover,.tools label:hover{background:rgba(255,255,255,.13)}
+.hint{font-size:11.5px;color:var(--dim);line-height:1.75}
+.hint code{background:rgba(255,255,255,.1);padding:1px 5px;border-radius:5px;font-size:10.5px}
+.empty{font-size:12.5px;color:var(--dim);padding:14px;text-align:center}
+body{padding:18px 18px calc(22px + env(safe-area-inset-bottom))}
+@media (max-width:600px){
+  body{padding:12px 11px calc(24px + env(safe-area-inset-bottom))}
+  .wrap{gap:10px}
+  .card{padding:13px;border-radius:17px}
+  .top{gap:10px}
+  .ring,.ring svg{width:60px;height:60px}
+  .ring b{font-size:13px}.ring b i{font-size:8.5px}
+  .hd h1{font-size:14px}.hd p{font-size:10px}
+  .count strong{font-size:21px}.count span{font-size:9.5px}
+  .tabs{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+  .tabs button{padding:9px 2px;font-size:11.5px;text-align:center}
+  .task{padding:11px 9px;gap:9px}
+  .tt{font-size:13px}
+  .tkey{font-size:10px}
+  .play{padding:4px 9px;font-size:10.5px}
+  .shead{flex-wrap:wrap}.shead em{margin-left:auto}
+  .bar-mini{max-width:70px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card top">
+    <div class="ring">
+      <svg width="74" height="74">
+        <circle cx="37" cy="37" r="31" stroke="rgba(255,255,255,.13)" stroke-width="7" fill="none"></circle>
+        <circle id="rg" cx="37" cy="37" r="31" stroke="url(#gd)" stroke-width="7" fill="none"
+                stroke-linecap="round" stroke-dasharray="195" stroke-dashoffset="195"></circle>
+        <defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#ffd166"/></linearGradient></defs>
+      </svg>
+      <b id="rp">0%<i>总进度</i></b>
+    </div>
+    <div class="hd">
+      <h1>349 三科冲刺 · 打卡表</h1>
+      <p id="sub">有机 63 讲 · 药理 42 个 · 分析 40 讲</p>
+    </div>
+    <div class="count"><strong id="cd">D-64</strong><span>距初试</span></div>
+  </div>
+
+  <div class="card"><div class="tabs" id="tabs">
+    <button data-v="today" class="on">今日</button>
+    <button data-v="org">有机</button>
+    <button data-v="pharm">药理</button>
+    <button data-v="ana">分析</button>
+    <button data-v="all">全部日程</button>
+    <button data-v="phase">路线图</button>
+  </div></div>
+
+  <div id="view"></div>
+
+  <div class="card">
+    <div class="tools">
+      <button id="exp">导出进度备份</button>
+      <label>导入备份<input type="file" id="imp" accept=".json" hidden></label>
+      <button id="rst">重置</button>
+    </div>
+    <p class="hint" style="margin-top:11px">
+      勾选即完成 · 进度存本机 · <code>落后时先跳「速通」灰标签项</code>
+    </p>
+  </div>
+</div>
+
+<script>
+const LS='t349_progress_v1';
+let P=null, S=JSON.parse(localStorage.getItem(LS)||'{"done":{}}');
+if(!S.done)S.done={};
+const save=()=>localStorage.setItem(LS,JSON.stringify(S));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const todayISO=()=>new Date().toISOString().slice(0,10);
+const SN={org:'有机',pharm:'药理',ana:'分析'};
+let TAB='today';
+
+function allTasks(){const a=[];P.days.forEach(d=>d.tasks.forEach(t=>a.push(t)));return a;}
+function stats(){const a=allTasks();const u=[...new Set(a.map(t=>t.sub+'|'+t.key+'|'+t.bvid))];
+  const dn=u.filter(k=>S.done[k]).length;return {total:u.length,done:dn,pct:Math.round(dn/u.length*100)};}
+const tid=t=>t.sub+'|'+t.key+'|'+t.bvid;
+
+function taskHTML(t){
+  const d=!!S.done[tid(t)], col=P.meta.subjects[t.sub].color;
+  return `<div class="task ${d?'done':''}" style="--accent:${col}">
+    <div class="bar" style="background:${col}"></div>
+    <div class="chk" data-act="t" data-k="${tid(t)}">✓</div>
+    <div class="tbody">
+      <div class="tline"><span class="tkey">${esc(t.key)}</span><span class="tt">${esc(t.title)}</span></div>
+      <div class="tmeta">
+        <span class="tag ${t.level==='必看'?'b':(t.level==='速通'?'s':'')}">${t.level}</span>
+        <span class="tag">${esc(t.group)}</span>
+        <span class="min">${t.dur}</span>
+        <a class="play" href="${t.url}" target="_blank" rel="noopener">▶ B站</a>
+      </div>
+      ${t.note?`<div class="note">· ${esc(t.note)}</div>`:''}
+    </div></div>`;
+}
+
+function subBlock(sub,tasks){
+  const m=P.meta.subjects[sub], dn=tasks.filter(t=>S.done[tid(t)]).length;
+  const pc=tasks.length?Math.round(dn/tasks.length*100):0;
+  return `<div class="sub-block">
+    <div class="shead"><b style="color:${m.color}">${m.name}</b>
+      <span class="pill">${tasks.length} 项 · ${Math.round(tasks.reduce((s,t)=>s+t.sec,0)/60)} 分钟</span>
+      <span class="bar-mini"><i style="width:${pc}%;background:${m.color}"></i></span>
+      <em>${dn}/${tasks.length}</em></div>
+    ${tasks.map(taskHTML).join('')}</div>`;
+}
+
+function render(){
+  const v=document.getElementById('view'), t=todayISO();
+  if(TAB==='today'){
+    const d=P.days.find(x=>x.date===t);
+    if(!d){
+      v.innerHTML=`<div class="card"><div class="empty">${t} 不在阶段一(10/16–11/05)排期内 —— 进入后续阶段，见「路线图」。</div></div>`;
+    }else{
+      let h='';
+      ['org','pharm','ana'].forEach(s=>{
+        const ts=d.tasks.filter(x=>x.sub===s); if(ts.length) h+=subBlock(s,ts);
+      });
+      v.innerHTML=`<div class="card">
+        <div class="shead"><b>${d.date} ${d.wd}</b><span class="pill">Day ${d.day}</span>
+          <em>共 ${d.min} 分钟 · 有机${d.by.org} 药理${d.by.pharm} 分析${d.by.ana}</em></div>
+        ${h}</div>`;
+    }
+  }else if(TAB==='all'){
+    let h='';
+    P.days.forEach(d=>{
+      const dn=d.tasks.filter(x=>S.done[tid(x)]).length;
+      const dots=['org','pharm','ana'].map(s=>{
+        const a=d.tasks.filter(x=>x.sub===s),ok=a.filter(x=>S.done[tid(x)]).length;
+        return `<i style="background:${P.meta.subjects[s].color};opacity:${a.length?0.25+0.75*ok/a.length:0.12}"></i>`;
+      }).join('');
+      h+=`<div class="day"><div class="dhead" data-act="day" data-i="${d.day}">
+        <b>D${d.day}</b><span>${d.date} ${d.wd}</span>
+        <span class="dots">${dots}</span>
+        <span class="dprog">${dn}/${d.tasks.length} · ${d.min}分</span></div>
+        <div class="dbody" id="b-${d.day}">${['org','pharm','ana'].map(s=>{
+          const a=d.tasks.filter(x=>x.sub===s);return a.length?subBlock(s,a):'';}).join('')}</div></div>`;
+    });
+    v.innerHTML=`<div class="card">${h}</div>`;
+    v.querySelectorAll('.dbody').forEach(b=>b.style.display='none');
+  }else if(TAB==='phase'){
+    v.innerHTML='<div class="card">'+P.phases.map(p=>`<div class="ph">
+      <div class="dot" style="background:${p.color}"></div>
+      <div><h4>${p.name}<span class="rng">${p.range}</span></h4><p>${esc(p.desc)}</p></div></div>`).join('')+
+      `<p class="hint" style="margin-top:6px">配比：<b>${esc(P.meta.ratio)}</b><br>${esc(P.meta.principle)}</p></div>`;
+  }else{
+    const all=allTasks().filter(x=>x.sub===TAB);
+    const g={};all.forEach(x=>{(g[x.group]=g[x.group]||[]).push(x)});
+    let h=`<div class="card"><p class="hint" style="margin-bottom:4px">${P.meta.subjects[TAB].name} ·
+       共 ${all.length} 项 · ${Math.round(all.reduce((s,x)=>s+x.sec,0)/60)} 分钟（${P.meta.subjects[TAB].weight}）</p></div>`;
+    Object.keys(g).forEach(k=>{
+      h+=`<div class="card"><div class="shead"><b style="color:${P.meta.subjects[TAB].color}">${esc(k)}</b>
+        <span class="pill">${g[k].length} 项</span></div>${g[k].map(taskHTML).join('')}</div>`;
+    });
+    v.innerHTML=h;
+  }
+  const st=stats();
+  document.getElementById('rp').innerHTML=st.pct+'%<i>总进度</i>';
+  document.getElementById('rg').setAttribute('stroke-dashoffset',195-195*st.pct/100);
+  const ex=new Date(P.meta.exam+'T00:00:00');
+  document.getElementById('cd').textContent='D-'+Math.max(0,Math.ceil((ex-new Date())/864e5));
+  document.getElementById('sub').textContent=
+    `有机 ${P.counts.org} 讲 · 药理 ${P.counts.pharm} 个 · 分析 ${P.counts.ana} 讲 · 已打卡 ${st.done}/${st.total}`;
+}
+
+document.addEventListener('click',e=>{
+  const c=e.target.closest('[data-act="t"]');
+  if(c){const k=c.dataset.k; if(S.done[k])delete S.done[k]; else S.done[k]=Date.now(); save(); render(); return;}
+  const dh=e.target.closest('[data-act="day"]');
+  if(dh){const b=document.getElementById('b-'+dh.dataset.i);
+    if(b)b.style.display=b.style.display==='none'?'':'none';}
+});
+document.getElementById('tabs').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  TAB=b.dataset.v;
+  [...document.querySelectorAll('#tabs button')].forEach(x=>x.classList.toggle('on',x===b));
+  render();
+});
+document.getElementById('exp').onclick=()=>{
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,1)],{type:'application/json'}));
+  a.download='349打卡进度_'+todayISO()+'.json'; a.click();
+};
+document.getElementById('imp').onchange=e=>{
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{try{const o=JSON.parse(r.result);
+    if(o.done){S=o;save();render();alert('已恢复 '+Object.keys(S.done).length+' 条打卡');}}catch(_){alert('解析失败');}};
+  r.readAsText(f);
+};
+document.getElementById('rst').onclick=()=>{if(confirm('清空打卡记录？建议先导出。')){S={done:{}};save();render();}};
+
+fetch('plan3.json').then(r=>r.json()).then(j=>{P=j;render();}).catch(()=>{
+  document.getElementById('view').innerHTML=
+    '<div class="card"><div class="empty">plan3.json 未加载：请用文件夹里的「启动打卡小组件.command」打开，或确认网页已完整上传。</div></div>';
+});
+
+/* 离线可用：网络优先，断网回落缓存 */
+if('serviceWorker' in navigator&&location.protocol==='https:'){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>

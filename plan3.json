@@ -1,0 +1,2195 @@
+{
+ "meta": {
+  "start": "2026-10-16",
+  "org_r1_deadline": "2026-11-05",
+  "exam": "2026-12-19",
+  "subjects": {
+   "org": {
+    "name": "有机化学",
+    "short": "有机",
+    "color": "#ff4d4f",
+    "weight": "命题权重 25.9% · 掌握度最弱 → 投入最多"
+   },
+   "pharm": {
+    "name": "药理学",
+    "short": "药理",
+    "color": "#ffa940",
+    "weight": "命题权重 33.3% · 掌握度第二"
+   },
+   "ana": {
+    "name": "分析化学",
+    "short": "分析",
+    "color": "#40a9ff",
+    "weight": "命题权重 40.8% · 掌握度最好 → 投入最少"
+   }
+  },
+  "ratio": "时间配比 有机 3 讲/天 > 分析 2 讲/天 > 药理 2 个短视频/天",
+  "principle": "题面权重（分析41:药理33:有机26）决定该考多少；掌握度（有机最弱）决定该花多少时间"
+ },
+ "days": [
+  {
+   "day": 1,
+   "date": "2026-10-16",
+   "wd": "周五",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L5-2",
+     "title": "Lecture 5-2 按照新思路学懂电子效应里的诱导效应和场效应",
+     "dur": "56:19",
+     "sec": 3379,
+     "bvid": "BV1gA411M7nZ",
+     "level": "必看",
+     "group": "G1",
+     "note": "在学中·诱导效应+场效应收尾",
+     "url": "https://www.bilibili.com/video/BV1gA411M7nZ"
+    },
+    {
+     "sub": "org",
+     "key": "L5-3",
+     "title": "Lecture 5-3 电子效应——共轭“共轭体系的定性分析、共振论介绍”",
+     "dur": "1:10:22",
+     "sec": 4222,
+     "bvid": "BV1qN411X7cz",
+     "level": "必看",
+     "group": "G1",
+     "note": "共轭体系定性分析+共振论",
+     "url": "https://www.bilibili.com/video/BV1qN411X7cz"
+    },
+    {
+     "sub": "org",
+     "key": "L5-4",
+     "title": "Lecture 5-4 共轭效应、超共轭效应及其综合应用“视频最后有电子效应的综合分析”",
+     "dur": "1:37:22",
+     "sec": 5842,
+     "bvid": "BV1fA411K7ty",
+     "level": "必看",
+     "group": "G1",
+     "note": "共轭/超共轭+综合分析(看末尾)",
+     "url": "https://www.bilibili.com/video/BV1fA411K7ty"
+    },
+    {
+     "sub": "pharm",
+     "key": "N受体激动药",
+     "title": "【药理三分钟】带你背诵一个药｜肾上腺素｜传出神经系统药物｜药理学背诵｜期末复习｜考研｜学习分享｜",
+     "dur": "6:15",
+     "sec": 375,
+     "bvid": "BV1Em4y1D7wt",
+     "level": "必看",
+     "group": "传出",
+     "note": "AD 剂量依赖：小剂量β大剂量α",
+     "url": "https://www.bilibili.com/video/BV1Em4y1D7wt"
+    },
+    {
+     "sub": "pharm",
+     "key": "多巴胺受体",
+     "title": "【药理三分钟】带你背诵一个药｜多巴胺｜传出神经系统药物｜药理学背诵｜考研药理学｜期末复习",
+     "dur": "5:17",
+     "sec": 317,
+     "bvid": "BV1mT4y1m7B2",
+     "level": "必看",
+     "group": "传出",
+     "note": "低剂量D1扩肾血管/大剂量α",
+     "url": "https://www.bilibili.com/video/BV1mT4y1m7B2"
+    },
+    {
+     "sub": "ana",
+     "key": "第三讲",
+     "title": "第三讲：2.1.1误差的定义与种类",
+     "dur": "29:37",
+     "sec": 1777,
+     "bvid": "BV1F7411U7a7",
+     "level": "必看",
+     "group": "第2章 误差与数据处理",
+     "chapter": "第2章 误差与数据处理",
+     "priority": "100.0",
+     "note": "误差的定义与种类",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1F7411U7a7"
+    },
+    {
+     "sub": "ana",
+     "key": "第四讲",
+     "title": "第四讲：2.1.2准确度和精密度",
+     "dur": "37:52",
+     "sec": 2272,
+     "bvid": "BV1F7411U7Lb",
+     "level": "必看",
+     "group": "第2章 误差与数据处理",
+     "chapter": "第2章 误差与数据处理",
+     "priority": "100.0",
+     "note": "准确度和精密度",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1F7411U7Lb"
+    }
+   ],
+   "min": 303,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 2,
+   "date": "2026-10-17",
+   "wd": "周六",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L6-1",
+     "title": "Lecture 6-1 有机酸碱化学——“质子迁移反应机理、如何弄懂pKa的易混概念”",
+     "dur": "1:14:44",
+     "sec": 4484,
+     "bvid": "BV1Fb4y1D7ze",
+     "level": "必看",
+     "group": "G2",
+     "note": "质子迁移机理+pKa",
+     "url": "https://www.bilibili.com/video/BV1Fb4y1D7ze"
+    },
+    {
+     "sub": "org",
+     "key": "L6-2",
+     "title": "Lecture 6-2“有机化学中判断酸碱性的原则、方法”",
+     "dur": "1:17:56",
+     "sec": 4676,
+     "bvid": "BV1xv41177yb",
+     "level": "必看",
+     "group": "G2",
+     "note": "酸碱性判断原则方法",
+     "url": "https://www.bilibili.com/video/BV1xv41177yb"
+    },
+    {
+     "sub": "org",
+     "key": "L8-1",
+     "title": "L8-1 卤代烃的结构、物理性质、立体化学分析",
+     "dur": "1:06:42",
+     "sec": 4002,
+     "bvid": "BV12v411V7Td",
+     "level": "速通",
+     "group": "G3",
+     "note": "结构/物性/立体化学",
+     "url": "https://www.bilibili.com/video/BV12v411V7Td"
+    },
+    {
+     "sub": "pharm",
+     "key": "α激动药",
+     "title": "【药理三分钟】带你背诵一个药｜去甲肾上腺素｜传出神经系统药物｜药理学考研｜药理学期末考试｜学习分享",
+     "dur": "9:12",
+     "sec": 552,
+     "bvid": "BV1LR4y1g7zn",
+     "level": "必看",
+     "group": "传出",
+     "note": "NA 收缩血管升压，切忌外漏",
+     "url": "https://www.bilibili.com/video/BV1LR4y1g7zn"
+    },
+    {
+     "sub": "pharm",
+     "key": "α阻断药",
+     "title": "【药理三分钟】带你背诵一个药｜酚妥拉明｜传出神经系统药物｜药理学考研｜药理学期末｜学习分享",
+     "dur": "10:24",
+     "sec": 624,
+     "bvid": "BV1Z3411e7P9",
+     "level": "必看",
+     "group": "传出",
+     "note": "短效α1α2，治嗜铬细胞瘤",
+     "url": "https://www.bilibili.com/video/BV1Z3411e7P9"
+    },
+    {
+     "sub": "ana",
+     "key": "第五讲",
+     "title": "第五讲：2.1.3提高分析结果准确度的方法",
+     "dur": "26:42",
+     "sec": 1602,
+     "bvid": "BV1f7411m7Cr",
+     "level": "必看",
+     "group": "第2章 误差与数据处理",
+     "chapter": "第2章 误差与数据处理",
+     "priority": "100.0",
+     "note": "提高分析结果准确度的方法",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1f7411m7Cr"
+    },
+    {
+     "sub": "ana",
+     "key": "第六讲",
+     "title": "第六讲：2.2有效数字",
+     "dur": "45:15",
+     "sec": 2715,
+     "bvid": "BV1f7411m7yk",
+     "level": "必看",
+     "group": "第2章 误差与数据处理",
+     "chapter": "第2章 误差与数据处理",
+     "priority": "100.0",
+     "note": "有效数字",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1f7411m7yk"
+    }
+   ],
+   "min": 311,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 3,
+   "date": "2026-10-18",
+   "wd": "周日",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L8-2",
+     "title": "Lecture 8-2上 碳正离子的结构分析",
+     "dur": "44:03",
+     "sec": 2643,
+     "bvid": "BV1uf4y187i9",
+     "level": "必看",
+     "group": "G3",
+     "note": "碳正离子结构·SN1总开关",
+     "url": "https://www.bilibili.com/video/BV1uf4y187i9"
+    },
+    {
+     "sub": "org",
+     "key": "L8-3",
+     "title": "L8-3“取代反应简介，SN1，SN2反应的动力学分析，速率方程”",
+     "dur": "45:21",
+     "sec": 2721,
+     "bvid": "BV1hq4y1L7wT",
+     "level": "必看",
+     "group": "G3",
+     "note": "SN1/SN2动力学",
+     "url": "https://www.bilibili.com/video/BV1hq4y1L7wT"
+    },
+    {
+     "sub": "org",
+     "key": "L8-4",
+     "title": "L8-4“SN2反应的机理以及立体化学”",
+     "dur": "51:53",
+     "sec": 3113,
+     "bvid": "BV11y4y1T7Tv",
+     "level": "必看",
+     "group": "G3",
+     "note": "SN2机理与立体化学",
+     "url": "https://www.bilibili.com/video/BV11y4y1T7Tv"
+    },
+    {
+     "sub": "pharm",
+     "key": "β激动药",
+     "title": "【药理三分钟】带你背诵一个药｜异丙肾上腺素｜传出神经系统药物｜药理学考研｜药理学期末｜学习分享",
+     "dur": "8:21",
+     "sec": 501,
+     "bvid": "BV1KF411p7NW",
+     "level": "必看",
+     "group": "传出",
+     "note": "ISO 纯β，扩支气管抗休克",
+     "url": "https://www.bilibili.com/video/BV1KF411p7NW"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗胆碱酯酶",
+     "title": "【药理三分钟】推推推 推出一个药｜新斯的明｜传出神经系统药物｜药理学考研｜药理学｜背诵｜学习分享",
+     "dur": "8:04",
+     "sec": 484,
+     "bvid": "BV1134y1i7iW",
+     "level": "必看",
+     "group": "传出",
+     "note": "可逆性，重症肌无力首选",
+     "url": "https://www.bilibili.com/video/BV1134y1i7iW"
+    },
+    {
+     "sub": "ana",
+     "key": "第七讲",
+     "title": "第七讲：2.3分析数据的处理",
+     "dur": "17:50",
+     "sec": 1070,
+     "bvid": "BV1P7411U7Fq",
+     "level": "必看",
+     "group": "第2章 误差与数据处理",
+     "chapter": "第2章 误差与数据处理",
+     "priority": "100.0",
+     "note": "分析数据的处理·六年全中必考",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1P7411U7Fq"
+    },
+    {
+     "sub": "ana",
+     "key": "第八讲",
+     "title": "第八讲：3.1滴定分析法概述",
+     "dur": "36:18",
+     "sec": 2178,
+     "bvid": "BV1A7411U7By",
+     "level": "必看",
+     "group": "第3章 滴定分析法概述",
+     "chapter": "第3章 滴定分析法概述",
+     "priority": "基准",
+     "note": "滴定分析概述",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1A7411U7By"
+    }
+   ],
+   "min": 212,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 4,
+   "date": "2026-10-19",
+   "wd": "周一",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L8-5",
+     "title": "L8-5\"SN1反应的机理和立体化学\"",
+     "dur": "1:12:41",
+     "sec": 4361,
+     "bvid": "BV1j64y197JQ",
+     "level": "必看",
+     "group": "G3",
+     "note": "SN1机理与立体化学",
+     "url": "https://www.bilibili.com/video/BV1j64y197JQ"
+    },
+    {
+     "sub": "org",
+     "key": "L8-6",
+     "title": "L8-6“影响亲核取代反应的因素分析，SN1与SN2的竞争”",
+     "dur": "1:46:22",
+     "sec": 6382,
+     "bvid": "BV1PM4y1M7m6",
+     "level": "必看",
+     "group": "G3",
+     "note": "SN1/SN2竞争因素",
+     "url": "https://www.bilibili.com/video/BV1PM4y1M7m6"
+    },
+    {
+     "sub": "org",
+     "key": "L8-7",
+     "title": "L8-7“消除反应的分类，β-消除反应的基本介绍”",
+     "dur": "45:15",
+     "sec": 2715,
+     "bvid": "BV1bX4y1P7NP",
+     "level": "速通",
+     "group": "G3",
+     "note": "消除反应分类",
+     "url": "https://www.bilibili.com/video/BV1bX4y1P7NP"
+    },
+    {
+     "sub": "pharm",
+     "key": "β阻断药",
+     "title": "【药理三分钟】推推推推出一个药｜普萘洛尔｜传出神经系统药物｜药理学考研｜考研｜药理学期末考试｜学习分享",
+     "dur": "7:55",
+     "sec": 475,
+     "bvid": "BV1YT4y117Mt",
+     "level": "必看",
+     "group": "传出",
+     "note": "非选择性，抗心绞痛抗心律失常",
+     "url": "https://www.bilibili.com/video/BV1YT4y117Mt"
+    },
+    {
+     "sub": "pharm",
+     "key": "中毒",
+     "title": "【药理三分钟】有机磷酯类｜传出神经系统｜药理学考研｜药理学背诵｜学习分享｜口诀",
+     "dur": "4:52",
+     "sec": 292,
+     "bvid": "BV1q34y1i7bk",
+     "level": "必看",
+     "group": "传出",
+     "note": "不可逆抑制AChE→M样N样中枢",
+     "url": "https://www.bilibili.com/video/BV1q34y1i7bk"
+    },
+    {
+     "sub": "ana",
+     "key": "第十一讲",
+     "title": "第十一讲：3.3.1滴定分析计算的依据及基本公式",
+     "dur": "55:26",
+     "sec": 3326,
+     "bvid": "BV1A7411U7tP",
+     "level": "必看",
+     "group": "第3章 滴定分析法概述",
+     "chapter": "第3章 滴定分析法概述",
+     "priority": "基准",
+     "note": "计算依据及基本公式",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1A7411U7tP"
+    },
+    {
+     "sub": "ana",
+     "key": "分析化学 第",
+     "title": "分析化学 第10章 光学分析法概论",
+     "dur": "43:55",
+     "sec": 2635,
+     "bvid": "BV193411k7xd",
+     "level": "速通",
+     "group": "第10章 光学分析法概论",
+     "chapter": "第10章 光学分析法概论",
+     "priority": "基准",
+     "note": "光谱分析法总纲，串紫外/红外/荧光",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV193411k7xd"
+    }
+   ],
+   "min": 336,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 5,
+   "date": "2026-10-20",
+   "wd": "周二",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L8-8",
+     "title": "L8-8“E1消除反应的实例分析，区域选择性与立体选择性”",
+     "dur": "1:03:46",
+     "sec": 3826,
+     "bvid": "BV1Vh41167X2",
+     "level": "必看",
+     "group": "G3",
+     "note": "E1实例+区域选择性",
+     "url": "https://www.bilibili.com/video/BV1Vh41167X2"
+    },
+    {
+     "sub": "org",
+     "key": "L8-9",
+     "title": "L8-9“E2反应的实例分析，区域选择性和立体选择性，E1cb反应简介”",
+     "dur": "1:53:11",
+     "sec": 6791,
+     "bvid": "BV1Fq4y1W7Kt",
+     "level": "必看",
+     "group": "G3",
+     "note": "E2实例+E1cb",
+     "url": "https://www.bilibili.com/video/BV1Fq4y1W7Kt"
+    },
+    {
+     "sub": "org",
+     "key": "L8-10",
+     "title": "L8-10“卤代烃的竞争反应应该怎么判断？取代反应和消除反应到底进行哪一个？”",
+     "dur": "1:21:51",
+     "sec": 4911,
+     "bvid": "BV1EK4y1u7s4",
+     "level": "必看",
+     "group": "G3",
+     "note": "取代vs消除竞争判断",
+     "url": "https://www.bilibili.com/video/BV1EK4y1u7s4"
+    },
+    {
+     "sub": "pharm",
+     "key": "解毒",
+     "title": "【药理三分钟】解磷定｜传出神经系统药物｜药理学考研｜药理学｜背诵｜学习分享",
+     "dur": "2:54",
+     "sec": 174,
+     "bvid": "BV19P4y177Va",
+     "level": "必看",
+     "group": "传出",
+     "note": "复活AChE，对已老化无效",
+     "url": "https://www.bilibili.com/video/BV19P4y177Va"
+    },
+    {
+     "sub": "pharm",
+     "key": "M阻断药",
+     "title": "【药理三分钟】阿托品｜传出神经系统药物｜药理学考研｜药理学｜背诵｜学习分享",
+     "dur": "5:39",
+     "sec": 339,
+     "bvid": "BV1j3411Y7x6",
+     "level": "必看",
+     "group": "传出",
+     "note": "扩瞳/解痉/抗休克，中毒先兴奋后抑制",
+     "url": "https://www.bilibili.com/video/BV1j3411Y7x6"
+    },
+    {
+     "sub": "ana",
+     "key": "第六十八讲",
+     "title": "第六十八讲：10.1.1紫外可见分光光度法-基本知识1",
+     "dur": "57:46",
+     "sec": 3466,
+     "bvid": "BV1Tg4y1v7fo",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "基本知识1",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1Tg4y1v7fo"
+    },
+    {
+     "sub": "ana",
+     "key": "第六十九讲",
+     "title": "第六十九讲：10.1.2紫外可见分光光度法-基本知识2",
+     "dur": "63:52",
+     "sec": 3832,
+     "bvid": "BV1ik4y1z7T2",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "基本知识2",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1ik4y1z7T2"
+    }
+   ],
+   "min": 389,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 6,
+   "date": "2026-10-21",
+   "wd": "周三",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L15-1",
+     "title": "L15-1 醛酮羰基加成的机理、立体化学以及反应性分析",
+     "dur": "46:59",
+     "sec": 2819,
+     "bvid": "BV1JS4y1P7yE",
+     "level": "必看",
+     "group": "G4",
+     "note": "羰基加成机理与反应性",
+     "url": "https://www.bilibili.com/video/BV1JS4y1P7yE"
+    },
+    {
+     "sub": "org",
+     "key": "L15-2",
+     "title": "L15-2 醛酮与含碳、含氮亲核试剂的加成反应及其应用实例",
+     "dur": "58:02",
+     "sec": 3482,
+     "bvid": "BV1du411e7C7",
+     "level": "必看",
+     "group": "G4",
+     "note": "含碳含氮亲核加成",
+     "url": "https://www.bilibili.com/video/BV1du411e7C7"
+    },
+    {
+     "sub": "org",
+     "key": "L15-3",
+     "title": "L15-3 醛酮与含氧、含硫、氢化金属试剂反应的机理与应用",
+     "dur": "50:24",
+     "sec": 3024,
+     "bvid": "BV11u411e7Mw",
+     "level": "必看",
+     "group": "G4",
+     "note": "含氧含硫/氢化金属",
+     "url": "https://www.bilibili.com/video/BV11u411e7Mw"
+    },
+    {
+     "sub": "pharm",
+     "key": "M阻断药对比",
+     "title": "【药理三分钟】对比+口诀记忆两个药｜山莨菪碱和东莨菪碱｜药理学期末考试｜药理学考研｜药理学",
+     "dur": "3:52",
+     "sec": 232,
+     "bvid": "BV1hq4y1C7Bm",
+     "level": "必看",
+     "group": "传出",
+     "note": "654-2抗休克；东莨菪碱镇静防晕",
+     "url": "https://www.bilibili.com/video/BV1hq4y1C7Bm"
+    },
+    {
+     "sub": "pharm",
+     "key": "N阻断药",
+     "title": "【药理三分钟】琥珀胆碱和筒箭毒碱｜传出神经系统药物｜药理学考研｜药理学｜考研｜学习分享",
+     "dur": "6:23",
+     "sec": 383,
+     "bvid": "BV1LL411F7CR",
+     "level": "必看",
+     "group": "传出",
+     "note": "去极化 vs 非去极化，肌松药",
+     "url": "https://www.bilibili.com/video/BV1LL411F7CR"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十讲",
+     "title": "第七十讲：10.1.3紫外可见分光光度法-基本知识3",
+     "dur": "52:11",
+     "sec": 3131,
+     "bvid": "BV1RD4y1D79b",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "基本知识3",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1RD4y1D79b"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十一讲",
+     "title": "第七十一讲：10.2.1紫外可见分光光度法-朗伯比尔定律",
+     "dur": "68:44",
+     "sec": 4124,
+     "bvid": "BV1ua4y1e7Q7",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "朗伯比尔定律·核心公式",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1ua4y1e7Q7"
+    }
+   ],
+   "min": 287,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 7,
+   "date": "2026-10-22",
+   "wd": "周四",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L15-4",
+     "title": "L15-4 醛酮的互变异构，α-H与烯醇负离子的形成",
+     "dur": "1:04:58",
+     "sec": 3898,
+     "bvid": "BV1j44y157n3",
+     "level": "必看",
+     "group": "G4",
+     "note": "互变异构+烯醇负离子",
+     "url": "https://www.bilibili.com/video/BV1j44y157n3"
+    },
+    {
+     "sub": "org",
+     "key": "L15-5",
+     "title": "L15-5 醛酮的α-卤化与亚硝化",
+     "dur": "30:33",
+     "sec": 1833,
+     "bvid": "BV1ya411v7bP",
+     "level": "速通",
+     "group": "G4",
+     "note": "α-卤化与亚硝化",
+     "url": "https://www.bilibili.com/video/BV1ya411v7bP"
+    },
+    {
+     "sub": "org",
+     "key": "L15-6",
+     "title": "L15-6 常见的烯醇等价物-烯醇锂、烯醇醚、烯醇硅醚",
+     "dur": "31:21",
+     "sec": 1881,
+     "bvid": "BV1NY4y1Y7fp",
+     "level": "速通",
+     "group": "G4",
+     "note": "烯醇等价物",
+     "url": "https://www.bilibili.com/video/BV1NY4y1Y7fp"
+    },
+    {
+     "sub": "pharm",
+     "key": "基础概念",
+     "title": "【药理三分钟】心血管篇｜一些经常用到的词语的解释 | 前后负荷 | 体循环肺循环 | 增供降耗 | 减负强心",
+     "dur": "13:35",
+     "sec": 815,
+     "bvid": "BV1sA4y1D7fm",
+     "level": "必看",
+     "group": "心血管",
+     "note": "前后负荷/体循环肺循环/增供降耗",
+     "url": "https://www.bilibili.com/video/BV1sA4y1D7fm"
+    },
+    {
+     "sub": "pharm",
+     "key": "RAAS地基",
+     "title": "【药理三分钟】心血管篇章｜肾素血管紧张醛固酮系统 | 回答这个系统是什么干什么怎么应用的问题",
+     "dur": "8:34",
+     "sec": 514,
+     "bvid": "BV1X5411179Q",
+     "level": "必看",
+     "group": "心血管",
+     "note": "先看这个，后面普利沙坦才好懂",
+     "url": "https://www.bilibili.com/video/BV1X5411179Q"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十二讲",
+     "title": "第七十二讲：10.2.2紫外可见分光光度法-习题及偏离比尔定律的因素",
+     "dur": "35:28",
+     "sec": 2128,
+     "bvid": "BV1Ai4y1V7ae",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "偏离比尔定律的因素",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1Ai4y1V7ae"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十三讲",
+     "title": "第七十三讲：10.3紫外可见分光光度法-显色反应及测定条件的选择（含习题）",
+     "dur": "66:45",
+     "sec": 4005,
+     "bvid": "BV16p4y1U7AG",
+     "level": "速通",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "显色反应及测定条件",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV16p4y1U7AG"
+    }
+   ],
+   "min": 251,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 8,
+   "date": "2026-10-23",
+   "wd": "周五",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L15-7",
+     "title": "L15-7 羟醛缩合反应",
+     "dur": "1:03:23",
+     "sec": 3803,
+     "bvid": "BV1YS4y1a79k",
+     "level": "必看",
+     "group": "G4",
+     "note": "羟醛缩合",
+     "url": "https://www.bilibili.com/video/BV1YS4y1a79k"
+    },
+    {
+     "sub": "org",
+     "key": "L15-8",
+     "title": "L15-8 醛酮的α-烃基化反应",
+     "dur": "44:05",
+     "sec": 2645,
+     "bvid": "BV1A3411T7HA",
+     "level": "必看",
+     "group": "G4",
+     "note": "α-烃基化",
+     "url": "https://www.bilibili.com/video/BV1A3411T7HA"
+    },
+    {
+     "sub": "org",
+     "key": "L15-9",
+     "title": "L15-9 α，β-不饱和醛酮加成反应的竞争反应分析",
+     "dur": "58:50",
+     "sec": 3530,
+     "bvid": "BV1MY4y1h7Zw",
+     "level": "必看",
+     "group": "G4",
+     "note": "α,β-不饱和1,2/1,4",
+     "url": "https://www.bilibili.com/video/BV1MY4y1h7Zw"
+    },
+    {
+     "sub": "pharm",
+     "key": "补位概念",
+     "title": "【药理三分钟】心血管篇｜缓激肽系统｜钙离子通道阻滞剂分类｜心绞痛分类｜药学考研｜期末考试",
+     "dur": "4:49",
+     "sec": 289,
+     "bvid": "BV1MY4y1h7Tb",
+     "level": "必看",
+     "group": "心血管",
+     "note": "钙通道阻滞剂分类+心绞痛分类",
+     "url": "https://www.bilibili.com/video/BV1MY4y1h7Tb"
+    },
+    {
+     "sub": "pharm",
+     "key": "RAAS药物",
+     "title": "【药理三分钟】普利和沙坦｜肾素-血管紧张素-醛固酮系统药物｜药理学｜背诵",
+     "dur": "10:51",
+     "sec": 651,
+     "bvid": "BV1n34y1h7q8",
+     "level": "必看",
+     "group": "心血管",
+     "note": "ACEI干咳 vs ARB，心衰高血压一线",
+     "url": "https://www.bilibili.com/video/BV1n34y1h7q8"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十四讲",
+     "title": "第七十四讲：10.5.1紫外可见分光光度法-定性定量分析方法1",
+     "dur": "15:45",
+     "sec": 945,
+     "bvid": "BV1M5411e7Ct",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "定性定量分析方法1",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1M5411e7Ct"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十五讲",
+     "title": "第七十五讲：10.5.2紫外可见分光光度法-（含习题）定性定量分析方法2",
+     "dur": "83:13",
+     "sec": 4993,
+     "bvid": "BV1Jh411o7c7",
+     "level": "必看",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "定性定量分析方法2(含习题)",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1Jh411o7c7"
+    }
+   ],
+   "min": 281,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 9,
+   "date": "2026-10-24",
+   "wd": "周六",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L10-1",
+     "title": "L10-1 你能完整说出脂肪胺这章讲了什么吗？脂肪胺章节思路整理",
+     "dur": "37:01",
+     "sec": 2221,
+     "bvid": "BV1tQ4y167Uc",
+     "level": "速通",
+     "group": "G5",
+     "note": "脂肪胺思路整理",
+     "url": "https://www.bilibili.com/video/BV1tQ4y167Uc"
+    },
+    {
+     "sub": "org",
+     "key": "L10-3",
+     "title": "L10-3 胺的成盐反应和烷基化，Hofmann消除反应综合",
+     "dur": "1:28:17",
+     "sec": 5297,
+     "bvid": "BV1eU4y1w7c7",
+     "level": "必看",
+     "group": "G5",
+     "note": "成盐烷基化+Hofmann消除",
+     "url": "https://www.bilibili.com/video/BV1eU4y1w7c7"
+    },
+    {
+     "sub": "org",
+     "key": "L10-4",
+     "title": "L10-4 胺与醛酮的反应、肟和腙、还原胺化和黄鸣龙还原，Beckmann重排反应",
+     "dur": "1:16:14",
+     "sec": 4574,
+     "bvid": "BV1UF411Y72A",
+     "level": "必看",
+     "group": "G5",
+     "note": "肟腙/还原胺化/黄鸣龙",
+     "url": "https://www.bilibili.com/video/BV1UF411Y72A"
+    },
+    {
+     "sub": "pharm",
+     "key": "CCB",
+     "title": "【药理三分钟】钙离子通道阻滞剂｜硝苯地平｜维拉帕米｜地尔硫卓｜",
+     "dur": "9:08",
+     "sec": 548,
+     "bvid": "BV1HS4y1z7Vw",
+     "level": "必看",
+     "group": "心血管",
+     "note": "硝苯地平/维拉帕米/地尔硫卓三者对比",
+     "url": "https://www.bilibili.com/video/BV1HS4y1z7Vw"
+    },
+    {
+     "sub": "pharm",
+     "key": "利尿药",
+     "title": "【药理三分钟】呋塞米｜噻嗪类｜对比记忆",
+     "dur": "9:22",
+     "sec": 562,
+     "bvid": "BV1MS4y1i783",
+     "level": "必看",
+     "group": "心血管",
+     "note": "高效能，低钾",
+     "url": "https://www.bilibili.com/video/BV1MS4y1i783"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十六讲",
+     "title": "第七十六讲：10.5.3紫外可见分光光度法-定性定量分析方法3",
+     "dur": "46:49",
+     "sec": 2809,
+     "bvid": "BV1ip4y1i7ng",
+     "level": "速通",
+     "group": "第10章 紫外可见分光光度法",
+     "chapter": "第10章 紫外可见分光光度法",
+     "priority": "83.5",
+     "note": "定性定量分析方法3",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1ip4y1i7ng"
+    },
+    {
+     "sub": "ana",
+     "key": "分析化学 第",
+     "title": "分析化学 第20章 高效液相色谱法",
+     "dur": "91:28",
+     "sec": 5488,
+     "bvid": "BV1N341147to",
+     "level": "必看",
+     "group": "第20章 高效液相色谱法",
+     "chapter": "第20章 高效液相色谱法",
+     "priority": "91.4",
+     "note": "考频全科第2，分两天看",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1N341147to"
+    }
+   ],
+   "min": 358,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 10,
+   "date": "2026-10-25",
+   "wd": "周日",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L10-5",
+     "title": "L10-5 胺的酰基化反应 酰胺与酰亚胺 Hofmann重排 乃春",
+     "dur": "1:29:43",
+     "sec": 5383,
+     "bvid": "BV1nh41187mn",
+     "level": "必看",
+     "group": "G5",
+     "note": "酰基化+Hofmann重排",
+     "url": "https://www.bilibili.com/video/BV1nh41187mn"
+    },
+    {
+     "sub": "org",
+     "key": "L10-7",
+     "title": "L10-7 胺与亚硝酸的反应 重氮盐的生成 Tiffeneau重排",
+     "dur": "53:13",
+     "sec": 3193,
+     "bvid": "BV1fQ4y1S7tq",
+     "level": "必看",
+     "group": "G5",
+     "note": "亚硝酸+重氮盐+Tiffeneau",
+     "url": "https://www.bilibili.com/video/BV1fQ4y1S7tq"
+    },
+    {
+     "sub": "org",
+     "key": "L23-5",
+     "title": "L23-5 芳香重氮盐的生成与反应",
+     "dur": "34:01",
+     "sec": 2041,
+     "bvid": "BV11e4y1u7Fd",
+     "level": "必看",
+     "group": "G5",
+     "note": "芳香重氮盐·合成枢纽",
+     "url": "https://www.bilibili.com/video/BV11e4y1u7Fd"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗心绞痛",
+     "title": "【药理三分钟】心血管篇｜硝酸甘油",
+     "dur": "7:56",
+     "sec": 476,
+     "bvid": "BV19Z4y1i7ja",
+     "level": "必看",
+     "group": "心血管",
+     "note": "释放NO，缓解不预防",
+     "url": "https://www.bilibili.com/video/BV19Z4y1i7ja"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗心衰",
+     "title": "【药理三分钟】心血管篇｜强心苷类药物｜作用机制｜药理作用｜临床｜不良反应",
+     "dur": "14:47",
+     "sec": 887,
+     "bvid": "BV1nS4y1v7vZ",
+     "level": "必看",
+     "group": "心血管",
+     "note": "抑制Na-K-ATP酶，中毒先绿视",
+     "url": "https://www.bilibili.com/video/BV1nS4y1v7vZ"
+    },
+    {
+     "sub": "ana",
+     "key": "第17章  ",
+     "title": "第17章  色谱分析法概论 17.1色谱分析法发展，参数和类型",
+     "dur": "62:59",
+     "sec": 3779,
+     "bvid": "BV1vf4y1K7Rz",
+     "level": "必看",
+     "group": "第17章 色谱分析法概论",
+     "chapter": "第17章 色谱分析法概论",
+     "priority": "65.7",
+     "note": "色谱发展/参数/类型，色谱地基",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1vf4y1K7Rz"
+    },
+    {
+     "sub": "ana",
+     "key": "第17章  ",
+     "title": "第17章  色谱分析法概论 17.2色谱分析法的基本理论和应用",
+     "dur": "27:44",
+     "sec": 1664,
+     "bvid": "BV1JL411M7w9",
+     "level": "必看",
+     "group": "第17章 色谱分析法概论",
+     "chapter": "第17章 色谱分析法概论",
+     "priority": "65.7",
+     "note": "基本理论和应用",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1JL411M7w9"
+    }
+   ],
+   "min": 290,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 11,
+   "date": "2026-10-26",
+   "wd": "周一",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L9-2",
+     "title": "L9-2 醇的基本性质，醇的酸碱性和亲核性，醇与无机酸的反应",
+     "dur": "1:08:38",
+     "sec": 4118,
+     "bvid": "BV1D3411q7gW",
+     "level": "必看",
+     "group": "G6",
+     "note": "醇酸碱性/亲核性",
+     "url": "https://www.bilibili.com/video/BV1D3411q7gW"
+    },
+    {
+     "sub": "org",
+     "key": "L9-3",
+     "title": "L9-3 补充你的知识盲区，你真的理解醇的取代和消除反应吗？",
+     "dur": "1:30:24",
+     "sec": 5424,
+     "bvid": "BV1Pq4y1u7kE",
+     "level": "必看",
+     "group": "G6",
+     "note": "醇的取代与消除",
+     "url": "https://www.bilibili.com/video/BV1Pq4y1u7kE"
+    },
+    {
+     "sub": "org",
+     "key": "L9-4",
+     "title": "L9-4 醇的氧化反应，有机化学的氧化还原，亚胺",
+     "dur": "1:33:41",
+     "sec": 5621,
+     "bvid": "BV1Qg411c7M1",
+     "level": "必看",
+     "group": "G6",
+     "note": "醇的氧化+氧化还原",
+     "url": "https://www.bilibili.com/video/BV1Qg411c7M1"
+    },
+    {
+     "sub": "pharm",
+     "key": "分类记忆",
+     "title": "【这些药名怎么记】抗高血压药物｜分类｜记忆｜学习分享｜23药学考研",
+     "dur": "9:05",
+     "sec": 545,
+     "bvid": "BV1hT4y1a7Gd",
+     "level": "必看",
+     "group": "心血管",
+     "note": "按作用部位串一遍六大类",
+     "url": "https://www.bilibili.com/video/BV1hT4y1a7Gd"
+    },
+    {
+     "sub": "pharm",
+     "key": "分类记忆",
+     "title": "【这些药名怎么记】利尿药｜作用机制｜作用部位",
+     "dur": "16:16",
+     "sec": 976,
+     "bvid": "BV1tY4y1V7Et",
+     "level": "必看",
+     "group": "心血管",
+     "note": "作用部位图，与呋塞米对照",
+     "url": "https://www.bilibili.com/video/BV1tY4y1V7Et"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十八讲",
+     "title": "第七十八讲：11.1红外分光光度法-基础知识",
+     "dur": "45:52",
+     "sec": 2752,
+     "bvid": "BV1TV411y7DF",
+     "level": "必看",
+     "group": "第11章 红外分光光度法",
+     "chapter": "第11章 红外分光光度法",
+     "priority": "63.5",
+     "note": "基础知识",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1TV411y7DF"
+    },
+    {
+     "sub": "ana",
+     "key": "第七十九讲",
+     "title": "第七十九讲：11.2.1红外分光光度法 -基本原理1",
+     "dur": "50:20",
+     "sec": 3020,
+     "bvid": "BV1Bt4y1v7Lh",
+     "level": "必看",
+     "group": "第11章 红外分光光度法",
+     "chapter": "第11章 红外分光光度法",
+     "priority": "63.5",
+     "note": "基本原理1",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1Bt4y1v7Lh"
+    }
+   ],
+   "min": 374,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 12,
+   "date": "2026-10-27",
+   "wd": "周二",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L9-6",
+     "title": "L9-6 邻二醇的氧化：高碘酸氧化，四乙酸铅氧化",
+     "dur": "1:09:42",
+     "sec": 4182,
+     "bvid": "BV1Tb4y1171u",
+     "level": "必看",
+     "group": "G6",
+     "note": "高碘酸氧化邻二醇",
+     "url": "https://www.bilibili.com/video/BV1Tb4y1171u"
+    },
+    {
+     "sub": "org",
+     "key": "L22-2",
+     "title": "L22-2 酚羟基的反应",
+     "dur": "46:57",
+     "sec": 2817,
+     "bvid": "BV1ym4y1F7t1",
+     "level": "必看",
+     "group": "G6",
+     "note": "酚羟基的反应",
+     "url": "https://www.bilibili.com/video/BV1ym4y1F7t1"
+    },
+    {
+     "sub": "org",
+     "key": "L22-5",
+     "title": "L22-5 酚的缩合反应",
+     "dur": "44:16",
+     "sec": 2656,
+     "bvid": "BV1gd4y1F7nY",
+     "level": "必看",
+     "group": "G6",
+     "note": "酚的缩合反应",
+     "url": "https://www.bilibili.com/video/BV1gd4y1F7nY"
+    },
+    {
+     "sub": "pharm",
+     "key": "总纲",
+     "title": "【药理三分钟】中枢系统药物大归纳｜药理学｜药理学考研｜知识分享",
+     "dur": "12:08",
+     "sec": 728,
+     "bvid": "BV1Wm4y1d7wu",
+     "level": "必看",
+     "group": "中枢",
+     "note": "先看，一图定位中枢全章",
+     "url": "https://www.bilibili.com/video/BV1Wm4y1d7wu"
+    },
+    {
+     "sub": "pharm",
+     "key": "镇痛药",
+     "title": "【药理三分钟】镇痛药吗啡｜中枢系统药物｜药理学｜药理学考研｜学习分享｜药理学背诵",
+     "dur": "11:58",
+     "sec": 718,
+     "bvid": "BV17S4y1V7oq",
+     "level": "必看",
+     "group": "中枢",
+     "note": "三镇一抑，成瘾性",
+     "url": "https://www.bilibili.com/video/BV17S4y1V7oq"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十讲",
+     "title": "第八十讲：11.2.2红外分光光度法 -基本原理2",
+     "dur": "49:53",
+     "sec": 2993,
+     "bvid": "BV19k4y1C74J",
+     "level": "必看",
+     "group": "第11章 红外分光光度法",
+     "chapter": "第11章 红外分光光度法",
+     "priority": "63.5",
+     "note": "基本原理2",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV19k4y1C74J"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十一讲",
+     "title": "第八十一讲：11.2.3红外分光光度法 -基本原理3",
+     "dur": "41:01",
+     "sec": 2461,
+     "bvid": "BV1Hy4y1C7GW",
+     "level": "必看",
+     "group": "第11章 红外分光光度法",
+     "chapter": "第11章 红外分光光度法",
+     "priority": "63.5",
+     "note": "基本原理3",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1Hy4y1C7GW"
+    }
+   ],
+   "min": 276,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 13,
+   "date": "2026-10-28",
+   "wd": "周三",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L11-3",
+     "title": "L11-3 环氧乙烷的开环反应，含氧脂杂环的开环",
+     "dur": "1:03:02",
+     "sec": 3782,
+     "bvid": "BV1ZR4y1x7QP",
+     "level": "必看",
+     "group": "G6",
+     "note": "环氧乙烷开环",
+     "url": "https://www.bilibili.com/video/BV1ZR4y1x7QP"
+    },
+    {
+     "sub": "org",
+     "key": "L16-1",
+     "title": "L16-1 羧酸的结构和酸性比较",
+     "dur": "25:41",
+     "sec": 1541,
+     "bvid": "BV1QB4y1y7xb",
+     "level": "必看",
+     "group": "G7",
+     "note": "羧酸结构与酸性",
+     "url": "https://www.bilibili.com/video/BV1QB4y1y7xb"
+    },
+    {
+     "sub": "org",
+     "key": "L16-2",
+     "title": "L16-2 羧酸的主要反应和物质转化",
+     "dur": "39:40",
+     "sec": 2380,
+     "bvid": "BV1LF411j7dS",
+     "level": "必看",
+     "group": "G7",
+     "note": "羧酸反应与转化",
+     "url": "https://www.bilibili.com/video/BV1LF411j7dS"
+    },
+    {
+     "sub": "pharm",
+     "key": "镇痛药对比",
+     "title": "【药理三分钟】哌替啶｜对比记忆吗啡｜药理学背诵｜药理学｜中枢系统药物｜学习分享｜考研｜药理学考研｜药学",
+     "dur": "9:33",
+     "sec": 573,
+     "bvid": "BV1gr4y1r7E7",
+     "level": "必看",
+     "group": "中枢",
+     "note": "与吗啡逐条对比记",
+     "url": "https://www.bilibili.com/video/BV1gr4y1r7E7"
+    },
+    {
+     "sub": "pharm",
+     "key": "镇静催眠",
+     "title": "【药理三分钟】苯二氮卓类｜地西泮｜药理学考研｜23药学考研｜药理学｜背诵｜学习分享",
+     "dur": "15:11",
+     "sec": 911,
+     "bvid": "BV1y34y1k7xG",
+     "level": "必看",
+     "group": "中枢",
+     "note": "地西泮，GABA-A，安全范围大",
+     "url": "https://www.bilibili.com/video/BV1y34y1k7xG"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十二讲",
+     "title": "第八十二讲：11.3红外光谱法的应用",
+     "dur": "34:41",
+     "sec": 2081,
+     "bvid": "BV1MK411A7NL",
+     "level": "必看",
+     "group": "第11章 红外分光光度法",
+     "chapter": "第11章 红外分光光度法",
+     "priority": "63.5",
+     "note": "红外光谱法的应用",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1MK411A7NL"
+    },
+    {
+     "sub": "ana",
+     "key": "分析化学 第",
+     "title": "分析化学 第18章平面色谱法",
+     "dur": "54:57",
+     "sec": 3297,
+     "bvid": "BV1ci4y1d7wW",
+     "level": "必看",
+     "group": "第18章 平面色谱法",
+     "chapter": "第18章 平面色谱法",
+     "priority": "43.4",
+     "note": "考频第6",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1ci4y1d7wW"
+    }
+   ],
+   "min": 243,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 14,
+   "date": "2026-10-29",
+   "wd": "周四",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L12-1",
+     "title": "L12-1 烯烃的结构与亲电加成的本质",
+     "dur": "51:40",
+     "sec": 3100,
+     "bvid": "BV1DF411i7bf",
+     "level": "必看",
+     "group": "G8",
+     "note": "烯烃结构与亲电加成",
+     "url": "https://www.bilibili.com/video/BV1DF411i7bf"
+    },
+    {
+     "sub": "org",
+     "key": "L12-2",
+     "title": "L12-2 烯烃卤化氢加成及其变式，某些缩合反应的必备基础！",
+     "dur": "1:36:16",
+     "sec": 5776,
+     "bvid": "BV17u41127Ly",
+     "level": "必看",
+     "group": "G8",
+     "note": "卤化氢加成及变式",
+     "url": "https://www.bilibili.com/video/BV17u41127Ly"
+    },
+    {
+     "sub": "org",
+     "key": "L12-3",
+     "title": "L12-3 烯烃与卤素、次卤酸加成的反应探究",
+     "dur": "52:51",
+     "sec": 3171,
+     "bvid": "BV1934y1q7EX",
+     "level": "速通",
+     "group": "G8",
+     "note": "卤素/次卤酸加成",
+     "url": "https://www.bilibili.com/video/BV1934y1q7EX"
+    },
+    {
+     "sub": "pharm",
+     "key": "镇静催眠",
+     "title": "【药理三分钟】巴比妥类｜苯巴比妥｜镇静催眠药｜药理学｜背诵｜23药学考研｜药学",
+     "dur": "6:32",
+     "sec": 392,
+     "bvid": "BV1MT4y1D7Dk",
+     "level": "必看",
+     "group": "中枢",
+     "note": "苯巴比妥，酶诱导，安全范围小",
+     "url": "https://www.bilibili.com/video/BV1MT4y1D7Dk"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗精神病",
+     "title": "【药理三分钟】氯丙嗪｜抗精神病｜药理学｜药理学背诵｜23药学考研",
+     "dur": "9:51",
+     "sec": 591,
+     "bvid": "BV1DZ4y1r7Qn",
+     "level": "必看",
+     "group": "中枢",
+     "note": "阻断D2+α+M，锥体外系",
+     "url": "https://www.bilibili.com/video/BV1DZ4y1r7Qn"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十三讲",
+     "title": "第八十三讲：12.1.1核磁共振波普法简介-基本原理",
+     "dur": "49:27",
+     "sec": 2967,
+     "bvid": "BV1ft4y1v7We",
+     "level": "必看",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "37.2",
+     "note": "基本原理",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1ft4y1v7We"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十四讲",
+     "title": "第八十四讲：12.1.2核磁共振波普法简介-化学位移",
+     "dur": "48:59",
+     "sec": 2939,
+     "bvid": "BV1jv411C7Lr",
+     "level": "必看",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "37.2",
+     "note": "化学位移",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1jv411C7Lr"
+    }
+   ],
+   "min": 316,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 15,
+   "date": "2026-10-30",
+   "wd": "周五",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L12-4",
+     "title": "L12-4 共轭烯烃加成反应的本质",
+     "dur": "32:49",
+     "sec": 1969,
+     "bvid": "BV1DS4y1Z71x",
+     "level": "必看",
+     "group": "G8",
+     "note": "共轭烯烃1,2/1,4",
+     "url": "https://www.bilibili.com/video/BV1DS4y1Z71x"
+    },
+    {
+     "sub": "org",
+     "key": "L12-6",
+     "title": "L12-6 一节课搞懂烯烃氧化",
+     "dur": "1:17:59",
+     "sec": 4679,
+     "bvid": "BV1Cr4y1Y7do",
+     "level": "必看",
+     "group": "G8",
+     "note": "烯烃氧化",
+     "url": "https://www.bilibili.com/video/BV1Cr4y1Y7do"
+    },
+    {
+     "sub": "org",
+     "key": "L13-1",
+     "title": "L13-1 拿下炔烃加成反应！",
+     "dur": "35:24",
+     "sec": 2124,
+     "bvid": "BV1LT4y1y794",
+     "level": "必看",
+     "group": "G8",
+     "note": "炔烃加成",
+     "url": "https://www.bilibili.com/video/BV1LT4y1y794"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗癫痫",
+     "title": "【药理三分钟】苯妥英钠｜抗癫痫药物｜药理学｜药理学背诵｜23考研｜药学考研｜学习分享",
+     "dur": "12:15",
+     "sec": 735,
+     "bvid": "BV1CL411P74D",
+     "level": "必看",
+     "group": "中枢",
+     "note": "首选大发作，静滴过快致心律失常",
+     "url": "https://www.bilibili.com/video/BV1CL411P74D"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗帕金森",
+     "title": "【药理三分钟】抗帕金森药物｜药理学｜背诵｜药学考研",
+     "dur": "6:35",
+     "sec": 395,
+     "bvid": "BV1eY4y1q7q1",
+     "level": "必看",
+     "group": "中枢",
+     "note": "DA不足+ACh相对亢进",
+     "url": "https://www.bilibili.com/video/BV1eY4y1q7q1"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十五讲",
+     "title": "第八十五讲：12.1.3核磁共振波普法简介-化学位移的影响因素",
+     "dur": "58:10",
+     "sec": 3490,
+     "bvid": "BV1Z541157tj",
+     "level": "必看",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "37.2",
+     "note": "化学位移的影响因素",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1Z541157tj"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十六讲",
+     "title": "第八十六讲：12.1.2核磁共振波普法简介-自旋偶合",
+     "dur": "46:55",
+     "sec": 2815,
+     "bvid": "BV11a411c71c",
+     "level": "速通",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "37.2",
+     "note": "自旋偶合",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV11a411c71c"
+    }
+   ],
+   "min": 270,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 16,
+   "date": "2026-10-31",
+   "wd": "周六",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L13-2",
+     "title": "L13-2 端炔烃的特性，10分钟get！",
+     "dur": "11:52",
+     "sec": 712,
+     "bvid": "BV18q4y187jQ",
+     "level": "速通",
+     "group": "G8",
+     "note": "端炔特性",
+     "url": "https://www.bilibili.com/video/BV18q4y187jQ"
+    },
+    {
+     "sub": "org",
+     "key": "L19-2",
+     "title": "L19-2 轮烯结构芳香性的判断",
+     "dur": "50:38",
+     "sec": 3038,
+     "bvid": "BV1fP411L73i",
+     "level": "必看",
+     "group": "G9",
+     "note": "轮烯芳香性判断",
+     "url": "https://www.bilibili.com/video/BV1fP411L73i"
+    },
+    {
+     "sub": "org",
+     "key": "L19-3",
+     "title": "L19-3 离子化合物和杂环化合物的芳香性判断",
+     "dur": "23:32",
+     "sec": 1412,
+     "bvid": "BV19e4y1f7Tp",
+     "level": "速通",
+     "group": "G9",
+     "note": "离子/杂环芳香性",
+     "url": "https://www.bilibili.com/video/BV19e4y1f7Tp"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗帕金森",
+     "title": "【药理三分钟】抗帕金森药物｜左旋多巴｜药理学背诵｜23考研",
+     "dur": "6:38",
+     "sec": 398,
+     "bvid": "BV1vY411J7Yq",
+     "level": "必看",
+     "group": "中枢",
+     "note": "外周脱羧，卡比多巴协同",
+     "url": "https://www.bilibili.com/video/BV1vY411J7Yq"
+    },
+    {
+     "sub": "pharm",
+     "key": "解热镇痛抗炎",
+     "title": "【药理三分钟】阿司匹林｜非甾体类解热镇痛抗炎药 | 药理学背诵｜作用机制｜药理作用｜不良反应｜23考研",
+     "dur": "13:23",
+     "sec": 803,
+     "bvid": "BV11q4y1a7UY",
+     "level": "必看",
+     "group": "中枢",
+     "note": "不可逆抑COX1，抗血小板",
+     "url": "https://www.bilibili.com/video/BV11q4y1a7UY"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十七讲",
+     "title": "第八十七讲：12.1.2核磁共振波普法简介-化学等价和磁等价",
+     "dur": "34:02",
+     "sec": 2042,
+     "bvid": "BV1sK4y1E7r3",
+     "level": "速通",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "37.2",
+     "note": "化学等价和磁等价",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1sK4y1E7r3"
+    },
+    {
+     "sub": "ana",
+     "key": "第六十四讲",
+     "title": "第六十四讲：9.2.1直接电位法-溶液pH值的测定",
+     "dur": "46:21",
+     "sec": 2781,
+     "bvid": "BV1854y1D7n8",
+     "level": "必看",
+     "group": "第9章 电化学分析法",
+     "chapter": "第9章 电化学分析法",
+     "priority": "28.7",
+     "note": "直接电位法-pH的测定",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1854y1D7n8"
+    }
+   ],
+   "min": 186,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 17,
+   "date": "2026-11-01",
+   "wd": "周日",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L20-1",
+     "title": "L20-1 芳香亲电取代反应机理",
+     "dur": "19:09",
+     "sec": 1149,
+     "bvid": "BV1TT411u7vn",
+     "level": "必看",
+     "group": "G9",
+     "note": "芳香亲电取代机理",
+     "url": "https://www.bilibili.com/video/BV1TT411u7vn"
+    },
+    {
+     "sub": "org",
+     "key": "L20-4",
+     "title": "L20-4 定位基团与致活、致钝基团",
+     "dur": "56:33",
+     "sec": 3393,
+     "bvid": "BV1g841147Ja",
+     "level": "必看",
+     "group": "G9",
+     "note": "定位基与致活致钝",
+     "url": "https://www.bilibili.com/video/BV1g841147Ja"
+    },
+    {
+     "sub": "org",
+     "key": "L20-5",
+     "title": "L20-5 苯环多取代的基本规律和简单合成",
+     "dur": "31:23",
+     "sec": 1883,
+     "bvid": "BV1914y1h7if",
+     "level": "必看",
+     "group": "G9",
+     "note": "多取代规律与简单合成",
+     "url": "https://www.bilibili.com/video/BV1914y1h7if"
+    },
+    {
+     "sub": "pharm",
+     "key": "解热镇痛",
+     "title": "【药理三分钟】对乙酰氨基酚｜扑热息痛｜对比阿司匹林｜药理作用｜不良反应｜药理学｜背诵｜学习分享｜23药学考研",
+     "dur": "6:50",
+     "sec": 410,
+     "bvid": "BV1JS4y1e7NS",
+     "level": "必看",
+     "group": "中枢",
+     "note": "对比阿司匹林，无抗炎抗血小板",
+     "url": "https://www.bilibili.com/video/BV1JS4y1e7NS"
+    },
+    {
+     "sub": "pharm",
+     "key": "药名记忆",
+     "title": "【这些药名怎么记】抗惊厥和抗抑郁药物｜药理学｜背诵｜23考研｜药学｜学习分享",
+     "dur": "8:38",
+     "sec": 518,
+     "bvid": "BV1iF411x7aN",
+     "level": "必看",
+     "group": "中枢",
+     "note": "分类+名字联想法",
+     "url": "https://www.bilibili.com/video/BV1iF411x7aN"
+    },
+    {
+     "sub": "ana",
+     "key": "第六十五讲",
+     "title": "第六十五讲：9.2.2直接电位法-其他离子浓度的测定",
+     "dur": "26:52",
+     "sec": 1612,
+     "bvid": "BV1xC4y1p7DF",
+     "level": "速通",
+     "group": "第9章 电化学分析法",
+     "chapter": "第9章 电化学分析法",
+     "priority": "28.7",
+     "note": "其他离子浓度的测定",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1xC4y1p7DF"
+    },
+    {
+     "sub": "ana",
+     "key": "第六十六讲",
+     "title": "第六十六讲：9.3电位滴定法",
+     "dur": "29:38",
+     "sec": 1778,
+     "bvid": "BV1CA411q7eB",
+     "level": "必看",
+     "group": "第9章 电化学分析法",
+     "chapter": "第9章 电化学分析法",
+     "priority": "28.7",
+     "note": "电位滴定法",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1CA411q7eB"
+    }
+   ],
+   "min": 179,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 18,
+   "date": "2026-11-02",
+   "wd": "周一",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L20-6",
+     "title": "L20-6 稠环芳烃的亲电取代",
+     "dur": "24:17",
+     "sec": 1457,
+     "bvid": "BV1nR4y1d7ow",
+     "level": "速通",
+     "group": "G9",
+     "note": "稠环芳烃亲电取代",
+     "url": "https://www.bilibili.com/video/BV1nR4y1d7ow"
+    },
+    {
+     "sub": "org",
+     "key": "L29-1",
+     "title": "L29-1 单糖结构的特殊性",
+     "dur": "47:44",
+     "sec": 2864,
+     "bvid": "BV1u24y1E7HR",
+     "level": "必看",
+     "group": "G10",
+     "note": "单糖结构特殊性",
+     "url": "https://www.bilibili.com/video/BV1u24y1E7HR"
+    },
+    {
+     "sub": "org",
+     "key": "L29-2",
+     "title": "L29-2 单糖的常见反应",
+     "dur": "29:47",
+     "sec": 1787,
+     "bvid": "BV1og4y1x7kw",
+     "level": "必看",
+     "group": "G10",
+     "note": "单糖常见反应",
+     "url": "https://www.bilibili.com/video/BV1og4y1x7kw"
+    },
+    {
+     "sub": "pharm",
+     "key": "糖皮质激素",
+     "title": "【药理三分钟】肾上腺皮质激素（上）｜体内过程｜生理作用｜药理作用",
+     "dur": "6:36",
+     "sec": 396,
+     "bvid": "BV1o24y1n7RL",
+     "level": "必看",
+     "group": "内分泌",
+     "note": "体内过程/生理/药理作用",
+     "url": "https://www.bilibili.com/video/BV1o24y1n7RL"
+    },
+    {
+     "sub": "pharm",
+     "key": "糖皮质激素",
+     "title": "【药理三分钟】肾上腺皮质激素（下）｜临床应用和不良反应｜药学考研｜复试",
+     "dur": "8:46",
+     "sec": 526,
+     "bvid": "BV1v14y1T7EG",
+     "level": "必看",
+     "group": "内分泌",
+     "note": "临床应用+不良反应，与上连着看",
+     "url": "https://www.bilibili.com/video/BV1v14y1T7EG"
+    },
+    {
+     "sub": "ana",
+     "key": "第六十七讲",
+     "title": "第六十七讲：9.4永停滴定法",
+     "dur": "24:39",
+     "sec": 1479,
+     "bvid": "BV1nz4y197GX",
+     "level": "必看",
+     "group": "第9章 电化学分析法",
+     "chapter": "第9章 电化学分析法",
+     "priority": "28.7",
+     "note": "永停滴定法",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1nz4y197GX"
+    },
+    {
+     "sub": "ana",
+     "key": "分析化学 第",
+     "title": "分析化学 第19章 气相色谱法",
+     "dur": "72:59",
+     "sec": 4379,
+     "bvid": "BV17R4y1s7ud",
+     "level": "速通",
+     "group": "第19章 气相色谱法",
+     "chapter": "第19章 气相色谱法",
+     "priority": "20.2",
+     "note": "考频第10，速通",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV17R4y1s7ud"
+    }
+   ],
+   "min": 215,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 19,
+   "date": "2026-11-03",
+   "wd": "周二",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L7-3",
+     "title": "Lecture 7-3 烷烃的常见反应“卤化、氧化、磺化、硝化”详细解析",
+     "dur": "50:37",
+     "sec": 3037,
+     "bvid": "BV1cU4y1b7wT",
+     "level": "必看",
+     "group": "G11",
+     "note": "烷烃卤化/氧化/磺化/硝化",
+     "url": "https://www.bilibili.com/video/BV1cU4y1b7wT"
+    },
+    {
+     "sub": "org",
+     "key": "L17-2",
+     "title": "L17-2 羧酸衍生物的取代反应实例与转化关系",
+     "dur": "1:05:19",
+     "sec": 3919,
+     "bvid": "BV1Ua411573j",
+     "level": "必看",
+     "group": "G12",
+     "note": "羧酸衍生物取代实例与转化",
+     "url": "https://www.bilibili.com/video/BV1Ua411573j"
+    },
+    {
+     "sub": "org",
+     "key": "L17-7",
+     "title": "L17-7 Claisen酯缩合反应",
+     "dur": "1:04:06",
+     "sec": 3846,
+     "bvid": "BV1pS4y1v7HG",
+     "level": "必看",
+     "group": "G12",
+     "note": "Claisen酯缩合",
+     "url": "https://www.bilibili.com/video/BV1pS4y1v7HG"
+    },
+    {
+     "sub": "pharm",
+     "key": "降糖药",
+     "title": "【药理三分钟】胰岛素｜药理作用｜临床应用｜不良反应",
+     "dur": "6:23",
+     "sec": 383,
+     "bvid": "BV1hx4y177DH",
+     "level": "必看",
+     "group": "内分泌",
+     "note": "短中长效分类",
+     "url": "https://www.bilibili.com/video/BV1hx4y177DH"
+    },
+    {
+     "sub": "pharm",
+     "key": "降糖药",
+     "title": "【药理三分钟】口服降糖药｜五大类对比学习｜代表药｜作用机制｜临床应用｜不良反应",
+     "dur": "3:14",
+     "sec": 194,
+     "bvid": "BV1824y1W7Ng",
+     "level": "必看",
+     "group": "内分泌",
+     "note": "五大类对比：磺酰脲/双胍/α糖苷酶/胰岛素增敏/列汀",
+     "url": "https://www.bilibili.com/video/BV1824y1W7Ng"
+    },
+    {
+     "sub": "ana",
+     "key": "第八十九讲",
+     "title": "第八十九讲：12.2.1质谱法简介1-基本原理",
+     "dur": "43:49",
+     "sec": 2629,
+     "bvid": "BV1py4y1S7rY",
+     "level": "必看",
+     "group": "第12章 质谱法",
+     "chapter": "第12章 质谱法",
+     "priority": "9.3",
+     "note": "基本原理",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1py4y1S7rY"
+    },
+    {
+     "sub": "ana",
+     "key": "第九十讲",
+     "title": "第九十讲：12.2.2质谱法简介2- 分子离子峰",
+     "dur": "54:34",
+     "sec": 3274,
+     "bvid": "BV1WZ4y1g7cu",
+     "level": "速通",
+     "group": "第12章 质谱法",
+     "chapter": "第12章 质谱法",
+     "priority": "9.3",
+     "note": "分子离子峰",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1WZ4y1g7cu"
+    }
+   ],
+   "min": 288,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 2
+   }
+  },
+  {
+   "day": 20,
+   "date": "2026-11-04",
+   "wd": "周三",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L18-2",
+     "title": "L18-2 三大基本缩合反应",
+     "dur": "1:05:47",
+     "sec": 3947,
+     "bvid": "BV1VY4y1776H",
+     "level": "必看",
+     "group": "G13",
+     "note": "三大基本缩合反应",
+     "url": "https://www.bilibili.com/video/BV1VY4y1776H"
+    },
+    {
+     "sub": "org",
+     "key": "L18-3",
+     "title": "L18-3 β-二羰基化合物的基本性质",
+     "dur": "38:11",
+     "sec": 2291,
+     "bvid": "BV13W4y1U78b",
+     "level": "必看",
+     "group": "G13",
+     "note": "β-二羰基化合物性质",
+     "url": "https://www.bilibili.com/video/BV13W4y1U78b"
+    },
+    {
+     "sub": "org",
+     "key": "L18-4",
+     "title": "L18-4 利用“三乙”、“丙二”进行简单有机合成",
+     "dur": "24:06",
+     "sec": 1446,
+     "bvid": "BV1634y1J77T",
+     "level": "必看",
+     "group": "G13",
+     "note": "乙酰乙酸乙酯/丙二酸酯合成",
+     "url": "https://www.bilibili.com/video/BV1634y1J77T"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗菌总纲(上)",
+     "title": "药理学背诵｜抗菌药物｜考研｜期末｜学习分享｜口诀",
+     "dur": "21:13",
+     "sec": 1273,
+     "bvid": "BV12R4y1u7eA",
+     "level": "必看",
+     "group": "化疗",
+     "note": "口诀版，先建框架",
+     "url": "https://www.bilibili.com/video/BV12R4y1u7eA"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗菌总纲(下)",
+     "title": "药理学背诵｜抗菌药物｜学习分享｜口诀",
+     "dur": "19:50",
+     "sec": 1190,
+     "bvid": "BV1wF411v7D9",
+     "level": "必看",
+     "group": "化疗",
+     "note": "与上一集连着看，一天看完",
+     "url": "https://www.bilibili.com/video/BV1wF411v7D9"
+    },
+    {
+     "sub": "ana",
+     "key": "分析化学 第",
+     "title": "分析化学 第12章 荧光分析法1",
+     "dur": "45:17",
+     "sec": 2717,
+     "bvid": "BV17F411h7dC",
+     "level": "必看",
+     "group": "第12章 荧光分析法1",
+     "chapter": "第12章 荧光分析法1",
+     "priority": "42.7",
+     "note": "考频第7",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV17F411h7dC"
+    }
+   ],
+   "min": 214,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 1
+   }
+  },
+  {
+   "day": 21,
+   "date": "2026-11-05",
+   "wd": "周四",
+   "tasks": [
+    {
+     "sub": "org",
+     "key": "L24-1",
+     "title": "L24-1 芳杂环的碱性和亲核性",
+     "dur": "1:08:18",
+     "sec": 4098,
+     "bvid": "BV1F84y1t7we",
+     "level": "必看",
+     "group": "G14",
+     "note": "芳杂环碱性与亲核性",
+     "url": "https://www.bilibili.com/video/BV1F84y1t7we"
+    },
+    {
+     "sub": "org",
+     "key": "L29-3",
+     "title": "L29-3 氨基酸的化学性质",
+     "dur": "52:06",
+     "sec": 3126,
+     "bvid": "BV1f84y1u7he",
+     "level": "必看",
+     "group": "G14",
+     "note": "氨基酸化学性质",
+     "url": "https://www.bilibili.com/video/BV1f84y1u7he"
+    },
+    {
+     "sub": "org",
+     "key": "L8-12",
+     "title": "L8-12 格氏试剂与有机锂试剂“含有醛酮相关内容以及逆合成分析概述”",
+     "dur": "1:44:43",
+     "sec": 6283,
+     "bvid": "BV1yq4y1D7B5",
+     "level": "必看",
+     "group": "G14",
+     "note": "格氏试剂/有机锂+逆合成",
+     "url": "https://www.bilibili.com/video/BV1yq4y1D7B5"
+    },
+    {
+     "sub": "pharm",
+     "key": "抗肿瘤",
+     "title": "【这些药名怎么记】抗肿瘤药物 | 分类｜背诵｜药理学｜23药学考研",
+     "dur": "10:09",
+     "sec": 609,
+     "bvid": "BV1QL4y157zL",
+     "level": "必看",
+     "group": "化疗",
+     "note": "分类记忆",
+     "url": "https://www.bilibili.com/video/BV1QL4y157zL"
+    },
+    {
+     "sub": "pharm",
+     "key": "β内酰胺",
+     "title": "【药理三分钟】带你背诵一个药｜青霉素G｜药理学背诵｜期末考试｜药理学考研｜学习分享",
+     "dur": "2:28",
+     "sec": 148,
+     "bvid": "BV1o34y1q7ph",
+     "level": "必看",
+     "group": "化疗",
+     "note": "抑制转肽酶，过敏性休克",
+     "url": "https://www.bilibili.com/video/BV1o34y1q7ph"
+    },
+    {
+     "sub": "ana",
+     "key": "分析化学 第",
+     "title": "分析化学 第12章 荧光分析法2",
+     "dur": "14:32",
+     "sec": 872,
+     "bvid": "BV1iR4y1t72d",
+     "level": "速通",
+     "group": "第12章 荧光分析法2",
+     "chapter": "第12章 荧光分析法2",
+     "priority": "42.7",
+     "note": "与上一集连着看",
+     "seq": 999,
+     "url": "https://www.bilibili.com/video/BV1iR4y1t72d"
+    }
+   ],
+   "min": 252,
+   "by": {
+    "org": 3,
+    "pharm": 2,
+    "ana": 1
+   }
+  }
+ ],
+ "phases": [
+  {
+   "name": "阶段一 · 三科并进冲刺",
+   "range": "10/16 – 11/05",
+   "color": "#ff4d4f",
+   "desc": "有机一轮(高频63讲)收官 + 药理42个小黄鸭单药过完 + 分析40讲(误差/紫外/色谱补位/红外/核磁)"
+  },
+  {
+   "name": "阶段二 · 有机二轮",
+   "range": "11/06 – 11/20",
+   "color": "#ffa940",
+   "desc": "有机剩余31讲速通过一遍 + 63讲高频复看(1.5×)；药理按板块背药名+刷题；分析开始刷真题"
+  },
+  {
+   "name": "阶段三 · 真题与押题卷",
+   "range": "11/21 – 12/05",
+   "color": "#36cfc9",
+   "desc": "三科押题卷第一遍(119题/300分)；有机主攻鉴别题(伯仲叔胺/醇、氯苯苄氯)"
+  },
+  {
+   "name": "阶段四 · 错题回炉",
+   "range": "12/06 – 12/18",
+   "color": "#597ef7",
+   "desc": "押题卷二刷 + 错题本 + 分析误差/紫外公式、药理药名、有机机理默写"
+  }
+ ],
+ "counts": {
+  "org": 63,
+  "pharm": 42,
+  "ana": 40
+ }
+}
