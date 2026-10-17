@@ -1,5 +1,5 @@
 /* 349 打卡 PWA · 网络优先，断网回落缓存 */
-const V = 't349-v1';
+const V = 't349-v2-org';
 const ASSETS = ['./', './index.html', './plan3.json', './manifest.webmanifest',
                 './icon-180.png', './icon-192.png', './icon-512.png'];
 

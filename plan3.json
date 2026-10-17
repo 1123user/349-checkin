@@ -8,7 +8,7 @@
     "name": "有机化学",
     "short": "有机",
     "color": "#ff4d4f",
-    "weight": "命题权重 25.9% · 掌握度最弱 → 投入最多"
+    "weight": "命题权重 25.9% · 掌握度最弱 → 主课：医用有机化学 54 节"
    },
    "pharm": {
     "name": "药理学",
@@ -23,8 +23,8 @@
     "weight": "命题权重 40.8% · 掌握度最好 → 投入最少"
    }
   },
-  "ratio": "时间配比 有机 3 讲/天 > 分析 2 讲/天 > 药理 2 个短视频/天",
-  "principle": "题面权重（分析41:药理33:有机26）决定该考多少；掌握度（有机最弱）决定该花多少时间"
+  "ratio": "时间配比：有机 3 节/天（约 70min，含每章习题课）> 分析 2 讲/天 > 药理 2 个短视频/天",
+  "principle": "有机换主课：医用有机化学 54 节（教材性质/反应导向 + 每章习题课），最后 4 天接题型专项；药理/分析维持原计划。机理只需到「解释 SN1/SN2、马氏规则、定位规律」这一层——学习通 510 题里机理只占 0.39%。"
  },
  "days": [
   {
@@ -34,39 +34,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L5-2",
-     "title": "Lecture 5-2 按照新思路学懂电子效应里的诱导效应和场效应",
-     "dur": "56:19",
-     "sec": 3379,
-     "bvid": "BV1gA411M7nZ",
-     "level": "必看",
-     "group": "G1",
-     "note": "在学中·诱导效应+场效应收尾",
-     "url": "https://www.bilibili.com/video/BV1gA411M7nZ"
+     "key": "M01",
+     "title": "第0节 最最基础知识（高考没选化学看）",
+     "dur": "18:08",
+     "sec": 1088,
+     "bvid": "BV1HvRXYwExT",
+     "level": "速通",
+     "group": "C01",
+     "note": "10/16 已过·补看 · 绪论/基础 · 权重 0.5",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=1"
     },
     {
      "sub": "org",
-     "key": "L5-3",
-     "title": "Lecture 5-3 电子效应——共轭“共轭体系的定性分析、共振论介绍”",
-     "dur": "1:10:22",
-     "sec": 4222,
-     "bvid": "BV1qN411X7cz",
+     "key": "M02",
+     "title": "第1节 基础知识（绪论）",
+     "dur": "11:41",
+     "sec": 701,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G1",
-     "note": "共轭体系定性分析+共振论",
-     "url": "https://www.bilibili.com/video/BV1qN411X7cz"
+     "group": "C01",
+     "note": "10/16 已过·补看 · 绪论/基础 · 权重 0.5",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=2"
     },
     {
      "sub": "org",
-     "key": "L5-4",
-     "title": "Lecture 5-4 共轭效应、超共轭效应及其综合应用“视频最后有电子效应的综合分析”",
-     "dur": "1:37:22",
-     "sec": 5842,
-     "bvid": "BV1fA411K7ty",
+     "key": "M03",
+     "title": "第1节 基础知识（酸碱 结构化学）",
+     "dur": "33:01",
+     "sec": 1981,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G1",
-     "note": "共轭/超共轭+综合分析(看末尾)",
-     "url": "https://www.bilibili.com/video/BV1fA411K7ty"
+     "group": "C01",
+     "note": "10/16 已过·补看 · 绪论/基础 · 权重 0.5",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=3"
+    },
+    {
+     "sub": "org",
+     "key": "M04",
+     "title": "第1节 基础知识（电子效应）",
+     "dur": "13:28",
+     "sec": 808,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C01",
+     "note": "10/16 已过·补看 · 绪论/基础 · 权重 0.5",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=4"
     },
     {
      "sub": "pharm",
@@ -123,9 +135,9 @@
      "url": "https://www.bilibili.com/video/BV1F7411U7Lb"
     }
    ],
-   "min": 303,
+   "min": 155,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -137,39 +149,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L6-1",
-     "title": "Lecture 6-1 有机酸碱化学——“质子迁移反应机理、如何弄懂pKa的易混概念”",
-     "dur": "1:14:44",
-     "sec": 4484,
-     "bvid": "BV1Fb4y1D7ze",
+     "key": "M05",
+     "title": "专题：酸碱性比较",
+     "dur": "9:53",
+     "sec": 593,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G2",
-     "note": "质子迁移机理+pKa",
-     "url": "https://www.bilibili.com/video/BV1Fb4y1D7ze"
+     "group": "C01",
+     "note": "绪论/基础 · 权重 0.5",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=5"
     },
     {
      "sub": "org",
-     "key": "L6-2",
-     "title": "Lecture 6-2“有机化学中判断酸碱性的原则、方法”",
-     "dur": "1:17:56",
-     "sec": 4676,
-     "bvid": "BV1xv41177yb",
+     "key": "M06",
+     "title": "第1节 习题课",
+     "dur": "35:11",
+     "sec": 2111,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G2",
-     "note": "酸碱性判断原则方法",
-     "url": "https://www.bilibili.com/video/BV1xv41177yb"
+     "group": "C01",
+     "note": "绪论/基础 · 权重 0.5 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=6"
     },
     {
      "sub": "org",
-     "key": "L8-1",
-     "title": "L8-1 卤代烃的结构、物理性质、立体化学分析",
-     "dur": "1:06:42",
-     "sec": 4002,
-     "bvid": "BV12v411V7Td",
-     "level": "速通",
-     "group": "G3",
-     "note": "结构/物性/立体化学",
-     "url": "https://www.bilibili.com/video/BV12v411V7Td"
+     "key": "M07",
+     "title": "第2节 命名(顺序规则)",
+     "dur": "22:40",
+     "sec": 1360,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C00",
+     "note": "命名 · 命名是单选送分题",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=7"
     },
     {
      "sub": "pharm",
@@ -226,7 +238,7 @@
      "url": "https://www.bilibili.com/video/BV1f7411m7yk"
     }
    ],
-   "min": 311,
+   "min": 159,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -240,39 +252,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L8-2",
-     "title": "Lecture 8-2上 碳正离子的结构分析",
-     "dur": "44:03",
-     "sec": 2643,
-     "bvid": "BV1uf4y187i9",
+     "key": "M08",
+     "title": "第2节 命名(实战练习)",
+     "dur": "30:00",
+     "sec": 1800,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "碳正离子结构·SN1总开关",
-     "url": "https://www.bilibili.com/video/BV1uf4y187i9"
+     "group": "C00",
+     "note": "命名 · 命名是单选送分题",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=8"
     },
     {
      "sub": "org",
-     "key": "L8-3",
-     "title": "L8-3“取代反应简介，SN1，SN2反应的动力学分析，速率方程”",
-     "dur": "45:21",
-     "sec": 2721,
-     "bvid": "BV1hq4y1L7wT",
+     "key": "M09",
+     "title": "第2节 习题课",
+     "dur": "26:20",
+     "sec": 1580,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "SN1/SN2动力学",
-     "url": "https://www.bilibili.com/video/BV1hq4y1L7wT"
+     "group": "C00",
+     "note": "命名 · 命名是单选送分题 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=9"
     },
     {
      "sub": "org",
-     "key": "L8-4",
-     "title": "L8-4“SN2反应的机理以及立体化学”",
-     "dur": "51:53",
-     "sec": 3113,
-     "bvid": "BV11y4y1T7Tv",
+     "key": "M10",
+     "title": "第3节 立体化学(构象)",
+     "dur": "14:01",
+     "sec": 841,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "SN2机理与立体化学",
-     "url": "https://www.bilibili.com/video/BV11y4y1T7Tv"
+     "group": "C05",
+     "note": "立体化学 · 权重 10.2 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=10"
     },
     {
      "sub": "pharm",
@@ -329,7 +341,7 @@
      "url": "https://www.bilibili.com/video/BV1A7411U7By"
     }
    ],
-   "min": 212,
+   "min": 141,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -343,39 +355,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L8-5",
-     "title": "L8-5\"SN1反应的机理和立体化学\"",
-     "dur": "1:12:41",
-     "sec": 4361,
-     "bvid": "BV1j64y197JQ",
+     "key": "M11",
+     "title": "第3节 立体化学(优势构象)",
+     "dur": "19:14",
+     "sec": 1154,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "SN1机理与立体化学",
-     "url": "https://www.bilibili.com/video/BV1j64y197JQ"
+     "group": "C05",
+     "note": "立体化学 · 权重 10.2 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=11"
     },
     {
      "sub": "org",
-     "key": "L8-6",
-     "title": "L8-6“影响亲核取代反应的因素分析，SN1与SN2的竞争”",
-     "dur": "1:46:22",
-     "sec": 6382,
-     "bvid": "BV1PM4y1M7m6",
+     "key": "M12",
+     "title": "第3节 立体化学(手性,RS)",
+     "dur": "11:59",
+     "sec": 719,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "SN1/SN2竞争因素",
-     "url": "https://www.bilibili.com/video/BV1PM4y1M7m6"
+     "group": "C05",
+     "note": "立体化学 · 权重 10.2 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=12"
     },
     {
      "sub": "org",
-     "key": "L8-7",
-     "title": "L8-7“消除反应的分类，β-消除反应的基本介绍”",
-     "dur": "45:15",
-     "sec": 2715,
-     "bvid": "BV1bX4y1P7NP",
-     "level": "速通",
-     "group": "G3",
-     "note": "消除反应分类",
-     "url": "https://www.bilibili.com/video/BV1bX4y1P7NP"
+     "key": "M13",
+     "title": "第3节 立体化学(手性与内外消旋)",
+     "dur": "26:26",
+     "sec": 1586,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C05",
+     "note": "立体化学 · 权重 10.2 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=13"
+    },
+    {
+     "sub": "org",
+     "key": "M14",
+     "title": "第3节 习题课",
+     "dur": "32:15",
+     "sec": 1935,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C05",
+     "note": "立体化学 · 权重 10.2 · 你错 5/7 · ★优先 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=14"
     },
     {
      "sub": "pharm",
@@ -432,9 +456,9 @@
      "url": "https://www.bilibili.com/video/BV193411k7xd"
     }
    ],
-   "min": 336,
+   "min": 202,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -446,39 +470,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L8-8",
-     "title": "L8-8“E1消除反应的实例分析，区域选择性与立体选择性”",
-     "dur": "1:03:46",
-     "sec": 3826,
-     "bvid": "BV1Vh41167X2",
+     "key": "M15",
+     "title": "第4节 烷烃(概论与自由基取代反应)",
+     "dur": "18:51",
+     "sec": 1131,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "E1实例+区域选择性",
-     "url": "https://www.bilibili.com/video/BV1Vh41167X2"
+     "group": "C02",
+     "note": "烷烃与脂环烃 · 权重 1.7",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=15"
     },
     {
      "sub": "org",
-     "key": "L8-9",
-     "title": "L8-9“E2反应的实例分析，区域选择性和立体选择性，E1cb反应简介”",
-     "dur": "1:53:11",
-     "sec": 6791,
-     "bvid": "BV1Fq4y1W7Kt",
+     "key": "M16",
+     "title": "第4节 烷烃(碳正离子，碳自由基稳定性)",
+     "dur": "9:11",
+     "sec": 551,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "E2实例+E1cb",
-     "url": "https://www.bilibili.com/video/BV1Fq4y1W7Kt"
+     "group": "C02",
+     "note": "烷烃与脂环烃 · 权重 1.7",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=16"
     },
     {
      "sub": "org",
-     "key": "L8-10",
-     "title": "L8-10“卤代烃的竞争反应应该怎么判断？取代反应和消除反应到底进行哪一个？”",
-     "dur": "1:21:51",
-     "sec": 4911,
-     "bvid": "BV1EK4y1u7s4",
+     "key": "M17",
+     "title": "第4节 烷烃(环烷烃的性质)",
+     "dur": "6:33",
+     "sec": 393,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G3",
-     "note": "取代vs消除竞争判断",
-     "url": "https://www.bilibili.com/video/BV1EK4y1u7s4"
+     "group": "C02",
+     "note": "烷烃与脂环烃 · 权重 1.7",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=17"
+    },
+    {
+     "sub": "org",
+     "key": "M18",
+     "title": "第4节 习题课",
+     "dur": "9:02",
+     "sec": 542,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C02",
+     "note": "烷烃与脂环烃 · 权重 1.7 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=18"
     },
     {
      "sub": "pharm",
@@ -535,9 +571,9 @@
      "url": "https://www.bilibili.com/video/BV1ik4y1z7T2"
     }
    ],
-   "min": 389,
+   "min": 174,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -549,39 +585,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L15-1",
-     "title": "L15-1 醛酮羰基加成的机理、立体化学以及反应性分析",
-     "dur": "46:59",
-     "sec": 2819,
-     "bvid": "BV1JS4y1P7yE",
+     "key": "M19",
+     "title": "第5节 烯炔(概论与还原反应)",
+     "dur": "16:23",
+     "sec": 983,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G4",
-     "note": "羰基加成机理与反应性",
-     "url": "https://www.bilibili.com/video/BV1JS4y1P7yE"
+     "group": "C04",
+     "note": "烯烃/炔烃与二烯烃 · 权重 11.9 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=19"
     },
     {
      "sub": "org",
-     "key": "L15-2",
-     "title": "L15-2 醛酮与含碳、含氮亲核试剂的加成反应及其应用实例",
-     "dur": "58:02",
-     "sec": 3482,
-     "bvid": "BV1du411e7C7",
+     "key": "M20",
+     "title": "第5节 烯炔(亲电加成反应)",
+     "dur": "29:16",
+     "sec": 1756,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G4",
-     "note": "含碳含氮亲核加成",
-     "url": "https://www.bilibili.com/video/BV1du411e7C7"
+     "group": "C04",
+     "note": "烯烃/炔烃与二烯烃 · 权重 11.9 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=20"
     },
     {
      "sub": "org",
-     "key": "L15-3",
-     "title": "L15-3 醛酮与含氧、含硫、氢化金属试剂反应的机理与应用",
-     "dur": "50:24",
-     "sec": 3024,
-     "bvid": "BV11u411e7Mw",
+     "key": "M21",
+     "title": "第5节 烯炔(氧化反应与杂项)",
+     "dur": "38:31",
+     "sec": 2311,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G4",
-     "note": "含氧含硫/氢化金属",
-     "url": "https://www.bilibili.com/video/BV11u411e7Mw"
+     "group": "C04",
+     "note": "烯烃/炔烃与二烯烃 · 权重 11.9 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=21"
     },
     {
      "sub": "pharm",
@@ -638,7 +674,7 @@
      "url": "https://www.bilibili.com/video/BV1ua4y1e7Q7"
     }
    ],
-   "min": 287,
+   "min": 215,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -652,39 +688,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L15-4",
-     "title": "L15-4 醛酮的互变异构，α-H与烯醇负离子的形成",
-     "dur": "1:04:58",
-     "sec": 3898,
-     "bvid": "BV1j44y157n3",
+     "key": "M22",
+     "title": "专题：共轭、共振式、机理",
+     "dur": "21:02",
+     "sec": 1262,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G4",
-     "note": "互变异构+烯醇负离子",
-     "url": "https://www.bilibili.com/video/BV1j44y157n3"
+     "group": "C04",
+     "note": "烯烃/炔烃与二烯烃 · 权重 11.9 · 你错 5/7 · ★优先",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=22"
     },
     {
      "sub": "org",
-     "key": "L15-5",
-     "title": "L15-5 醛酮的α-卤化与亚硝化",
-     "dur": "30:33",
-     "sec": 1833,
-     "bvid": "BV1ya411v7bP",
-     "level": "速通",
-     "group": "G4",
-     "note": "α-卤化与亚硝化",
-     "url": "https://www.bilibili.com/video/BV1ya411v7bP"
+     "key": "M23",
+     "title": "第5节 习题课",
+     "dur": "24:48",
+     "sec": 1488,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C04",
+     "note": "烯烃/炔烃与二烯烃 · 权重 11.9 · 你错 5/7 · ★优先 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=23"
     },
     {
      "sub": "org",
-     "key": "L15-6",
-     "title": "L15-6 常见的烯醇等价物-烯醇锂、烯醇醚、烯醇硅醚",
-     "dur": "31:21",
-     "sec": 1881,
-     "bvid": "BV1NY4y1Y7fp",
-     "level": "速通",
-     "group": "G4",
-     "note": "烯醇等价物",
-     "url": "https://www.bilibili.com/video/BV1NY4y1Y7fp"
+     "key": "M24",
+     "title": "第6节 芳香烃(概论、亲电取代)",
+     "dur": "38:21",
+     "sec": 2301,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C06",
+     "note": "芳烃 · 权重 5.0 · 你错 2/18",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=24"
     },
     {
      "sub": "pharm",
@@ -741,7 +777,7 @@
      "url": "https://www.bilibili.com/video/BV16p4y1U7AG"
     }
    ],
-   "min": 251,
+   "min": 209,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -755,39 +791,27 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L15-7",
-     "title": "L15-7 羟醛缩合反应",
-     "dur": "1:03:23",
-     "sec": 3803,
-     "bvid": "BV1YS4y1a79k",
+     "key": "M25",
+     "title": "第6节 芳香烃(定位效应)",
+     "dur": "38:29",
+     "sec": 2309,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G4",
-     "note": "羟醛缩合",
-     "url": "https://www.bilibili.com/video/BV1YS4y1a79k"
+     "group": "C06",
+     "note": "芳烃 · 权重 5.0 · 你错 2/18",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=25"
     },
     {
      "sub": "org",
-     "key": "L15-8",
-     "title": "L15-8 醛酮的α-烃基化反应",
-     "dur": "44:05",
-     "sec": 2645,
-     "bvid": "BV1A3411T7HA",
+     "key": "M26",
+     "title": "第6节 芳香烃(休克尔规则与杂项)",
+     "dur": "20:08",
+     "sec": 1208,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G4",
-     "note": "α-烃基化",
-     "url": "https://www.bilibili.com/video/BV1A3411T7HA"
-    },
-    {
-     "sub": "org",
-     "key": "L15-9",
-     "title": "L15-9 α，β-不饱和醛酮加成反应的竞争反应分析",
-     "dur": "58:50",
-     "sec": 3530,
-     "bvid": "BV1MY4y1h7Zw",
-     "level": "必看",
-     "group": "G4",
-     "note": "α,β-不饱和1,2/1,4",
-     "url": "https://www.bilibili.com/video/BV1MY4y1h7Zw"
+     "group": "C06",
+     "note": "芳烃 · 权重 5.0 · 你错 2/18",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=26"
     },
     {
      "sub": "pharm",
@@ -844,9 +868,9 @@
      "url": "https://www.bilibili.com/video/BV1Jh411o7c7"
     }
    ],
-   "min": 281,
+   "min": 173,
    "by": {
-    "org": 3,
+    "org": 2,
     "pharm": 2,
     "ana": 2
    }
@@ -858,39 +882,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L10-1",
-     "title": "L10-1 你能完整说出脂肪胺这章讲了什么吗？脂肪胺章节思路整理",
-     "dur": "37:01",
-     "sec": 2221,
-     "bvid": "BV1tQ4y167Uc",
-     "level": "速通",
-     "group": "G5",
-     "note": "脂肪胺思路整理",
-     "url": "https://www.bilibili.com/video/BV1tQ4y167Uc"
+     "key": "M27",
+     "title": "第6节 习题课",
+     "dur": "19:45",
+     "sec": 1185,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C06",
+     "note": "芳烃 · 权重 5.0 · 你错 2/18 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=27"
     },
     {
      "sub": "org",
-     "key": "L10-3",
-     "title": "L10-3 胺的成盐反应和烷基化，Hofmann消除反应综合",
-     "dur": "1:28:17",
-     "sec": 5297,
-     "bvid": "BV1eU4y1w7c7",
+     "key": "M28",
+     "title": "第7节 氯代烃(亲核取代反应)",
+     "dur": "34:21",
+     "sec": 2061,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G5",
-     "note": "成盐烷基化+Hofmann消除",
-     "url": "https://www.bilibili.com/video/BV1eU4y1w7c7"
+     "group": "C07",
+     "note": "卤代烃 · 权重 10.5 · 你错 3/20",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=28"
     },
     {
      "sub": "org",
-     "key": "L10-4",
-     "title": "L10-4 胺与醛酮的反应、肟和腙、还原胺化和黄鸣龙还原，Beckmann重排反应",
-     "dur": "1:16:14",
-     "sec": 4574,
-     "bvid": "BV1UF411Y72A",
+     "key": "M29",
+     "title": "第7节 氯代烃(消除反应)",
+     "dur": "24:47",
+     "sec": 1487,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G5",
-     "note": "肟腙/还原胺化/黄鸣龙",
-     "url": "https://www.bilibili.com/video/BV1UF411Y72A"
+     "group": "C07",
+     "note": "卤代烃 · 权重 10.5 · 你错 3/20",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=29"
     },
     {
      "sub": "pharm",
@@ -947,7 +971,7 @@
      "url": "https://www.bilibili.com/video/BV1N341147to"
     }
    ],
-   "min": 358,
+   "min": 236,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -961,39 +985,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L10-5",
-     "title": "L10-5 胺的酰基化反应 酰胺与酰亚胺 Hofmann重排 乃春",
-     "dur": "1:29:43",
-     "sec": 5383,
-     "bvid": "BV1nh41187mn",
+     "key": "M30",
+     "title": "第7节 习题课",
+     "dur": "13:18",
+     "sec": 798,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G5",
-     "note": "酰基化+Hofmann重排",
-     "url": "https://www.bilibili.com/video/BV1nh41187mn"
+     "group": "C07",
+     "note": "卤代烃 · 权重 10.5 · 你错 3/20 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=30"
     },
     {
      "sub": "org",
-     "key": "L10-7",
-     "title": "L10-7 胺与亚硝酸的反应 重氮盐的生成 Tiffeneau重排",
-     "dur": "53:13",
-     "sec": 3193,
-     "bvid": "BV1fQ4y1S7tq",
+     "key": "M31",
+     "title": "第8节 醇醚酚(醇的反应)",
+     "dur": "30:59",
+     "sec": 1859,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G5",
-     "note": "亚硝酸+重氮盐+Tiffeneau",
-     "url": "https://www.bilibili.com/video/BV1fQ4y1S7tq"
+     "group": "C08",
+     "note": "醇酚醚 · 权重 11.6 · 你错 3/23",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=31"
     },
     {
      "sub": "org",
-     "key": "L23-5",
-     "title": "L23-5 芳香重氮盐的生成与反应",
-     "dur": "34:01",
-     "sec": 2041,
-     "bvid": "BV11e4y1u7Fd",
+     "key": "M32",
+     "title": "第8节 醇醚酚(醚与酚的反应)",
+     "dur": "30:11",
+     "sec": 1811,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G5",
-     "note": "芳香重氮盐·合成枢纽",
-     "url": "https://www.bilibili.com/video/BV11e4y1u7Fd"
+     "group": "C08",
+     "note": "醇酚醚 · 权重 11.6 · 你错 3/23",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=32"
     },
     {
      "sub": "pharm",
@@ -1050,7 +1074,7 @@
      "url": "https://www.bilibili.com/video/BV1JL411M7w9"
     }
    ],
-   "min": 290,
+   "min": 188,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -1064,39 +1088,39 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L9-2",
-     "title": "L9-2 醇的基本性质，醇的酸碱性和亲核性，醇与无机酸的反应",
-     "dur": "1:08:38",
-     "sec": 4118,
-     "bvid": "BV1D3411q7gW",
+     "key": "M33",
+     "title": "第8节 习题课",
+     "dur": "20:31",
+     "sec": 1231,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G6",
-     "note": "醇酸碱性/亲核性",
-     "url": "https://www.bilibili.com/video/BV1D3411q7gW"
+     "group": "C08",
+     "note": "醇酚醚 · 权重 11.6 · 你错 3/23 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=33"
     },
     {
      "sub": "org",
-     "key": "L9-3",
-     "title": "L9-3 补充你的知识盲区，你真的理解醇的取代和消除反应吗？",
-     "dur": "1:30:24",
-     "sec": 5424,
-     "bvid": "BV1Pq4y1u7kE",
+     "key": "M34",
+     "title": "第9节 醛酮(概论与亲核加成)",
+     "dur": "33:43",
+     "sec": 2023,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G6",
-     "note": "醇的取代与消除",
-     "url": "https://www.bilibili.com/video/BV1Pq4y1u7kE"
+     "group": "C09",
+     "note": "醛和酮 · 权重 11.6 · 你错 2/40",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=34"
     },
     {
      "sub": "org",
-     "key": "L9-4",
-     "title": "L9-4 醇的氧化反应，有机化学的氧化还原，亚胺",
-     "dur": "1:33:41",
-     "sec": 5621,
-     "bvid": "BV1Qg411c7M1",
+     "key": "M35",
+     "title": "第9节 醛酮(α氢与杂项)",
+     "dur": "35:23",
+     "sec": 2123,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G6",
-     "note": "醇的氧化+氧化还原",
-     "url": "https://www.bilibili.com/video/BV1Qg411c7M1"
+     "group": "C09",
+     "note": "醛和酮 · 权重 11.6 · 你错 2/40",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=35"
     },
     {
      "sub": "pharm",
@@ -1153,7 +1177,7 @@
      "url": "https://www.bilibili.com/video/BV1Bt4y1v7Lh"
     }
    ],
-   "min": 374,
+   "min": 211,
    "by": {
     "org": 3,
     "pharm": 2,
@@ -1167,39 +1191,27 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L9-6",
-     "title": "L9-6 邻二醇的氧化：高碘酸氧化，四乙酸铅氧化",
-     "dur": "1:09:42",
-     "sec": 4182,
-     "bvid": "BV1Tb4y1171u",
+     "key": "M36",
+     "title": "第9节 习题课",
+     "dur": "18:11",
+     "sec": 1091,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G6",
-     "note": "高碘酸氧化邻二醇",
-     "url": "https://www.bilibili.com/video/BV1Tb4y1171u"
+     "group": "C09",
+     "note": "醛和酮 · 权重 11.6 · 你错 2/40 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=36"
     },
     {
      "sub": "org",
-     "key": "L22-2",
-     "title": "L22-2 酚羟基的反应",
-     "dur": "46:57",
-     "sec": 2817,
-     "bvid": "BV1ym4y1F7t1",
+     "key": "M37",
+     "title": "第10节 羧酸(概论、生成衍生物与还原)",
+     "dur": "23:59",
+     "sec": 1439,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G6",
-     "note": "酚羟基的反应",
-     "url": "https://www.bilibili.com/video/BV1ym4y1F7t1"
-    },
-    {
-     "sub": "org",
-     "key": "L22-5",
-     "title": "L22-5 酚的缩合反应",
-     "dur": "44:16",
-     "sec": 2656,
-     "bvid": "BV1gd4y1F7nY",
-     "level": "必看",
-     "group": "G6",
-     "note": "酚的缩合反应",
-     "url": "https://www.bilibili.com/video/BV1gd4y1F7nY"
+     "group": "C10",
+     "note": "羧酸和取代羧酸 · 权重 8.1 · 你错 0/25",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=37"
     },
     {
      "sub": "pharm",
@@ -1256,9 +1268,9 @@
      "url": "https://www.bilibili.com/video/BV1Hy4y1C7GW"
     }
    ],
-   "min": 276,
+   "min": 157,
    "by": {
-    "org": 3,
+    "org": 2,
     "pharm": 2,
     "ana": 2
    }
@@ -1270,39 +1282,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L11-3",
-     "title": "L11-3 环氧乙烷的开环反应，含氧脂杂环的开环",
-     "dur": "1:03:02",
-     "sec": 3782,
-     "bvid": "BV1ZR4y1x7QP",
+     "key": "M38",
+     "title": "第10节 羧酸(脱羧与杂项)",
+     "dur": "19:03",
+     "sec": 1143,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G6",
-     "note": "环氧乙烷开环",
-     "url": "https://www.bilibili.com/video/BV1ZR4y1x7QP"
+     "group": "C10",
+     "note": "羧酸和取代羧酸 · 权重 8.1 · 你错 0/25",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=38"
     },
     {
      "sub": "org",
-     "key": "L16-1",
-     "title": "L16-1 羧酸的结构和酸性比较",
-     "dur": "25:41",
-     "sec": 1541,
-     "bvid": "BV1QB4y1y7xb",
+     "key": "M39",
+     "title": "第10节 习题课",
+     "dur": "10:51",
+     "sec": 651,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G7",
-     "note": "羧酸结构与酸性",
-     "url": "https://www.bilibili.com/video/BV1QB4y1y7xb"
+     "group": "C10",
+     "note": "羧酸和取代羧酸 · 权重 8.1 · 你错 0/25 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=39"
     },
     {
      "sub": "org",
-     "key": "L16-2",
-     "title": "L16-2 羧酸的主要反应和物质转化",
-     "dur": "39:40",
-     "sec": 2380,
-     "bvid": "BV1LF411j7dS",
+     "key": "M40",
+     "title": "第11节 羧酸衍生物(亲核取代)",
+     "dur": "20:10",
+     "sec": 1210,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G7",
-     "note": "羧酸反应与转化",
-     "url": "https://www.bilibili.com/video/BV1LF411j7dS"
+     "group": "C11",
+     "note": "羧酸衍生物 · 权重 4.0 · 你错 1/17",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=40"
+    },
+    {
+     "sub": "org",
+     "key": "M41",
+     "title": "第11节 羧酸衍生物(酯缩合反应与杂项)",
+     "dur": "29:01",
+     "sec": 1741,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C11",
+     "note": "羧酸衍生物 · 权重 4.0 · 你错 1/17",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=41"
     },
     {
      "sub": "pharm",
@@ -1359,9 +1383,9 @@
      "url": "https://www.bilibili.com/video/BV1ci4y1d7wW"
     }
    ],
-   "min": 243,
+   "min": 193,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -1373,39 +1397,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L12-1",
-     "title": "L12-1 烯烃的结构与亲电加成的本质",
-     "dur": "51:40",
-     "sec": 3100,
-     "bvid": "BV1DF411i7bf",
+     "key": "M42",
+     "title": "第11节 习题课",
+     "dur": "7:59",
+     "sec": 479,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G8",
-     "note": "烯烃结构与亲电加成",
-     "url": "https://www.bilibili.com/video/BV1DF411i7bf"
+     "group": "C11",
+     "note": "羧酸衍生物 · 权重 4.0 · 你错 1/17 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=42"
     },
     {
      "sub": "org",
-     "key": "L12-2",
-     "title": "L12-2 烯烃卤化氢加成及其变式，某些缩合反应的必备基础！",
-     "dur": "1:36:16",
-     "sec": 5776,
-     "bvid": "BV17u41127Ly",
+     "key": "M43",
+     "title": "第12节 胺(概论与碱性比较)",
+     "dur": "31:16",
+     "sec": 1876,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G8",
-     "note": "卤化氢加成及变式",
-     "url": "https://www.bilibili.com/video/BV17u41127Ly"
+     "group": "C13",
+     "note": "有机含氮化合物 · 权重 11.3 · 你错 0/20",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=43"
     },
     {
      "sub": "org",
-     "key": "L12-3",
-     "title": "L12-3 烯烃与卤素、次卤酸加成的反应探究",
-     "dur": "52:51",
-     "sec": 3171,
-     "bvid": "BV1934y1q7EX",
-     "level": "速通",
-     "group": "G8",
-     "note": "卤素/次卤酸加成",
-     "url": "https://www.bilibili.com/video/BV1934y1q7EX"
+     "key": "M44",
+     "title": "第12节 胺(杂项与重氮化合物)",
+     "dur": "13:56",
+     "sec": 836,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C13",
+     "note": "有机含氮化合物 · 权重 11.3 · 你错 0/20",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=44"
+    },
+    {
+     "sub": "org",
+     "key": "M45",
+     "title": "第12节 习题课",
+     "dur": "10:01",
+     "sec": 601,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C13",
+     "note": "有机含氮化合物 · 权重 11.3 · 你错 0/20 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=45"
     },
     {
      "sub": "pharm",
@@ -1462,9 +1498,9 @@
      "url": "https://www.bilibili.com/video/BV1jv411C7Lr"
     }
    ],
-   "min": 316,
+   "min": 178,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -1476,39 +1512,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L12-4",
-     "title": "L12-4 共轭烯烃加成反应的本质",
-     "dur": "32:49",
-     "sec": 1969,
-     "bvid": "BV1DS4y1Z71x",
+     "key": "M46",
+     "title": "第13节 波谱分析(概论)",
+     "dur": "11:17",
+     "sec": 677,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G8",
-     "note": "共轭烯烃1,2/1,4",
-     "url": "https://www.bilibili.com/video/BV1DS4y1Z71x"
+     "group": "C15",
+     "note": "波谱与结构推断 · 2023 综合推理 35 分全靠它",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=46"
     },
     {
      "sub": "org",
-     "key": "L12-6",
-     "title": "L12-6 一节课搞懂烯烃氧化",
-     "dur": "1:17:59",
-     "sec": 4679,
-     "bvid": "BV1Cr4y1Y7do",
+     "key": "M47",
+     "title": "第13节 波谱分析(红外IR)",
+     "dur": "26:20",
+     "sec": 1580,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G8",
-     "note": "烯烃氧化",
-     "url": "https://www.bilibili.com/video/BV1Cr4y1Y7do"
+     "group": "C15",
+     "note": "波谱与结构推断 · 2023 综合推理 35 分全靠它",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=47"
     },
     {
      "sub": "org",
-     "key": "L13-1",
-     "title": "L13-1 拿下炔烃加成反应！",
-     "dur": "35:24",
-     "sec": 2124,
-     "bvid": "BV1LT4y1y794",
+     "key": "M48",
+     "title": "第13节 波谱分析(核磁共振NMR)",
+     "dur": "27:35",
+     "sec": 1655,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G8",
-     "note": "炔烃加成",
-     "url": "https://www.bilibili.com/video/BV1LT4y1y794"
+     "group": "C15",
+     "note": "波谱与结构推断 · 2023 综合推理 35 分全靠它",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=48"
+    },
+    {
+     "sub": "org",
+     "key": "M49",
+     "title": "第13节 习题课(含不饱和度复习)",
+     "dur": "43:07",
+     "sec": 2587,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C15",
+     "note": "波谱与结构推断 · 2023 综合推理 35 分全靠它 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=49"
     },
     {
      "sub": "pharm",
@@ -1565,9 +1613,9 @@
      "url": "https://www.bilibili.com/video/BV11a411c71c"
     }
    ],
-   "min": 270,
+   "min": 232,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -1579,39 +1627,15 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L13-2",
-     "title": "L13-2 端炔烃的特性，10分钟get！",
-     "dur": "11:52",
-     "sec": 712,
-     "bvid": "BV18q4y187jQ",
-     "level": "速通",
-     "group": "G8",
-     "note": "端炔特性",
-     "url": "https://www.bilibili.com/video/BV18q4y187jQ"
-    },
-    {
-     "sub": "org",
-     "key": "L19-2",
-     "title": "L19-2 轮烯结构芳香性的判断",
-     "dur": "50:38",
-     "sec": 3038,
-     "bvid": "BV1fP411L73i",
+     "key": "M50",
+     "title": "第14节 杂环化合物",
+     "dur": "37:04",
+     "sec": 2224,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G9",
-     "note": "轮烯芳香性判断",
-     "url": "https://www.bilibili.com/video/BV1fP411L73i"
-    },
-    {
-     "sub": "org",
-     "key": "L19-3",
-     "title": "L19-3 离子化合物和杂环化合物的芳香性判断",
-     "dur": "23:32",
-     "sec": 1412,
-     "bvid": "BV19e4y1f7Tp",
-     "level": "速通",
-     "group": "G9",
-     "note": "离子/杂环芳香性",
-     "url": "https://www.bilibili.com/video/BV19e4y1f7Tp"
+     "group": "C14",
+     "note": "杂环化合物 · 权重 2.8 · 你错 0/13",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=50"
     },
     {
      "sub": "pharm",
@@ -1668,9 +1692,9 @@
      "url": "https://www.bilibili.com/video/BV1854y1D7n8"
     }
    ],
-   "min": 186,
+   "min": 137,
    "by": {
-    "org": 3,
+    "org": 1,
     "pharm": 2,
     "ana": 2
    }
@@ -1682,39 +1706,51 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "L20-1",
-     "title": "L20-1 芳香亲电取代反应机理",
-     "dur": "19:09",
-     "sec": 1149,
-     "bvid": "BV1TT411u7vn",
+     "key": "M51",
+     "title": "第14节 习题课",
+     "dur": "9:45",
+     "sec": 585,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G9",
-     "note": "芳香亲电取代机理",
-     "url": "https://www.bilibili.com/video/BV1TT411u7vn"
+     "group": "C14",
+     "note": "杂环化合物 · 权重 2.8 · 你错 0/13 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=51"
     },
     {
      "sub": "org",
-     "key": "L20-4",
-     "title": "L20-4 定位基团与致活、致钝基团",
-     "dur": "56:33",
-     "sec": 3393,
-     "bvid": "BV1g841147Ja",
+     "key": "M52",
+     "title": "第15节 糖、氨基酸、脂类(糖)",
+     "dur": "31:21",
+     "sec": 1881,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G9",
-     "note": "定位基与致活致钝",
-     "url": "https://www.bilibili.com/video/BV1g841147Ja"
+     "group": "C16",
+     "note": "糖/氨基酸/脂类 · 权重 8.2 · 你错 0/7",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=52"
     },
     {
      "sub": "org",
-     "key": "L20-5",
-     "title": "L20-5 苯环多取代的基本规律和简单合成",
-     "dur": "31:23",
-     "sec": 1883,
-     "bvid": "BV1914y1h7if",
+     "key": "M53",
+     "title": "第15节 糖、氨基酸、脂类(氨基酸、脂类)",
+     "dur": "16:12",
+     "sec": 972,
+     "bvid": "BV1HvRXYwExT",
      "level": "必看",
-     "group": "G9",
-     "note": "多取代规律与简单合成",
-     "url": "https://www.bilibili.com/video/BV1914y1h7if"
+     "group": "C16",
+     "note": "糖/氨基酸/脂类 · 权重 8.2 · 你错 0/7",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=53"
+    },
+    {
+     "sub": "org",
+     "key": "M54",
+     "title": "第15节 习题课",
+     "dur": "9:44",
+     "sec": 584,
+     "bvid": "BV1HvRXYwExT",
+     "level": "必看",
+     "group": "C16",
+     "note": "糖/氨基酸/脂类 · 权重 8.2 · 你错 0/7 · 习题课→直接对题型",
+     "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=54"
     },
     {
      "sub": "pharm",
@@ -1771,9 +1807,9 @@
      "url": "https://www.bilibili.com/video/BV1CA411q7eB"
     }
    ],
-   "min": 179,
+   "min": 139,
    "by": {
-    "org": 3,
+    "org": 4,
     "pharm": 2,
     "ana": 2
    }
@@ -1783,42 +1819,6 @@
    "date": "2026-11-02",
    "wd": "周一",
    "tasks": [
-    {
-     "sub": "org",
-     "key": "L20-6",
-     "title": "L20-6 稠环芳烃的亲电取代",
-     "dur": "24:17",
-     "sec": 1457,
-     "bvid": "BV1nR4y1d7ow",
-     "level": "速通",
-     "group": "G9",
-     "note": "稠环芳烃亲电取代",
-     "url": "https://www.bilibili.com/video/BV1nR4y1d7ow"
-    },
-    {
-     "sub": "org",
-     "key": "L29-1",
-     "title": "L29-1 单糖结构的特殊性",
-     "dur": "47:44",
-     "sec": 2864,
-     "bvid": "BV1u24y1E7HR",
-     "level": "必看",
-     "group": "G10",
-     "note": "单糖结构特殊性",
-     "url": "https://www.bilibili.com/video/BV1u24y1E7HR"
-    },
-    {
-     "sub": "org",
-     "key": "L29-2",
-     "title": "L29-2 单糖的常见反应",
-     "dur": "29:47",
-     "sec": 1787,
-     "bvid": "BV1og4y1x7kw",
-     "level": "必看",
-     "group": "G10",
-     "note": "单糖常见反应",
-     "url": "https://www.bilibili.com/video/BV1og4y1x7kw"
-    },
     {
      "sub": "pharm",
      "key": "糖皮质激素",
@@ -1872,11 +1872,35 @@
      "note": "考频第10，速通",
      "seq": 999,
      "url": "https://www.bilibili.com/video/BV17R4y1s7ud"
+    },
+    {
+     "sub": "org",
+     "key": "Z1",
+     "title": "期末速成专项卷-4（鉴别题）",
+     "dur": "22:00",
+     "sec": 1320,
+     "bvid": "BV1k9xWz9E5k",
+     "level": "必看",
+     "group": "DRILL",
+     "note": "鉴别 20%：试剂→现象一次串完，配 2021–2026 六道鉴别真题",
+     "url": "https://www.bilibili.com/video/BV1k9xWz9E5k?p=1"
+    },
+    {
+     "sub": "org",
+     "key": "Z2",
+     "title": "期末速成专项卷-3（完成反应题）",
+     "dur": "94:00",
+     "sec": 5640,
+     "bvid": "BV1axHLzTEmL",
+     "level": "速通",
+     "group": "DRILL",
+     "note": "完成反应式 24%：只看醛酮/羧酸衍生物/含氮/芳烃四段",
+     "url": "https://www.bilibili.com/video/BV1axHLzTEmL?p=1"
     }
    ],
-   "min": 215,
+   "min": 229,
    "by": {
-    "org": 3,
+    "org": 2,
     "pharm": 2,
     "ana": 2
    }
@@ -1886,42 +1910,6 @@
    "date": "2026-11-03",
    "wd": "周二",
    "tasks": [
-    {
-     "sub": "org",
-     "key": "L7-3",
-     "title": "Lecture 7-3 烷烃的常见反应“卤化、氧化、磺化、硝化”详细解析",
-     "dur": "50:37",
-     "sec": 3037,
-     "bvid": "BV1cU4y1b7wT",
-     "level": "必看",
-     "group": "G11",
-     "note": "烷烃卤化/氧化/磺化/硝化",
-     "url": "https://www.bilibili.com/video/BV1cU4y1b7wT"
-    },
-    {
-     "sub": "org",
-     "key": "L17-2",
-     "title": "L17-2 羧酸衍生物的取代反应实例与转化关系",
-     "dur": "1:05:19",
-     "sec": 3919,
-     "bvid": "BV1Ua411573j",
-     "level": "必看",
-     "group": "G12",
-     "note": "羧酸衍生物取代实例与转化",
-     "url": "https://www.bilibili.com/video/BV1Ua411573j"
-    },
-    {
-     "sub": "org",
-     "key": "L17-7",
-     "title": "L17-7 Claisen酯缩合反应",
-     "dur": "1:04:06",
-     "sec": 3846,
-     "bvid": "BV1pS4y1v7HG",
-     "level": "必看",
-     "group": "G12",
-     "note": "Claisen酯缩合",
-     "url": "https://www.bilibili.com/video/BV1pS4y1v7HG"
-    },
     {
      "sub": "pharm",
      "key": "降糖药",
@@ -1975,11 +1963,23 @@
      "note": "分子离子峰",
      "seq": 999,
      "url": "https://www.bilibili.com/video/BV1WZ4y1g7cu"
+    },
+    {
+     "sub": "org",
+     "key": "Z3",
+     "title": "有机化学考研推断题必备知识与解题技巧（新版）",
+     "dur": "123:00",
+     "sec": 7380,
+     "bvid": "BV1R8411o7dX",
+     "level": "必看",
+     "group": "DRILL",
+     "note": "推断 12%：先看完主课波谱 4 节再看这个",
+     "url": "https://www.bilibili.com/video/BV1R8411o7dX?p=1"
     }
    ],
-   "min": 288,
+   "min": 231,
    "by": {
-    "org": 3,
+    "org": 1,
     "pharm": 2,
     "ana": 2
    }
@@ -1989,42 +1989,6 @@
    "date": "2026-11-04",
    "wd": "周三",
    "tasks": [
-    {
-     "sub": "org",
-     "key": "L18-2",
-     "title": "L18-2 三大基本缩合反应",
-     "dur": "1:05:47",
-     "sec": 3947,
-     "bvid": "BV1VY4y1776H",
-     "level": "必看",
-     "group": "G13",
-     "note": "三大基本缩合反应",
-     "url": "https://www.bilibili.com/video/BV1VY4y1776H"
-    },
-    {
-     "sub": "org",
-     "key": "L18-3",
-     "title": "L18-3 β-二羰基化合物的基本性质",
-     "dur": "38:11",
-     "sec": 2291,
-     "bvid": "BV13W4y1U78b",
-     "level": "必看",
-     "group": "G13",
-     "note": "β-二羰基化合物性质",
-     "url": "https://www.bilibili.com/video/BV13W4y1U78b"
-    },
-    {
-     "sub": "org",
-     "key": "L18-4",
-     "title": "L18-4 利用“三乙”、“丙二”进行简单有机合成",
-     "dur": "24:06",
-     "sec": 1446,
-     "bvid": "BV1634y1J77T",
-     "level": "必看",
-     "group": "G13",
-     "note": "乙酰乙酸乙酯/丙二酸酯合成",
-     "url": "https://www.bilibili.com/video/BV1634y1J77T"
-    },
     {
      "sub": "pharm",
      "key": "抗菌总纲(上)",
@@ -2063,11 +2027,23 @@
      "note": "考频第7",
      "seq": 999,
      "url": "https://www.bilibili.com/video/BV17F411h7dC"
+    },
+    {
+     "sub": "org",
+     "key": "Z4",
+     "title": "有机化学合成题解析（上）",
+     "dur": "99:24",
+     "sec": 5964,
+     "bvid": "BV1c54y1Y72c",
+     "level": "速通",
+     "group": "DRILL",
+     "note": "合成 6%：逆合成+切断，P1–P7",
+     "url": "https://www.bilibili.com/video/BV1c54y1Y72c?p=1"
     }
    ],
-   "min": 214,
+   "min": 186,
    "by": {
-    "org": 3,
+    "org": 1,
     "pharm": 2,
     "ana": 1
    }
@@ -2077,42 +2053,6 @@
    "date": "2026-11-05",
    "wd": "周四",
    "tasks": [
-    {
-     "sub": "org",
-     "key": "L24-1",
-     "title": "L24-1 芳杂环的碱性和亲核性",
-     "dur": "1:08:18",
-     "sec": 4098,
-     "bvid": "BV1F84y1t7we",
-     "level": "必看",
-     "group": "G14",
-     "note": "芳杂环碱性与亲核性",
-     "url": "https://www.bilibili.com/video/BV1F84y1t7we"
-    },
-    {
-     "sub": "org",
-     "key": "L29-3",
-     "title": "L29-3 氨基酸的化学性质",
-     "dur": "52:06",
-     "sec": 3126,
-     "bvid": "BV1f84y1u7he",
-     "level": "必看",
-     "group": "G14",
-     "note": "氨基酸化学性质",
-     "url": "https://www.bilibili.com/video/BV1f84y1u7he"
-    },
-    {
-     "sub": "org",
-     "key": "L8-12",
-     "title": "L8-12 格氏试剂与有机锂试剂“含有醛酮相关内容以及逆合成分析概述”",
-     "dur": "1:44:43",
-     "sec": 6283,
-     "bvid": "BV1yq4y1D7B5",
-     "level": "必看",
-     "group": "G14",
-     "note": "格氏试剂/有机锂+逆合成",
-     "url": "https://www.bilibili.com/video/BV1yq4y1D7B5"
-    },
     {
      "sub": "pharm",
      "key": "抗肿瘤",
@@ -2151,11 +2091,23 @@
      "note": "与上一集连着看",
      "seq": 999,
      "url": "https://www.bilibili.com/video/BV1iR4y1t72d"
+    },
+    {
+     "sub": "org",
+     "key": "Z5",
+     "title": "有机化学合成题解析（下）",
+     "dur": "99:24",
+     "sec": 5964,
+     "bvid": "BV1c54y1Y72c",
+     "level": "速通",
+     "group": "DRILL",
+     "note": "合成 6%：芳香衍生物策略，P8–P14",
+     "url": "https://www.bilibili.com/video/BV1c54y1Y72c?p=8"
     }
    ],
-   "min": 252,
+   "min": 127,
    "by": {
-    "org": 3,
+    "org": 1,
     "pharm": 2,
     "ana": 1
    }
@@ -2166,13 +2118,13 @@
    "name": "阶段一 · 三科并进冲刺",
    "range": "10/16 – 11/05",
    "color": "#ff4d4f",
-   "desc": "有机一轮(高频63讲)收官 + 药理42个小黄鸭单药过完 + 分析40讲(误差/紫外/色谱补位/红外/核磁)"
+   "desc": "有机换课：医用有机化学 54 节（含 15 节习题课）+ 4 天题型专项收官；药理 42 个单药过完 + 分析 40 讲"
   },
   {
    "name": "阶段二 · 有机二轮",
    "range": "11/06 – 11/20",
    "color": "#ffa940",
-   "desc": "有机剩余31讲速通过一遍 + 63讲高频复看(1.5×)；药理按板块背药名+刷题；分析开始刷真题"
+   "desc": "有机 54 节二轮复看（1.5×，只看习题课与波谱）+ 学习通错题回炉；药理按板块背药名+刷题；分析开始刷真题"
   },
   {
    "name": "阶段三 · 真题与押题卷",
@@ -2188,7 +2140,7 @@
   }
  ],
  "counts": {
-  "org": 63,
+  "org": 59,
   "pharm": 42,
   "ana": 40
  }
