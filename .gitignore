@@ -1,0 +1,8 @@
+__pycache__/
+.DS_Store
+tools/
+
+# ★ 版权红线：英语日程含新东方付费课程信息，只走 iCloud，禁止进公开仓库
+plan-en.json
+install-en.html
+英语日程.js
