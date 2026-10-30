@@ -15,7 +15,7 @@ http:
       match: ^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/list
       type: response
       require-body: true
-      timeout: 10
+      timeout: 5
       max-size: 1048576
 
 script-providers:
