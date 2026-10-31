@@ -253,7 +253,7 @@ function taskHTML(t){
         <span class="tag ${t.level==='必看'?'b':(t.level==='速通'?'s':'')}">${esc(t.level)}</span>
         <span class="tag">${esc(t.group)}</span>
         <span class="min">${esc(t.dur)}</span>
-        <a class="play" href="${t.url}" target="_blank" rel="noopener">B站</a>
+        <a class="play" href="${t.url}" target="_blank" rel="noopener">${/bilibili|b23\.tv/.test(t.url||'')?'B站':'打开'}</a>
       </div>
       ${t.note?`<div class="note">· ${esc(t.note)}</div>`:''}
     </div></div>`;

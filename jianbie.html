@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>鉴别题专项 · 349 有机化学</title>
+<style>
+:root{
+  --bg:#0e1116; --card:#171b22; --card2:#1d222a; --line:#2a3140;
+  --txt:#e6ebf2; --dim:#8b97a8; --acc:#4cc9f0; --org:#ffa940; --ok:#3ddc97; --warn:#ff6b6b;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--txt);
+  font:15px/1.62 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif;
+  padding:0 14px 60px}
+header{padding:22px 2px 10px}
+h1{font-size:21px;margin:0 0 6px;letter-spacing:.5px}
+.sub{color:var(--dim);font-size:12.5px;line-height:1.7}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:6px;overflow-x:auto;
+  padding:10px 0 8px;background:linear-gradient(var(--bg) 72%,rgba(14,17,22,.6));backdrop-filter:blur(6px)}
+nav a{flex:0 0 auto;font-size:12.5px;color:var(--dim);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+nav a:active{color:var(--acc);border-color:var(--acc)}
+h2{font-size:16px;margin:26px 0 10px;padding-left:9px;border-left:3px solid var(--acc)}
+h2 small{display:block;font-size:12px;color:var(--dim);font-weight:400;margin-top:3px;border:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin:9px 0}
+.card h3{margin:0 0 7px;font-size:14.5px;color:var(--org)}
+.card p{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12.5px;background:var(--card2)}
+td:first-child{color:var(--acc);white-space:nowrap}
+.k{color:var(--ok);font-weight:600}
+.neg{color:var(--warn)}
+details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin:8px 0;padding:0 13px}
+details[open]{background:var(--card2)}
+summary{cursor:pointer;padding:12px 0;font-size:14px;list-style:none;display:flex;gap:9px}
+summary::-webkit-details-marker{display:none}
+summary .no{color:var(--org);font-variant-numeric:tabular-nums;flex:0 0 26px}
+summary .ti{flex:1}
+.ans{padding:2px 0 13px;font-size:14px;border-top:1px dashed var(--line);margin-top:-2px}
+.ans ol{margin:8px 0 0;padding-left:20px}
+.ans li{margin:5px 0}
+.ans b{color:var(--acc);font-weight:600}
+.note{background:rgba(76,201,240,.07);border:1px solid rgba(76,201,240,.28);
+  border-radius:10px;padding:11px 13px;font-size:13px;color:#bcd6e2;margin:10px 0}
+.warnbox{background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.3);
+  border-radius:10px;padding:11px 13px;font-size:13px;color:#f2c2c2;margin:10px 0}
+ol.plan{margin:6px 0 0;padding-left:20px;font-size:14px}
+ol.plan li{margin:6px 0}
+.chk{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border:1px solid var(--line);
+  border-radius:9px;margin:6px 0;font-size:13.5px;background:var(--card)}
+.chk input{margin-top:3px;accent-color:var(--acc);flex:0 0 auto}
+.chk.on{opacity:.45;text-decoration:line-through}
+footer{margin-top:34px;color:var(--dim);font-size:12px;text-align:center;line-height:1.9}
+code{background:#0b0e13;border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>鉴别题专项 · 速记模板 + 真题原型</h1>
+  <div class="sub">
+    349 药学综合 · 三科通用手法（有机为主）<br>
+    依《复习方向诊断》P1：2021–2026 真题里四道鉴别题，三套资源全部覆盖不到 —— 这块只能靠模板。
+  </div>
+</header>
+
+<nav>
+  <a href="#how">怎么用 40min</a>
+  <a href="#tab">试剂速记表</a>
+  <a href="#q">真题原型 10 题</a>
+  <a href="#trap">易错与陷阱</a>
+  <a href="#scene">考场答题格式</a>
+  <a href="#chk">自测清单</a>
+</nav>
+
+<h2 id="how">一、这 40 分钟怎么花<small>目标不是「会做」，是「看到题目 10 秒内报出第一个试剂」</small></h2>
+<div class="card">
+<ol class="plan">
+  <li><b>0–12min</b>：过一遍下面的「试剂速记表」，只记 <span class="k">左列（被检物）→ 试剂 → 现象</span> 三件套。</li>
+  <li><b>12–30min</b>：10 道真题原型，先自己口述第一试剂，再展开答案对。对不上就回表格找那一行。</li>
+  <li><b>30–40min</b>：把「易错与陷阱」看一遍，然后在纸上默写 5 条最常用的：Lucas / Hinsberg / 溴水 / FeCl₃ / NaHCO₃。</li>
+</ol>
+<div class="note">判断标准：随便报一组物质（如「苯酚、苯乙酮、苯甲酸」），你能立刻说出「先 NaHCO₃ 挑酸 → FeCl₃ 挑酚 → 剩下的酮」。答不出就再刷一轮表格。</div>
+</div>
+
+<h2 id="tab">二、试剂速记表<small>按「被检物」查，不按试剂查</small></h2>
+
+<table>
+<tr><th>被检物</th><th>试剂 / 条件</th><th>现象与结论</th></tr>
+<tr><td>末端炔烃</td><td>硝酸银氨溶液</td><td><span class="k">白色</span>炔化银 ↓；氯化亚铜氨给<span class="neg">砖红色</span>炔化亚铜 ↓</td></tr>
+<tr><td>烯 / 炔</td><td>Br₂/CCl₄（室温避光）</td><td>红棕色褪去；KMnO₄ 紫红褪去（两者都只能证明不饱和，不能分烯/炔）</td></tr>
+<tr><td>卤代烃活性</td><td>AgNO₃ / 乙醇</td><td>苄基、烯丙基、叔卤代烷 <span class="k">室温立即</span>白色 ↓；仲卤代烷温热后 ↓；伯卤代烷很慢；<span class="neg">乙烯型、芳卤不反应</span></td></tr>
+<tr><td>卤素种类</td><td>同上，看沉淀颜色</td><td>AgCl 白 / AgBr 淡黄 / AgI 黄</td></tr>
+<tr><td>醇（伯仲叔）</td><td>Lucas 试剂（无水 ZnCl₂ + 浓 HCl）</td><td>叔醇<span class="k">立即</span>浑浊分层；仲醇 5–10 min 浑浊；伯醇室温无变化（需加热）</td></tr>
+<tr><td>酚</td><td>FeCl₃ 水溶液</td><td>紫 / 蓝紫 / 墨绿显色（烯醇式结构才有）</td></tr>
+<tr><td>酚（辅助）</td><td>饱和溴水</td><td>白色 ↓（2,4,6-三溴苯酚）</td></tr>
+<tr><td>醛 vs 酮</td><td>Tollens（银氨）</td><td>醛 <span class="k">银镜</span>；酮不反应</td></tr>
+<tr><td>脂肪醛</td><td>Fehling 试剂</td><td>砖红色 Cu₂O ↓（芳香醛、酮不反应）</td></tr>
+<tr><td>羰基（通检）</td><td>2,4-二硝基苯肼</td><td>橙黄 / 红色 ↓（醛酮都沉，只证明「有羰基」）</td></tr>
+<tr><td>甲基酮 / 乙醛</td><td>I₂ + NaOH（碘仿反应）</td><td>淡黄色 CHI₃ ↓ + 特殊气味；乙醇、异丙醇等 CH₃CH(OH)- 结构也给阳性</td></tr>
+<tr><td>羧酸</td><td>NaHCO₃ 溶液</td><td>CO₂ 气泡（酚不够酸，不出气泡 —— 这是分酸/酚的关键）</td></tr>
+<tr><td>酯 / 酰胺</td><td>羟肟酸铁（NH₂OH·HCl + FeCl₃）</td><td>紫红 / 深红色</td></tr>
+<tr><td>葡萄糖 vs 果糖</td><td>溴水（室温）</td><td>葡萄糖<span class="k">褪色</span>（醛基被氧化成羧酸）；果糖<span class="neg">不褪</span></td></tr>
+<tr><td>还原糖</td><td>Fehling / Benedict</td><td>砖红色 Cu₂O ↓（葡萄糖、果糖、麦芽糖、乳糖阳性；蔗糖阴性）</td></tr>
+<tr><td>酮糖</td><td>Seliwanoff（间苯二酚-HCl）</td><td>酮糖快速显红；醛糖显色慢或不显</td></tr>
+<tr><td>所有糖</td><td>Molisch（α-萘酚 + 浓 H₂SO₄）</td><td>界面紫色环（糖类通检，不区分）</td></tr>
+<tr><td>淀粉 / 纤维素</td><td>碘液</td><td>淀粉深蓝；纤维素不显色</td></tr>
+<tr><td>伯仲叔胺</td><td>Hinsberg（苯磺酰氯 + 过量 NaOH）</td><td>伯胺：N-取代磺酰胺有 N-H，<span class="k">溶于碱 → 澄清</span>；仲胺：无 N-H，<span class="neg">不溶 → 沉淀/油状</span>；叔胺不反应</td></tr>
+<tr><td>胺（辅助）</td><td>NaNO₂ + HCl（0–5 ℃）</td><td>脂肪伯胺放 N₂；脂肪仲胺黄色 N-亚硝胺油状；脂肪叔胺无反应。芳香伯胺 → 重氮盐，加 β-萘酚<span class="k">偶联出红色</span></td></tr>
+<tr><td>氨基酸</td><td>茚三酮</td><td>蓝紫色（脯氨酸显黄）</td></tr>
+<tr><td>蛋白质 / 肽</td><td>双缩脲</td><td>紫红色（≥2 个肽键）</td></tr>
+<tr><td>甾体</td><td>Liebermann-Burchard（醋酐-浓 H₂SO₄）</td><td>红紫 → 蓝绿（甾体母核显色反应）</td></tr>
+<tr><td>萜类不饱和</td><td>Br₂/CCl₄</td><td>褪色（含双键的萜烯）；再数异戊二烯单元定单萜（2）/倍半萜（3）/二萜（4）/三萜（6）/四萜（8）</td></tr>
+</table>
+
+<h2 id="q">三、真题原型 10 题<small>2021–2026 真题原题，先自己说顺序，再展开</small></h2>
+
+<details>
+<summary><span class="no">01</span><span class="ti">氯苯、苄基氯、2-氯乙苯（2026 综合·鉴别）</span></summary>
+<div class="ans"><ol>
+<li>加 <b>AgNO₃ 乙醇溶液</b>：苄基氯是苄卤，<b>室温立即</b>生成白色 AgCl ↓；氯苯与 2-氯乙苯不沉淀。</li>
+<li>剩下两者加 <b>酸性 KMnO₄ 加热</b>：2-氯乙苯有乙基侧链（苄位有 H）被氧化，紫色褪去；氯苯无侧链，不褪色。</li>
+<li>也可纯用活性序：苄基氯 &gt; 2-氯乙苯 &gt; 氯苯，靠 AgNO₃ 沉淀快慢三步分开。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">02</span><span class="ti">卤代烷的鉴别（2022）</span></summary>
+<div class="ans"><ol>
+<li><b>AgNO₃-乙醇法</b>：烯丙型、苄基型、叔卤代烷室温迅速沉淀；仲卤代烷加热后沉淀；伯卤代烷更慢；乙烯型、芳基型不反应。</li>
+<li>按 AgX 颜色分卤素：白 AgCl / 淡黄 AgBr / 黄 AgI。</li>
+<li>辅助：NaI-丙酮法看沉淀速度（SN2 口径下 1° 最快），与 AgNO₃（SN1 口径 3° 最快）互为印证。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">03</span><span class="ti">伯、仲、叔醇（2023）</span></summary>
+<div class="ans"><ol>
+<li><b>Lucas 试剂</b>（无水 ZnCl₂ + 浓 HCl）：叔醇<b>立即</b>浑浊分层；仲醇 5–10 min 浑浊；伯醇室温无变化。</li>
+<li>辅助：酸性 K₂Cr₂O₇ 橙红变绿说明可被氧化（伯、仲醇），叔醇一般不变 —— 但单靠氧化法分不开伯仲，仍以 Lucas 为主。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">04</span><span class="ti">伯、仲、叔胺（2023 / 2021）</span></summary>
+<div class="ans"><ol>
+<li><b>Hinsberg 反应</b>（苯磺酰氯 + 过量 NaOH）：伯胺生成的 N-取代苯磺酰胺 N 上还有 H，显酸性<b>溶于碱，溶液澄清</b>；仲胺产物 N 上无 H，<b>不溶于碱，析出沉淀或油状物</b>；叔胺不反应。</li>
+<li>辅助 <b>亚硝酸法</b>：脂肪伯胺放 N₂；脂肪仲胺给黄色 N-亚硝胺油状物；脂肪叔胺无反应。芳香伯胺低温成重氮盐，加 β-萘酚偶联显红。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">05</span><span class="ti">苯甲酸、苯乙醇、苯乙酮（2023）</span></summary>
+<div class="ans"><ol>
+<li>加 <b>NaHCO₃</b>：冒 CO₂ 气泡并溶解的是苯甲酸；另两者无反应。</li>
+<li>剩下两者加 <b>碘仿试剂（I₂/NaOH）</b>：生成黄色 CHI₃ ↓ 的是苯乙酮（甲基酮）；无沉淀是苯乙醇。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">06</span><span class="ti">苯酚、醛、酮、羧酸（2022）</span></summary>
+<div class="ans"><ol>
+<li><b>NaHCO₃</b>：出 CO₂ 的是羧酸。</li>
+<li><b>FeCl₃</b>：显紫/蓝紫/绿色的是苯酚。</li>
+<li><b>Tollens 或 Fehling</b>：银镜或砖红色沉淀的是醛，剩下是酮。</li>
+<li>分不清羰基时先用 2,4-DNP 确认「有羰基」，再按上面分醛酮。顺序：酸 → 酚 → 醛 → 酮。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">07</span><span class="ti">葡萄糖、果糖、蔗糖（2021）</span></summary>
+<div class="ans"><ol>
+<li><b>Fehling / Benedict 加热</b>：砖红色 Cu₂O 的是还原糖（葡萄糖、果糖）；不反应的是蔗糖。</li>
+<li>对葡萄糖与果糖加 <b>溴水（室温）</b>：褪色的是醛糖（葡萄糖，醛基被氧化成羧酸），不褪的是酮糖（果糖）。</li>
+<li>辅证 <b>Seliwanoff</b>：果糖显红快、葡萄糖慢。</li>
+</ol></div>
+</details>
+
+<details>
+<summary><span class="no">08</span><span class="ti">鉴别葡萄糖与果糖（2023 填空，答案要写具体试剂）</span></summary>
+<div class="ans"><p>填 <b>溴水</b>。现象：葡萄糖使溴水褪色（醛糖被氧化成葡萄糖酸），果糖不褪色（酮糖不被溴水氧化）。</p>
+<p>别只写「Fehling」—— Fehling 对两者都给阳性，分不开。</p></div>
+</details>
+
+<details>
+<summary><span class="no">09</span><span class="ti">末端炔烃的鉴别（2022 单选）</span></summary>
+<div class="ans"><p>选 <b>硝酸银氨溶液</b>：炔氢弱酸性，生成<b>白色</b>炔化银 ↓。溴水、KMnO₄ 只能证明不饱和；氯化亚铜氨给的是<b>砖红色</b>炔化亚铜，不是白色；FeCl₃ 无此反应。</p></div>
+</details>
+
+<details>
+<summary><span class="no">10</span><span class="ti">结构推断通用套路（配 2021 真题的推断题形态）</span></summary>
+<div class="ans"><ol>
+<li><b>算不饱和度</b>：Ω = (2C + 2 + N − H − X) / 2。Ω≥4 先想苯环；Ω=1 想羰基或一个环/双键。</li>
+<li><b>定性反应锁官能团</b>：NaHCO₃→羧酸；FeCl₃→酚；Tollens→醛；碘仿→甲基酮；Br₂→不饱和；FeCl₃ 阴性但溶于 NaOH→可能是酚酯/内酯水解后显色。</li>
+<li><b>拼装 + 回验</b>：把碎片按「取代基位置/对称性」拼，再用 IR（3300 炔、1700 羰基、1600 芳环）与 ¹H-NMR（峰数=氢的环境数、积分=氢数、裂分=n+1）验一遍。</li>
+<li>答题写「结构 + 每条证据对应哪个反应」，不要只写结构式。</li>
+</ol></div>
+</details>
+
+<h2 id="trap">四、易错与陷阱<small>这些地方最容易掉分</small></h2>
+
+<div class="warnbox">
+<b>1. Fehling 分不开醛糖/酮糖。</b>果糖是酮糖但属还原糖，Fehling/Tollens 都给阳性。要分醛糖和酮糖只能用<b>溴水</b>或 Seliwanoff。<br><br>
+<b>2. NaHCO₃ 是「酸 vs 酚」的分水岭。</b>苯酚酸性太弱，不与 NaHCO₃ 出 CO₂；只能溶 NaOH 并用 FeCl₃ 显色。<br><br>
+<b>3. AgNO₃ 法的活性顺序是 SN1 口径。</b>写「苄基/烯丙基/叔 → 室温立即；仲 → 温热；伯 → 很慢；乙烯型/芳卤 → 不反应」最稳。NaI-丙酮是 SN2 口径（1° 最快），两者别混着写。<br><br>
+<b>4. 2,4-DNP 只证明有羰基。</b>醛、酮都沉淀，不能用来分醛酮，分醛酮必须 Tollens/Fehling。<br><br>
+<b>5. Hinsberg 里「溶不溶」要说清对象。</b>伯胺产物溶于<b>过量 NaOH</b>（N-H 显酸性）；仲胺产物不溶于碱；叔胺压根不反应。<br><br>
+<b>6. 别漏「顺序」。</b>鉴别题给分点一半在步骤：先加什么、看什么现象、剩下两者再加什么。只写试剂不写现象照样扣分。
+</div>
+
+<h2 id="scene">五、考场答题格式<small>照这个模板写，阅卷老师一眼能扫到</small></h2>
+<div class="card">
+<p><b>取少量样品，分别加入 ___ ，观察：</b></p>
+<p>① 产生 ___ 现象者为 ___；② 无此现象者再分别加入 ___ ，产生 ___ 者为 ___；③ 余者为 ___。</p>
+<p class="sub" style="color:var(--dim);font-size:13px">三件套：<span class="k">试剂 + 现象 + 结论</span>，一步一个分号，三步之内解决。写「加热/室温/0–5 ℃」这些条件是加分的。</p>
+</div>
+
+<h2 id="chk">六、自测清单<small>全勾上就算这一关过了（本地记状态）</small></h2>
+<div id="chks"></div>
+
+<footer>
+  349 药学综合 · 鉴别题专项｜内容取自 2021–2026 真题 + 教材通用显色反应<br>
+  配套视频：期末速成专项卷-4（鉴别题）22min｜排期：11/02 有机 Z1
+</footer>
+
+<script>
+const items = [
+  ["报一组物质能 10 秒内说出第一个试剂（例：苯酚/苯乙酮/苯甲酸 → NaHCO₃）", 1],
+  ["默写 Lucas 三级醇现象（立即 / 5–10min / 加热）", 1],
+  ["默写 Hinsberg 三种胺现象（溶碱 / 不溶 / 不反应）", 1],
+  ["说清溴水为什么能分葡萄糖和果糖（醛糖被氧化）", 1],
+  ["说清 NaHCO₃ 为什么分不开苯酚和羧酸（酸性强弱）", 1],
+  ["写出不饱和度公式并解释 Ω=4 先想什么", 1],
+  ["AgNO₃ 法四级活性顺序 + AgX 三种颜色", 1],
+  ["能背出 6 条陷阱里的任意 4 条", 1]
+];
+const KEY = "jb349.v1";
+let st = {};
+try { st = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) { st = {}; }
+const wrap = document.getElementById("chks");
+items.forEach(([t], i) => {
+  const d = document.createElement("label");
+  d.className = "chk" + (st[i] ? " on" : "");
+  d.innerHTML = `<input type="checkbox" ${st[i] ? "checked" : ""}><span>${t}</span>`;
+  d.querySelector("input").addEventListener("change", e => {
+    st[i] = e.target.checked ? 1 : 0;
+    d.classList.toggle("on", e.target.checked);
+    try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(err) {}
+  });
+  wrap.appendChild(d);
+});
+</script>
+</body>
+</html>
