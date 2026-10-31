@@ -1,0 +1,14 @@
+name: 新东方直开测试
+desc: 302 跳自定义 scheme，只测 koolearn 这一段
+author: xiaoman
+homepage: https://1123user.github.io/349-checkin/
+date: 2026-10-31
+version: '1.0.2'
+http:
+  rewrite:
+    - ^http://1123user\.github\.io/349-checkin/g/koolearn/Day01$ koolearn://Day01 302
+    - ^http://1123user\.github\.io/349-checkin/g/koolearniphone/Day01$ koolearniphone://Day01 302
+    - ^http://1123user\.github\.io/349-checkin/g/xdf/Day01$ xdf://Day01 302
+    - ^http://1123user\.github\.io/349-checkin/g/xdfonline/Day01$ xdfonline://Day01 302
+    - ^http://1123user\.github\.io/349-checkin/g/neworiental/Day01$ neworiental://Day01 302
+    - ^http://1123user\.github\.io/349-checkin/g/koolearnapp/Day01$ koolearnapp://Day01 302
