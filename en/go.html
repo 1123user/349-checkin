@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>哪个链接能打开「新东方在线」</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;padding:26px 20px 40px;background:#0b0b0d;color:#f2f2f5;
+ font:16px/1.6 -apple-system,"PingFang SC",sans-serif;max-width:520px;margin:0 auto}
+h1{font-size:20px;margin:0 0 8px}
+p.lead{margin:0 0 20px;color:#9a9aa2;font-size:14px}
+a.b{display:block;text-decoration:none;text-align:center;padding:16px;border-radius:14px;
+ background:#1b1b1f;color:#f2f2f5;border:1px solid #2b2b31;margin-bottom:10px;font-weight:600}
+a.b:active{background:#26262c}
+a.b small{display:block;font-weight:400;color:#7b7b84;font-size:12px;margin-top:3px}
+a.c{display:block;text-align:center;text-decoration:none;padding:14px;border-radius:14px;
+ background:#ffd60a;color:#111;font-weight:700;margin-top:22px}
+.note{margin-top:24px;padding:14px;border-radius:12px;background:#141417;border:1px solid #24242a;
+ color:#8d8d96;font-size:13px;line-height:1.65}
+b{color:#c9c9d1}
+</style>
+</head>
+<body>
+<h1>哪个能打开「新东方在线」？</h1>
+<p class="lead">先导入 Stash 覆写、代理处于开启状态，再逐个点。<br>能跳进 App 的那一个，就是它真正的 scheme。</p>
+
+<a class="b" href="http://1123user.github.io/349-checkin/g/koolearn/Day01">koolearn://Day01<small>之前一直在用的写法</small></a>
+<a class="b" href="http://1123user.github.io/349-checkin/g/koolearniphone/Day01">koolearniphone://Day01<small>老版 iOS 客户端常见写法</small></a>
+<a class="b" href="http://1123user.github.io/349-checkin/g/xdf/Day01">xdf://Day01<small>新东方集团通用前缀</small></a>
+<a class="b" href="http://1123user.github.io/349-checkin/g/xdfonline/Day01">xdfonline://Day01<small>新东方在线</small></a>
+<a class="b" href="http://1123user.github.io/349-checkin/g/neworiental/Day01">neworiental://Day01<small>拼音式命名</small></a>
+<a class="b" href="http://1123user.github.io/349-checkin/g/koolearnapp/Day01">koolearnapp://Day01<small>带 app 后缀</small></a>
+
+<a class="c" href="https://study.koolearn.com/my">对照：打开网页版（不用代理也该能开）</a>
+
+<div class="note">
+<b>怎么看结果</b><br>
+· 点某个 -> 跳进 App：记下它是哪个，告诉我，我把播放按钮接上去。<br>
+· 全都停在原地、页面闪一下没反应：代理没生效（覆写没导入 / Stash 没开 / 该请求没走代理）。<br>
+· 弹出「Safari 打不开页面，因为网址无效」：说明 302 到自定义 scheme 被系统拦了，这条路走不通，改用快捷指令。<br>
+· 对照那个黄色按钮能打开网页：证明网络本身没问题，问题只在 scheme 这一段。
+</div>
+</body>
+</html>
