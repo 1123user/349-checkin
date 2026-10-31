@@ -378,10 +378,28 @@ document.getElementById('imp').onchange=e=>{
 };
 document.getElementById('rst').onclick=()=>{if(confirm('清空打卡记录？建议先导出。')){S={done:{}};save();render();}};
 
-fetch('plan3.json').then(r=>r.json()).then(j=>{P=j;render();}).catch(()=>{
-  document.getElementById('view').innerHTML=
-    '<div class="card"><div class="empty">plan3.json 未加载：请用文件夹里的「启动打卡小组件.command」打开，或确认网页已完整上传。</div></div>';
-});
+/* 排期加载（2026-10-31 加固）：本地缓存先渲染 → 网络刷新 → jsDelivr 备用
+   以前单源 fetch + 弱网 8s 超时就白屏，现在只要拿到过一次就永远有内容可显示 */
+(function loadPlanWeb(){
+  const KEY='t349_plan';
+  const SRC=['plan3.json','https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/plan3.json'];
+  const apply=j=>{
+    if(!j||!j.days||!j.days.length)return false;
+    P=j;
+    try{localStorage.setItem(KEY,JSON.stringify(j))}catch(_){}
+    render();return true;
+  };
+  try{const c=localStorage.getItem(KEY);if(c)apply(JSON.parse(c));}catch(_){}
+  (async()=>{
+    for(const u of SRC){
+      try{const r=await fetch(u,{cache:'no-cache'});if(apply(await r.json()))return;}catch(_){}
+    }
+    if(P&&P.days&&P.days.length)return;   /* 有缓存就静默，不打断阅读 */
+    document.getElementById('view').innerHTML=
+      '<div class="card"><div class="empty">排期还没加载成功：确认手机有网后下拉刷新一次；'+
+      '仍不行就在 Mac 上用文件夹里的「启动打卡小组件.command」打开。</div></div>';
+  })();
+})();
 
 /* iPhone 首次访问：引导加到主屏幕 */
 (function(){

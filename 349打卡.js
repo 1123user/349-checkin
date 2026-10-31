@@ -80,22 +80,36 @@
     fm.writeString(F_PROG, JSON.stringify(p))
     return true
   }
+  /* patch-robust-20261031 双源 + 超时放宽 + 手机本地兜底 */
+  function planOk(o) { return !!(o && o.days && o.days.length) }
   async function loadPlan() {
     let cached = null
     try {
       if (fm.fileExists(F_PLAN)) { await ready(F_PLAN); cached = JSON.parse(fm.readString(F_PLAN)) }
     } catch (e) {}
+    if (planOk(cached)) return cached
+    const fml = FileManager.local()
+    const dirL = fml.joinPath(fml.documentsDirectory(), "349打卡")
+    const pL = fml.joinPath(dirL, "plan3.json")
     try {
-      const r = new Request(BASE + "plan3.json")
-      r.timeoutInterval = 8
-      const fresh = await r.loadJSON()
-      if (fresh && fresh.days && fresh.days.length) {
-        ensureDir()
-        fm.writeString(F_PLAN, JSON.stringify(fresh))
-        return fresh
-      }
+      if (fml.fileExists(pL)) { const o = JSON.parse(fml.readString(pL)); if (planOk(o)) return o }
     } catch (e) {}
-    if (cached) return cached
+    const SRC = [BASE + "plan3.json", "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/plan3.json"]
+    for (const u of SRC) {
+      try {
+        const r = new Request(u)
+        r.timeoutInterval = 15
+        const fresh = await r.loadJSON()
+        if (planOk(fresh)) {
+          try { ensureDir(); fm.writeString(F_PLAN, JSON.stringify(fresh)) } catch (e) {}
+          try {
+            if (!fml.fileExists(dirL)) fml.createDirectory(dirL, true)
+            fml.writeString(pL, JSON.stringify(fresh))
+          } catch (e) {}
+          return fresh
+        }
+      } catch (e) {}
+    }
     return null
   }
   
