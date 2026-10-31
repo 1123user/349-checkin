@@ -1,15 +1,19 @@
 name: '新东方 App 直开（小满）'
 desc: |-
-  把 http 请求在本地改写成 302，跳到「新东方在线」的自定义 scheme，
+  在本地返回 302，让 Safari 自己跳到「新东方在线」的自定义 scheme，
   绕开 iOS 对「进程主动 openURL」和「WebView 里点 scheme」的拦截。
-  只改写 1123user.github.io/349-checkin/g/ 这一段，其它流量不动。
-  不需要 MitM 证书：走的是明文 http 请求。
+  只匹配 1123user.github.io/349-checkin/g/ 这一段，其它流量一律不动。
+  明文 http 请求，不需要 MitM 证书。
 author: 小满
 homepage: 'https://1123user.github.io/349-checkin/'
 date: '2026-10-31'
-version: '1.0.0'
+version: '1.0.1'
 
 http:
   url-rewrite:
-    # /g/<scheme>/<内容>  →  <scheme>://<内容>
-    - '^http:\/\/1123user\.github\.io\/349-checkin\/g\/([a-z0-9]+)\/(.*)$ $1://$2 302'
+    - '^http://1123user\.github\.io/349-checkin/g/koolearn/Day01$ koolearn://Day01 302'
+    - '^http://1123user\.github\.io/349-checkin/g/koolearniphone/Day01$ koolearniphone://Day01 302'
+    - '^http://1123user\.github\.io/349-checkin/g/xdf/Day01$ xdf://Day01 302'
+    - '^http://1123user\.github\.io/349-checkin/g/xdfonline/Day01$ xdfonline://Day01 302'
+    - '^http://1123user\.github\.io/349-checkin/g/neworiental/Day01$ neworiental://Day01 302'
+    - '^http://1123user\.github\.io/349-checkin/g/koolearnapp/Day01$ koolearnapp://Day01 302'
