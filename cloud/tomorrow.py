@@ -19,6 +19,7 @@
 import datetime
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -36,6 +37,100 @@ OUT = os.path.join(ROOT, "tomorrow.json")
 CST = datetime.timezone(datetime.timedelta(hours=8))
 YEST_W = 1.6          # 昨天的作答加权：昨天刚错的，今天最该补
 TOTAL_QUOTA = 65      # 一天的刷题总量（三科合计）
+KB = os.path.join(ROOT, "kb.json")   # 知识点（cloud/build_kb.py 从 ai-tutor 语料抽出）
+# kb.json 里学科是全称（analytical/organic），题库这边用短名（ana/org）
+ALIAS = {"analytical": "ana", "organic": "org", "pharm": "pharm"}
+KB_MAP = os.path.join(ROOT, "data", "kb_sysmap.json")   # 系统名 -> 关联词
+
+
+def _bg(s):
+    s = re.sub(r"[\s\u00b7\uff08\uff09()\u3001\uff0c,/\u3010\u3011]", "", s or "")
+    return {s[i:i + 2] for i in range(len(s) - 1)}
+
+
+def _load_kb():
+    try:
+        with open(KB, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"points": [], "cards": []}
+
+
+def _load_kwmap():
+    try:
+        with open(KB_MAP, encoding="utf-8") as f:
+            d = json.load(f)
+        d.pop("_note", None)
+        return d
+    except Exception:
+        return {}
+
+
+_KB = _load_kb()
+_KWMAP = _load_kwmap()
+
+
+def sys_kw(sub, sysname):
+    """系统名 -> 关联词（data/kb_sysmap.json，人工维护，解决字面对不上的问题）"""
+    m = _KWMAP.get(sub) or {}
+    if not m:                                  # 表里用的是全称（organic/analytical）
+        rev = {v: k for k, v in ALIAS.items()}
+        m = _KWMAP.get(rev.get(sub, sub)) or {}
+    return [k for k in (m.get(sysname) or []) if len(k) >= 2]
+
+
+def kb_match(sub, sysname):
+    """系统名 -> 最相关的考点（关联词命中为主，字面相似兜底）"""
+    kws = sys_kw(sub, sysname)
+    a = _bg(sysname)
+    best, bs = None, 0.0
+    for p in _KB.get("points") or []:
+        if ALIAS.get(p.get("sub"), p.get("sub")) != sub:   # 知识库用全称，题库用短名
+            continue
+        text = (p.get("name") or "") + " " + " ".join(p.get("tips") or [])
+        sc = 0.0
+        if kws:
+            sc = sum(1 for k in kws if k in text) / float(len(kws))
+        b = _bg(p.get("name"))
+        if a and b:                                        # 字面相似兜底
+            sc = max(sc, len(a & b) / float(len(a)))
+        for k in p.get("kw") or []:
+            if len(k) >= 2 and (k in (sysname or "") or (sysname or "") in k):
+                sc = max(sc, 0.62)
+        if sc > bs:
+            best, bs = p, sc
+    if not best or bs < 0.34:
+        return None
+    # 考点下有好几条要点，挑和这个系统最相关的那两条（不是无脑取前两条）
+    kws2 = kws or [k for k in (best.get("kw") or []) if len(k) >= 2]
+    scored = []
+    for t in best.get("tips") or []:
+        tb = _bg(t)
+        sc = len(a & tb) / float(len(a)) if a else 0.0
+        sc += 0.8 * sum(1 for k in kws2 if k in t)         # 命中关联词的排前面
+        scored.append((sc, t))
+    scored.sort(key=lambda x: -x[0])
+    out = dict(best)
+    # 只有确实沾边的要点才留（宁缺毋滥，别拿芳烃取代去凑「碳负离子」）
+    keep = [t for sc, t in scored if sc >= 0.3]
+    out["tips"] = keep[:2]
+    return out
+
+
+def card_match(sub, sysname):
+    """系统名 -> 最相关的一条知识卡（card 是问答形态，比考点串讲更具体）"""
+    kws = sys_kw(sub, sysname)
+    if not kws:
+        return None
+    best, bs = None, 0
+    for c in _KB.get("cards") or []:
+        if ALIAS.get(c.get("sub"), c.get("sub")) != sub:
+            continue
+        text = (c.get("q") or "") + " " + (c.get("a") or "")
+        hit = sum(1 for k in kws if k in text)
+        if hit > bs:
+            best, bs = c, hit
+    return best if best and bs >= 1 else None
 
 
 def day_range(d):
@@ -224,6 +319,14 @@ def main():
     for v in rec[:2]:
         acts.append("看《%s》%d 分钟" % (v["title"][:16], v["min"]))
 
+    # 每条重点配 2 条知识要点（来自 ai-tutor 药学助教的考点串讲）
+    for r in focus:
+        hit = kb_match(r["sub"], r["sys"])
+        r["kb_name"] = hit["name"] if hit else ""
+        r["tips"] = (hit["tips"] or [])[:2] if hit else []
+        c = card_match(r["sub"], r["sys"])
+        r["card"] = {"q": c.get("q", ""), "a": c.get("a", "")} if c else None
+
     doc = {
         "for_date": tomorrow.isoformat(),
         "built": now.strftime("%Y-%m-%d %H:%M:%S"),
@@ -239,7 +342,8 @@ def main():
                    "mastery": round(r["mastery"], 3), "acc": round(r["acc"], 3),
                    "n": r["n"], "yn": r["yn"], "yok": r["yok"],
                    "why": ("昨天 %d 题对 %d" % (r["yn"], r["yok"])) if r["yn"]
-                          else ("掌握 %d%%" % round(r["mastery"] * 100))} for r in focus],
+                          else ("掌握 %d%%" % round(r["mastery"] * 100)),
+                   "kb_name": r["kb_name"], "tips": r["tips"], "card": r["card"]} for r in focus],
         "coach": {"text": "明天的重点", "detail": detail, "acts": acts},
         "rec": rec,
         "note": "主线来自复习计划（不动），重点/配额按前一天的作答算出来；"
