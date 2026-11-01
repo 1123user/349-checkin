@@ -1,0 +1,42 @@
+name: daily-rec
+
+# 每天算一次「接下来看什么」，结果提交到仓库 → 小满从 Pages 直接拉。
+# 关键点：跑在 GitHub 的机器上，家里的 Mac 关不关机都不影响。
+on:
+  schedule:
+    # 21:30 北京时间 = 13:30 UTC：晚上算好，第二天一睁眼就有
+    - cron: '30 13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉云端作答（私有仓库）
+        env:
+          ER_TOKEN: ${{ secrets.ER_TOKEN }}
+        run: python3 cloud/fetch_progress.py
+
+      - name: 算推荐
+        run: python3 cloud/recommend.py
+
+      - name: 提交 rec.json
+        run: |
+          git config user.name "er-rec-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add rec.json data/rec_hist.json
+          if git diff --cached --quiet; then
+            echo "没有变化，跳过提交"
+          else
+            git commit -m "rec: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
