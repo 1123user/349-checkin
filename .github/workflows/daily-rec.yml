@@ -146,19 +146,30 @@ jobs:
           except Exception:
               pass
 
+          # 网页上也留一条「验证信息」：点进这次运行就能看到结论，不用翻日志
+          def summary(line):
+              p = os.environ.get('GITHUB_STEP_SUMMARY')
+              if p:
+                  with open(p, 'a', encoding='utf-8') as f:
+                      f.write(line + '\n')
+
           outf = open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8')
           if bad:
               msg = '；'.join(bad)
               if stale:
                   outf.write('ok=false\n')
+                  summary('- ❌ 本轮没算出产物，且线上那份也已过期：%s' % msg)
                   print('::error::本轮没算出产物，且线上那份也已过期（%s）：%s' % (msg, '需要人看'))
                   raise SystemExit(1)
               print('::warning::本轮没有算出可用产物（%s），保留线上旧版，不算失败' % msg)
+              summary('- ⚠️ 本轮没算出可用产物（%s），已保留线上旧版' % msg)
               outf.write('ok=false\n')
           else:
               tot = sum(int(v.get('quota') or 0) for v in (t.get('focus') or []))
               print('校验通过：tomorrow.json for_date=%s，%d 个系统 · 约 %d 节；rec.json %d 条'
                     % (want, len(t['focus']), tot, len(r.get('items') or [])))
+              summary('- ✅ 校验通过：for_date=%s，%d 个系统 · 约 %d 节；推荐 %d 条'
+                      % (want, len(t['focus']), tot, len(r.get('items') or [])))
               outf.write('ok=true\n')
           PY
 
