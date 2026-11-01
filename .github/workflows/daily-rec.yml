@@ -173,8 +173,10 @@ jobs:
               outf.write('ok=true\n')
           PY
 
+      # push 触发只用来「验证新代码算不算得出来」，不提交 —— 真正上线交给每晚定时，
+      # 免得改一行代码就多一个 bot commit、多一轮 Pages 构建（那也是 cancelled 一堆的来源）
       - name: 提交 rec.json
-        if: steps.skip.outputs.skip != 'true' && steps.verify.outputs.ok == 'true'
+        if: steps.skip.outputs.skip != 'true' && steps.verify.outputs.ok == 'true' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
         run: |
           git config user.name "er-rec-bot"
           git config user.email "bot@users.noreply.github.com"
