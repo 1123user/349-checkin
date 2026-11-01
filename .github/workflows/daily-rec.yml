@@ -26,14 +26,17 @@ jobs:
           ER_TOKEN: ${{ secrets.ER_TOKEN }}
         run: python3 cloud/fetch_progress.py
 
-      - name: 算推荐
+      - name: 算明天日程（主线 + 重点 + 看什么）
+        run: python3 cloud/tomorrow.py
+
+      - name: 算推荐清单（兼容旧的 rec.json 消费方）
         run: python3 cloud/recommend.py
 
       - name: 提交 rec.json
         run: |
           git config user.name "er-rec-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add rec.json data/rec_hist.json
+          git add rec.json tomorrow.json data/rec_hist.json
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
           else
