@@ -2,20 +2,29 @@ name: daily-rec
 
 # 每天算一次「接下来看什么」，结果提交到仓库 → 小满从 Pages 直接拉。
 # 关键点：跑在 GitHub 的机器上，家里的 Mac 关不关机都不影响。
+#
+# 2026-11-01 调整（少打扰）：以前任何 push 都可能触发，且每一步失败都算 job 失败，
+# 于是 GitHub 经常往邮箱里塞「workflow run failed」。现在：
+#   ① 只有 cloud/、data/、plan3.json 或本文件变了才重算（改前端、改文档不触发）
+#   ② 网络类步骤（拉云端作答）失败只是 warning，用上一轮数据继续算
+#   ③ 「这一轮没算出产物」不算失败：保留线上旧版、安静跳过，不给你发信；
+#      只有「线上那份也已经过期」才真的报错 —— 那时候才是需要你管
+#   ④ 23:00 兜底那次：6 小时内刚算过就直接跳过，不白跑一遍
 on:
   schedule:
     # 21:30 北京时间 = 13:30 UTC：晚上算好，第二天一睁眼就有
     - cron: '30 13 * * *'
-    # 兜底：Actions 偶发失败/限流时，当晚 23:00 再算一遍（幂等，内容不变就不提交）
+    # 兜底：Actions 偶发失败/限流时，当晚 23:00 再算一遍（幂等，算过就跳过）
     - cron: '0 15 * * *'
   workflow_dispatch:
-  # 改完代码推上来就跑一次（不碰结果文件，避免自己触发自己）
   push:
     branches: [main]
-    paths-ignore:
-      - 'rec.json'
-      - 'tomorrow.json'
-      - 'data/rec_hist.json'
+    # 只有「算数据的东西」变了才重算；改 README / 改页面不该触发，更不该报失败
+    paths:
+      - 'cloud/**'
+      - 'data/**'
+      - 'plan3.json'
+      - '.github/workflows/daily-rec.yml'
 
 permissions:
   contents: write
@@ -30,32 +39,131 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
+      # 定时兜底那次：6 小时内刚算成功过就跳过（结果完全一样，白跑还可能撞上失败）
+      - name: 刚算过就跳过
+        id: skip
+        run: |
+          python3 - <<'PY'
+          import json, datetime, os
+          tz = datetime.timezone(datetime.timedelta(hours=8))
+          skip = 'false'
+          if os.environ.get('GITHUB_EVENT_NAME') == 'schedule':
+              try:
+                  d = json.load(open('tomorrow.json', encoding='utf-8'))
+                  want = (datetime.datetime.now(tz) + datetime.timedelta(days=1)).date().isoformat()
+                  built = datetime.datetime.strptime(d.get('built') or '', '%Y-%m-%d %H:%M:%S').replace(tzinfo=tz)
+                  age_h = (datetime.datetime.now(tz) - built).total_seconds() / 3600
+                  if d.get('for_date') == want and age_h < 6:
+                      skip = 'true'
+                      print('%s 刚算过（%.1f 小时前），这次跳过' % (d.get('built'), age_h))
+              except Exception as e:
+                  print('跳过判断失败，照常算：%s' % str(e)[:80])
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+              f.write('skip=%s\n' % skip)
+          PY
+
       - name: 拉云端作答（私有仓库）
+        if: steps.skip.outputs.skip != 'true'
+        continue-on-error: true
         env:
           ER_TOKEN: ${{ secrets.ER_TOKEN }}
-        run: python3 cloud/fetch_progress.py
+        run: |
+          for i in 1 2 3; do
+            if python3 cloud/fetch_progress.py; then
+              echo "第 $i 次拉取成功"
+              exit 0
+            fi
+            echo "第 $i 次拉取失败，5 秒后重试"
+            sleep 5
+          done
+          echo "::warning::三次都没拉到云端作答，本次用仓库里上一轮的 snapshot 继续算"
 
       - name: 算明天日程（主线 + 重点 + 看什么）
+        if: steps.skip.outputs.skip != 'true'
+        continue-on-error: true
         run: python3 cloud/tomorrow.py
 
       - name: 算推荐清单（兼容旧的 rec.json 消费方）
+        if: steps.skip.outputs.skip != 'true'
+        continue-on-error: true
         run: python3 cloud/recommend.py
 
       # 今天踩过的坑：带 <<<<<<< 冲突标记的文件被推上了 Pages，手机解析直接炸。
-      # 产物不合法就中止，宁可保留上一次的，也不让坏数据上线。
+      # 产物不合法就「安静地不提交」，宁可保留上一次的，也不让坏数据上线。
+      # 只有连线上那份都已经过期，才真的报错（这时才值得给你发通知）。
       - name: 校验产物
+        if: steps.skip.outputs.skip != 'true'
+        id: verify
         run: |
-          if grep -q '^<<<<<<< ' tomorrow.json rec.json 2>/dev/null; then
-            echo "::error::产物里混进了 git 冲突标记"; exit 1
-          fi
-          python3 -c "import json,datetime;d=json.load(open('tomorrow.json',encoding='utf-8'));want=(datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8)))+datetime.timedelta(days=1)).date().isoformat();assert d.get('for_date')==want,'for_date 不是明天: %r' % d.get('for_date');assert d.get('focus'),'focus 为空';print('校验通过',d['for_date'],len(d['focus']),'科')"
+          python3 - <<'PY'
+          import json, os, subprocess, datetime
+          tz = datetime.timezone(datetime.timedelta(hours=8))
+          now = datetime.datetime.now(tz)
+          want = (now + datetime.timedelta(days=1)).date().isoformat()
+          today = now.date().isoformat()
+
+          def load(p):
+              try:
+                  with open(p, encoding='utf-8') as f:
+                      return json.load(f)
+              except Exception:
+                  return None
+
+          bad = []
+          for f in ('tomorrow.json', 'rec.json'):
+              if not os.path.exists(f):
+                  bad.append('%s 不存在' % f)
+                  continue
+              if '<<<<<<<' in open(f, encoding='utf-8').read():
+                  bad.append('%s 混进 git 冲突标记' % f)
+
+          t = load('tomorrow.json')
+          if t is None:
+              bad.append('tomorrow.json 不是合法 JSON')
+          elif not t.get('focus'):
+              bad.append('tomorrow.json 的 focus 为空')
+          elif t.get('for_date') != want:
+              bad.append('for_date=%s 不是明天 %s' % (t.get('for_date'), want))
+
+          r = load('rec.json')
+          if r is None:
+              bad.append('rec.json 不是合法 JSON')
+          elif not r.get('items'):
+              bad.append('rec.json 的 items 为空')
+
+          # 线上（HEAD）那份是不是也已经过期 —— 只有连续没算出来才值得喊人
+          stale = False
+          try:
+              old = json.loads(subprocess.check_output(['git', 'show', 'HEAD:tomorrow.json'], text=True))
+              stale = (old.get('for_date') or '') <= today
+          except Exception:
+              pass
+
+          outf = open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8')
+          if bad:
+              msg = '；'.join(bad)
+              if stale:
+                  outf.write('ok=false\n')
+                  print('::error::本轮没算出产物，且线上那份也已过期（%s）：%s' % (msg, '需要人看'))
+                  raise SystemExit(1)
+              print('::warning::本轮没有算出可用产物（%s），保留线上旧版，不算失败' % msg)
+              outf.write('ok=false\n')
+          else:
+              tot = sum(int(v.get('quota') or 0) for v in (t.get('focus') or []))
+              print('校验通过：tomorrow.json for_date=%s，%d 个系统 · 约 %d 节；rec.json %d 条'
+                    % (want, len(t['focus']), tot, len(r.get('items') or [])))
+              outf.write('ok=true\n')
+          PY
 
       - name: 提交 rec.json
+        if: steps.skip.outputs.skip != 'true' && steps.verify.outputs.ok == 'true'
         run: |
           git config user.name "er-rec-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -65,14 +173,15 @@ jobs:
             exit 0
           fi
           git commit -m "rec: $(date -u +%Y-%m-%dT%H:%MZ)"
-          # 跑的过程中可能有人（或上一次运行）也推了东西，抢不到就 rebase 再来
-          for i in 1 2 3 4; do
+          # 提交前先把远端的新东西 rebase 上来，能消掉大部分「push 被拒」
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin main >/dev/null 2>&1 || git rebase --abort || true
             if git push origin main; then
               echo "推送成功（第 $i 次）"
               exit 0
             fi
-            echo "推送被拒，rebase 后重试（$i/4）"
-            git pull --rebase --autostash origin main || git rebase --abort || true
+            echo "推送被拒，rebase 后重试（$i/5）"
             sleep 3
           done
-          echo "四次都失败，放弃"; exit 1
+          # 产物本身没问题，只是抢不到推送：降级为 warning，不发失败邮件
+          echo "::warning::五次都没抢到推送，产物留到下一次运行"
