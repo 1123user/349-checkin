@@ -7,6 +7,13 @@ on:
     # 21:30 北京时间 = 13:30 UTC：晚上算好，第二天一睁眼就有
     - cron: '30 13 * * *'
   workflow_dispatch:
+  # 改完代码推上来就跑一次（不碰结果文件，避免自己触发自己）
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'rec.json'
+      - 'tomorrow.json'
+      - 'data/rec_hist.json'
 
 permissions:
   contents: write
