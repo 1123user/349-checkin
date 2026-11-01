@@ -46,7 +46,17 @@ jobs:
           git add rec.json tomorrow.json data/rec_hist.json
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
-          else
-            git commit -m "rec: $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            exit 0
           fi
+          git commit -m "rec: $(date -u +%Y-%m-%dT%H:%MZ)"
+          # 跑的过程中可能有人（或上一次运行）也推了东西，抢不到就 rebase 再来
+          for i in 1 2 3 4; do
+            if git push origin main; then
+              echo "推送成功（第 $i 次）"
+              exit 0
+            fi
+            echo "推送被拒，rebase 后重试（$i/4）"
+            git pull --rebase --autostash origin main || git rebase --abort || true
+            sleep 3
+          done
+          echo "四次都失败，放弃"; exit 1
