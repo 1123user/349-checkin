@@ -79,6 +79,20 @@ ANSWER_TAIL = re.compile(
     r"(?:正确项为|答案为|故答案为|答案|选)\s*[A-E][、，,A-E]*\s*(?:正确|不符|错误|为|项)?.*$")
 # 「。A、B仅为…，D、E不符」这种选项对比，从 A、B 处一刀砍掉
 OPTION_TAIL = re.compile(r"[。；;]\s*[A-E]\s*[、，,][^。]{0,80}$")
+# 「故B、C、D、E不符」这种
+WRONG_TAIL = re.compile(r"[，,。；;]\s*故\s*[A-E][、，,A-E\s]*\s*(?:不符|错误|正确)[^。]{0,40}$")
+# 答案性语句五花八门（故选D / 正确项为C / 其余选项不符 / 故C为除外项 / 故题干说法错误…），
+# 与其一条条打补丁，不如见到就齐齐切掉。
+CUT = re.compile(
+    r"(故选|正确项|正确答案|其余选项|均不符|为除外项|故题干|答案为|[A-E]\s*不符|故\s*[A-E])")
+
+def clean_tail(seg):
+    seg = re.sub(r"\s*小结[：:].*$", "", seg)              # 抽出来的模板小结句
+    seg = re.sub(r"\s*常考的是概念辨析.*$", "", seg)
+    m = CUT.search(seg)
+    if m and m.start() >= 8:                              # 开头就出现的不算尾巴
+        seg = seg[:m.start()]
+    return seg
 
 
 def points_of(body):
@@ -87,8 +101,7 @@ def points_of(body):
     for seg in re.split(r"要点[：:]", body)[1:]:
         seg = re.split(r"例\s*\d|^\s*【|答案[：:]", seg)[0]
         seg = re.sub(r"\s+", " ", seg)
-        seg = ANSWER_TAIL.sub("", seg)          # 砍掉「故选D」「正确项为C」这类尾巴
-        seg = OPTION_TAIL.sub("", seg)          # 砍掉「。A、B仅为…，D、E不符」
+        seg = clean_tail(ANSWER_TAIL.sub("", OPTION_TAIL.sub("", WRONG_TAIL.sub("", seg))))
         seg = STOP.sub("", seg).strip(" 。；;，,")
         if 12 <= len(seg) <= 160:
             tips.append(seg)
@@ -97,6 +110,8 @@ def points_of(body):
         s = re.split(r"例\s*\d", s)[0]
         s = s.replace("下面用真题把这个考点串起来：", "").strip()
         s = re.sub(r"^【.*?】", "", s).strip(" 。；;，,")
+        s = clean_tail(ANSWER_TAIL.sub("", OPTION_TAIL.sub("", WRONG_TAIL.sub("", s))))
+        s = STOP.sub("", s).strip(" 。；;，,")
         if 12 <= len(s) <= 200:
             tips.append(s)
     # 去重
@@ -160,7 +175,13 @@ def main():
             continue
         if "需对照原题" in ans or "见图" in ans:
             continue
-        cards.append({"sub": r.get("sub"), "q": re.sub(r"\s+", " ", q)[:60], "a": ans[:280]})
+        q = re.sub(r"\s+", " ", q)
+        # 原数据把「X题目：系统名」的标记塞在问题后面，还有「（空）」占位，都是脏的
+        q = re.sub(r"\s*[A-Z]?\s*题目[：:].*$", "", q).strip()
+        q = q.replace("（空）", "").strip(" ，,。")
+        if len(q) < 6:
+            continue
+        cards.append({"sub": r.get("sub"), "q": q[:60], "a": ans[:280]})
 
     doc = {"built": __import__("time").strftime("%Y-%m-%d %H:%M"),
            "src": "ai-tutor", "points": points, "cards": cards}
