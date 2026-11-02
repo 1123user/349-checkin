@@ -116,6 +116,10 @@ def audit_override(path):
         low = str(r).lower()
         if " reject" not in low:
             bad.append(make(path, 0, "非 reject 规则（可能把流量导去别处）：%s" % str(r)[:80]))
+    # ④ 分流规则只允许 REJECT（不允许把流量导去某个代理/节点）
+    for r in doc.get("rules") or []:
+        if not str(r).upper().endswith(",REJECT"):
+            bad.append(make(path, 0, "分流规则不是 REJECT：%s" % str(r)[:80]))
     return bad, warns
 
 
