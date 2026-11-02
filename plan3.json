@@ -1899,36 +1899,6 @@
      "url": "https://www.bilibili.com/video/BV1axHLzTEmL?p=1"
     },
     {
-     "sub": "ana",
-     "key": "第九十讲",
-     "title": "第九十讲：12.2.2质谱法简介2- 分子离子峰",
-     "dur": "54:34",
-     "sec": 3274,
-     "bvid": "BV1WZ4y1g7cu",
-     "level": "速通",
-     "group": "第12章 质谱法",
-     "chapter": "第12章 质谱法",
-     "priority": "9.3",
-     "note": "分子离子峰",
-     "seq": 999,
-     "url": "https://www.bilibili.com/video/BV1WZ4y1g7cu"
-    },
-    {
-     "sub": "ana",
-     "key": "Q57",
-     "title": "【题目训练】核磁波谱基础理论-1 化学位移精确数值总结",
-     "dur": "18:35",
-     "sec": 1115,
-     "bvid": "BV1K9NXzREZS",
-     "level": "必看",
-     "group": "第12章 核磁共振波谱法",
-     "chapter": "第12章 核磁共振波谱法",
-     "priority": "90.0",
-     "note": "核磁-化学位移精确数值总结",
-     "seq": 557,
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=57"
-    },
-    {
      "sub": "pharm",
      "key": "糖皮质激素(上)",
      "title": "【药理三分钟】肾上腺皮质激素（上）｜体内过程｜生理作用｜药理作用",
@@ -1963,6 +1933,35 @@
      "group": "内分泌系统药理学",
      "note": "系统课｜内分泌系统药理学｜按 2027 考纲本章在考",
      "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=75"
+    },
+    {
+     "sub": "ana",
+     "key": "Q57",
+     "title": "【题目训练】核磁波谱基础理论-1 化学位移精确数值总结",
+     "dur": "18:35",
+     "sec": 1115,
+     "bvid": "BV1K9NXzREZS",
+     "level": "必看",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "90.0",
+     "note": "核磁-化学位移精确数值总结",
+     "seq": 557,
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=57",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q01",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 274,
@@ -1988,36 +1987,6 @@
      "group": "DRILL",
      "note": "推断 12%：先看完主课波谱 4 节再看这个",
      "url": "https://www.bilibili.com/video/BV1R8411o7dX?p=1"
-    },
-    {
-     "sub": "ana",
-     "key": "Q53",
-     "title": "【题目训练】质谱波谱题目训练-4",
-     "dur": "34:23",
-     "sec": 2063,
-     "bvid": "BV1K9NXzREZS",
-     "level": "必看",
-     "group": "第12章 质谱法",
-     "chapter": "第12章 质谱法",
-     "priority": "90.0",
-     "note": "质谱波谱-题目训练",
-     "seq": 553,
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=53"
-    },
-    {
-     "sub": "ana",
-     "key": "第六十六讲",
-     "title": "第六十六讲：9.3电位滴定法",
-     "dur": "29:38",
-     "sec": 1778,
-     "bvid": "BV1CA411q7eB",
-     "level": "必看",
-     "group": "第9章 电化学分析法",
-     "chapter": "第9章 电化学分析法",
-     "priority": "28.7",
-     "note": "电位滴定法",
-     "seq": 999,
-     "url": "https://www.bilibili.com/video/BV1CA411q7eB"
     },
     {
      "sub": "pharm",
@@ -2054,6 +2023,35 @@
      "group": "内分泌系统药理学",
      "note": "系统课｜内分泌系统药理学｜按 2027 考纲本章在考",
      "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=81"
+    },
+    {
+     "sub": "ana",
+     "key": "Q53",
+     "title": "【题目训练】质谱波谱题目训练-4",
+     "dur": "34:23",
+     "sec": 2063,
+     "bvid": "BV1K9NXzREZS",
+     "level": "必看",
+     "group": "第12章 质谱法",
+     "chapter": "第12章 质谱法",
+     "priority": "90.0",
+     "note": "质谱波谱-题目训练",
+     "seq": 553,
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=53",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q02",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 251,
@@ -2079,36 +2077,6 @@
      "group": "DRILL",
      "note": "合成 6%：逆合成+切断，P1–P7",
      "url": "https://www.bilibili.com/video/BV1c54y1Y72c?p=1"
-    },
-    {
-     "sub": "ana",
-     "key": "第六十四讲",
-     "title": "第六十四讲：9.2.1直接电位法-溶液pH值的测定",
-     "dur": "46:21",
-     "sec": 2781,
-     "bvid": "BV1854y1D7n8",
-     "level": "必看",
-     "group": "第9章 电化学分析法",
-     "chapter": "第9章 电化学分析法",
-     "priority": "28.7",
-     "note": "直接电位法-pH的测定",
-     "seq": 999,
-     "url": "https://www.bilibili.com/video/BV1854y1D7n8"
-    },
-    {
-     "sub": "ana",
-     "key": "Q40",
-     "title": "【题目训练】电位分析法计算题目",
-     "dur": "27:04",
-     "sec": 1624,
-     "bvid": "BV1K9NXzREZS",
-     "level": "必看",
-     "group": "第9章 电化学分析法",
-     "chapter": "第9章 电化学分析法",
-     "priority": "90.0",
-     "note": "电位分析法计算题目",
-     "seq": 540,
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=40"
     },
     {
      "sub": "pharm",
@@ -2145,6 +2113,35 @@
      "group": "化疗药",
      "note": "系统课｜化疗药｜按 2027 考纲本章在考",
      "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=87"
+    },
+    {
+     "sub": "ana",
+     "key": "Q40",
+     "title": "【题目训练】电位分析法计算题目",
+     "dur": "27:04",
+     "sec": 1624,
+     "bvid": "BV1K9NXzREZS",
+     "level": "必看",
+     "group": "第9章 电化学分析法",
+     "chapter": "第9章 电化学分析法",
+     "priority": "90.0",
+     "note": "电位分析法计算题目",
+     "seq": 540,
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=40",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q03",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 241,
@@ -2170,36 +2167,6 @@
      "group": "DRILL",
      "note": "合成 6%：芳香衍生物策略，P8–P14",
      "url": "https://www.bilibili.com/video/BV1c54y1Y72c?p=8"
-    },
-    {
-     "sub": "ana",
-     "key": "第八十三讲",
-     "title": "第八十三讲：12.1.1核磁共振波普法简介-基本原理",
-     "dur": "49:27",
-     "sec": 2967,
-     "bvid": "BV1ft4y1v7We",
-     "level": "必看",
-     "group": "第12章 核磁共振波谱法",
-     "chapter": "第12章 核磁共振波谱法",
-     "priority": "37.2",
-     "note": "基本原理",
-     "seq": 999,
-     "url": "https://www.bilibili.com/video/BV1ft4y1v7We"
-    },
-    {
-     "sub": "ana",
-     "key": "Q59",
-     "title": "【题目训练】核磁波谱题目训练-3",
-     "dur": "27:05",
-     "sec": 1625,
-     "bvid": "BV1K9NXzREZS",
-     "level": "必看",
-     "group": "第12章 核磁共振波谱法",
-     "chapter": "第12章 核磁共振波谱法",
-     "priority": "90.0",
-     "note": "核磁波谱-题目训练",
-     "seq": 559,
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=59"
     },
     {
      "sub": "pharm",
@@ -2236,6 +2203,35 @@
      "group": "化疗药",
      "note": "系统课｜化疗药｜按 2027 考纲本章在考",
      "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=95"
+    },
+    {
+     "sub": "ana",
+     "key": "Q59",
+     "title": "【题目训练】核磁波谱题目训练-3",
+     "dur": "27:05",
+     "sec": 1625,
+     "bvid": "BV1K9NXzREZS",
+     "level": "必看",
+     "group": "第12章 核磁共振波谱法",
+     "chapter": "第12章 核磁共振波谱法",
+     "priority": "90.0",
+     "note": "核磁波谱-题目训练",
+     "seq": 559,
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=59",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q04",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 255,
@@ -2310,21 +2306,21 @@
      "chapter": "第10章 荧光分析法",
      "priority": "考纲(五)",
      "note": "考纲(五)荧光分析法：分子荧光产生/结构与荧光关系/荧光强度影响因素/定量 · 原计划漏排",
-     "url": "https://www.bilibili.com/video/BV1zA4y1R74m"
+     "url": "https://www.bilibili.com/video/BV1zA4y1R74m",
+     "type": "video"
     },
     {
      "sub": "ana",
-     "key": "ANA94X",
-     "title": "第六十七讲：9.4 永停滴定法（补章）",
-     "dur": "24:39",
-     "sec": 1479,
-     "bvid": "BV1nz4y197GX",
-     "level": "必看",
-     "group": "第9章 电化学分析法",
-     "chapter": "第9章 电化学分析法",
-     "priority": "考纲(三)",
-     "note": "考纲(三)电位法和永停滴定法：永停滴定曲线/终点判断/可逆电对 · 原计划只有 9.2 直接电位、9.3 电位滴定，漏 9.4",
-     "url": "https://www.bilibili.com/video/BV1nz4y197GX"
+     "key": "Q05",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 243,
@@ -2384,19 +2380,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 10m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=42"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=42",
+     "type": "video"
     },
     {
      "sub": "ana",
-     "key": "A90",
-     "title": "【补缺】分子荧光光谱-1 原理、光谱特点",
-     "dur": "18:00",
-     "sec": 1080,
-     "bvid": "BV1K9NXzREZS",
-     "level": "补缺",
-     "group": "第10章 荧光分析法",
-     "note": "11/02 按题库对账补 · 荧光 249 题：磷光/振动弛豫/系间/斯托克斯 全 0",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=23"
+     "key": "Q06",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 47,
@@ -2457,19 +2455,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 6m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=43"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=43",
+     "type": "video"
     },
     {
      "sub": "ana",
-     "key": "A91",
-     "title": "【补缺】分子荧光光谱-2 仪器构成与光谱应用",
-     "dur": "19:50",
-     "sec": 1190,
-     "bvid": "BV1K9NXzREZS",
-     "level": "补缺",
-     "group": "第10章 荧光分析法",
-     "note": "11/02 按题库对账补 · 荧光仪器与定量 324 题",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=24"
+     "key": "Q07",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 34,
@@ -2554,7 +2554,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 8m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=44"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=44",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -2566,7 +2567,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 9m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=45"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=45",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q08",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 75,
@@ -2651,7 +2666,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 8m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=46"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=46",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -2663,7 +2679,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 9m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=47"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=47",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q09",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 57,
@@ -2748,7 +2778,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 7m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=48"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=48",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -2760,7 +2791,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 9m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=49"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=49",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q10",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 50,
@@ -2845,7 +2890,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 17m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=50"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=50",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -2857,7 +2903,21 @@
      "level": "补缺",
      "group": "第10章 紫外可见分光光度法",
      "note": "11/02 按题库对账补 · UV 仪器部件 195 题（单色器/光源/光栅全 0）",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=15"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=15",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q11",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 68,
@@ -2930,7 +2990,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 13m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=52"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=52",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -2942,7 +3003,21 @@
      "level": "补缺",
      "group": "第17章 色谱分析法概论",
      "note": "11/02 按题库对账补 · 归一化法 12 题、定量方法",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=4"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=4",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q12",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 59,
@@ -3003,7 +3078,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 10m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=54"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=54",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -3015,7 +3091,21 @@
      "level": "补缺",
      "group": "第17章 色谱分析法概论",
      "note": "11/02 按题库对账补 · 柱效 26、范第姆特 11",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=3"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=3",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q13",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 34,
@@ -3076,7 +3166,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 7m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=55"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=55",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -3088,7 +3179,21 @@
      "level": "补缺",
      "group": "第13章 原子吸收分光光度法",
      "note": "11/02 按题库对账补 · AAS 仪器类",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=32"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=32",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q14",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 28,
@@ -3173,7 +3278,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 9m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=56"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=56",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -3185,7 +3291,21 @@
      "level": "补缺",
      "group": "第9章 电化学分析法",
      "note": "11/02 按题库对账补 · 库仑 13 题",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=41"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=41",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q15",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 77,
@@ -3270,7 +3390,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 17m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=58"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=58",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q16",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 89,
@@ -3355,7 +3489,8 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 18m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=60"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=60",
+     "type": "video"
     },
     {
      "sub": "ana",
@@ -3367,7 +3502,21 @@
      "level": "二轮",
      "group": "R1--组",
      "note": "1.5× ≈ 5m",
-     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=61"
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=61",
+     "type": "video"
+    },
+    {
+     "sub": "ana",
+     "key": "Q17",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 81,
@@ -3441,6 +3590,32 @@
      "group": "R1--单药",
      "note": "板块 p6 · 1.5× ≈ 3min",
      "url": "https://www.bilibili.com/video/BV1MY4y1h7Tb?p=6"
+    },
+    {
+     "sub": "ana",
+     "key": "V01",
+     "type": "video",
+     "title": "四大滴定总结（酸碱/配位/氧化还原/沉淀）",
+     "dur": "63:54",
+     "sec": 3834,
+     "bvid": "BV1k94y1U7rc",
+     "level": "补缺",
+     "group": "第3-7章 滴定分析法",
+     "note": "对账缺口 · 单一讲法：分析化学考研",
+     "url": "https://www.bilibili.com/video/BV1k94y1U7rc"
+    },
+    {
+     "sub": "ana",
+     "key": "Q18",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 73,
@@ -3502,6 +3677,45 @@
      "group": "R1--单药",
      "note": "板块 p8 · 1.5× ≈ 4min",
      "url": "https://www.bilibili.com/video/BV1hx4y177DH?p=8"
+    },
+    {
+     "sub": "ana",
+     "key": "V02",
+     "type": "video",
+     "title": "电位分析法-1 方法原理、离子选择电极",
+     "dur": "19:03",
+     "sec": 1143,
+     "bvid": "BV1K9NXzREZS",
+     "level": "补缺",
+     "group": "第9章 电化学分析法",
+     "note": "对账缺口 · 单一讲法：小琦",
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=37"
+    },
+    {
+     "sub": "ana",
+     "key": "V03",
+     "type": "video",
+     "title": "电位分析法-2 膜电位推导与计算",
+     "dur": "15:22",
+     "sec": 922,
+     "bvid": "BV1K9NXzREZS",
+     "level": "补缺",
+     "group": "第9章 电化学分析法",
+     "note": "对账缺口 · 单一讲法：小琦",
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=38"
+    },
+    {
+     "sub": "ana",
+     "key": "Q19",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 54,
@@ -3539,6 +3753,32 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 16m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=23"
+    },
+    {
+     "sub": "ana",
+     "key": "V04",
+     "type": "video",
+     "title": "电位分析法-3 离子选择电极分类、定量",
+     "dur": "12:25",
+     "sec": 745,
+     "bvid": "BV1K9NXzREZS",
+     "level": "补缺",
+     "group": "第9章 电化学分析法",
+     "note": "对账缺口 · 单一讲法：小琦",
+     "url": "https://www.bilibili.com/video/BV1K9NXzREZS?p=39"
+    },
+    {
+     "sub": "ana",
+     "key": "Q20",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 117,
@@ -3575,6 +3815,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 13m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=27"
+    },
+    {
+     "sub": "ana",
+     "key": "Q21",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 118,
@@ -3611,6 +3864,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 8m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=30"
+    },
+    {
+     "sub": "ana",
+     "key": "Q22",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 31,
@@ -3647,6 +3913,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 13m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=33"
+    },
+    {
+     "sub": "ana",
+     "key": "Q23",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 86,
@@ -3671,6 +3950,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 12m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=36"
+    },
+    {
+     "sub": "ana",
+     "key": "Q24",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 29,
@@ -3707,6 +3999,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 7m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=39"
+    },
+    {
+     "sub": "ana",
+     "key": "Q25",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 92,
@@ -3731,6 +4036,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 5m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=42"
+    },
+    {
+     "sub": "ana",
+     "key": "Q26",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 19,
@@ -3767,6 +4085,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 6m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=45"
+    },
+    {
+     "sub": "ana",
+     "key": "Q27",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 96,
@@ -3791,6 +4122,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 7m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=46"
+    },
+    {
+     "sub": "ana",
+     "key": "Q28",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 18,
@@ -3827,6 +4171,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 17m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=47"
+    },
+    {
+     "sub": "ana",
+     "key": "Q29",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 92,
@@ -3863,6 +4220,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 18m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=48"
+    },
+    {
+     "sub": "ana",
+     "key": "Q30",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 42,
@@ -3887,6 +4257,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 28m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=49"
+    },
+    {
+     "sub": "ana",
+     "key": "Q31",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 41,
@@ -3923,6 +4306,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 6m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=51"
+    },
+    {
+     "sub": "ana",
+     "key": "Q32",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 86,
@@ -3947,6 +4343,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 6m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=54"
+    },
+    {
+     "sub": "ana",
+     "key": "Q33",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 25,
@@ -3983,6 +4392,19 @@
      "group": "R2--组",
      "note": "押题期穿插复看 · 1.5× ≈ 23m",
      "url": "https://www.bilibili.com/video/BV1HvRXYwExT?p=6"
+    },
+    {
+     "sub": "ana",
+     "key": "Q34",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 124,
@@ -4031,6 +4453,19 @@
      "group": "W--单药",
      "note": "板块 p8 · 1.5× ≈ 2min",
      "url": "https://www.bilibili.com/video/BV1824y1W7Ng?p=8"
+    },
+    {
+     "sub": "ana",
+     "key": "Q35",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 40,
@@ -4079,6 +4514,19 @@
      "group": "W--单药",
      "note": "板块 p9 · 1.5× ≈ 1min",
      "url": "https://www.bilibili.com/video/BV1o34y1q7ph?p=9"
+    },
+    {
+     "sub": "ana",
+     "key": "Q36",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 35,
@@ -4128,6 +4576,19 @@
      "group": "W--单药",
      "note": "板块 p9 · 1.5× ≈ 6min",
      "url": "https://www.bilibili.com/video/BV1QL4y157zL?p=9"
+    },
+    {
+     "sub": "ana",
+     "key": "Q37",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 47,
@@ -4177,6 +4638,19 @@
      "group": "W--单药",
      "note": "板块 p9 · 1.5× ≈ 14min",
      "url": "https://www.bilibili.com/video/BV12R4y1u7eA?p=9"
+    },
+    {
+     "sub": "ana",
+     "key": "Q38",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 44,
@@ -4226,6 +4700,19 @@
      "group": "W--单药",
      "note": "板块 p9 · 1.5× ≈ 13min",
      "url": "https://www.bilibili.com/video/BV1wF411v7D9?p=9"
+    },
+    {
+     "sub": "ana",
+     "key": "Q39",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 41,
@@ -4275,6 +4762,19 @@
      "group": "W--单药",
      "note": "板块 p3 · 1.5× ≈ 9min",
      "url": "https://www.bilibili.com/video/BV1v44y1j7KU?p=3"
+    },
+    {
+     "sub": "ana",
+     "key": "Q40",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 31,
@@ -4324,6 +4824,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 3min",
      "url": "https://www.bilibili.com/video/BV1j3411Y7x6?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q41",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 29,
@@ -4372,6 +4885,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 2min",
      "url": "https://www.bilibili.com/video/BV1hq4y1C7Bm?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q42",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 50,
@@ -4420,6 +4946,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 4min",
      "url": "https://www.bilibili.com/video/BV1Em4y1D7wt?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q43",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 26,
@@ -4469,6 +5008,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 6min",
      "url": "https://www.bilibili.com/video/BV1LR4y1g7zn?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q44",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 59,
@@ -4518,6 +5070,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 6min",
      "url": "https://www.bilibili.com/video/BV1Z3411e7P9?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q45",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 54,
@@ -4567,6 +5132,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 5min",
      "url": "https://www.bilibili.com/video/BV1KF411p7NW?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q46",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 38,
@@ -4616,6 +5194,19 @@
      "group": "W--单药",
      "note": "板块 p4 · 1.5× ≈ 5min",
      "url": "https://www.bilibili.com/video/BV1YT4y117Mt?p=4"
+    },
+    {
+     "sub": "ana",
+     "key": "Q47",
+     "type": "quiz",
+     "title": "【做题】分析化学 · 48 题",
+     "dur": "42:00",
+     "sec": 2520,
+     "bvid": "",
+     "level": "做题",
+     "group": "题库刷题",
+     "note": "按错题本+考点配 48 题（题库 2299 题）；勾掉即记完成",
+     "url": ""
     }
    ],
    "min": 44,
