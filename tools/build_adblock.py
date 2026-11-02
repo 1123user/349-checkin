@@ -123,6 +123,9 @@ def main():
     keep_rew = [r for r in rew if not any(k in str(r).lower() for k in BANK)]
     keep_mitm = [h for h in mitm if not any(k in str(h).lower() for k in BANK)]
     dropped = (n_rew - len(keep_rew)) + (n_mitm - len(keep_mitm))
+    # Stash 不认 surge 的 force-http-engine（2026-11-02 装机报「下载配置失败」时排查到的可疑项），
+    # 它只对 6 个 HTTP-only 主机生效，删掉不影响开屏，先求能装上
+    http.pop("force-http-engine", None)
 
     tb = load_yaml(TAOBAO)
     tb_http = tb.get("http") or {}
@@ -143,9 +146,19 @@ def main():
     providers = dict(base.get("script-providers") or {})
     # 淘宝那段原文件给了 url/path/payload 三份，这里只留 payload：
     # raw.githubusercontent 在国内经常超时，留着 url 反而会让 Stash 去拉一个拉不到的地址
+    # 同时给 payload（内联，离线可用）和 url（自家 Pages）：不同 Stash 版本取哪个不一致，
+    # 两个都给等于两条路都留着。url 只指向 1123user.github.io，零收集审计放行。
     for name, pv in (tb.get("script-providers") or {}).items():
-        providers[name] = {"payload": strip_console(pv.get("payload", "")), "interval": 86400}
-    providers["local-bili-splash"] = {"payload": strip_console(bili_js), "interval": 86400}
+        providers[name] = {
+            "payload": strip_console(pv.get("payload", "")),
+            "url": "https://1123user.github.io/349-checkin/adblock/taobao-splash.js",
+            "interval": 86400,
+        }
+    providers["local-bili-splash"] = {
+        "payload": strip_console(bili_js),
+        "url": "https://1123user.github.io/349-checkin/bili/bili-splash.js",
+        "interval": 86400,
+    }
 
     for h in list(tb_http.get("mitm") or []):
         if h not in keep_mitm:
