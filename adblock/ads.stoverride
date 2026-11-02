@@ -5,6 +5,35 @@
 # ③ 已剔除 27 个银行 / 支付 MITM 主机，免得证书钉死把银行 App 弄打不开
 # 重建：python3 tools/build_adblock.py ｜ 关闭：Stash → 覆写 → 取消启用
 name: 去开屏 / 去广告（小满）
+rules:
+- DOMAIN-SUFFIX,pangle.io,REJECT
+- DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+- DOMAIN-SUFFIX,gromore.com,REJECT
+- DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+- DOMAIN-SUFFIX,gdt.qq.com,REJECT
+- DOMAIN-SUFFIX,e.qq.com,REJECT
+- DOMAIN-SUFFIX,gtimg.cn,REJECT
+- DOMAIN-SUFFIX,pos.baidu.com,REJECT
+- DOMAIN-SUFFIX,cpro.baidu.com,REJECT
+- DOMAIN-SUFFIX,mobads.baidu.com,REJECT
+- DOMAIN-SUFFIX,union.baidu.com,REJECT
+- DOMAIN-SUFFIX,tanx.com,REJECT
+- DOMAIN-SUFFIX,alimama.com,REJECT
+- DOMAIN-SUFFIX,adkwai.com,REJECT
+- DOMAIN-SUFFIX,mintegral.com,REJECT
+- DOMAIN-SUFFIX,applovin.com,REJECT
+- DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+- DOMAIN-SUFFIX,adcolony.com,REJECT
+- DOMAIN-SUFFIX,vungle.com,REJECT
+- DOMAIN-SUFFIX,inmobi.com,REJECT
+- DOMAIN-SUFFIX,chartboost.com,REJECT
+- DOMAIN-SUFFIX,ironsrc.com,REJECT
+- DOMAIN-SUFFIX,supersonicads.com,REJECT
+- DOMAIN-SUFFIX,googleads.g.doubleclick.net,REJECT
+- DOMAIN-SUFFIX,pagead2.googlesyndication.com,REJECT
+- DOMAIN-SUFFIX,googleadservices.com,REJECT
+- DOMAIN-SUFFIX,admaster.com.cn,REJECT
+- DOMAIN-SUFFIX,miaozhen.com,REJECT
 desc: 通用去广告 + 淘宝/B站开屏（含 B站首页信息流）；银行支付域名已排除 MITM
 http:
   rewrite:
@@ -735,6 +764,10 @@ http:
   - ^https?:\/\/zone\.guiderank-app\.com\/guiderank-web\/app\/ad\/listLaunchADByCity\.do - reject
   - ^https?:\/\/ztoread\.ziroom\.com\/ymerApi\/v\d\/index\/open - reject
   - https://dynamicad.kfc.com.cn/api/app5/homepage/ai/popup - reject
+  - (?i)^https?:\/\/[^\/]+\/(?:[\w.\-]+\/){0,4}(?:splash|open[-_]?screen|boot[-_]?ad|launch[-_]?ad)(?:[\/?]|$) - reject
+  - (?i)[?&](?:splash|open_screen|openscreen|splash_id)= - reject
+  - (?i)\/ad(?:s)?\/(?:splash|open[-_]?screen|launch[-_]?ad|startup) - reject
+  - (?i)\/api\/[^?]*\/(?:splash|open[-_]?screen)[^?]*\? - reject
   mitm:
   - '*.1rtb.net'
   - '*.58cdn.com.cn'
@@ -1423,6 +1456,9 @@ http:
   - guide-acs.m.taobao.com
   - app.bilibili.com
   - app.biliapi.net
+  - music.163.com
+  - '*.music.163.com'
+  - api.fenbi.com
   script:
   - match: ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get(?:\/\d+(?:\.\d+)*\/?)?(?:\?|$)
     name: local-taobao-splash-adblock
