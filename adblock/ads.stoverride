@@ -4,7 +4,7 @@
 #              B 站（app.bilibili.com/x/v2/splash/list）
 # ③ 已剔除 27 个银行 / 支付 MITM 主机，免得证书钉死把银行 App 弄打不开
 # 重建：python3 tools/build_adblock.py ｜ 关闭：Stash → 覆写 → 取消启用
-name: 去开屏 / 去广告（小满）
+name: 去开屏 / 去广告（小满）· v1102-1352
 rules:
 - DOMAIN-SUFFIX,pangle.io,REJECT
 - DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
