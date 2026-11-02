@@ -93,10 +93,14 @@ def audit_override(path):
             bad.append(make(path, 0, "script「%s」没有本地 payload（会去拉远端代码）" % nm))
             continue
         url = str(pv.get("url") or "")
+        has_payload = bool(str(pv.get("payload") or "").strip())
         if url and ALLOW_PROVIDER_HOST not in url:
             bad.append(make(path, 0, "script「%s」的远端地址不是自家 Pages：%s" % (nm, url)))
-        if not str(pv.get("payload") or "").strip():
-            bad.append(make(path, 0, "script「%s」的 payload 是空的" % nm))
+        if not has_payload and not url:
+            bad.append(make(path, 0, "script「%s」既没有 payload 也没有 url" % nm))
+        if not has_payload and url:
+            warns.append(make(path, 0,
+                              "script「%s」走远端加载（自家 Pages），离线时不可用" % nm, url))
 
     # ② 逐段扫 payload
     for nm, pv in providers.items():
