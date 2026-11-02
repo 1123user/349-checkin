@@ -151,12 +151,12 @@ def main():
     for name, pv in (tb.get("script-providers") or {}).items():
         providers[name] = {
             "payload": strip_console(pv.get("payload", "")),
-            "url": "https://1123user.github.io/349-checkin/adblock/taobao-splash.js",
+            "url": "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/adblock/taobao-splash.js",
             "interval": 86400,
         }
     providers["local-bili-splash"] = {
         "payload": strip_console(bili_js),
-        "url": "https://1123user.github.io/349-checkin/bili/bili-splash.js",
+        "url": "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/bili/bili-splash.js",
         "interval": 86400,
     }
 
