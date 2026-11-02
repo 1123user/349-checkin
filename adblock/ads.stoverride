@@ -4,7 +4,7 @@
 #              B 站（app.bilibili.com/x/v2/splash/list）
 # ③ 已剔除 27 个银行 / 支付 MITM 主机，免得证书钉死把银行 App 弄打不开
 # 重建：python3 tools/build_adblock.py ｜ 关闭：Stash → 覆写 → 取消启用
-name: 去开屏 / 去广告（小满）· v1102-1355
+name: 去开屏 / 去广告（小满）· v1102-1401
 rules:
 - DOMAIN-SUFFIX,pangle.io,REJECT
 - DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
@@ -902,6 +902,8 @@ http:
   - (?i)[?&](?:splash|open_screen|openscreen|splash_id)= - reject
   - (?i)\/ad(?:s)?\/(?:splash|open[-_]?screen|launch[-_]?ad|startup) - reject
   - (?i)\/api\/[^?]*\/(?:splash|open[-_]?screen)[^?]*\? - reject
+  - ^https?:\/\/(?:[\w.-]+\.)?baidupcs\.com\/[^?]*(?:guanggao|ts_ad|splash|advert) - reject
+  - ^https?:\/\/nd-static\.baidu\.com\/[^?]*(?:guanggao|splash|advert|ad_) - reject
   - ^https?:\/\/issuecdn\.baidupcs\.com\/issue\/netdisk\/(guanggao|ts_ad) - reject
   - ^https?:\/\/pan\.baidu\.com\/[^?]*(?:splash|guanggao|advert) - reject
   - ^https?:\/\/newclient\.map\.baidu\.com\/[^?]*(?:splash|ad) - reject
@@ -1606,6 +1608,8 @@ http:
   - guide-acs.m.taobao.com
   - app.bilibili.com
   - app.biliapi.net
+  - '*.baidupcs.com'
+  - nd-static.baidu.com
   - music.163.com
   - '*.music.163.com'
   - api.fenbi.com
