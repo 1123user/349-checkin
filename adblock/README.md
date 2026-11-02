@@ -29,6 +29,31 @@ cmbc / spdb / bankcomm / psbc / citic / pingan / webank / alipay / tenpay / unio
 
 出站策略保持 **直连（DIRECT）** 即可，这条规则只在本地改写响应。
 
+## 零收集（硬指标，可复核）
+
+这条规则明文过手，所以它自己必须「只看不改、改完就丢」。以下四条是**硬性**的，不满足就不合入：
+
+1. **脚本不许联网**：`$httpClient` / `$task.fetch` / `fetch(` / `XMLHttpRequest` /
+   `sendBeacon` / `WebSocket` / `new Image(` / `require(` 一律禁止；
+2. **不许落盘留痕**：`$persistentStore.write` / `$prefs.setValueForKey` / `localStorage.setItem` /
+   写 cookie 一律禁止；连 `console.log` 都在拼装时被剥掉（Stash 日志也不留痕）；
+3. **不许有远端脚本源**：所有 JS 以 `payload` 内联，`script-providers` 里出现指向第三方的
+   `url:` 直接判失败（只允许自家 `1123user.github.io`，目前一个都没有）；
+4. **规则只许 reject**：不允许 `redirect` 之类把流量导去别处的动作。
+
+复核方法（任何一条不通过，整份文件就不该装）：
+
+```bash
+python3 tools/audit_no_collect.py adblock bili     # 退出码 0 才算过
+```
+
+`tools/build_adblock.py` 已把这条审计设成**门禁**：上游规则集一旦夹带脚本、
+或我们拼出来的文件里有任何一处上报/落盘，都会直接报错不落盘。
+
+顺便说清楚边界：MITM 只对文件里列出的 **686 个域名**生效，其余流量不解密；
+解密与改写全在手机本地完成，规则本身没有任何出网点。真正会看到你流量的只有
+你自己的代理节点（如果开了）—— 那是你选的服务商，不是这套规则。
+
 ## 验证结果（2026-11-02）
 
 - 淘宝：伪造 `splash.awesome.get` 响应 → 脚本把 `waitTime` 置 0、`imgUrl` 清空、`endTime` 推到 2090 年；
@@ -53,4 +78,5 @@ python3 tools/build_adblock.py --offline  # 只用 adblock/upstream.Advertising.
 python3 tools/push_plan_api.py adblock/ads.stoverride
 ```
 
-脚本会自检：重解析生成的文件，确认 727 条规则一条不少、两段 script 都在，才落盘。
+脚本会自检：重解析生成的文件，确认 727 条规则一条不少、两段 script 都在，
+再跑一遍零收集审计，全过才落盘。
