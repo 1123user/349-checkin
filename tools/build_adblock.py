@@ -31,6 +31,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "adblock", "ads.stoverride")
 CACHE = os.path.join(ROOT, "adblock", "upstream.Advertising.stoverride")
 TAOBAO = os.path.join(ROOT, "adblock", "templates", "taobao-splash.stoverride")
+BILI = os.path.join(ROOT, "adblock", "templates", "bilibili-adblock.stoverride")
 BILI_JS = os.path.join(ROOT, "bili", "bili-splash.js")
 
 UPSTREAM = ("https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/"
@@ -127,50 +128,37 @@ def main():
     # 它只对 6 个 HTTP-only 主机生效，删掉不影响开屏，先求能装上
     http.pop("force-http-engine", None)
 
-    tb = load_yaml(TAOBAO)
-    tb_http = tb.get("http") or {}
-    bili_js = open(BILI_JS, encoding="utf-8").read()
-
+    # 两段开屏脚本（都是「保守版」：只删广告，不动账号/会员/清晰度）
+    #   淘宝：guide-acs 的 mtop.taobao.wireless.home.splash.awesome.get
+    #   B站 ：splash/show|list|brand/list|event/list2 + 首页 feed/index、竖屏 story
+    #         （2026-11-02 换源：原来只拦 splash/list，而 B站 实际用 data.show，所以一直没效果）
+    SPLASH = [
+        (TAOBAO, "adblock/taobao-splash.js"),
+        (BILI, "adblock/bilibili-adblock.js"),
+    ]
     script = list(http.get("script") or [])
-    for s in tb_http.get("script") or []:
-        script.append(s)
-    script.append({
-        "match": r"^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/list",
-        "name": "local-bili-splash",
-        "type": "response",
-        "require-body": True,
-        "max-size": 1048576,
-        "timeout": 10,
-    })
-
     providers = dict(base.get("script-providers") or {})
-    # 淘宝那段原文件给了 url/path/payload 三份，这里只留 payload：
-    # raw.githubusercontent 在国内经常超时，留着 url 反而会让 Stash 去拉一个拉不到的地址
-    # 同时给 payload（内联，离线可用）和 url（自家 Pages）：不同 Stash 版本取哪个不一致，
-    # 两个都给等于两条路都留着。url 只指向 1123user.github.io，零收集审计放行。
-    for name, pv in (tb.get("script-providers") or {}).items():
-        providers[name] = {
-            "payload": strip_console(pv.get("payload", "")),
-            "url": "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/adblock/taobao-splash.js",
-            "interval": 86400,
-        }
-    providers["local-bili-splash"] = {
-        "payload": strip_console(bili_js),
-        "url": "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/bili/bili-splash.js",
-        "interval": 86400,
-    }
-
-    for h in list(tb_http.get("mitm") or []):
-        if h not in keep_mitm:
-            keep_mitm.append(h)
-    if "app.bilibili.com" not in keep_mitm:
-        keep_mitm.append("app.bilibili.com")
+    for tpl_path, js_path in SPLASH:
+        tpl = load_yaml(tpl_path)
+        th = tpl.get("http") or {}
+        for sc in th.get("script") or []:
+            script.append(sc)
+        for nm, pv in (tpl.get("script-providers") or {}).items():
+            # payload（内联，离线可用）+ url（自家 jsDelivr）：不同 Stash 版本取哪个不一致，两条路都留
+            providers[nm] = {
+                "payload": strip_console(pv.get("payload", "")),
+                "url": "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/" + js_path,
+                "interval": 86400,
+            }
+        for h in th.get("mitm") or []:
+            if h not in keep_mitm:
+                keep_mitm.append(h)
 
     http["rewrite"] = keep_rew
     http["mitm"] = keep_mitm
     http["script"] = script
     out = {"name": "去开屏 / 去广告（小满）",
-           "desc": "通用去广告 + 淘宝/B站开屏；银行支付域名已排除 MITM",
+           "desc": "通用去广告 + 淘宝/B站开屏（含 B站首页信息流）；银行支付域名已排除 MITM",
            "http": http,
            "script-providers": providers}
 
@@ -186,7 +174,7 @@ def main():
     h2 = chk["http"]
     assert [str(x) for x in h2["rewrite"]] == [str(x) for x in keep_rew], "rewrite 不一致"
     assert len(h2["script"]) == len(script)
-    assert set(chk["script-providers"]) >= {"local-bili-splash"}
+    assert set(chk["script-providers"]) >= {"local-taobao-splash-adblock", "local-bilibili-adblock"}
 
     # 硬指标①：上游只许给静态规则，不许带脚本（带了就说明有我们没审过的代码）
     if up_has_script:
