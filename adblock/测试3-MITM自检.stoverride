@@ -1,0 +1,26 @@
+# MITM 自检（小满，2026-11-02）
+# 装好并开启 MitM + 信任证书后，用 Safari 打开：
+#   https://1123user.github.io/349-checkin/adblock/selftest.txt
+# 显示「MITM-OK」= 链路通；显示「原始内容」= 没通（开关/证书/覆写启用哪一个没到位）
+# 脚本用远端 url（自家 Pages）而不是 payload：这样能单独验证「MITM 解密」这一环，
+# 不受「Stash 认不认 payload 内联」的干扰。
+name: '自检 · MITM 是否生效'
+desc: '把 selftest.txt 换成 MITM-OK，用来确认解密与改写链路'
+author: 小满
+homepage: 'https://1123user.github.io/349-checkin/'
+
+http:
+  mitm:
+    - '1123user.github.io:443'
+  script:
+    - name: mitm-selftest
+      match: ^https?:\/\/1123user\.github\.io\/349-checkin\/adblock\/selftest\.txt
+      type: response
+      require-body: true
+      timeout: 5
+      max-size: 1048576
+
+script-providers:
+  mitm-selftest:
+    url: https://1123user.github.io/349-checkin/adblock/selftest.js
+    interval: 86400
