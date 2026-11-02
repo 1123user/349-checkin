@@ -53,7 +53,8 @@ WRITE = [
 URL_IN_CODE = re.compile(r"https?://[^\s'\"`)]+")
 COMMENT = re.compile(r"^\s*(//|/\*|\*|#)")
 
-ALLOW_PROVIDER_HOST = "1123user.github.io"     # 只有自家 Pages 允许作为远端脚本源
+ALLOW_PROVIDER_HOST = "1123user.github.io"     # 只有自家 Pages / 自家仓库的 CDN 允许作为远端脚本源
+ALLOW_PROVIDER_HOST2 = "cdn.jsdelivr.net/gh/1123user/349-checkin"
 
 
 def scan_js(name, code):
@@ -94,7 +95,7 @@ def audit_override(path):
             continue
         url = str(pv.get("url") or "")
         has_payload = bool(str(pv.get("payload") or "").strip())
-        if url and ALLOW_PROVIDER_HOST not in url:
+        if url and ALLOW_PROVIDER_HOST not in url and ALLOW_PROVIDER_HOST2 not in url:
             bad.append(make(path, 0, "script「%s」的远端地址不是自家 Pages：%s" % (nm, url)))
         if not has_payload and not url:
             bad.append(make(path, 0, "script「%s」既没有 payload 也没有 url" % nm))
