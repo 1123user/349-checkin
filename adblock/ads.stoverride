@@ -735,13 +735,6 @@ http:
   - ^https?:\/\/zone\.guiderank-app\.com\/guiderank-web\/app\/ad\/listLaunchADByCity\.do - reject
   - ^https?:\/\/ztoread\.ziroom\.com\/ymerApi\/v\d\/index\/open - reject
   - https://dynamicad.kfc.com.cn/api/app5/homepage/ai/popup - reject
-  force-http-engine:
-  - '*.ott.cibntv.net'
-  - intl.iqiyi.com
-  - maicai.api.ddxq.mobi
-  - mobileapi-v6.elong.com
-  - weibointl.api.weibo.cn
-  - wmapi.meituan.com
   mitm:
   - '*.1rtb.net'
   - '*.58cdn.com.cn'
