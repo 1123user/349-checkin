@@ -32,6 +32,7 @@ OUT = os.path.join(ROOT, "adblock", "ads.stoverride")
 CACHE = os.path.join(ROOT, "adblock", "upstream.Advertising.stoverride")
 TAOBAO = os.path.join(ROOT, "adblock", "templates", "taobao-splash.stoverride")
 BILI = os.path.join(ROOT, "adblock", "templates", "bilibili-adblock.stoverride")
+STARTAD = os.path.join(ROOT, "adblock", "templates", "startad.module")   # ddgksf2013「APP启动页去广告」
 BILI_JS = os.path.join(ROOT, "bili", "bili-splash.js")
 
 UPSTREAM = ("https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/"
@@ -86,6 +87,33 @@ HEADER = """# 去开屏 / 去广告（全 App）· 小满版
 # ③ 已剔除 %d 个银行 / 支付 MITM 主机，免得证书钉死把银行 App 弄打不开
 # 重建：python3 tools/build_adblock.py ｜ 关闭：Stash → 覆写 → 取消启用
 """
+
+
+
+def load_startad(path):
+    """解析 Surge/SR 的「APP启动页去广告」模块 → (rules, mitm_hosts)。
+
+    来源：deezertidal/shadowrocket-rules modules/startingad.module（ddgksf2013）。
+    258 条按 App 写好的启动页 reject，覆盖 58/acfun/爱奇艺/当当/携程/拼多多…，
+    比我们手写的通用正则准得多。只取 reject* 动作，script/302 一律不要
+    （零收集：不执行别人的脚本）。
+    """
+    rules, mitm, sec = [], [], None
+    for ln in open(path, encoding="utf-8", errors="ignore"):
+        t = ln.strip()
+        if t.startswith("["):
+            sec = t.lower()
+            continue
+        if not t or t.startswith("#"):
+            continue
+        if sec == "[url rewrite]":
+            m = re.match(r"^(.*\S)\s+(reject-img|reject-200|reject-dict|reject-array|reject)$", t)
+            if m:
+                rules.append(m.group(1) + " - reject")
+        elif sec == "[mitm]" and t.lower().startswith("hostname"):
+            part = t.split("=", 1)[1].replace("%APPEND%", "")
+            mitm += [h.strip() for h in part.split(",") if h.strip()]
+    return rules, mitm
 
 
 def strip_console(js):
@@ -170,6 +198,15 @@ def main():
     #   淘宝：guide-acs 的 mtop.taobao.wireless.home.splash.awesome.get
     #   B站 ：splash/show|list|brand/list|event/list2 + 首页 feed/index、竖屏 story
     #         （2026-11-02 换源：原来只拦 splash/list，而 B站 实际用 data.show，所以一直没效果）
+    # ddgksf2013 的「APP启动页去广告」整包并入（258 条按 App 写的 reject）
+    sa_rules, sa_mitm = load_startad(STARTAD)
+    for r in sa_rules:
+        if r not in keep_rew:
+            keep_rew.append(r)
+    for h in sa_mitm:
+        if h not in keep_mitm:
+            keep_mitm.append(h)
+
     SPLASH = [
         (TAOBAO, "adblock/taobao-splash.js"),
         (BILI, "adblock/bilibili-adblock.js"),
@@ -199,14 +236,30 @@ def main():
     for h in EXTRA_MITM:
         if h not in keep_mitm:
             keep_mitm.append(h)
+
+    # 百度网盘：上游那条要求 guanggao 后面必须带 "/"，实际素材地址常常没有，
+    # 所以一直没拦住（2026-11-02 用户反馈）。这里放宽 + 补主域广告路径。
+    BAIDU_PAN = [
+        r"^https?:\/\/issuecdn\.baidupcs\.com\/issue\/netdisk\/(guanggao|ts_ad)",
+        r"^https?:\/\/pan\.baidu\.com\/[^?]*(?:splash|guanggao|advert)",
+        r"^https?:\/\/newclient\.map\.baidu\.com\/[^?]*(?:splash|ad)",
+    ]
+    for rx in BAIDU_PAN:
+        if rx + " - reject" not in keep_rew:
+            keep_rew.append(rx + " - reject")
     ad_rules = []
     for d in AD_SDK:
         ad_rules.append("DOMAIN-SUFFIX,%s,REJECT" % d)
 
+    # 并入三方规则后再筛一次银行/支付（startad 里也带了交行/招行等主机）
+    keep_rew = [r for r in keep_rew if not any(k in str(r).lower() for k in BANK)]
+    keep_mitm = [h for h in keep_mitm if not any(k in str(h).lower() for k in BANK)]
+
     http["rewrite"] = keep_rew
     http["mitm"] = keep_mitm
     http["script"] = script
-    out = {"name": "去开屏 / 去广告（小满）",
+    ver = __import__("datetime").datetime.now().strftime("%m%d-%H%M")
+    out = {"name": "去开屏 / 去广告（小满）· v" + ver,
            "rules": ad_rules,
            "desc": "通用去广告 + 淘宝/B站开屏（含 B站首页信息流）；银行支付域名已排除 MITM",
            "http": http,
