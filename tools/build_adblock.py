@@ -49,6 +49,34 @@ HEADER = """# 去开屏 / 去广告（全 App）· 小满版
 """
 
 
+def strip_console(js):
+    """删掉 console.log(...) 调用：Stash 的日志在本机，但「严格零收集」连本机留痕也不留。
+    按括号配对删整条调用，替换成 void 0 保证语法。"""
+    out, i = [], 0
+    while True:
+        j = js.find("console.log", i)
+        if j < 0:
+            out.append(js[i:])
+            break
+        out.append(js[i:j])
+        k = js.find("(", j)
+        if k < 0:
+            out.append(js[j:])
+            break
+        depth, m = 0, k
+        while m < len(js):
+            if js[m] == "(":
+                depth += 1
+            elif js[m] == ")":
+                depth -= 1
+                if depth == 0:
+                    break
+            m += 1
+        out.append("void 0")
+        i = m + 1
+    return "".join(out)
+
+
 def net_ok():
     g = os.path.expanduser("~/.codebuddy/bin/net-guard.sh")
     return (not os.path.exists(g)) or subprocess.call([g, "check", "-q"]) == 0
@@ -85,6 +113,8 @@ def main():
     txt = fetch(a.offline)
     open(CACHE, "w", encoding="utf-8").write(txt)
     base = yaml.safe_load(txt)
+    # 先记下上游原样有没有脚本（后面会往 http 里加我们自己的两段，别记混）
+    up_has_script = bool((base.get("http") or {}).get("script")) or bool(base.get("script-providers"))
     http = base.setdefault("http", {})
     rew = list(http.get("rewrite") or [])
     mitm = list(http.get("mitm") or [])
@@ -114,8 +144,8 @@ def main():
     # 淘宝那段原文件给了 url/path/payload 三份，这里只留 payload：
     # raw.githubusercontent 在国内经常超时，留着 url 反而会让 Stash 去拉一个拉不到的地址
     for name, pv in (tb.get("script-providers") or {}).items():
-        providers[name] = {"payload": pv.get("payload", ""), "interval": 86400}
-    providers["local-bili-splash"] = {"payload": bili_js, "interval": 86400}
+        providers[name] = {"payload": strip_console(pv.get("payload", "")), "interval": 86400}
+    providers["local-bili-splash"] = {"payload": strip_console(bili_js), "interval": 86400}
 
     for h in list(tb_http.get("mitm") or []):
         if h not in keep_mitm:
@@ -144,6 +174,19 @@ def main():
     assert [str(x) for x in h2["rewrite"]] == [str(x) for x in keep_rew], "rewrite 不一致"
     assert len(h2["script"]) == len(script)
     assert set(chk["script-providers"]) >= {"local-bili-splash"}
+
+    # 硬指标①：上游只许给静态规则，不许带脚本（带了就说明有我们没审过的代码）
+    if up_has_script:
+        raise SystemExit("上游 Advertising 里出现了 script —— 拒绝拼装，先人工审计")
+
+    # 硬指标②：零收集审计（联网上报 / 落盘留痕 / 远端脚本源 / 非 reject 规则）
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    import audit_no_collect as audit
+    bad, _warn = audit.audit_override(OUT)
+    if bad:
+        for p, ln, why, snip in bad[:10]:
+            print("  ✗ %s:%s %s" % (p, ln, why), file=sys.stderr)
+        raise SystemExit("零收集审计未通过 → 不落盘（文件已写，需先修脚本）")
     print("→ %s（%.1f KB）" % (OUT, os.path.getsize(OUT) / 1024))
     print("   rewrite %d 条 ｜ MITM %d 个 ｜ script %d 段"
           % (len(keep_rew), len(keep_mitm), len(script)))
