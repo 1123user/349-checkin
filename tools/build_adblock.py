@@ -37,6 +37,44 @@ BILI_JS = os.path.join(ROOT, "bili", "bili-splash.js")
 UPSTREAM = ("https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/"
             "rewrite/Stash/Advertising/Advertising.stoverride")
 
+# ── 广告 SDK 域名（DNS 层直接 REJECT：不耗 MITM、不碰 App 自身接口）──────────
+# 国内 App 的开屏素材/配置大量走这几家联盟，拦掉域名等于断掉素材源。
+AD_SDK = [
+    # 穿山甲 / GroMore（字节）
+    "pangle.io", "pangolin-sdk-toutiao.com", "gromore.com", "pglstatp-toutiao.com",
+    # 腾讯广点通 / 优量汇
+    "gdt.qq.com", "e.qq.com", "gtimg.cn",
+    # 百度联盟
+    "pos.baidu.com", "cpro.baidu.com", "mobads.baidu.com", "union.baidu.com",
+    # 阿里妈妈
+    "tanx.com", "alimama.com",
+    # 快手联盟
+    "adkwai.com",
+    # 海外主流（有国内 App 接入）
+    "mintegral.com", "applovin.com", "unityads.unity3d.com", "adcolony.com",
+    "vungle.com", "inmobi.com", "chartboost.com", "ironsrc.com", "supersonicads.com",
+    "googleads.g.doubleclick.net", "pagead2.googlesyndication.com", "googleadservices.com",
+    # 广告监测
+    "admaster.com.cn", "miaozhen.com",
+]
+
+# ── 通用开屏路径（正则 reject；开屏接口被拒 → App 直接没素材，走默认启动图）──
+# 需要额外 MITM 的主机：路径级规则（含通用开屏正则）只对 MITM 名单内的主机生效，
+# 这三家正好是用户点名还有开屏的；只加主域，不动支付/登录相关子域。
+EXTRA_MITM = [
+    "pan.baidu.com",        # 百度网盘
+    "music.163.com",        # 网易云音乐
+    "*.music.163.com",
+    "api.fenbi.com",        # 粉笔
+]
+
+SPLASH_RE = [
+    r"(?i)^https?:\/\/[^\/]+\/(?:[\w.\-]+\/){0,4}(?:splash|open[-_]?screen|boot[-_]?ad|launch[-_]?ad)(?:[\/?]|$)",
+    r"(?i)[?&](?:splash|open_screen|openscreen|splash_id)=",
+    r"(?i)\/ad(?:s)?\/(?:splash|open[-_]?screen|launch[-_]?ad|startup)",
+    r"(?i)\/api\/[^?]*\/(?:splash|open[-_]?screen)[^?]*\?",
+]
+
 BANK = ["icbc", "ccb.com", "boc.cn", "abchina", "cmbchina", "cmbc", "spdb", "bankcomm",
         "psbc", "ecitic", "citic", "pingan", "webank", "alipay", "tenpay", "unionpay",
         "95588", "95533", "95566"]
@@ -154,10 +192,22 @@ def main():
             if h not in keep_mitm:
                 keep_mitm.append(h)
 
+    # 通用开屏路径 + 广告 SDK 域名：兜住没有专项规则的那些 App
+    for rx in SPLASH_RE:
+        if rx not in keep_rew:
+            keep_rew.append(rx + " - reject")
+    for h in EXTRA_MITM:
+        if h not in keep_mitm:
+            keep_mitm.append(h)
+    ad_rules = []
+    for d in AD_SDK:
+        ad_rules.append("DOMAIN-SUFFIX,%s,REJECT" % d)
+
     http["rewrite"] = keep_rew
     http["mitm"] = keep_mitm
     http["script"] = script
     out = {"name": "去开屏 / 去广告（小满）",
+           "rules": ad_rules,
            "desc": "通用去广告 + 淘宝/B站开屏（含 B站首页信息流）；银行支付域名已排除 MITM",
            "http": http,
            "script-providers": providers}
@@ -175,6 +225,7 @@ def main():
     assert [str(x) for x in h2["rewrite"]] == [str(x) for x in keep_rew], "rewrite 不一致"
     assert len(h2["script"]) == len(script)
     assert set(chk["script-providers"]) >= {"local-taobao-splash-adblock", "local-bilibili-adblock"}
+    assert all(str(r).endswith(",REJECT") for r in chk.get("rules") or []), "rules 必须全是 REJECT"
 
     # 硬指标①：上游只许给静态规则，不许带脚本（带了就说明有我们没审过的代码）
     if up_has_script:
