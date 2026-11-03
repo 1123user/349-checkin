@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>更新小满</title>
+<style>
+  :root{--bg:#0f1115;--card:#181b22;--line:#262b36;--tx:#e8ecf3;--dim:#98a2b3;--ok:#3ecf8e;--warn:#f5a524}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:20px 16px 40px;background:var(--bg);color:var(--tx);
+       font:16px/1.6 -apple-system,"SF Pro Text","PingFang SC",sans-serif}
+  h1{font-size:22px;margin:4px 0 2px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+  .row{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .row b{font-weight:600}
+  .muted{color:var(--dim)}
+  .btn{display:block;width:100%;text-align:center;text-decoration:none;font-weight:600;font-size:17px;
+       padding:15px;border-radius:12px;border:0;margin-top:10px;background:#2f6bff;color:#fff}
+  .btn.alt{background:#222733;color:var(--tx);border:1px solid var(--line)}
+  .btn:active{transform:translateY(1px)}
+  ol{margin:8px 0 0;padding-left:20px}
+  li{margin:6px 0;font-size:14px}
+  code{background:#0b0d12;border:1px solid var(--line);border-radius:6px;padding:1px 5px;font-size:13px}
+  .tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:#1e2a3d;color:#8ab4ff}
+  .ok{color:var(--ok)}
+</style>
+</head>
+<body>
+<h1>更新小满</h1>
+<div class="sub">绕开 iCloud 节流：直接从 GitHub Pages 拉最新脚本，写回 Scriptable。</div>
+
+<div class="card" id="meta">
+  <div class="row"><span class="muted">云端最新</span><b id="m-build">读取中…</b></div>
+  <div class="row"><span class="muted">界面版号</span><b id="m-ui">—</b></div>
+  <div class="row"><span class="muted">文件</span><b id="m-file">—</b></div>
+</div>
+
+<div class="card">
+  <div><span class="tag">第一次</span> 装这个「更新小满」脚本</div>
+  <ol>
+    <li>点下面 <b>复制更新脚本</b></li>
+    <li>打开 Scriptable → 右上角 <b>＋</b> → 新建空脚本</li>
+    <li>把名字改成 <code>更新小满</code>，全选粘贴 → 保存</li>
+  </ol>
+  <button class="btn alt" id="copy">复制更新脚本</button>
+</div>
+
+<div class="card">
+  <div><span class="tag">以后每次</span> 点一下就跑</div>
+  <div class="muted" style="font-size:13px;margin-top:6px">会先备份旧版（<code>小满.js.bak-时间</code>），再覆盖，最后弹窗告诉你从哪个版本升到哪个版本。</div>
+  <a class="btn" id="run" href="scriptable:///run/%E6%9B%B4%E6%96%B0%E5%B0%8F%E6%BB%A1">在 Scriptable 里运行更新</a>
+</div>
+
+<div class="card">
+  <div class="muted" style="font-size:13px">
+    更新完回 Scriptable 运行一次「小满」，顶部版本行应变成 <b class="ok">v1103-widgetpull</b>。
+    如果还是 <code>v1102-adblock3</code>，说明跑的是旧文件——回到本页重新执行一次。
+  </div>
+</div>
+
+<script>
+let CODE = ''
+fetch('xiaoman-latest.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(j => {
+    document.getElementById('m-build').textContent = j.build || '—'
+    document.getElementById('m-ui').textContent = j.ui || '—'
+    document.getElementById('m-file').textContent = (j.file || '') + (j.size ? ' · ' + Math.round(j.size / 1024) + 'KB' : '')
+  })
+  .catch(() => { document.getElementById('m-build').textContent = '清单读取失败' })
+
+fetch('update-xiaoman.js?t=' + Date.now())
+  .then(r => r.text())
+  .then(t => { CODE = t })
+  .catch(() => {})
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const btn = document.getElementById('copy')
+  try {
+    if (!CODE) throw new Error('还没下载完，再点一次')
+    await navigator.clipboard.writeText(CODE)
+    btn.textContent = '已复制 · 去 Scriptable 粘贴'
+  } catch (e) {
+    // 兜底：选中隐藏文本框内容
+    const ta = document.createElement('textarea')
+    ta.value = CODE
+    document.body.appendChild(ta)
+    ta.select()
+    document.execCommand('copy')
+    ta.remove()
+    btn.textContent = '已复制 · 去 Scriptable 粘贴'
+  }
+})
+</script>
+</body>
+</html>
