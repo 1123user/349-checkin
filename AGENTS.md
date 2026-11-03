@@ -33,8 +33,12 @@ python3 tools/publish_pages.py AGENTS.md index.html
 python3 tools/publish_pages.py --dry    # 只看会推什么
 ```
 
-小满的约定：`xiaoman-v47.js` 固定文件名覆盖；改了脚本必须升 `BUILD` 与 `UI_VER`
-（`xiaoman-latest.json` 的 build/ui 由脚本重算），否则手机端「更新小满」判定同版本不更新。
+小满的约定：`xiaoman-v47.js` 固定文件名覆盖。**`BUILD` 与 `UI_VER` 是唯一来源**——
+`xiaoman-latest.json` 的 `build`/`ui` 由发布器从脚本里读出来回填，不用再手写。
+
+改了脚本必须升这两行，否则手机会判定同版本、根本不拉新脚本。这条已由脚本强制：
+**内容变了但 `BUILD`/`UI_VER` 没升 → 直接拒发**（退出码 1，提示改哪两行）；
+调试时确需强行发才用 `--allow-same-version`。
 发布器会轮询线上 manifest，确认 `build` 真的翻新才算完成（Pages 约 45s）。
 
 发布完本地会处于「文件已改但没提交」的状态，对齐一句搞定（内容与远端一致，不会丢东西）：
