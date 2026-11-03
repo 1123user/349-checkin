@@ -2445,19 +2445,6 @@
    "tasks": [
     {
      "sub": "org",
-     "key": "NR4",
-     "type": "video",
-     "title": "【人名反应·口诀】三分钟背完（中）",
-     "dur": "3:55",
-     "sec": 235,
-     "bvid": "BV1ya411D72w",
-     "level": "必看",
-     "group": "人名反应",
-     "note": "同上；上+中约 20 个常考反应，通勤睡前各刷一遍",
-     "url": "https://www.bilibili.com/video/BV1ya411D72w"
-    },
-    {
-     "sub": "org",
      "key": "NR3",
      "type": "video",
      "title": "【人名反应·口诀】三分钟背完（上）",
@@ -2468,6 +2455,19 @@
      "group": "人名反应",
      "note": "一句口诀=反应物/条件/产物；碎片时间刷背",
      "url": "https://www.bilibili.com/video/BV1AV4y1n7VJ"
+    },
+    {
+     "sub": "org",
+     "key": "NR4",
+     "type": "video",
+     "title": "【人名反应·口诀】三分钟背完（中）",
+     "dur": "3:55",
+     "sec": 235,
+     "bvid": "BV1ya411D72w",
+     "level": "必看",
+     "group": "人名反应",
+     "note": "同上；上+中约 20 个常考反应，通勤睡前各刷一遍",
+     "url": "https://www.bilibili.com/video/BV1ya411D72w"
     },
     {
      "sub": "org",
