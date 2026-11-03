@@ -37,6 +37,12 @@ python3 tools/publish_pages.py --dry    # 只看会推什么
 （`xiaoman-latest.json` 的 build/ui 由脚本重算），否则手机端「更新小满」判定同版本不更新。
 发布器会轮询线上 manifest，确认 `build` 真的翻新才算完成（Pages 约 45s）。
 
+发布完本地会处于「文件已改但没提交」的状态，对齐一句搞定（内容与远端一致，不会丢东西）：
+
+```bash
+git fetch origin && git reset --hard origin/main
+```
+
 **需要拉每日 Actions 成果时**：`git pull --ff-only`；一旦报「diverged」，先
 `git cherry -v origin/main HEAD` 看哪些是 `-`（等价重复、可直接丢）、哪些是 `+`（真新提交），
 不要一看到 "ahead N" 就 rebase。
