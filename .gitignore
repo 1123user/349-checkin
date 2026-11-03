@@ -10,3 +10,7 @@ install-en.html
 # 本地排课/脚本历史备份：只留 Mac 归档，别进公开仓库
 plan3.json.bak-*
 *.bak-*
+
+# adblock 上游缓存与手工测试文件（构建时自动下载/临时用）
+adblock/upstream.*.stoverride
+adblock/测试*.stoverride
