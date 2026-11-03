@@ -16,11 +16,30 @@
 - `install.html` — 安装引导页
 
 ## 约定
-- 改 `plan3.json` 前先备份；目录里已有 6 个 `plan3.json.bak-*`（总量不大但别再加），历史备份保留最近 2 份即可
+- 改 `plan3.json` 前先备份；`*.bak-*` 已在 `.gitignore` 里，历史备份只留 Mac 归档
+  （`~/本机资源库/软件资源库/349PWA归档/`），别再堆在仓库工作区
 - 计划以脚本生成为准（`tools/gen_*.py`），**不要手工大改 plan3.json**，否则下次重跑会被覆盖
 - `progress.json` 是用户真实打卡记录，**任何脚本都不要重写它**
 - 图标改 `icon-*.png` 后跑 `gen_icon.py` 补齐全部尺寸
-- 发布：`git push` 后 GitHub Pages 自动构建，约 1 分钟；手机上要清 Service Worker 才能看到新版
+- 发布见下节「发布铁律」
+
+## 发布铁律（2026-11-03 定版）
+**文件级发布走 GitHub Contents API，不要 `git push`**。本地 clone 常年落后 Actions 的每日
+提交（`tomorrow.json` / `rec.json` / `plan3.json`），一 push 就分叉，rebase 还会把等价提交重放。
+
+```bash
+python3 tools/publish_pages.py          # 小满：脚本 + 清单（自动重算 size/sha1/build）
+python3 tools/publish_pages.py AGENTS.md index.html
+python3 tools/publish_pages.py --dry    # 只看会推什么
+```
+
+小满的约定：`xiaoman-v47.js` 固定文件名覆盖；改了脚本必须升 `BUILD` 与 `UI_VER`
+（`xiaoman-latest.json` 的 build/ui 由脚本重算），否则手机端「更新小满」判定同版本不更新。
+发布器会轮询线上 manifest，确认 `build` 真的翻新才算完成（Pages 约 45s）。
+
+**需要拉每日 Actions 成果时**：`git pull --ff-only`；一旦报「diverged」，先
+`git cherry -v origin/main HEAD` 看哪些是 `-`（等价重复、可直接丢）、哪些是 `+`（真新提交），
+不要一看到 "ahead N" 就 rebase。
 
 ## 硬指标：零收集（2026-11-02 起，不可协商）
 本仓发布的 Stash 覆写/脚本会在手机上 MITM 明文，所以**任何一处上报都算事故**。
