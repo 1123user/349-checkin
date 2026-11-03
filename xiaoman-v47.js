@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v47-20261103-widgetpull"
+  const BUILD = "v47-20261103-poljump"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -1806,33 +1806,42 @@
     return (t.getMonth() + 1) + "/" + t.getDate() + " " + p(t.getHours()) + ":" + p(t.getMinutes())
   }
 
-  /* 任务详情弹窗（2026-10-28）
+  /* 任务详情弹窗（2026-10-28，2026-11-03 修炸弹）
      用户反馈：勾完之后条目就从列表里消失，点不进去看「到底完成的是什么」。
-     现在弹窗把这条的科目 / 时长 / 章节 / 备注 / 链接全列出来，
-     已完成的还多一行「✅ 完成于 …」，播放与取消勾选照旧可用。 */
-  function taskSheet(task, on, doToggle, playText, doPlay, doneAt) {
-    const a = new Alert()
-    a.title = String(task.title || "")
-    const msg = []
-    if (on && doneAt) msg.push("✅ 完成于 " + fmtStamp(doneAt))
-    const meta = []
-    if (task.sub && SUB[task.sub]) meta.push(SUB[task.sub].name)
-    if (task.dur) meta.push(task.dur)
-    if (task.level) meta.push(task.level)
-    if (meta.length) msg.push(meta.join(" · "))
-    if (task.group) msg.push("章节：" + task.group)
-    if (task.loc) msg.push("📍" + task.loc)
-    if (task.note) msg.push(task.note)
-    if (task.url) msg.push("🔗 " + shortUrl(task))
-    a.message = msg.join("\n")
-    a.addAction(on ? "取消勾选" : "标记完成").handler = doToggle
-    if (doPlay) {
-      a.addAction(playText || "▶ 播放").handler = doPlay
-      a.addAction("🌐 网页打开（分P最准）").handler = () => openWeb(task.url)
+     ⚠ 根因：Scriptable 的 Alert.addAction() 返回 undefined（官方文档没有
+     AlertAction/handler 这套 API），原写法 .handler = … 一点就抛
+     TypeError: undefined is not an object。正确姿势是 addAction 只管加按钮，
+     present() 返回被点的索引（取消恒为 -1），再按索引分发。
+     extras：[{label, run}] 可选附加按钮（政治 memo 任务用它跳政治线板块）。 */
+    function taskSheet(task, on, doToggle, playText, doPlay, doneAt, extras) {
+      const a = new Alert()
+      a.title = String(task.title || "")
+      const msg = []
+      if (on && doneAt) msg.push("✅ 完成于 " + fmtStamp(doneAt))
+      const meta = []
+      if (task.sub && SUB[task.sub]) meta.push(SUB[task.sub].name)
+      if (task.dur) meta.push(task.dur)
+      if (task.level) meta.push(task.level)
+      if (meta.length) msg.push(meta.join(" · "))
+      if (task.group) msg.push("章节：" + task.group)
+      if (task.loc) msg.push("📍" + task.loc)
+      if (task.note) msg.push(task.note)
+      if (task.url) msg.push("🔗 " + shortUrl(task))
+      a.message = msg.join("\n")
+      const acts = [{ label: on ? "取消勾选" : "标记完成", run: doToggle }]
+      if (doPlay) {
+        acts.push({ label: playText || "▶ 播放", run: doPlay })
+        acts.push({ label: "🌐 网页打开（分P最准）", run: () => openWeb(task.url) })
+      }
+      ;(extras || []).forEach(x => acts.push(x))
+      acts.forEach(x => a.addAction(x.label))
+      a.addCancelAction("返回")
+      a.present().then(i => {
+        if (i >= 0 && i < acts.length && acts[i].run) {
+          try { acts[i].run() } catch (e) { console.error("taskSheet action: " + e) }
+        }
+      })
     }
-    a.addCancelAction("返回")
-    a.present()
-  }
 
   function head(text, note, onTap, btn) {
     const r = new UITableRow()
@@ -2095,6 +2104,29 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     Safari.open("https://study.koolearn.com/my")
   }
 
+  /* 政治 memo 任务的板块跳转（2026-11-03）：这类任务没有链接，
+     点了不知道去哪。按标题关键词在政治线（POL.days）里找对应板块的
+     带视频日期，弹窗里给「▶ M/D 标题」按钮，点了直接开那天的清单。 */
+  function polMemoExtras(task, S, rerender) {
+    if (!POL || task.type !== "memo") return []
+    const t = String(task.title || "")
+    const kws =
+      t.indexOf("概念卡") >= 0 ? ["思法"] :
+      t.indexOf("错题") >= 0 ? ["精练", "习题"] :
+      (t.indexOf("马原") >= 0 || t.indexOf("多选") >= 0 || t.indexOf("正误") >= 0) ? ["马哲"] : null
+    if (!kws) return []
+    const hits = []
+    POL.days.forEach(d => d.tasks.forEach(v => {
+      const ok = v.type === "video" && v.url &&
+        kws.some(k => String(v.title || "").indexOf(k) >= 0)
+      if (ok && !hits.some(h => h.date === d.date)) hits.push({ date: d.date, title: v.title })
+    }))
+    return hits.slice(0, 3).map(h => ({
+      label: "▶ " + h.date.slice(5).replace("-", "/") + " " + cut(h.title, 16),
+      run: () => polDayTable(S, POL.days.find(d => d.date === h.date), rerender).present(true)
+    }))
+  }
+
   /* 政治任务行：视频点右侧「▶ B站」直接播；新东方冲刺/模考点「App」给路径提示；
      勾选一律走行尾「○ / ✓」，点标题只弹菜单（不会误勾） */
   function polRows(t, S, pd, rerender, compact) {
@@ -2109,6 +2141,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
            : ((task.dur ? task.dur + " · " : "") + sub), compact ? 34 : 38),
         on ? TC.ok : TC.pol, compact ? 46 : 58, compact ? undefined : 2)
       r.dismissOnSelect = false
+      const extras = polMemoExtras(task, S, rerender)
       const appTip = () => {
         const a = new Alert()
         a.title = "在新东方 App 里看"
@@ -2121,11 +2154,11 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
           return taskSheet(task, on, () => toggleDone(S, id, "pol", rerender),
             task.url ? "▶ B站播放" : null,
             task.url ? () => openPlay(task.url, task.title) : (task.type === "app" ? appTip : null),
-            S.done[id])
+            S.done[id], extras)
         }
         if (task.url) return openPlay(task.url, task.title)
         if (task.type === "app") return appTip()
-        taskSheet(task, on, () => toggleDone(S, id, "pol", rerender), null, null, S.done[id])
+        taskSheet(task, on, () => toggleDone(S, id, "pol", rerender), null, null, S.done[id], extras)
       }
       if (task.url) {
         const b = r.addButton("▶")
@@ -2144,7 +2177,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       dbp.onTap = () => taskSheet(task, on, () => toggleDone(S, id, "pol", rerender),
         task.url ? "▶ B站播放" : null,
         task.url ? () => openPlay(task.url, task.title) : (task.type === "app" ? appTip : null),
-        S.done[id])
+        S.done[id], extras)
       markBtn(r, on, () => toggleDone(S, id, "pol", rerender))
       t.addRow(r)
     })
@@ -2252,7 +2285,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1103-widgetpull"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1103-poljump"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
