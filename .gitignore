@@ -6,3 +6,7 @@ tools/
 plan-en.json
 install-en.html
 英语日程.js
+
+# 本地排课/脚本历史备份：只留 Mac 归档，别进公开仓库
+plan3.json.bak-*
+*.bak-*
