@@ -85,7 +85,11 @@ async function main() {
   )
 }
 
-main().catch(async e => {
-  await say("更新失败", String((e && e.message) || e) + "\n\n" +
-    "排查：1) 手机能上网吗 2) Safari 直接打开 " + BASE + "xiaoman-latest.json 看是否 404 3) 脚本名是否被改过")
-})
+(async () => {
+  try {
+    await main()
+  } catch (e) {
+    await say("更新失败", String((e && e.message) || e) + "\n\n" +
+      "排查：1) 手机能上网吗 2) Safari 直接打开 " + BASE + "xiaoman-latest.json 看是否 404 3) 脚本名是否被改过")
+  }
+})()
