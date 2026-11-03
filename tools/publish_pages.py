@@ -5,6 +5,12 @@
     python3 tools/publish_pages.py                      # 默认发布小满：脚本 + 清单
     python3 tools/publish_pages.py AGENTS.md index.html # 发布指定文件
     python3 tools/publish_pages.py --dry                # 只看会推什么
+    python3 tools/publish_pages.py --allow-same-version # 内容变了但没升 BUILD/UI_VER，强行发
+
+版本纪律（由脚本强制，不靠记性）：
+  manifest 的 build/ui 由脚本里的 `const BUILD` / `const UI_VER` 回填，不再手填；
+  脚本内容变了但这两行没升 → 直接拒发（退出码 1），因为手机端「更新小满」
+  只比对 BUILD，同版本就不会拉新脚本。
 
 为什么不用 git push：
   本地 clone 经常落后 Actions 的每日提交（tomorrow.json / rec.json / plan3.json），
@@ -18,6 +24,7 @@ import base64
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -67,30 +74,71 @@ def remote_bytes(tok, name):
     return base64.b64decode(r["content"]), r.get("sha")
 
 
-def sync_manifest():
-    """按真实脚本重算 manifest，避免 build/size/sha1 与文件对不上"""
+def script_version():
+    """BUILD / UI_VER 是唯一来源：直接从脚本里抠，manifest 不再手填"""
+    src = local_bytes(XIAOMAN).decode("utf-8", "ignore")
+    b = re.search(r'^\s*const\s+BUILD\s*=\s*"([^"]+)"', src, re.M)
+    u = re.search(r'^\s*const\s+UI_VER\s*=\s*"([^"]+)"', src, re.M)
+    if not b or not u:
+        raise SystemExit("✗ 没在 %s 里找到 BUILD / UI_VER，先补上再发布" % XIAOMAN)
+    return b.group(1), u.group(1)
+
+
+def sync_manifest(build, ui):
+    """按真实脚本重算 manifest，避免 build/ui/size/sha1 与文件对不上"""
     p = os.path.join(ROOT, MANIFEST)
     m = json.load(open(p, encoding="utf-8"))
     b = local_bytes(XIAOMAN)
     m["file"] = XIAOMAN
+    m["build"] = build
+    m["ui"] = "v" + ui
     m["size"] = len(b)
     m["sha1"] = hashlib.sha1(b).hexdigest()[:12]
     json.dump(m, open(p, "w", encoding="utf-8"), ensure_ascii=False)
-    print("manifest → build=%s ui=%s size=%d sha1=%s" % (m.get("build"), m.get("ui"), m["size"], m["sha1"]))
+    print("manifest → build=%s ui=%s size=%d sha1=%s" % (m["build"], m["ui"], m["size"], m["sha1"]))
     return m
 
 
+def guard_version(tok):
+    """内容变了但 BUILD/UI_VER 没升 → 手机端会判定同版本不更新，直接拒发。
+       （2026-11-03：这条以前靠记性，现在靠退出码）"""
+    build, ui = script_version()
+    remote_manifest, _ = remote_bytes(tok, MANIFEST)
+    if not remote_manifest:
+        return build, ui
+    try:
+        old = json.loads(remote_manifest.decode("utf-8"))
+    except Exception:
+        return build, ui
+    new_js = local_bytes(XIAOMAN)
+    old_js, _ = remote_bytes(tok, XIAOMAN)
+    same_body = new_js == old_js
+    if not same_body and build == old.get("build") and ("v" + ui) == old.get("ui"):
+        raise SystemExit(
+            "✗ 脚本内容变了，但 BUILD/UI_VER 没升（仍是 %s / %s）\n"
+            "  手机端「更新小满」会认为同版本、不会拉新脚本。\n"
+            "  改 %s 顶部 BUILD 与 UI_VER 两行后重跑；确需强行发布加 --allow-same-version。"
+            % (build, ui, XIAOMAN))
+    return build, ui
+
+
 def main():
-    args = [a for a in sys.argv[1:] if a != "--dry"]
-    dry = "--dry" in sys.argv
+    raw = sys.argv[1:]
+    dry = "--dry" in raw
+    force = "--allow-same-version" in raw
+    args = [a for a in raw if not a.startswith("--")]
     files = args or DEFAULT
-    if XIAOMAN in files or not args:
-        sync_manifest()   # 默认发布小满时先对齐清单
 
     tok = token()
     if not tok:
         print("没有 GitHub token（先 gh auth login）")
         return 1
+
+    if XIAOMAN in files:
+        build, ui = script_version()
+        if not force:
+            guard_version(tok)
+        sync_manifest(build, ui)
 
     pushed = 0
     for name in files:
