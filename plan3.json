@@ -2110,11 +2110,24 @@
     },
     {
      "sub": "org",
+     "key": "NR1",
+     "type": "video",
+     "title": "【人名反应·全览】30 个大纲人名反应一遍过（重点标黄）",
+     "dur": "32:07",
+     "sec": 1927,
+     "bvid": "BV1G1UrYPE9M",
+     "level": "必看",
+     "group": "人名反应",
+     "note": "UP 自己整理的 30 个 = 我们 kb 卡同口径；英文人名中文念读题技巧",
+     "url": "https://www.bilibili.com/video/BV1G1UrYPE9M"
+    },
+    {
+     "sub": "org",
      "key": "QX1",
      "type": "quiz",
-     "title": "【做题】有机化学 · 96 题",
-     "dur": "83:15",
-     "sec": 4995,
+     "title": "【做题】有机化学 · 56 题",
+     "dur": "48:30",
+     "sec": 2910,
      "bvid": "",
      "level": "做题",
      "group": "题库刷题",
@@ -2135,11 +2148,11 @@
      "url": ""
     }
    ],
-   "min": 224,
+   "min": 221,
    "by": {
-    "org": 1,
     "pharm": 2,
-    "ana": 2
+    "ana": 2,
+    "org": 2
    }
   },
   {
@@ -2230,11 +2243,24 @@
     },
     {
      "sub": "org",
+     "key": "NR2",
+     "type": "video",
+     "title": "【人名反应·精讲】沈药公开课（二）：缩合家族 + 还原家族",
+     "dur": "46:34",
+     "sec": 2794,
+     "bvid": "BV1qMbn6bEV4",
+     "level": "必看",
+     "group": "人名反应",
+     "note": "定义/通式/特点→机理→背诵→习题四段式；沈药 349 口径，第 13 个起讲",
+     "url": "https://www.bilibili.com/video/BV1qMbn6bEV4"
+    },
+    {
+     "sub": "org",
      "key": "QX1",
      "type": "quiz",
-     "title": "【做题】有机化学 · 96 题",
-     "dur": "83:15",
-     "sec": 4995,
+     "title": "【做题】有机化学 · 48 题",
+     "dur": "41:30",
+     "sec": 2490,
      "bvid": "",
      "level": "做题",
      "group": "题库刷题",
@@ -2255,10 +2281,10 @@
      "url": ""
     }
    ],
-   "min": 153,
+   "min": 157,
    "by": {
-    "org": 1,
-    "ana": 2
+    "ana": 2,
+    "org": 2
    }
   },
   {
@@ -2419,6 +2445,32 @@
    "tasks": [
     {
      "sub": "org",
+     "key": "NR4",
+     "type": "video",
+     "title": "【人名反应·口诀】三分钟背完（中）",
+     "dur": "3:55",
+     "sec": 235,
+     "bvid": "BV1ya411D72w",
+     "level": "必看",
+     "group": "人名反应",
+     "note": "同上；上+中约 20 个常考反应，通勤睡前各刷一遍",
+     "url": "https://www.bilibili.com/video/BV1ya411D72w"
+    },
+    {
+     "sub": "org",
+     "key": "NR3",
+     "type": "video",
+     "title": "【人名反应·口诀】三分钟背完（上）",
+     "dur": "4:24",
+     "sec": 264,
+     "bvid": "BV1AV4y1n7VJ",
+     "level": "必看",
+     "group": "人名反应",
+     "note": "一句口诀=反应物/条件/产物；碎片时间刷背",
+     "url": "https://www.bilibili.com/video/BV1AV4y1n7VJ"
+    },
+    {
+     "sub": "org",
      "key": "R1-9",
      "title": "第2节 习题课",
      "dur": "17:33",
@@ -2517,9 +2569,9 @@
      "url": ""
     }
    ],
-   "min": 117,
+   "min": 125,
    "by": {
-    "org": 2,
+    "org": 4,
     "pharm": 3,
     "ana": 3
    }
@@ -5155,7 +5207,7 @@
   }
  ],
  "counts": {
-  "org": 63,
+  "org": 67,
   "pharm": 55,
   "ana": 41
  }
