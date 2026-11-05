@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v52-20261105-quietlog"
+  const BUILD = "v53-20261105-safenet"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2353,7 +2353,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-quietlog"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-safenet"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2611,6 +2611,9 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
   
   /* ---------- 入口 ---------- */
   trace("start")
+  /* v53 启动兜底：任何一步抛错都不能「静默只剩代码界面」——
+     弹窗把错误摆出来 + 写进 run-log，并提示跑「更新小满」自愈。 */
+  try {
   const T0 = Date.now()
   loadPlayMode()          /* B 站播放偏好：player.json，缺省「B站 App」深链直达视频页 */
   /* 启动提速（2026-11-01）：原来六个 await 一个接一个排着，iCloud 下载 + JSON 解析全串成一条线；
@@ -2716,5 +2719,32 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     }
     Script.complete()
   }
-  
+  } catch (bootErr) {
+    /* v53：启动异常兜底 —— 不白屏、不静默，直接告诉用户是什么错、怎么修 */
+    try {
+      const msg = String((bootErr && (bootErr.stack || bootErr.message)) || bootErr).slice(0, 800)
+      try {
+        const lp = fm.joinPath(DIR, "run-log.txt")
+        let old = ""
+        try { if (fm.fileExists(lp)) old = fm.readString(lp) || "" } catch (e) {}
+        fm.writeString(lp, new Date().toISOString().slice(5, 16).replace("T", " ") +
+          "  " + BUILD + "  BOOT-ERR  " + msg.split("\n")[0] + "\n" + old)
+      } catch (e) {}
+      if (!config.runsInWidget) {
+        const a = new Alert()
+        a.title = "小满启动出错（" + BUILD + "）"
+        a.message = msg + "\n\n处理：跑一次「更新小满」—— 它会从云端拉最新版并做完整性校验，能自动修掉损坏的脚本。"
+        a.addAction("好")
+        await a.present()
+      } else {
+        const w = new ListWidget()
+        const t = w.addText("小满启动出错\n点我重试，或跑一次「更新小满」")
+        t.font = Font.systemFont(11)
+        t.textColor = new Color("#FF453A")
+        w.url = "scriptable:///run/" + encodeURIComponent(Script.name())
+        Script.setWidget(w)
+      }
+    } catch (e2) {}
+  }
+
 })()
