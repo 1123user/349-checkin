@@ -38,13 +38,18 @@
 </div>
 
 <div class="card">
-  <div><span class="tag">第一次</span> 装这个「更新小满」脚本</div>
+  <div><span class="tag">第一次 / 救砖</span> 把这个安全版覆盖进「更新小满」</div>
   <ol>
     <li>点下面 <b>复制更新脚本</b></li>
-    <li>打开 Scriptable → 右上角 <b>＋</b> → 新建空脚本</li>
-    <li>把名字改成 <code>更新小满</code>，全选粘贴 → 保存</li>
+    <li>打开 Scriptable → 点开已有的 <code>更新小满</code> → 全选 <b>粘贴覆盖</b> → 保存
+      <br><span class="muted" style="font-size:12px">（没有就 ＋ 新建，名字改成 <code>更新小满</code>）</span></li>
+    <li>运行它 → 会弹「更新完成 → 版本号」</li>
   </ol>
   <button class="btn alt" id="copy">复制更新脚本</button>
+  <div class="muted" style="font-size:12px;margin-top:8px">
+    安全版会：双源拉取（Pages + jsDelivr）→ 完整性校验（长度/版本标记/结尾）→ 备份 → 覆盖 → 回读校验，失败自动回滚。
+    若列表里有旧的「更新小满2」或内容仍是 <code>172.20.10.6:8901</code> 开头的旧版，删掉/覆盖掉。
+  </div>
 </div>
 
 <div class="card">
@@ -55,8 +60,8 @@
 
 <div class="card">
   <div class="muted" style="font-size:13px">
-    更新完回 Scriptable 运行一次「小满」，顶部版本行应变成 <b class="ok">v1103-widgetpull</b>。
-    如果还是 <code>v1102-adblock3</code>，说明跑的是旧文件——回到本页重新执行一次。
+    更新完回 Scriptable 运行一次「小满」，顶部版本行应变成 <b class="ok">v1105-bootdiag</b>。
+    如果还是旧版号，回到本页重新执行一次。
   </div>
 </div>
 
