@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v51-20261105-quickpull"
+  const BUILD = "v52-20261105-quietlog"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -78,7 +78,10 @@
       } catch (e) {}
       const p = fm.joinPath(DIR, "run-log.txt")
       let old = ""
-      try { old = fm.readString(p) } catch (e) {}
+      try { if (fm.fileExists(p)) old = fm.readString(p) || "" } catch (e) {}
+      /* fileExists 先探（2026-11-05）：新装机/新 BUILD 时 run-log.txt 还不存在，
+         直接 readString 会抛「does not exist」—— 功能没影响（catch 住了），
+         但 Scriptable 会把它打在 Log 面板上，看着像出错，静默掉。 */
       if (old.indexOf(BUILD) === 0) return
       fm.writeString(p, new Date().toISOString().slice(5, 16).replace("T", " ") + "  " +
         BUILD + "  " + tag + "  " + (config.widgetFamily || "app") + "\n" + old)
@@ -96,7 +99,7 @@
       ensureDir()
       const p = fm.joinPath(DIR, "boot-log.txt")
       let old = ""
-      try { old = fm.readString(p) || "" } catch (e) {}
+      try { if (fm.fileExists(p)) old = fm.readString(p) || "" } catch (e) {}
       const ms = (a, b) => (a && b) ? (b - a) + "ms" : "-"
       const line = new Date().toISOString().slice(5, 16).replace("T", " ") + "  " + BUILD +
         "  load=" + ms(t0, tLoad) + " pull=" + ms(tLoad, tPull) + " show=" + ms(tPull, tShow) +
@@ -2350,7 +2353,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-quickpull"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-quietlog"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
