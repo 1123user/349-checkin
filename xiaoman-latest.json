@@ -1,1 +1,1 @@
-{"file": "xiaoman-v47.js", "build": "v47-20261103-poljump", "ui": "v1103-poljump", "size": 124111, "sha1": "bb4763899a8a", "at": "2026-11-03T14:09:27+08:00", "note": "修复任务详情弹窗一点就崩（Scriptable Alert.addAction 无返回值）；政治背记任务弹窗里加「▶ 去看政治线对应板块」直达按钮"}
+{"file": "xiaoman-v47.js", "build": "v49-20261105-plansync", "ui": "v1105-plansync", "size": 125800, "sha1": "c21cc6fcdb37", "at": "2026-11-03T14:09:27+08:00", "note": "修复任务详情弹窗一点就崩（Scriptable Alert.addAction 无返回值）；政治背记任务弹窗里加「▶ 去看政治线对应板块」直达按钮"}
