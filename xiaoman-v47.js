@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v48-20261105-instpush"
+  const BUILD = "v49-20261105-plansync"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -406,6 +406,38 @@
      v46 补丁：夜里那轮没拉成（比如 22–24 点没开过 App），白天开时数据已过期
      （tomorrow 那份不是今天/明天的），允许当天第一个开 App 的时刻补拉一次；
      用 lastPull 记账，一天最多补一次，不会每次打开都出网空转。 */
+  /* 安排（plan3）云端刷新（2026-11-05）：iCloud 手机→Mac 会整天卡住
+     （progress.json 停在前一天，349打卡/ 零同步），plan3 同一条通道 ——
+     新排期到不了手机。夜间批量 / 手动拉取时顺带从 Pages 拿一份：
+     meta.plan_ver 比手上新才覆盖，拿不到就用旧数据（绝不白屏）。 */
+  async function pullPlanCloud(force) {
+    if (!force && Date.now() - (SYNC_ST.planAt || 0) < 6 * 3600e3) return false
+    let old = ''
+    try {
+      if (fm.fileExists(F_PLAN) && fm.isFileDownloaded(F_PLAN)) {
+        const o = JSON.parse(fm.readString(F_PLAN))
+        old = String((o && o.meta && o.meta.plan_ver) || '')
+      }
+    } catch (e) {}
+    const SRC = [BASE + "plan3.json",
+                 "https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/plan3.json"]
+    for (const u of SRC) {
+      try {
+        const r = new Request(u)
+        r.timeoutInterval = 15
+        const fresh = await r.loadJSON()
+        if (!planOk(fresh)) continue
+        const nv = String((fresh.meta && fresh.meta.plan_ver) || '')
+        if (old && nv && nv <= old) { saveSyncSt({ planAt: Date.now() }); return false }
+        savePlanLocal(fresh)
+        try { if (!fm.fileExists(DIR)) fm.createDirectory(DIR, true); fm.writeString(F_PLAN, JSON.stringify(fresh)) } catch (e) {}
+        saveSyncSt({ planAt: Date.now() })
+        return true
+      } catch (e) {}
+    }
+    return false
+  }
+
   function needPullNow() {
     if (!fm.fileExists(F_REC) || !fm.fileExists(F_TMR) || !fm.fileExists(F_KB)) return true
     if (!inNight()) {
@@ -2288,7 +2320,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-instpush"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-plansync"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2483,7 +2515,8 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         if (i === 0) playModeSheet(render)
         else if (i === 1) syncModeSheet(render)
         else if (i === 2) {
-          await Promise.all([pullTomorrowCloud(true), pullRecCloud(true), pullKbCloud(true)]).catch(() => {})
+          await Promise.all([pullTomorrowCloud(true), pullRecCloud(true), pullKbCloud(true),
+            pullPlanCloud(true)]).catch(() => {})
           saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
           render()
         }
@@ -2565,7 +2598,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
        频率兜底：needPullNow 的 lastPull 记账（最多一次/天）+ 各 pull 内部 6h 节流。 */
     try {
       if (needPullNow()) {
-        await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud()])
+        await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud()])
         saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
       }
     } catch (e) {}
@@ -2620,7 +2653,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       /* 夜里集中拉一轮（白天直接用 iCloud 缓存，零出网），详见「跨端同步节律」 */
       try {
         if (needPullNow()) {
-          await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud()])
+          await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud()])
           saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
         }
       } catch (e) {}
