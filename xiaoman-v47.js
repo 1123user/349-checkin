@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v53-20261105-safenet"
+  const BUILD = "v54-20261105-bootdiag"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2353,7 +2353,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-safenet"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-bootdiag"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2615,10 +2615,12 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
      弹窗把错误摆出来 + 写进 run-log，并提示跑「更新小满」自愈。 */
   try {
   const T0 = Date.now()
+  var BOOT_STEP = "刚进入口"          /* v54：分步探针，启动出错时弹窗报「卡在哪一步」 */
   loadPlayMode()          /* B 站播放偏好：player.json，缺省「B站 App」深链直达视频页 */
   /* 启动提速（2026-11-01）：原来六个 await 一个接一个排着，iCloud 下载 + JSON 解析全串成一条线；
      现在能并行的都并行。组件只用到 P/S/EN/POL，复盘和完形是 App 清单里的块，组件不读。 */
   const inWidget = !!config.runsInWidget
+  BOOT_STEP = "并行读数据（进度/排期/英语/政治）"
   const jobs = [loadProg(), loadPlan(), loadEn(), loadPol()]
   if (!inWidget) jobs.push(loadRv(), loadCd())
   const R = await Promise.all(jobs.map(p => p.catch(() => null)))
@@ -2640,6 +2642,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       }
     } catch (e) {}
     /* 组件里出错时不要糊一屏红色堆栈：兜成一行可读提示，并把错误写进 run-log.txt */
+    BOOT_STEP = "构建小组件"
     let w
     try {
       w = await buildWidget(P, S)
@@ -2655,6 +2658,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     Script.setWidget(w)
     Script.complete()
   } else {
+    BOOT_STEP = "App 首屏准备"
     /* 只弹一次：第一次跑带播放偏好的版本时把「点 ▶ 会发生什么」说清楚 */
     try {
       const firstTime = !fm.fileExists(F_PLAY)
@@ -2710,6 +2714,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
           } catch (e) {}
         })
       }
+      BOOT_STEP = "渲染主清单"
       await mainTable(P, S).present(true)
       bootLog(T0, T_LOAD, T_PULL, Date.now(), "full")  /* 关掉清单后再补一笔 */
       kick("close", true)   // 关掉清单时强制补一次：被 1.5s 去抖吃掉的点按，靠这里兜底
@@ -2720,9 +2725,15 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     Script.complete()
   }
   } catch (bootErr) {
-    /* v53：启动异常兜底 —— 不白屏、不静默，直接告诉用户是什么错、怎么修 */
+    /* v53：启动异常兜底 —— 不白屏、不静默，直接告诉用户是什么错、怎么修。
+       v54：带分步探针（卡在哪一步）+ message（原生错误往往只有 @[native code] 没堆栈） */
     try {
-      const msg = String((bootErr && (bootErr.stack || bootErr.message)) || bootErr).slice(0, 800)
+      const em = String((bootErr && bootErr.message) || bootErr || "")
+      const st = String((bootErr && bootErr.stack) || "")
+      const where = (typeof BOOT_STEP === "string" && BOOT_STEP) || "?"
+      const msg = ("卡在：" + where + "\n"
+        + (em && em !== "undefined" ? em + "\n" : "")
+        + (st.indexOf("native code") >= 0 ? "（底层原生错误，无 JS 堆栈 —— 多半是 iCloud 容器这步抽风，重跑一次或重启手机后重试）" : st)).slice(0, 800)
       try {
         const lp = fm.joinPath(DIR, "run-log.txt")
         let old = ""
