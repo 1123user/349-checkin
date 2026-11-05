@@ -1,1 +1,1 @@
-{"file": "xiaoman-v47.js", "build": "v54-20261105-bootdiag", "ui": "v1105-bootdiag", "size": 130460, "sha1": "6fcea2672be8", "at": "2026-11-03T14:09:27+08:00", "note": "修复任务详情弹窗一点就崩（Scriptable Alert.addAction 无返回值）；政治背记任务弹窗里加「▶ 去看政治线对应板块」直达按钮"}
+{"file": "xiaoman-v47.js", "build": "v55-20261105-timguard", "ui": "v1105-timguard", "size": 130860, "sha1": "06b9eff1e11c", "at": "2026-11-03T14:09:27+08:00", "note": "修复任务详情弹窗一点就崩（Scriptable Alert.addAction 无返回值）；政治背记任务弹窗里加「▶ 去看政治线对应板块」直达按钮"}
