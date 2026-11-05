@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v54-20261105-bootdiag"
+  const BUILD = "v55-20261105-timguard"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2353,7 +2353,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-bootdiag"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-timguard"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2658,7 +2658,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     Script.setWidget(w)
     Script.complete()
   } else {
-    BOOT_STEP = "App 首屏准备"
+    BOOT_STEP = "首屏·首次提示"
     /* 只弹一次：第一次跑带播放偏好的版本时把「点 ▶ 会发生什么」说清楚 */
     try {
       const firstTime = !fm.fileExists(F_PLAY)
@@ -2679,7 +2679,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       a.title = "排期加载失败"
       a.message = "还没有本地缓存，也没有网络。请连上网后重新运行一次。"
       a.addAction("好")
-      await a.present()
+      try { await a.present() } catch (e) {}
     } else {
       if (!PROG_OK) {
         const a = new Alert()
@@ -2687,11 +2687,12 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         a.message = "iCloud 里的 progress.json 这次没读下来。为避免覆盖旧数据，这次不写云端 —— "
           + "但你打的勾会先存在手机本地，下次运行自动并回去，不会丢。"
         a.addAction("知道了")
-        await a.present()
+        try { await a.present() } catch (e) {}
       }
       /* 三个云端同步并行跑（原来串行：最坏要排 8+20+8 秒），
          而且 rec/tomorrow 都加了 6 小时节流 —— 日常打开基本不再出网。 */
       /* 夜里集中拉一轮（白天直接用 iCloud 缓存，零出网），详见「跨端同步节律」 */
+      BOOT_STEP = "首屏·云端拉取"
       try {
         if (needPullNow()) {
           await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud(), pullPolCloud()])
@@ -2699,11 +2700,16 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         }
       } catch (e) {}
       const T_PULL = Date.now()
+      BOOT_STEP = "首屏·留痕"
       bootLog(T0, T_LOAD, T_PULL, Date.now(), "pre")   /* 到「清单即将弹出」为止，先记一笔 */
       /* 开机静默刷新（v51）：iCloud 手机→Mac 卡住时，新排期/新顺序到不了手机 ——
          主界面弹出 1.5s 后静默拉一次安排+政治（内部 6h 节流），拉到新版就地重画，
-         不用等 22:00，也不用进设置手点；失败零打扰、绝不白屏。 */
+         不用等 22:00，也不用进设置手点；失败零打扰、绝不白屏。
+         v55：Timer.schedule 这一个原生调用整段兜住 —— v54 实测它抛过
+         「Expected boolean but got any」，把整个启动炸掉；定时器失败不该拦路。 */
       if (P) {
+        BOOT_STEP = "首屏·安排开机刷新"
+        try {
         Timer.schedule(1.5, async () => {
           try {
             const got = await Promise.all([pullPlanCloud(), pullPolCloud()])
@@ -2713,6 +2719,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
             if (ch && RERENDER) RERENDER()
           } catch (e) {}
         })
+        } catch (e) {}
       }
       BOOT_STEP = "渲染主清单"
       await mainTable(P, S).present(true)
