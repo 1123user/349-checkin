@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v47-20261103-poljump"
+  const BUILD = "v48-20261105-instpush"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -268,7 +268,10 @@
   function scheduleAppSync(S) {
     if (syncMode() === "off") return
     markPend()                      /* 先记一笔：任何模式下都不丢，只是送得早或晚 */
-    if (syncMode() !== "instant") return   /* 夜间批量：白天不唤起 App，等夜里那一次 */
+    /* 2026-11-05 用户拍板「勾完停手即推」：iCloud 手机→Mac 通道整天卡死过
+       （progress.json 停在昨天 14:53），勾选只有 erround:// 直推才可靠。
+       夜间批量取消按次拦截：每次勾选停手 2.5 秒推一次，连续勾不打扰；
+       22:00 那轮 needPushNow 兜底保留（已推过的 pendAt=0，不会重复唤起）。 */
     const mine = Date.now()
     _syncTapAt = mine
     try {
@@ -2285,7 +2288,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1103-poljump"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-instpush"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2452,8 +2455,8 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         const waitPush = !!SYNC_ST.pendAt
         const nDone = Object.keys(S.done || {}).length
         const sySub = waitPush
-          ? (syncMode() === "night" ? "今晚 22:00 后自动推 · 也可现在推" : "点此立即推给二轮复习")
-          : (syncMode() === "night" ? "夜间批量 · 每天 22:00 后一次" : "勾完即时推送")
+          ? "点此立即推给二轮复习"
+          : "勾完停手即推 · 二轮复习即时可见"
         const sy = mrow(waitPush ? "⏳ 待同步 · 共 " + nDone + " 条勾选" : "☁ 跨端同步 · 已是最新",
           sySub, TC.link, 42)
         sy.dismissOnSelect = false
