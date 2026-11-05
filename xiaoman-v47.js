@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v50-20261105-polorder"
+  const BUILD = "v51-20261105-quickpull"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2350,7 +2350,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-polorder"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1105-quickpull"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2601,6 +2601,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       }
       t.reload()
     }
+    RERENDER = render
     render()
     return t
   }
@@ -2689,6 +2690,20 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       } catch (e) {}
       const T_PULL = Date.now()
       bootLog(T0, T_LOAD, T_PULL, Date.now(), "pre")   /* 到「清单即将弹出」为止，先记一笔 */
+      /* 开机静默刷新（v51）：iCloud 手机→Mac 卡住时，新排期/新顺序到不了手机 ——
+         主界面弹出 1.5s 后静默拉一次安排+政治（内部 6h 节流），拉到新版就地重画，
+         不用等 22:00，也不用进设置手点；失败零打扰、绝不白屏。 */
+      if (P) {
+        Timer.schedule(1.5, async () => {
+          try {
+            const got = await Promise.all([pullPlanCloud(), pullPolCloud()])
+            let ch = false
+            if (got[0]) { mergePlanInPlace(P, got[0]); ch = true }
+            if (got[1]) { POL = got[1]; ch = true }
+            if (ch && RERENDER) RERENDER()
+          } catch (e) {}
+        })
+      }
       await mainTable(P, S).present(true)
       bootLog(T0, T_LOAD, T_PULL, Date.now(), "full")  /* 关掉清单后再补一笔 */
       kick("close", true)   // 关掉清单时强制补一次：被 1.5s 去抖吃掉的点按，靠这里兜底
