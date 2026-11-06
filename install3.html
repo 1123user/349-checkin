@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>小满 v61 · 复制安装</title>
+<title>小满 v62 · 复制安装</title>
 <style>
  body{margin:0;padding:18px 16px 28px;background:#0A0A0C;color:#E5E5EA;font:15px/1.6 -apple-system,'PingFang SC',sans-serif}
  h1{font-size:19px;margin:0 0 6px}
@@ -17,37 +17,37 @@
    padding:10px;font:11px/1.4 ui-monospace,Menlo,monospace;-webkit-user-select:text;user-select:text}
 </style>
 <h1>小满 · 复制安装</h1>
-<p class="v">版本 v61-20261106-min · 已压缩（141KB→61KB）· 功能与原来一致</p>
-<p>这一步只做两件事：<b>复制代码</b> → <b>粘进 Scriptable</b>。代码已内嵌在本页，<b>不依赖网络拉取</b>，打开即可复制。</p>
+<p class="v">版本 v62-20261106-noicloud · 零 iCloud 版 · 61KB 已压缩</p>
+<p><b>这版彻底不碰 iCloud</b>（你手机上 iCloud 容器抛的原生异常 JS 拦不住，只能绕开）：文件全部存手机本机，进度/排期/英语/政治从网络或私有 Gist 补齐。</p>
 <ol>
-  <li>点 <b>① 复制全部代码</b>（提示“已复制”就成功）</li>
-  <li>点 <b>② 打开 Scriptable</b>，新建脚本，名字填 <b>小满</b></li>
-  <li>在代码区 <b>长按 → 粘贴</b>（会自动全选覆盖），左上角返回保存</li>
-  <li>运行 <b>小满</b>：首次会弹「同步配置」，把 token 粘进去即可</li>
+  <li>点 <b>① 复制全部代码</b>（提示“已复制”即成功）</li>
+  <li>点 <b>② 打开 Scriptable</b>，编辑已有的 <b>小满</b>（或新建同名脚本）</li>
+  <li>代码区 <b>全选 → 粘贴</b> → 返回保存</li>
+  <li><b>先在 App 内运行一次</b>：会弹「同步配置（只需一次）」，粘 token → 之后组件才有数据</li>
   <li>桌面组件：长按桌面 → + → Scriptable → 选尺寸 → 编辑组件选「小满」</li>
 </ol>
 <button id="copy">① 复制全部代码到剪贴板</button>
-<a class="btn" href="scriptable:///add">② 打开 Scriptable 新建脚本</a>
+<a class="btn" href="scriptable:///add">② 打开 Scriptable</a>
 <p id="tip"></p>
-<p>如果自动复制被系统拦下：长按下面文本框 → 全选 → 拷贝。</p>
+<p>自动复制被拦：长按下面文本框 → 全选 → 拷贝。</p>
 <textarea id="src" readonly spellcheck="false" autocapitalize="off" autocorrect="off">// Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: deep-purple; icon-glyph: magic;
-// v61：等价压缩版（terser 压缩 + 安全换行），功能与 v60 完全一致；可读源码见 xiaoman-v60.js
-(async()=&gt;{const t="https://1123user.github.io/349-checkin/",n=FileManager.iCloud(),e=n.joinPath(n.documentsDirectory(),"349打卡"),o=n.joinPath(e,"plan3.json"),i=n.joinPath(e,"rec.json"),r=n.joinPath(e,"tomorrow.json"),a=n.joinPath(e,"kb.json"),s=n.joinPath(e,"progress.json"),l=FileManager.local(),c=l.joinPath(l.documentsDirectory(),"349打卡"),d=l.joinPath(c,"pending.json"),
-u=n.joinPath(e,"ai.json"),f=n.joinPath(e,"plan-en.json"),h=n.joinPath(e,"en-review.json"),g=n.joinPath(e,"en-review-seen.json"),p=n.joinPath(e,"cloze-daily.json"),w=n.joinPath(e,"plan-pol.json"),y="v61-20261106-min";
+// v62：零 iCloud 版 —— 文件层全部走手机本机，数据从网络/私有 Gist 补齐
+(async()=&gt;{const t="https://1123user.github.io/349-checkin/",n=FileManager.local(),e=n.joinPath(n.documentsDirectory(),"349打卡"),o=n.joinPath(e,"plan3.json"),i=n.joinPath(e,"rec.json"),r=n.joinPath(e,"tomorrow.json"),a=n.joinPath(e,"kb.json"),s=n.joinPath(e,"progress.json"),l=FileManager.local(),c=l.joinPath(l.documentsDirectory(),"349打卡"),d=l.joinPath(c,"pending.json"),
+u=n.joinPath(e,"ai.json"),f=n.joinPath(e,"plan-en.json"),h=n.joinPath(e,"en-review.json"),g=n.joinPath(e,"en-review-seen.json"),p=n.joinPath(e,"cloze-daily.json"),w=n.joinPath(e,"plan-pol.json"),y="v62-20261106-noicloud";
 let S=null;function m(){if(S)return S;try{const t=l.joinPath(c,"pet.png");if(l.fileExists(t)&amp;&amp;(S=Image.fromFile(t),S))return S;const o=n.joinPath(e,"pet.png");if(n.fileExists(o)){if(n.isFileStoredIniCloud(o)&amp;&amp;!n.isFileDownloaded(o)){
 try{n.downloadFileFromiCloud(o)}catch(t){}return null}if(S=Image.fromFile(o),S){try{l.fileExists(c)||l.createDirectory(c,!0),l.write(t,Data.fromFile(o))}catch(t){}return S}}}catch(t){
 S=null}return S}function k(t){try{let o="";try{if(l.fileExists(c)||l.createDirectory(c,!0),o=l.joinPath(c,".traced"),l.fileExists(o)&amp;&amp;0===String(l.readString(o)||"").indexOf(y))return}
 catch(t){}const i=n.joinPath(e,"run-log.txt");let r="";try{n.fileExists(i)&amp;&amp;(r=n.readString(i)||"")}catch(t){}if(0===r.indexOf(y))return;n.writeString(i,(new Date).toISOString().slice(5,16).replace("T"," ")+"  "+y+"  "+t+"  "+(config.widgetFamily||"app")+"\n"+r);
 try{o&amp;&amp;l.writeString(o,y)}catch(t){}}catch(t){}}function b(t,o,i,r,a){try{v();const s=n.joinPath(e,"boot-log.txt");let l="";try{n.fileExists(s)&amp;&amp;(l=n.readString(s)||"")}catch(t){}const c=(t,n)=&gt;t&amp;&amp;n?n-t+"ms":"-",d=(new Date).toISOString().slice(5,16).replace("T"," ")+"  "+y+"  load="+c(t,o)+" pull="+c(o,i)+" show="+c(i,r)+" total="+c(t,r||i)+" "+(config.widgetFamily||"app")+(a?" "+a:"");
-n.writeString(s,[d].concat(l.split("\n")).slice(0,25).join("\n"))}catch(t){}}const C=["org","pharm","ana"],x={org:{name:"有机",c:new Color("#F2A65A")},pharm:{name:"药理",c:new Color("#F0CE6B")}
+n.writeString(s,[d].concat(l.split("\n")).slice(0,25).join("\n"))}catch(t){}}const x=["org","pharm","ana"],C={org:{name:"有机",c:new Color("#F2A65A")},pharm:{name:"药理",c:new Color("#F0CE6B")}
 ,ana:{name:"分析",c:new Color("#7FA8E8")},pol:{name:"政治",c:new Color("#FF6B5E")}},F={bgTop:new Color("#3B2E5A"),bgMid:new Color("#251D3C"),bgLow:new Color("#16121F"),head:new Color("#D9D2F2"),sub:new Color("#A79FC4"),ring:new Color("#B49CFF"),ringTx:new Color("#CBB9FF"),pink:new Color("#FF7FA0"),bubBg:new Color("#FFFCF8",.97),bubTx:new Color("#2B2540"),card:new Color("#FFFFFF",
-.1),ok:new Color("#6FE0A6"),link:new Color("#8FB8FF"),en:new Color("#5CD39B"),halo:"#B49CFF"},A=F.sub,E=new Color("#F4F0FF"),O=(()=&gt;{try{return Device.isUsingDarkAppearance()}catch(t){
-return!0}})(),R={txt:O?new Color("#F4F0FF"):new Color("#1A1A1F"),dim:O?new Color("#A79FC4"):new Color("#6A6A72"),ok:O?new Color("#6FE0A6"):new Color("#1E7B4F"),link:O?new Color("#8FB8FF"):new Color("#2563C9"),org:O?new Color("#F2A65A"):new Color("#C97B2E"),pharm:O?new Color("#F0CE6B"):new Color("#D9A93B"),ana:O?new Color("#7FA8E8"):new Color("#3E6FB0"),en:O?new Color("#5CD39B"):new Color("#2E9E6B"),
-pol:O?new Color("#FF6B5E"):new Color("#C0392B")},j=t=&gt;t.sub+"|"+t.key+"|"+t.bvid,T=t=&gt;String(t).padStart(2,"0");function D(){const t=new Date;return t.getFullYear()+"-"+T(t.getMonth()+1)+"-"+T(t.getDate())}
+.1),ok:new Color("#6FE0A6"),link:new Color("#8FB8FF"),en:new Color("#5CD39B"),halo:"#B49CFF"},A=F.sub,O=new Color("#F4F0FF"),E=(()=&gt;{try{return Device.isUsingDarkAppearance()}catch(t){
+return!0}})(),R={txt:E?new Color("#F4F0FF"):new Color("#1A1A1F"),dim:E?new Color("#A79FC4"):new Color("#6A6A72"),ok:E?new Color("#6FE0A6"):new Color("#1E7B4F"),link:E?new Color("#8FB8FF"):new Color("#2563C9"),org:E?new Color("#F2A65A"):new Color("#C97B2E"),pharm:E?new Color("#F0CE6B"):new Color("#D9A93B"),ana:E?new Color("#7FA8E8"):new Color("#3E6FB0"),en:E?new Color("#5CD39B"):new Color("#2E9E6B"),
+pol:E?new Color("#FF6B5E"):new Color("#C0392B")},j=t=&gt;t.sub+"|"+t.key+"|"+t.bvid,T=t=&gt;String(t).padStart(2,"0");function D(){const t=new Date;return t.getFullYear()+"-"+T(t.getMonth()+1)+"-"+T(t.getDate())}
 function v(){n.fileExists(e)||n.createDirectory(e,!0)}async function P(t,e){if(n.isFileStoredIniCloud(t)&amp;&amp;!n.isFileDownloaded(t)){if(e){try{n.downloadFileFromiCloud(t)}catch(t){}return!1}
-await n.downloadFileFromiCloud(t)}return!0}let B=!1,I=null;let N={};const J="f938a331f36d51aef967acfaa73f5716";function M(){try{const t=n.joinPath(e,"gist-conf.json");if(n.fileExists(t)){
+await n.downloadFileFromiCloud(t)}return!0}let B=!1,N=null;let I={};const J="f938a331f36d51aef967acfaa73f5716";function M(){try{const t=n.joinPath(e,"gist-conf.json");if(n.fileExists(t)){
 const e=JSON.parse(n.readString(t));if(e&amp;&amp;e.id&amp;&amp;e.token)return e}}catch(t){}try{const t=FileManager.local(),n=t.joinPath(t.documentsDirectory(),"xiaoman-gist.json");if(t.fileExists(n)){
 const e=JSON.parse(t.readString(n));if(e&amp;&amp;e.token)return{id:e.id||J,token:e.token,file:"xiaoman-progress.json"}}}catch(t){}return null}const z=()=&gt;l.joinPath(l.documentsDirectory(),"xm-progress.json"),q=()=&gt;l.joinPath(l.documentsDirectory(),"xm-plan-en.json"),U=()=&gt;l.joinPath(l.documentsDirectory(),"xm-plan-pol.json");
 async function L(t){const n=M();if(!n)return null;try{const e=new Request("https://api.github.com/gists/"+n.id);e.headers={Authorization:"token "+n.token,"User-Agent":"xiaoman-scriptable"}
@@ -55,14 +55,14 @@ async function L(t){const n=M();if(!n)return null;try{const e=new Request("https
 const t=M();if(!t)return null;const n=t.file||"xiaoman-progress.json";try{const e=new Request("https://api.github.com/gists/"+t.id);e.headers={Authorization:"token "+t.token,"User-Agent":"xiaoman-scriptable"}
 ,e.timeoutInterval=8;const o=await e.loadString();if(!o)return{};const i=((JSON.parse(o).files||{})[n]||{}).content||"{}";try{return JSON.parse(i)||{}}catch(t){return{}}}catch(t){return null}
 }async function H(t,n){const e=M();if(!e)return!1;try{const o=e.file||"xiaoman-progress.json",i=await _()||{},r=Object.assign({},i.done||{}),a=Object.assign({},i.dels||{}),s=t.done||{
-};for(const t in s){const n=s[t]||0;(a[t]||0)&gt;=n||(!r[t]||n&gt;r[t])&amp;&amp;(r[t]=n)}for(const t in N){const n=N[t];(a[t]||0)&lt;n&amp;&amp;(a[t]=n),void 0!==r[t]&amp;&amp;(r[t]||0)&lt;n&amp;&amp;delete r[t]}const l=Object.assign({
+};for(const t in s){const n=s[t]||0;(a[t]||0)&gt;=n||(!r[t]||n&gt;r[t])&amp;&amp;(r[t]=n)}for(const t in I){const n=I[t];(a[t]||0)&lt;n&amp;&amp;(a[t]=n),void 0!==r[t]&amp;&amp;(r[t]||0)&lt;n&amp;&amp;delete r[t]}const l=Object.assign({
 },i,{done:r,dels:a,_seen:Date.now(),_ver:"gist2",_host:"iphone",_beat:n?1:0}),c=new Request("https://api.github.com/gists/"+e.id);return c.method="PATCH",c.headers={Authorization:"token "+e.token,"Content-Type":"application/json","User-Agent":"xiaoman-scriptable"}
 ,c.body=JSON.stringify({files:{[o]:{content:JSON.stringify(l)}}}),c.timeoutInterval=8,await c.loadString(),!0}catch(t){return!1}}async function W(t){const o=function(){try{const t=n.joinPath(e,"mac-endpoint.json");
 if(!n.fileExists(t))return[];const o=JSON.parse(n.readString(t));return Array.isArray(o&amp;&amp;o.urls)?o.urls.filter(t=&gt;/^http/.test(t)):o&amp;&amp;o.url?[o.url]:[]}catch(t){return[]}}();if(!o.length)return;
-const i=JSON.stringify({token:"xiaoman-349",done:t.done||{},del:N});for(const t of o)try{const n=new Request(t+"/api/sync");n.method="POST",n.headers={"Content-Type":"application/json"}
+const i=JSON.stringify({token:"xiaoman-349",done:t.done||{},del:I});for(const t of o)try{const n=new Request(t+"/api/sync");n.method="POST",n.headers={"Content-Type":"application/json"}
 ,n.body=i,n.timeoutInterval=4;const e=await n.loadString();if(e&amp;&amp;e.indexOf('"ok":true')&gt;=0)return}catch(t){}}function V(t){if(B)try{v();let e=null;try{if(n.fileExists(s)){const t=JSON.parse(n.readString(s));
-e=t&amp;&amp;t.done||null}}catch(t){e=null}const o=Object.assign({},t);e&amp;&amp;I&amp;&amp;(o.done=function(t,n,e){const o={};for(const t in e)o[t]=e[t];for(const e in t)e in n||delete o[e];for(const t in n){
-const e=n[t]||0;(!o[t]||e&gt;o[t])&amp;&amp;(o[t]=e)}return o}(I,t.done||{},e)),n.writeString(s,JSON.stringify(o));try{l.writeString(z(),JSON.stringify(o))}catch(t){}return I=Object.assign({}
+e=t&amp;&amp;t.done||null}}catch(t){e=null}const o=Object.assign({},t);e&amp;&amp;N&amp;&amp;(o.done=function(t,n,e){const o={};for(const t in e)o[t]=e[t];for(const e in t)e in n||delete o[e];for(const t in n){
+const e=n[t]||0;(!o[t]||e&gt;o[t])&amp;&amp;(o[t]=e)}return o}(N,t.done||{},e)),n.writeString(s,JSON.stringify(o));try{l.writeString(z(),JSON.stringify(o))}catch(t){}return N=Object.assign({}
 ,o.done||{}),!0}catch(t){}try{l.writeString(z(),JSON.stringify({done:t.done||{}}))}catch(t){}return function(t){try{return l.fileExists(c)||l.createDirectory(c,!0),l.writeString(d,JSON.stringify({
 done:t,at:Date.now()})),!0}catch(t){return!1}}(t.done||{}),!1}let G=0;function X(t,n){const e=Date.now();if(n||!(e-G&lt;1500)){G=e;try{Widget.reloadAll()}catch(t){}}}let Y=0;function Q(t){
 if("off"===at())return;rt({pendAt:Date.now()});const n=Date.now();Y=n;try{Timer.schedule(2.5,()=&gt;{Y===n&amp;&amp;(Z(t),W(t),H(t))})}catch(t){}}function Z(t,n){if("off"===at()&amp;&amp;!n)return!1;
@@ -83,7 +83,7 @@ for(const t of r)try{const o=new Request(t);o.timeoutInterval=15;const r=await o
 polAt:Date.now()}),!1;try{n.fileExists(e)||n.createDirectory(e,!0),n.writeString(w,JSON.stringify(r))}catch(t){}return At=r,rt({polAt:Date.now()}),!0}catch(t){}return!1}function ft(){
 if(!n.fileExists(i)||!n.fileExists(r)||!n.fileExists(a))return!0;if(!ct()){if(it.lastPull===lt())return!1;const t=pt();return!t||!t.for_date||String(t.for_date)&lt;lt()}return it.lastPull!==lt()||(it.lastPullAt||0)&lt;function(){
 const t=new Date;return t.setHours(23,10,0,0),t.getTime()}()}function ht(t,e){try{return!!n.fileExists(t)&amp;&amp;Date.now()-n.fileModificationDate(t).getTime()&lt;e}catch(t){return!1}}async function gt(e){
-try{if(!e&amp;&amp;ht(i,216e5))return;const o=new Request(t+"rec.json?t="+Date.now());o.timeoutInterval=8;const r=await o.loadJSON();if(!r||!r.items||!r.items.length)return;const a=xt();if(a&amp;&amp;a.built===r.built)return;
+try{if(!e&amp;&amp;ht(i,216e5))return;const o=new Request(t+"rec.json?t="+Date.now());o.timeoutInterval=8;const r=await o.loadJSON();if(!r||!r.items||!r.items.length)return;const a=Ct();if(a&amp;&amp;a.built===r.built)return;
 n.writeString(i,JSON.stringify(r))}catch(t){}}function pt(){try{return n.fileExists(r)&amp;&amp;JSON.parse(n.readString(r))||null}catch(t){return null}}async function wt(e){try{if(!e&amp;&amp;ht(r,216e5))return;
 const o=new Request(t+"tomorrow.json?t="+Date.now());o.timeoutInterval=8;const i=await o.loadJSON();if(!i||!i.for_date)return;const a=pt();if(a&amp;&amp;a.built===i.built)return;n.writeString(r,JSON.stringify(i))}
 catch(t){}}function yt(){try{return n.fileExists(a)&amp;&amp;JSON.parse(n.readString(a))||null}catch(t){return null}}async function St(e){const o=yt();try{if(!e&amp;&amp;o&amp;&amp;Date.now()-n.fileModificationDate(a).getTime()&lt;864e5)return}
@@ -93,7 +93,7 @@ const i=function(t){const n=(t.points||[]).length+(t.cards||[]).length;if(kt&amp
 const n={};mt(t).forEach(t=&gt;{n[t]||(n[t]=1,e[t]=(e[t]||0)+1)})}),kt={n:n,df:e},kt}(t),r={};let a=0;o.forEach(t=&gt;{if(null!=r[t])return;const n=Math.log((i.n+1)/((i.df[t]||0)+1))+1;r[t]=n,a+=n}
 );const s=[];return(t.points||[]).forEach(t=&gt;{let n=0;const e={};mt((t.name||"")+" "+(t.tips||[]).join(" ")).forEach(t=&gt;{null==r[t]||e[t]||(e[t]=1,n+=r[t])}),n/=a,n&gt;=.3&amp;&amp;s.push({t:"考点 · "+t.name,body:(t.tips||[]).join("\n\n"),sc:n+.12}
 )}),(t.cards||[]).forEach(t=&gt;{let n=0;const e={};mt((t.q||"")+" "+(t.a||"")).forEach(t=&gt;{null==r[t]||e[t]||(e[t]=1,n+=r[t])}),n/=a,n&gt;=.34&amp;&amp;s.push({t:String(t.q||"").replace(/是什么[？?]要点是什么[？?]$/,""),body:t.a||"",sc:n}
-)}),s.sort((t,n)=&gt;n.sc-t.sc||String(t.t).length-String(n.t).length),s.slice(0,e)}function Ct(t,n){const e=pt();if(!e||!e.for_date)return;const o=String(e.for_date),i=new Date,r=i.getFullYear()+"-"+String(i.getMonth()+1).padStart(2,"0")+"-"+String(i.getDate()).padStart(2,"0"),a=o===r,s=new Date(o.replace(/-/g,"/")).getTime(),l=Math.round((s-new Date(r.replace(/-/g,
+)}),s.sort((t,n)=&gt;n.sc-t.sc||String(t.t).length-String(n.t).length),s.slice(0,e)}function xt(t,n){const e=pt();if(!e||!e.for_date)return;const o=String(e.for_date),i=new Date,r=i.getFullYear()+"-"+String(i.getMonth()+1).padStart(2,"0")+"-"+String(i.getDate()).padStart(2,"0"),a=o===r,s=new Date(o.replace(/-/g,"/")).getTime(),l=Math.round((s-new Date(r.replace(/-/g,
 "/")).getTime())/864e5),c=e.built?String(e.built).slice(5,16).replace("-","/"):"";if(l&lt;0||l&gt;1)return void(l&lt;0&amp;&amp;t.addRow(mn("明天的安排","云端这几天没更新上"+(c?"　最后成功 "+c:"")+"　先按昨天的走")));const d=e.main||[],u=e.focus||[],f=e.rec||[],h=u.reduce((t,n)=&gt;t+(n.quota||0),0),g=(a?"今天的安排 · ":"明天的安排 · ")+o.slice(5).replace("-","/")+"　主线 "+d.length+" 条 · 重点 "+h+" 题";
 if(t.addRow(mn(g,e.coach&amp;&amp;e.coach.detail?e.coach.detail:"主线不动，只调重点")),c&amp;&amp;t.addRow(Ht("云端 "+c+" 生成","",R.dim,32)),d.length){const n=Ht("主线（照大纲走）",d.length+" 条",R.txt,38);t.addRow(n),d.slice(0,8).forEach(n=&gt;{
 t.addRow(Ht("　"+(n.sub_cn||n.sub)+"　"+String(n.title||"").slice(0,26),"复习计划原文",R.txt,40))})}if(u.length){t.addRow(Ht("重点（按昨天的数据调）","先补最弱的",R.txt,38)),u.forEach(n=&gt;{const e=Ht("　"+(n.sub_cn||n.sub)+"　"+(n.sys||"")+"　"+(n.quota||0)+" 题",n.why||"",R[n.sub]||R.txt,42);
@@ -105,11 +105,11 @@ const o=bt(t,e,4);if(!o.length){const t=new Alert;return t.title="没找到「"+
 i.title="「"+e+"」",i.message="找到 "+o.length+" 条，点开看：",o.forEach(t=&gt;i.addAction(String(t.t).slice(0,36))),i.addCancelAction("取消");const r=await i.presentAlert();if(r&lt;0)return;const a=new Alert;
 a.title=String(o[r].t).slice(0,48),a.message=String(o[r].body||"").slice(0,1800),a.addAction("知道了"),await a.presentAlert()}()},t.addRow(n)}if(f.length&amp;&amp;(t.addRow(Ht("看什么",f.length+" 节 · "+f.reduce((t,n)=&gt;t+(n.min||0),0)+" 分钟",R.txt,38)),f.forEach(n=&gt;{
 const e=Ht("▶ "+String(n.title||"").slice(0,24),(n.sub_cn||"")+" · "+(n.min||0)+" 分钟",R.link,46);e.onSelect=()=&gt;{try{hn(n.url,n.title)}catch(t){}},t.addRow(e)})),e.coach&amp;&amp;(e.coach.acts||[]).length){
-const n=["①","②","③","④","⑤"];t.addRow(Ht("小满的动作",e.coach.acts.map((t,e)=&gt;(n[e]||e+1)+" "+t).join("　"),R.txt,54))}}function xt(){try{return n.fileExists(i)&amp;&amp;JSON.parse(n.readString(i))||null}
-catch(t){return null}}function Ft(t,n){const e=xt();if(!e||!e.items||!e.items.length)return;const o=new Date(String(e.built||"").replace(/-/g,"/")).getTime(),i=(Date.now()-o)/36e5;
+const n=["①","②","③","④","⑤"];t.addRow(Ht("小满的动作",e.coach.acts.map((t,e)=&gt;(n[e]||e+1)+" "+t).join("　"),R.txt,54))}}function Ct(){try{return n.fileExists(i)&amp;&amp;JSON.parse(n.readString(i))||null}
+catch(t){return null}}function Ft(t,n){const e=Ct();if(!e||!e.items||!e.items.length)return;const o=new Date(String(e.built||"").replace(/-/g,"/")).getTime(),i=(Date.now()-o)/36e5;
 if(!isFinite(i)||i&gt;20||i&lt;-1)return;const r=e.items.reduce((t,n)=&gt;t+(n.min||0),0);t.addRow(mn("今日推荐 · "+e.items.length+" 节 · "+r+" 分钟","按掌握度挑的 · 点开直接看")),e.items.forEach(n=&gt;{const e=Ht("▶ "+_t(n.title||n.sub_cn+" 补弱",30),_t(n.sub_cn+" · "+(n.min||"?")+" 分钟 · "+(n.level||"")+" · "+(n.why||""),34),R.link,46);
-e.dismissOnSelect=!1,e.onSelect=()=&gt;{try{hn(n.url,n.title)}catch(t){}};const o=e.addButton("▶");o.titleColor=R.link,o.onTap=e.onSelect,t.addRow(e)})}let At=null;function Et(t){return At?(t=&gt;At&amp;&amp;At.days.find(n=&gt;n.date===t)||null)(t)||At.days.find(n=&gt;n.date&gt;t)||At.days[At.days.length-1]:null}
-let Ot=null,Rt=null,jt=null;const Tt=(t,n)=&gt;"en|"+t+"|"+n.key;function Dt(t){return function(t){return Ot&amp;&amp;Ot.days.find(n=&gt;n.date===t)||null}(t)||function(t){return Ot&amp;&amp;Ot.days.find(n=&gt;n.date&gt;t)||null}
+e.dismissOnSelect=!1,e.onSelect=()=&gt;{try{hn(n.url,n.title)}catch(t){}};const o=e.addButton("▶");o.titleColor=R.link,o.onTap=e.onSelect,t.addRow(e)})}let At=null;function Ot(t){return At?(t=&gt;At&amp;&amp;At.days.find(n=&gt;n.date===t)||null)(t)||At.days.find(n=&gt;n.date&gt;t)||At.days[At.days.length-1]:null}
+let Et=null,Rt=null,jt=null;const Tt=(t,n)=&gt;"en|"+t+"|"+n.key;function Dt(t){return function(t){return Et&amp;&amp;Et.days.find(n=&gt;n.date===t)||null}(t)||function(t){return Et&amp;&amp;Et.days.find(n=&gt;n.date&gt;t)||null}
 (t)}function vt(t){const e=new UITable;e.showSeparators=!1;const o=t.totals||{};e.addRow(mn("阅读复盘 · "+String(t.date||"").slice(5).replace("-","/"),(o.papers||0)+" 篇 "+(o.questions||0)+" 题 · 错 "+(o.wrong||0)+" 题"+(null!=o.rate?" · 正确率 "+Math.round(100*o.rate)+"%":"")));
 const i=(t.byType||[]).slice().sort((t,n)=&gt;(n.wrong||0)-(t.wrong||0));i.length&amp;&amp;(e.addRow(mn("题型分布","错得最多的排最上面")),i.forEach(t=&gt;{const n=(t.wrong||0)&gt;0,o=Ht(t.cn+" · "+(n?"错 "+t.wrong:"全对")+" / "+t.total+" 题",n?"重点补这一类":"这一类稳住了",n?R.pol:R.ok,42);
 o.dismissOnSelect=!1,e.addRow(o)})),(t.wrong||[]).length&amp;&amp;(e.addRow(mn("错题逐题过","越难的排越前，先重做上面这几道")),t.wrong.forEach(t=&gt;{const n=Ht(t.year+" "+t.label+" · 第 "+t.n+" 题 · "+t.cn,"我 "+t.mine+" → 答 "+t.answer+(t.causeCn?" · "+t.causeCn:""),R.txt,46);
@@ -120,33 +120,33 @@ const n=Ht("▶ "+t.cn+" · "+(t.min||0)+" 分",_t(t.title,30),R.link,46);n.dism
 const i=n.addButton("播放");i.titleColor=R.link,i.onTap=o,e.addRow(n)}),r.pack&amp;&amp;r.pack.bv)){const t=Ht("▶ 实战 · 2014 完形套题讲解",_t(r.pack.title,28),R.dim,46);t.dismissOnSelect=!1;const n=()=&gt;hn("https://www.bilibili.com/video/"+r.pack.bv+"?p=1",r.pack.title);
 t.onSelect=n;const o=t.addButton("播放");o.titleColor=R.dim,o.onTap=n,e.addRow(t)}const a=Ht("看完了 · 回到清单","带着方法把上面那几道错题重做一遍",R.dim,44);return a.dismissOnSelect=!0,e.addRow(a),function(t){
 try{v(),n.writeString(g,String(t))}catch(t){}}(t.date),e}function Pt(t,n){const e=Dt(t);if(!e)return null;const o=e.tasks.filter(t=&gt;n.done[Tt(e.date,t)]).length;return{ed:e,n:e.tasks.length,done:o,today:e.date===t}
-}function Bt(t,n){return t.days.find(t=&gt;t.date===n)||null}function It(t){return String(t).replace(/^Lecture\s*\d+\s*-\s*\d+\s*/i,"").replace(/^第[一二三四五六七八九十百]+讲[：:\s]*/,"")}function Nt(t,n,e,o,i){const r=[];
+}function Bt(t,n){return t.days.find(t=&gt;t.date===n)||null}function Nt(t){return String(t).replace(/^Lecture\s*\d+\s*-\s*\d+\s*/i,"").replace(/^第[一二三四五六七八九十百]+讲[：:\s]*/,"")}function It(t,n,e,o,i){const r=[];
 for(let a=0;a&lt;=36;a++){const s=o+a/36*(i-o);r.push(new Point(t+e*Math.cos(s),n+e*Math.sin(s)))}const a=new Path;return a.addLines(r),i-o&gt;=2*Math.PI-.001&amp;&amp;a.closeSubpath(),a}function Jt(t,n,e,o,i){
-const r=new DrawContext;r.size=new Size(e,e),r.opaque=!1,r.respectScreenScale=!0;const a=(e-o)/2,s=e/2;r.setStrokeColor(new Color("#A0A0F0",.22)),r.setLineWidth(o),r.addPath(Nt(s,s,a,-Math.PI/2,1.5*Math.PI)),r.strokePath();
-const l=Math.max(0,Math.min(100,t))/100;return l&gt;.002&amp;&amp;(r.setStrokeColor(n),r.setLineWidth(o),r.addPath(Nt(s,s,a,-Math.PI/2,-Math.PI/2+2*Math.PI*l)),r.strokePath()),i&amp;&amp;(r.setTextColor(n),r.setFont(Font.boldSystemFont(e&lt;=34?8:14)),r.setTextAlignedCenter(),r.drawTextInRect(i,new Rect(0,s-.17*e,e,.34*e))),r.getImage()}
+const r=new DrawContext;r.size=new Size(e,e),r.opaque=!1,r.respectScreenScale=!0;const a=(e-o)/2,s=e/2;r.setStrokeColor(new Color("#A0A0F0",.22)),r.setLineWidth(o),r.addPath(It(s,s,a,-Math.PI/2,1.5*Math.PI)),r.strokePath();
+const l=Math.max(0,Math.min(100,t))/100;return l&gt;.002&amp;&amp;(r.setStrokeColor(n),r.setLineWidth(o),r.addPath(It(s,s,a,-Math.PI/2,-Math.PI/2+2*Math.PI*l)),r.strokePath()),i&amp;&amp;(r.setTextColor(n),r.setFont(Font.boldSystemFont(e&lt;=34?8:14)),r.setTextAlignedCenter(),r.drawTextInRect(i,new Rect(0,s-.17*e,e,.34*e))),r.getImage()}
 const Mt=["宝，先挑最短那节开头嘛，我陪你","今天的坑我盯着呢，你先写单位哦","困了呀，那就站起来晃两下，我等你","昨天的错题还在等你，回去看一眼嘛","坐下先做三道题再听课，好不好嘛","记不住就编个自己的说法，我信你","手机搁远一点点嘛，就一点点哦","念一遍给我听，念顺了就算学会啦","这章有点难，慢点也没关系呀","看完这节我给你记一笔，记满一排","你今天最想躲的那科，我先陪你开头","写字慢就用符号，省下时间歇会儿嘛","公式先写再代，别在脑子里算呀","两个长得像的概念，先分清嘛，宝","四十分钟一歇，我给你掐着表哦","早上脑子最清，难的放这时候呀","跳过拿不准的，回头我陪你再看","合上书回想十秒，才算真看过哦","心里没底很正常呀，我陪你接着做","别为昨天补账，今天这点做完就算啦",
 "看不进去就抄一段，手会带脑子哦","本子上那些疑问，今天挑两个问我嘛","眼睛酸了就先眯一下，我数到十哦","慢慢来嘛，我不催你，乖"];function zt(t,n,e){const o=new DrawContext;o.size=new Size(t,t),o.opaque=!1;for(let i=22;i&gt;=1;i--){const r=t/2*i/22,a=e*Math.pow(1-i/22,2.2);
 o.setFillColor(new Color(n,a));const s=new Path;s.addEllipse(new Rect((t-2*r)/2,(t-2*r)/2,2*r,2*r)),o.addPath(s),o.fillPath()}return o.getImage()}function qt(){const t=Math.floor((Date.now()-6e4*(new Date).getTimezoneOffset())/864e5);
 return Mt[t%Mt.length]}async function Ut(t){try{if(n.fileExists(u)){if(!await P(u,!0))return{text:qt(),src:"local"};const t=JSON.parse(n.readString(u)),e=D(),o=t&amp;&amp;t.quotes?t.quotes[e]:null;
 if(o&amp;&amp;"string"==typeof o.text&amp;&amp;o.text.trim())return o;if(t&amp;&amp;"string"==typeof t.text&amp;&amp;t.text.trim()&amp;&amp;t.date===e)return t}}catch(t){}return{text:qt(),src:"local"}}function Lt(t,n,e,o,i,r){
-const a=o?o.date:D(),s=Pt(a,e),l=o?o.tasks.filter(t=&gt;!e.done[j(t)]):[],c=Et(a),d=c?c.tasks.filter(t=&gt;!e.done[j(t)]):[],u=s?s.ed.tasks.filter(t=&gt;!e.done[Tt(s.ed.date,t)]):[],f=u.filter(t=&gt;"word"!==t.type).concat(u.filter(t=&gt;"word"===t.type));
+const a=o?o.date:D(),s=Pt(a,e),l=o?o.tasks.filter(t=&gt;!e.done[j(t)]):[],c=Ot(a),d=c?c.tasks.filter(t=&gt;!e.done[j(t)]):[],u=s?s.ed.tasks.filter(t=&gt;!e.done[Tt(s.ed.date,t)]):[],f=u.filter(t=&gt;"word"!==t.type).concat(u.filter(t=&gt;"word"===t.type));
 if(f.length&gt;1){const t=f.findIndex(t=&gt;"watch"===t.type);t&gt;1&amp;&amp;f.splice(1,0,f.splice(t,1)[0])}const h=i&gt;=8?3:1;let g=l.slice(0,h+1),p=f.slice(0,h),w=d.slice(0,h);for(const t of["p","e","g"]){
 const n=i-g.length-p.length-w.length;if(n&lt;=0)break;"p"===t?g=l.slice(0,g.length+n):"e"===t?p=f.slice(0,p.length+n):w=d.slice(0,w.length+n)}const y=l.length-g.length+(f.length-p.length)+(d.length-w.length),S=t.addStack();
 if(S.layoutVertically(),S.spacing=2,!l.length&amp;&amp;!f.length&amp;&amp;!d.length&amp;&amp;o){const t=S.addText("今天全部打完了 ✓");t.font=Font.semiboldSystemFont(12),t.textColor=F.ok}g.forEach(t=&gt;{const n=S.addStack();
-n.layoutHorizontally(),n.centerAlignContent(),n.url=t.url;const e=n.addText("○");e.font=Font.boldSystemFont(10),e.textColor=x[t.sub].c,n.addSpacer(4);const o=n.addText(t.key+" "+function(t){
-let n=It(t.title).replace(/^【[^】]*】\s*/,"");const e=/^(带你背诵|期末复习|考研|学习分享|药理学背诵|必看|考点)/,o=n.split(/[｜|]/).map(t=&gt;t.trim()).filter(t=&gt;t&amp;&amp;!e.test(t));return n=o.length?o[0]:n,n.length&gt;22?n.slice(0,22)+"…":n}
+n.layoutHorizontally(),n.centerAlignContent(),n.url=t.url;const e=n.addText("○");e.font=Font.boldSystemFont(10),e.textColor=C[t.sub].c,n.addSpacer(4);const o=n.addText(t.key+" "+function(t){
+let n=Nt(t.title).replace(/^【[^】]*】\s*/,"");const e=/^(带你背诵|期末复习|考研|学习分享|药理学背诵|必看|考点)/,o=n.split(/[｜|]/).map(t=&gt;t.trim()).filter(t=&gt;t&amp;&amp;!e.test(t));return n=o.length?o[0]:n,n.length&gt;22?n.slice(0,22)+"…":n}
 (t));o.font=Font.systemFont(10.5),o.textColor=new Color("#E4DEF6"),o.lineLimit=1,n.addSpacer(4);const i=n.addText("▶ B站");i.font=Font.semiboldSystemFont(9),i.textColor=F.link}),p.forEach(t=&gt;{
 const n=S.addStack();n.layoutHorizontally(),n.centerAlignContent(),n.url="scriptable:///run/"+encodeURIComponent(Script.name());const e=n.addText("英");e.font=Font.boldSystemFont(9.5),e.textColor=F.en,n.addSpacer(3);
 const o=n.addText(function(t){const n=String(t).replace(/[·・]\s*[\u4e00-\u9fa5]{2,4}\s*$/,"").replace(/（[^）]*分钟）/,"").trim();return n.length&gt;22?n.slice(0,22)+"…":n}(t.title));if(o.font=Font.systemFont(10.5),o.textColor=new Color("#D8F6F0"),o.lineLimit=1,o.minimumScaleFactor=.85,n.addSpacer(4),t.url){
 const t=n.addText("▶ 课");t.font=Font.semiboldSystemFont(9),t.textColor=F.link}}),w.forEach(t=&gt;{const n=S.addStack();n.layoutHorizontally(),n.centerAlignContent(),n.url=t.url||"scriptable:///run/"+encodeURIComponent(Script.name());
-const e=n.addText("政");e.font=Font.boldSystemFont(9.5),e.textColor=x.pol.c,n.addSpacer(3);const o=n.addText(String(t.title||"").replace(/^27考研政治/,"").replace(/^肖1000题精讲 · /,"1000题 · ").replace(/；.*$/,""));
+const e=n.addText("政");e.font=Font.boldSystemFont(9.5),e.textColor=C.pol.c,n.addSpacer(3);const o=n.addText(String(t.title||"").replace(/^27考研政治/,"").replace(/^肖1000题精讲 · /,"1000题 · ").replace(/；.*$/,""));
 o.font=Font.systemFont(10.5),o.textColor=new Color("#FFE3EE"),o.lineLimit=1,o.minimumScaleFactor=.85,n.addSpacer(4);const i=n.addText(t.url?"▶ B站":"App");i.font=Font.semiboldSystemFont(9),i.textColor=F.link}
 ),t.addSpacer(3);const m=t.addStack();m.layoutHorizontally(),m.centerAlignContent(),m.spacing=5,m.backgroundColor=F.card,m.cornerRadius=9,m.setPadding(4,7,4,7),m.url="scriptable:///run/"+encodeURIComponent(Script.name());
 const k=m.addText("✦");k.font=Font.boldSystemFont(9.5),k.textColor=F.pink;const b=m.addText(r.text);if(b.font=Font.systemFont(9.5),b.textColor=new Color("#EFEAFB"),b.lineLimit=1,b.minimumScaleFactor=.82,m.addSpacer(),y&gt;0){
 const t=m.addText("还 "+y+" 条 →");t.font=Font.semiboldSystemFont(9),t.textColor=F.link}}function _t(t,n){const e=String(null==t?"":t).replace(/\s+/g," ").trim(),o=n||40;return e.length&gt;o?e.slice(0,o-1)+"…":e}
 function Ht(t,n,e,o,i){const r=new UITableRow;r.height=o||(n?52:44);const a=r.addText(t,n||"");a.titleFont=Font.semiboldSystemFont(n?14.5:14),a.subtitleFont=Font.systemFont(10.5),a.titleColor=e||R.txt,a.subtitleColor=R.dim;
 try{a.lineLimit=i||1}catch(t){}return r}function Wt(t,n,e){const o=t.addButton(n?"✓":"○");o.titleColor=n?R.ok:R.dim;try{o.width=34}catch(t){}return o.onTap=e,o}function Vt(t,n,e,o){
-t.done[n]?(N[n]=Date.now(),delete t.done[n]):t.done[n]=Date.now(),V(t),X(),Q(t),o()}const Gt=n.joinPath(e,"player.json"),Xt="https://1123user.github.io/349-checkin/bili/",Yt=Xt+"bili-splash.sgmodule",Qt="https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/adblock/bilibili-adblock.stoverride",Zt=Xt+"bili-splash.conf",$t="https://1123user.github.io/349-checkin/adblock/ads.stoverride",
+t.done[n]?(I[n]=Date.now(),delete t.done[n]):t.done[n]=Date.now(),V(t),X(),Q(t),o()}const Gt=n.joinPath(e,"player.json"),Xt="https://1123user.github.io/349-checkin/bili/",Yt=Xt+"bili-splash.sgmodule",Qt="https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/adblock/bilibili-adblock.stoverride",Zt=Xt+"bili-splash.conf",$t="https://1123user.github.io/349-checkin/adblock/ads.stoverride",
 Kt=(encodeURIComponent(Yt),encodeURIComponent(Yt),[{k:"app",n:"B站 App",d:"深链直达视频页，弹幕 / 缓存 / 清晰度全都在（默认）｜多分P合集偶尔定位到上次那一P"},{k:"inapp",n:"小满内网页",d:"不启动 App，肯定没广告，功能少；分P定位准"},{k:"web",n:"Safari 网页",d:"网页版播放，无开屏广告，可后台 / 画中画；分P定位 100% 准"}
 ]);let tn="app";function nn(t){const n=Kt.find(n=&gt;n.k===(t||tn));return n?n.n:Kt[0].n}function en(){try{if(!n.fileExists(Gt))return tn;if(n.isFileStoredIniCloud(Gt)&amp;&amp;!n.isFileDownloaded(Gt))return tn;
 const t=JSON.parse(n.readString(Gt));t&amp;&amp;2===t.v&amp;&amp;Kt.some(n=&gt;n.k===t.mode)&amp;&amp;(tn=t.mode)}catch(t){}return tn}function on(t){tn=t;try{v(),n.writeString(Gt,JSON.stringify({mode:t,v:2}))}
@@ -173,23 +173,23 @@ n.addAction("① 一键安装到 Stash"),n.addAction("② 复制覆写地址（�
 catch(t){}!function(t){const n=new Alert;n.title="已交给 "+t+" 打开安装页",n.message="在弹出来的 "+t+" 页面里点「安装 / 导入」，规则就进来了。\n\n还差最后一步（不做就完全不生效）：\n① "+t+" → 设置 → MitM → 打开 MitM，生成 CA 证书并安装描述文件\n② 系统 设置 → 通用 → 关于本机 → 证书信任设置 → 把那条 CA 打开\n③ 杀掉目标 App 重进一次\n\n出站策略保持直连（DIRECT）就行，这条规则只在本地改写响应，不烧流量、不需要节点。\n\n❗若报「下载配置失败」：多半是 MitM 已开但证书还没信任，Stash 自己的 HTTPS 也被拦了 ——先到 设置 → MitM 把开关关掉，再点一次安装；还不行就用「文件」App 里 iCloud Drive 的「去开屏/ads.stoverride」，长按 → 共享 → Stash，本地导入不走网络。",
 n.addAction("好了"),n.present()}("Stash")}else 1===e?(Pasteboard.copy($t),pn("覆写地址",$t,"stash")):2===e&amp;&amp;(Pasteboard.copy(Qt),pn("B站覆写地址",Qt,"stash"))}function yn(t){if(!t)return"";const n=new Date(t),e=t=&gt;(t&lt;10?"0":"")+t;
 return n.getMonth()+1+"/"+n.getDate()+" "+e(n.getHours())+":"+e(n.getMinutes())}function Sn(t,n,e,o,i,r,a){const s=new Alert;s.title=String(t.title||"");const l=[];n&amp;&amp;r&amp;&amp;l.push("✅ 完成于 "+yn(r));
-const c=[];t.sub&amp;&amp;x[t.sub]&amp;&amp;c.push(x[t.sub].name),t.dur&amp;&amp;c.push(t.dur),t.level&amp;&amp;c.push(t.level),c.length&amp;&amp;l.push(c.join(" · ")),t.group&amp;&amp;l.push("章节："+t.group),t.loc&amp;&amp;l.push("📍"+t.loc),t.note&amp;&amp;l.push(t.note),t.url&amp;&amp;l.push("🔗 "+function(t){
+const c=[];t.sub&amp;&amp;C[t.sub]&amp;&amp;c.push(C[t.sub].name),t.dur&amp;&amp;c.push(t.dur),t.level&amp;&amp;c.push(t.level),c.length&amp;&amp;l.push(c.join(" · ")),t.group&amp;&amp;l.push("章节："+t.group),t.loc&amp;&amp;l.push("📍"+t.loc),t.note&amp;&amp;l.push(t.note),t.url&amp;&amp;l.push("🔗 "+function(t){
 const n=String(t.url||"");let e=n.match(/bilibili\.com\/video\/(BV[0-9A-Za-z]+)/);if(e){const t=(n.match(/[?&amp;]p=(\d+)/)||[])[1];return"B站 "+e[1]+(t?" · P"+t:"")}return e=n.match(/^https?:\/\/([^\/]+)(\/[^?#]*)?/),e?e[1]+(e[2]&amp;&amp;"/"!==e[2]?e[2]:""):n}
 (t)),s.message=l.join("\n");const d=[{label:n?"取消勾选":"标记完成",run:e}];i&amp;&amp;(d.push({label:o||"▶ 播放",run:i}),d.push({label:"🌐 网页打开（分P最准）",run:()=&gt;function(t){const n=ln(String(t||""));try{
 Safari.open(n?cn(n):String(t))}catch(t){}}(t.url)})),(a||[]).forEach(t=&gt;d.push(t)),d.forEach(t=&gt;s.addAction(t.label)),s.addCancelAction("返回"),s.present().then(t=&gt;{if(t&gt;=0&amp;&amp;t&lt;d.length&amp;&amp;d[t].run)try{
 d[t].run()}catch(t){console.error("taskSheet action: "+t)}})}function mn(t,n,e,o){const i=new UITableRow;i.height=32,i.isHeader=!0;const r=i.addText(t,n||"");if(r.titleFont=Font.boldSystemFont(12),r.subtitleFont=Font.systemFont(10),r.titleColor=e?R.link:R.dim,r.subtitleColor=R.dim,e){
-i.dismissOnSelect=!1,i.onSelect=e;const t=i.addButton(o||"全部");t.titleColor=R.link,t.onTap=e}return i}function kn(t,n,e,o,i,r){o.tasks.forEach(n=&gt;{const o=!!e.done[j(n)],a=o?x[n.sub].name+" · "+n.dur+" · 完成于 "+(yn(e.done[j(n)])||"—"):x[n.sub].name+" · "+n.dur+" · "+n.level+(r?"":n.note?" · "+n.note:""),s=Ht(It(n.title),_t(a,r?34:38),o?R.ok:R[n.sub]||R.txt,r?46:58,
+i.dismissOnSelect=!1,i.onSelect=e;const t=i.addButton(o||"全部");t.titleColor=R.link,t.onTap=e}return i}function kn(t,n,e,o,i,r){o.tasks.forEach(n=&gt;{const o=!!e.done[j(n)],a=o?C[n.sub].name+" · "+n.dur+" · 完成于 "+(yn(e.done[j(n)])||"—"):C[n.sub].name+" · "+n.dur+" · "+n.level+(r?"":n.note?" · "+n.note:""),s=Ht(Nt(n.title),_t(a,r?34:38),o?R.ok:R[n.sub]||R.txt,r?46:58,
 r?void 0:2);if(s.dismissOnSelect=!1,s.onSelect=()=&gt;Sn(n,o,()=&gt;Vt(e,j(n),0,i),/bilibili|b23\.tv/.test(n.url||"")?"▶ B站播放":"▶ 打开页面",n.url?()=&gt;hn(n.url,n.title):null,e.done[j(n)]),n.url){
 const t=s.addButton("▶");try{t.width=36}catch(t){}t.titleColor=R.link,t.onTap=()=&gt;hn(n.url,n.title)}const l=s.addButton("ⓘ");l.titleColor=R.link;try{l.width=26}catch(t){}l.onTap=()=&gt;Sn(n,o,()=&gt;Vt(e,j(n),0,i),n.url?"▶ B站播放":null,n.url?()=&gt;hn(n.url,n.title):null,e.done[j(n)]),Wt(s,o,()=&gt;Vt(e,j(n),0,i)),t.addRow(s)}
-)}function bn(t,n,e){const o=new UITable;o.showSeparators=!1;const i=()=&gt;{o.removeAllRows();const t=e.tasks.filter(t=&gt;n.done[j(t)]).length;o.addRow(mn("第 "+e.day+" 天 · "+e.date.slice(5).replace("-","/")+" "+e.wd,t+"/"+e.tasks.length+" 已完成")),C.forEach(t=&gt;{
-const r=e.tasks.filter(n=&gt;n.sub===t);if(!r.length)return;const a=r.filter(t=&gt;n.done[j(t)]).length,s=Ht(x[t].name+"　"+a+"/"+r.length,"点开只看这一科",a===r.length?R.ok:R[t]||R.txt,46);s.dismissOnSelect=!1;
+)}function bn(t,n,e){const o=new UITable;o.showSeparators=!1;const i=()=&gt;{o.removeAllRows();const t=e.tasks.filter(t=&gt;n.done[j(t)]).length;o.addRow(mn("第 "+e.day+" 天 · "+e.date.slice(5).replace("-","/")+" "+e.wd,t+"/"+e.tasks.length+" 已完成")),x.forEach(t=&gt;{
+const r=e.tasks.filter(n=&gt;n.sub===t);if(!r.length)return;const a=r.filter(t=&gt;n.done[j(t)]).length,s=Ht(C[t].name+"　"+a+"/"+r.length,"点开只看这一科",a===r.length?R.ok:R[t]||R.txt,46);s.dismissOnSelect=!1;
 const l=async()=&gt;{await function(t,n,e,o){const i=new UITable;i.showSeparators=!1;const r=()=&gt;{i.removeAllRows();const t=e.tasks.filter(t=&gt;t.sub===o),a=t.filter(t=&gt;n.done[j(t)]),s=t.filter(t=&gt;!n.done[j(t)]),l=Math.round(t.reduce((t,n)=&gt;t+(n.sec||0),0)/60);
-i.addRow(mn((x[o]?x[o].name:o)+" · 第 "+e.day+" 天 · "+e.date.slice(5).replace("-","/")+" "+e.wd,a.length+"/"+t.length+" 已完成 · "+l+" 分钟")),s.length&amp;&amp;(i.addRow(mn("待完成 "+s.length+" 条","")),kn(i,0,n,{
+i.addRow(mn((C[o]?C[o].name:o)+" · 第 "+e.day+" 天 · "+e.date.slice(5).replace("-","/")+" "+e.wd,a.length+"/"+t.length+" 已完成 · "+l+" 分钟")),s.length&amp;&amp;(i.addRow(mn("待完成 "+s.length+" 条","")),kn(i,0,n,{
 date:e.date,tasks:s},r)),a.length&amp;&amp;(i.addRow(mn("已完成 "+a.length+" 条 · 点 ⓘ 看详情","")),kn(i,0,n,{date:e.date,tasks:a},r)),t.length||i.addRow(Ht("这一科今天没有安排","",R.dim,44)),i.reload()};return r(),i}
-(0,n,e,t).present(!0),X(),i()};s.onSelect=l;const c=s.addButton("打开");c.titleColor=R.link,c.onTap=l,o.addRow(s),kn(o,0,n,{date:e.date,tasks:r},i)}),Ct(o,e.date),Ft(o,e.date),o.reload()}
-;return i(),o}function Cn(t){const n=String(t&amp;&amp;t.url||"");if(/^https?:\/\/study\.koolearn\.com\/ky\/next\/\d+\/\d+\/\d+\/\d+\//.test(n))return n;let e=n.match(/\/ky\/live\/enterlive\/(\d+)\/(\d+)\/(\d+)/);
+(0,n,e,t).present(!0),X(),i()};s.onSelect=l;const c=s.addButton("打开");c.titleColor=R.link,c.onTap=l,o.addRow(s),kn(o,0,n,{date:e.date,tasks:r},i)}),xt(o,e.date),Ft(o,e.date),o.reload()}
+;return i(),o}function xn(t){const n=String(t&amp;&amp;t.url||"");if(/^https?:\/\/study\.koolearn\.com\/ky\/next\/\d+\/\d+\/\d+\/\d+\//.test(n))return n;let e=n.match(/\/ky\/live\/enterlive\/(\d+)\/(\d+)\/(\d+)/);
 return e?"https://study.koolearn.com/ky/learning/"+e[1]+"/"+e[2]+"/"+e[3]:(e=n.match(/\/ky\/next\/(\d+)\/\d+\/(\d+)\/(\d+)/),e?"https://study.koolearn.com/ky/learning/"+e[1]+"/"+e[2]+"/"+e[3]:n)}
-async function xn(t){if(!t)return;const n=String(t.url||"");if(/^https?:/i.test(n)&amp;&amp;n.indexOf("koolearn")&lt;0)return void hn(n,t.title);const e=Cn(t);if(/^https?:\/\//i.test(e))Safari.open(e);
+async function Cn(t){if(!t)return;const n=String(t.url||"");if(/^https?:/i.test(n)&amp;&amp;n.indexOf("koolearn")&lt;0)return void hn(n,t.title);const e=xn(t);if(/^https?:\/\//i.test(e))Safari.open(e);
 else{try{const n=new Notification;n.title=t.title||"英语任务",n.body=(t.loc||"我的课程 › 2027考研英语全程班 5班")+"\n按这个路径找",n.schedule()}catch(t){}Safari.open("koolearnmotion://")}}function Fn(t,n,e,o,i){
 e.tasks.forEach(e=&gt;{const r=j(e),a=!!n.done[r],s="video"===e.type?"B站 · "+(e.note||"精讲"):"app"===e.type?"新东方 App 内看":e.note||"背记 / 复盘",l=Ht(e.title,_t(a?(e.dur?e.dur+" · ":"")+"完成于 "+(yn(n.done[r])||"—"):(e.dur?e.dur+" · ":"")+s,i?34:38),a?R.ok:R.pol,i?46:58,i?void 0:2);
 l.dismissOnSelect=!1;const c=function(t,n,e){if(!At||"memo"!==t.type)return[];const o=String(t.title||""),i=o.indexOf("概念卡")&gt;=0?["思法"]:o.indexOf("错题")&gt;=0?["精练","习题"]:o.indexOf("马原")&gt;=0||o.indexOf("多选")&gt;=0||o.indexOf("正误")&gt;=0?["马哲"]:null;
@@ -199,36 +199,39 @@ date:t.date,title:n.title})})),r.slice(0,3).map(t=&gt;({label:"▶ "+t.date.slic
 n.done[r],c),e.url){const t=l.addButton("▶");try{t.width=36}catch(t){}t.titleColor=R.link,t.onTap=()=&gt;hn(e.url,e.title)}else if("app"===e.type){const t=l.addButton("App");try{t.width=40}
 catch(t){}t.titleColor=R.link,t.onTap=()=&gt;d()}const u=l.addButton("ⓘ");u.titleColor=R.link;try{u.width=26}catch(t){}u.onTap=()=&gt;Sn(e,a,()=&gt;Vt(n,r,0,o),e.url?"▶ B站播放":null,e.url?()=&gt;hn(e.url,e.title):"app"===e.type?d:null,n.done[r],c),Wt(l,a,()=&gt;Vt(n,r,0,o)),t.addRow(l)}
 )}function An(t,n,e){const o=new UITable;o.showSeparators=!1;return(()=&gt;{o.removeAllRows();const i=n.tasks.filter(n=&gt;t.done[j(n)]).length;o.addRow(mn("政治 · "+n.date.slice(5).replace("-","/")+" "+n.wd,i+"/"+n.tasks.length+" 已完成 · "+n.min+" 分钟"+(n.focus?" · "+_t(n.focus,24):""))),Fn(o,t,{
-date:n.date,tasks:n.tasks},e),o.reload()})(),o}function En(t,n,e,o,i){e.tasks.forEach(r=&gt;{const a=Tt(e.date,r),s=!!n.done[a],l=s?"英语 · "+r.dur+" · 完成于 "+(yn(n.done[a])||"—"):"英语 · "+r.dur+" · "+r.level+(i?"":(r.loc?" · 📍"+r.loc:"")+(r.note?" · "+r.note:"")),c=Ht(r.title,_t(l,i?34:38),s?R.ok:R.en,i?46:58,i?void 0:2);
-if(c.dismissOnSelect=!1,c.onSelect=()=&gt;r.url?s?Sn(r,s,()=&gt;Vt(n,a,0,o),"▶ 打开这节课",()=&gt;xn(r),n.done[a]):xn(r):Sn(r,s,()=&gt;Vt(n,a,0,o),null,null,n.done[a]),r.url){const t=c.addButton("▶");
-try{t.width=36}catch(t){}t.titleColor=R.link,t.onTap=()=&gt;xn(r)}const d=c.addButton("ⓘ");d.titleColor=R.link;try{d.width=26}catch(t){}d.onTap=()=&gt;Sn(r,s,()=&gt;Vt(n,a,0,o),r.url?"▶ 打开这节课":null,r.url?()=&gt;xn(r):null,n.done[a]),Wt(c,s,()=&gt;Vt(n,a,0,o)),t.addRow(c)}
-)}function On(t,n){const e=new UITable;e.showSeparators=!1;const o=()=&gt;{e.removeAllRows();const i=n.tasks.filter(e=&gt;t.done[Tt(n.date,e)]).length;e.addRow(mn("英语 · "+n.date.slice(5).replace("-","/")+" "+n.wd,i+"/"+n.tasks.length+" 已完成 · "+n.min+" 分钟")),En(e,t,n,o),e.reload()}
+date:n.date,tasks:n.tasks},e),o.reload()})(),o}function On(t,n,e,o,i){e.tasks.forEach(r=&gt;{const a=Tt(e.date,r),s=!!n.done[a],l=s?"英语 · "+r.dur+" · 完成于 "+(yn(n.done[a])||"—"):"英语 · "+r.dur+" · "+r.level+(i?"":(r.loc?" · 📍"+r.loc:"")+(r.note?" · "+r.note:"")),c=Ht(r.title,_t(l,i?34:38),s?R.ok:R.en,i?46:58,i?void 0:2);
+if(c.dismissOnSelect=!1,c.onSelect=()=&gt;r.url?s?Sn(r,s,()=&gt;Vt(n,a,0,o),"▶ 打开这节课",()=&gt;Cn(r),n.done[a]):Cn(r):Sn(r,s,()=&gt;Vt(n,a,0,o),null,null,n.done[a]),r.url){const t=c.addButton("▶");
+try{t.width=36}catch(t){}t.titleColor=R.link,t.onTap=()=&gt;Cn(r)}const d=c.addButton("ⓘ");d.titleColor=R.link;try{d.width=26}catch(t){}d.onTap=()=&gt;Sn(r,s,()=&gt;Vt(n,a,0,o),r.url?"▶ 打开这节课":null,r.url?()=&gt;Cn(r):null,n.done[a]),Wt(c,s,()=&gt;Vt(n,a,0,o)),t.addRow(c)}
+)}function En(t,n){const e=new UITable;e.showSeparators=!1;const o=()=&gt;{e.removeAllRows();const i=n.tasks.filter(e=&gt;t.done[Tt(n.date,e)]).length;e.addRow(mn("英语 · "+n.date.slice(5).replace("-","/")+" "+n.wd,i+"/"+n.tasks.length+" 已完成 · "+n.min+" 分钟")),On(e,t,n,o),e.reload()}
 ;return o(),e}function Rn(t,n,e,o,i,r,a){const s=!!o.on,l=Ht((s?"▾ ":"▸ ")+"✓ 已完成 "+e.length+" 条",s?"点「收起」":"点「展开」看完成了哪些",R.ok,44);l.dismissOnSelect=!1;const c=()=&gt;{o.touched=!0,o.on=!o.on,i()}
-;l.onSelect=c;const d=l.addButton(s?"收起":"展开");d.titleColor=R.link,d.onTap=c,t.addRow(l),s&amp;&amp;r(e)}const jn="1106-min";k("start");try{const e=Date.now();var Tn="刚进入口";try{en()}catch(t){
+;l.onSelect=c;const d=l.addButton(s?"收起":"展开");d.titleColor=R.link,d.onTap=c,t.addRow(l),s&amp;&amp;r(e)}const jn="1106-noicloud";k("start");try{const e=Date.now();var Tn="刚进入口";try{en()}catch(t){
 }const i=!!config.runsInWidget;Tn="并行读数据（进度/排期/英语/政治）";const r=t=&gt;{try{return Promise.resolve(t())}catch(t){return Promise.resolve(null)}},a=[r(async function(){let t=null;try{if(n.fileExists(s)){
-await P(s);const e=JSON.parse(n.readString(s));t=e&amp;&amp;e.done||{},B=!0;try{l.writeString(z(),JSON.stringify({done:t}))}catch(t){}}else t={},B=!0}catch(n){B=!1;try{const n=z();l.fileExists(n)&amp;&amp;(t=(JSON.parse(l.readString(n))||{
+await P(s);const e=JSON.parse(n.readString(s));t=e&amp;&amp;e.done||{},B=!0;try{l.writeString(z(),JSON.stringify({done:t}))}catch(t){}}else{t={},B=!0;try{const n=z();l.fileExists(n)&amp;&amp;(t=(JSON.parse(l.readString(n))||{
+}).done||{})}catch(t){}if(!t||!Object.keys(t).length)try{const n=await _();n&amp;&amp;n.done&amp;&amp;(t=n.done)}catch(t){}}}catch(n){B=!1;try{const n=z();l.fileExists(n)&amp;&amp;(t=(JSON.parse(l.readString(n))||{
 }).done||{})}catch(t){}if(!t||!Object.keys(t).length)try{const n=await _();n&amp;&amp;n.done&amp;&amp;(t=n.done)}catch(t){}}const e=function(){try{if(l.fileExists(d))return JSON.parse(l.readString(d))||{
 }}catch(t){}return{}}().done||{};if(Object.keys(e).length&amp;&amp;(function(t,n){for(const e in n){const o=n[e]||0;(!t[e]||o&gt;t[e])&amp;&amp;(t[e]=o)}}(t,e),B))try{v(),n.writeString(s,JSON.stringify({
-done:t})),function(){try{l.fileExists(d)&amp;&amp;l.remove(d)}catch(t){}}()}catch(t){}return I=Object.assign({},t),{done:t}}),r(async function(){if(n.fileExists(o)&amp;&amp;n.isFileStoredIniCloud(o)&amp;&amp;!n.isFileDownloaded(o)){
+done:t})),function(){try{l.fileExists(d)&amp;&amp;l.remove(d)}catch(t){}}()}catch(t){}return N=Object.assign({},t),{done:t}}),r(async function(){if(n.fileExists(o)&amp;&amp;n.isFileStoredIniCloud(o)&amp;&amp;!n.isFileDownloaded(o)){
 try{n.downloadFileFromiCloud(o)}catch(t){}try{const t=K();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));if($(n))return n}}catch(t){}}let e=null;try{if(n.fileExists(o)){await P(o);
 const t=n.readString(o);t&amp;&amp;t.length&gt;200&amp;&amp;(e=JSON.parse(t))}}catch(t){}if($(e))return tt(e),e;try{const t=K();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));if($(n))return n}
 }catch(t){}const i=[t+"plan3.json","https://cdn.jsdelivr.net/gh/1123user/349-checkin@main/plan3.json"];for(const t of i)try{const e=new Request(t);e.timeoutInterval=15;const i=await e.loadJSON();
-if($(i)){tt(i);try{v(),n.writeString(o,JSON.stringify(i))}catch(t){}return i}}catch(t){}return null}),r(async function(){try{if(!n.fileExists(f))return null;await P(f);const t=JSON.parse(n.readString(f));
-if(t&amp;&amp;t.days&amp;&amp;t.days.length)try{l.writeString(q(),JSON.stringify(t))}catch(t){}return t&amp;&amp;t.days&amp;&amp;t.days.length?t:null}catch(t){try{const t=q();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));
-if(n&amp;&amp;n.days&amp;&amp;n.days.length)return n}}catch(t){}try{const t=await L("plan-en.json");if(t&amp;&amp;t.days&amp;&amp;t.days.length){try{l.writeString(q(),JSON.stringify(t))}catch(t){}return t}}catch(t){
-}return null}}),r(async function(){try{if(!n.fileExists(w))return null;await P(w);const t=JSON.parse(n.readString(w));if(t&amp;&amp;t.days&amp;&amp;t.days.length)try{l.writeString(U(),JSON.stringify(t))}
-catch(t){}return t&amp;&amp;t.days&amp;&amp;t.days.length?t:null}catch(t){try{const t=U();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));if(n&amp;&amp;n.days&amp;&amp;n.days.length)return n}}catch(t){}try{
-const t=await L("plan-pol.json");if(t&amp;&amp;t.days&amp;&amp;t.days.length){try{l.writeString(U(),JSON.stringify(t))}catch(t){}return t}}catch(t){}return null}})];i||a.push(r(async function(){try{
-if(!n.fileExists(h))return null;if(!await P(h,!0))return null;const t=JSON.parse(n.readString(h));return t&amp;&amp;t.date?t:null}catch(t){return null}}),r(async function(){try{if(!n.fileExists(p))return null;
-if(!await P(p,!0))return null;const t=JSON.parse(n.readString(p));return t&amp;&amp;t.date&amp;&amp;t.items&amp;&amp;t.items.length?t:null}catch(t){return null}}));const c=await Promise.all(a.map(t=&gt;t.catch(()=&gt;null)));
-let u=c[0];if(!u||!u.done)try{const t=await _();if(u={done:t&amp;&amp;t.done||{},_fromCloud:!0},t&amp;&amp;t.dels)for(const n in t.dels)void 0===(t.done||{})[n]&amp;&amp;void 0!==u.done[n]&amp;&amp;delete u.done[n]}
-catch(t){u={done:{}}}const y=c[1];Ot=c[2],At=c[3],i||(Rt=c[4],jt=c[5]);const S=Date.now();if(i||Timer.schedule(.9,async()=&gt;{try{await async function(){if(M())return!0;if(config.runsInWidget)return!1;
-try{const t=new Alert;if(t.title="同步配置（只需一次）",t.message="把 GitHub token 粘进来（只存这台手机，不会上传、不会进脚本）",t.addTextField("token",""),t.addAction("保存"),t.addCancelAction("以后再说"),-1===await t.presentAlert())return!1;
+if($(i)){tt(i);try{v(),n.writeString(o,JSON.stringify(i))}catch(t){}return i}}catch(t){}return null}),r(async function(){try{if(!n.fileExists(f)){try{const t=q();if(l.fileExists(t)){
+const n=JSON.parse(l.readString(t));if(n&amp;&amp;n.days&amp;&amp;n.days.length)return n}}catch(t){}try{const t=await L("plan-en.json");if(t&amp;&amp;t.days&amp;&amp;t.days.length){try{l.writeString(q(),JSON.stringify(t))}
+catch(t){}return t}}catch(t){}return null}await P(f);const t=JSON.parse(n.readString(f));if(t&amp;&amp;t.days&amp;&amp;t.days.length)try{l.writeString(q(),JSON.stringify(t))}catch(t){}return t&amp;&amp;t.days&amp;&amp;t.days.length?t:null}
+catch(t){try{const t=q();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));if(n&amp;&amp;n.days&amp;&amp;n.days.length)return n}}catch(t){}try{const t=await L("plan-en.json");if(t&amp;&amp;t.days&amp;&amp;t.days.length){
+try{l.writeString(q(),JSON.stringify(t))}catch(t){}return t}}catch(t){}return null}}),r(async function(){try{if(!n.fileExists(w)){try{const t=U();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));
+if(n&amp;&amp;n.days&amp;&amp;n.days.length)return n}}catch(t){}try{const t=await L("plan-pol.json");if(t&amp;&amp;t.days&amp;&amp;t.days.length){try{l.writeString(U(),JSON.stringify(t))}catch(t){}return t}}catch(t){
+}return null}await P(w);const t=JSON.parse(n.readString(w));if(t&amp;&amp;t.days&amp;&amp;t.days.length)try{l.writeString(U(),JSON.stringify(t))}catch(t){}return t&amp;&amp;t.days&amp;&amp;t.days.length?t:null}catch(t){
+try{const t=U();if(l.fileExists(t)){const n=JSON.parse(l.readString(t));if(n&amp;&amp;n.days&amp;&amp;n.days.length)return n}}catch(t){}try{const t=await L("plan-pol.json");if(t&amp;&amp;t.days&amp;&amp;t.days.length){
+try{l.writeString(U(),JSON.stringify(t))}catch(t){}return t}}catch(t){}return null}})];i||a.push(r(async function(){try{if(!n.fileExists(h))return null;if(!await P(h,!0))return null;
+const t=JSON.parse(n.readString(h));return t&amp;&amp;t.date?t:null}catch(t){return null}}),r(async function(){try{if(!n.fileExists(p))return null;if(!await P(p,!0))return null;const t=JSON.parse(n.readString(p));
+return t&amp;&amp;t.date&amp;&amp;t.items&amp;&amp;t.items.length?t:null}catch(t){return null}}));const c=await Promise.all(a.map(t=&gt;t.catch(()=&gt;null)));let u=c[0];if(!u||!u.done)try{const t=await _();if(u={
+done:t&amp;&amp;t.done||{},_fromCloud:!0},t&amp;&amp;t.dels)for(const n in t.dels)void 0===(t.done||{})[n]&amp;&amp;void 0!==u.done[n]&amp;&amp;delete u.done[n]}catch(t){u={done:{}}}const y=c[1];Et=c[2],At=c[3],i||(Rt=c[4],jt=c[5]);
+const S=Date.now();if(i||Timer.schedule(.9,async()=&gt;{try{await async function(){if(M())return!0;if(config.runsInWidget)return!1;try{const t=new Alert;if(t.title="同步配置（只需一次）",t.message="把 GitHub token 粘进来（只存这台手机，不会上传、不会进脚本）",t.addTextField("token",""),t.addAction("保存"),t.addCancelAction("以后再说"),-1===await t.presentAlert())return!1;
 const n=String(t.textFieldValue(0)||"").trim();if(!n)return!1;const e=FileManager.local();return e.writeString(e.joinPath(e.documentsDirectory(),"xiaoman-gist.json"),JSON.stringify({
 id:J,token:n})),!0}catch(t){return!1}}(),await H(u,!0)}catch(t){}}),config.runsInWidget){try{ft()&amp;&amp;(await Promise.all([wt(),St(),gt(),dt(),ut()]),rt({lastPull:lt(),lastPullAt:Date.now()}
 ))}catch(t){}let t;Tn="构建小组件";try{t=await async function(t,n){const e=config.widgetFamily||"medium",o=D(),i=new ListWidget;i.setPadding(12,15,12,15);const r=new LinearGradient;if(r.colors=[F.bgTop,F.bgMid,F.bgLow],r.locations=[0,.52,1],i.backgroundGradient=r,i.refreshAfterDate=new Date(Date.now()+12e5),!t){
 i.addSpacer();const t=i.addText("排期加载失败，请在有网时打开一次");return t.font=Font.systemFont(12),t.textColor=A,i.addSpacer(),i}const a=Bt(t,o),s="scriptable:///run/"+encodeURIComponent(Script.name());
-if("small"===e){i.setPadding(9,12,5,12),i.url=s;const t=Pt(o,n),e=Et(o),r=e?e.tasks.filter(t=&gt;n.done[j(t)]).length:0,d=(a?a.tasks.filter(t=&gt;n.done[j(t)]).length:0)+(t?t.done:0)+r,u=(a?a.tasks.length:0)+(t?t.n:0)+(e?e.tasks.length:0),f=i.addStack();
+if("small"===e){i.setPadding(9,12,5,12),i.url=s;const t=Pt(o,n),e=Ot(o),r=e?e.tasks.filter(t=&gt;n.done[j(t)]).length:0,d=(a?a.tasks.filter(t=&gt;n.done[j(t)]).length:0)+(t?t.done:0)+r,u=(a?a.tasks.length:0)+(t?t.n:0)+(e?e.tasks.length:0),f=i.addStack();
 f.layoutHorizontally(),f.centerAlignContent();const h=f.addText(a?"第 "+a.day+" 天 · "+a.date.slice(5).replace("-","/"):"数据未同步");h.font=Font.semiboldSystemFont(9),h.textColor=F.head,f.addSpacer(),f.addImage(Jt(u?Math.round(d/u*100):0,F.ring,19,2,null));
 const g=f.addText(" "+d+"/"+u);g.font=Font.semiboldSystemFont(8),g.textColor=F.ringTx,i.addSpacer();const p=await Ut(),w=i.addStack();w.layoutHorizontally(),w.centerAlignContent(),w.backgroundColor=F.bubBg,w.cornerRadius=12,w.setPadding(4,7,4,7);
 const y=w.addText("✦ ");y.font=Font.boldSystemFont(8),y.textColor=F.pink;const S=w.addText((l=p.text,c=26,(l=String(l||"")).length&gt;c?l.slice(0,c)+"…":l));S.font=Font.systemFont(9),S.textColor=F.bubTx,S.lineLimit=2,S.minimumScaleFactor=.75,S.leftAlignText();
@@ -236,9 +239,9 @@ const k=m();if(k){i.addSpacer(1);const t=i.addStack();t.layoutHorizontally(),t.c
 const e=n.addImage(k),o=k.size.width/k.size.height;e.imageSize=new Size(Math.round(72*o),72),t.addSpacer()}else{i.addSpacer();const t=i.addText("立绘未就绪，运行一次脚本即可");t.font=Font.systemFont(8),t.textColor=A,t.centerAlignText()}
 return i}var l,c;const d=i.addStack();d.layoutHorizontally(),d.centerAlignContent();const u=d.addStack();if(u.layoutVertically(),function(t,n,e,o){const i=t.addStack();i.layoutHorizontally(),i.centerAlignContent();
 const r=o?o.date:D(),a=Pt(r,e),s=o?o.tasks.filter(t=&gt;e.done[j(t)]).length:0,l=o?o.tasks.length:0,c=i.addStack();c.layoutVertically();const d=c.addText(o?"第 "+o.day+" 天":a?"英语日程":"已收口");
-d.font=Font.boldSystemFont(15),d.textColor=E;const u=c.addText(o?o.date.slice(5).replace("-","/")+" "+o.wd+" · "+s+"/"+o.tasks.length+" 条"+(a&amp;&amp;!a.today?" · 英 "+a.ed.date.slice(5).replace("-","/"):"")+" · v"+jn:a?a.ed.date.slice(5).replace("-","/")+" "+a.ed.wd+" · "+a.done+"/"+a.n+" 条":"阶段一结束");
+d.font=Font.boldSystemFont(15),d.textColor=O;const u=c.addText(o?o.date.slice(5).replace("-","/")+" "+o.wd+" · "+s+"/"+o.tasks.length+" 条"+(a&amp;&amp;!a.today?" · 英 "+a.ed.date.slice(5).replace("-","/"):"")+" · v"+jn:a?a.ed.date.slice(5).replace("-","/")+" "+a.ed.wd+" · "+a.done+"/"+a.n+" 条":"阶段一结束");
 if(u.font=Font.mediumSystemFont(8.5),u.textColor=A,i.addSpacer(),o&amp;&amp;i.addImage(Jt(l?Math.round(s/l*100):0,F.ring,30,3,s+"/"+l)),a){o&amp;&amp;i.addSpacer(4);const t=i.addText("英");t.font=Font.semiboldSystemFont(9),t.textColor=F.en,i.addSpacer(1),i.addImage(Jt(a.n?Math.round(a.done/a.n*100):0,F.en,28,3,a.done+"/"+a.n))}
-const f=Et(r);if(f){const t=f.tasks.filter(t=&gt;e.done[j(t)]).length;i.addSpacer(4),i.addImage(Jt(f.tasks.length?Math.round(t/f.tasks.length*100):0,x.pol.c,26,2,null))}}(u,0,n,a),u.addSpacer(4),a||Pt(o,n)||Et(o)){
+const f=Ot(r);if(f){const t=f.tasks.filter(t=&gt;e.done[j(t)]).length;i.addSpacer(4),i.addImage(Jt(f.tasks.length?Math.round(t/f.tasks.length*100):0,C.pol.c,26,2,null))}}(u,0,n,a),u.addSpacer(4),a||Pt(o,n)||Ot(o)){
 const t=await Ut();Lt(u,0,n,a,"large"===e?10:4,t)}else{const t=u.addText("这个阶段已经收口了");t.font=Font.systemFont(11),t.textColor=A}d.addSpacer(5);const f=m();if(f){const t="large"===e?146:100,n=t+14,o=d.addStack();
 try{o.size=new Size(n,n)}catch(t){}o.layoutHorizontally(),o.centerAlignContent(),o.backgroundImage=zt(n,F.halo,.24);const i=o.addImage(f),r=f.size.width/f.size.height;i.imageSize=new Size(Math.round(t*r),t)}
 return i}(y,u)}catch(n){const e=n&amp;&amp;n.message?n.message:String(n);k("ERROR "+e),t=new ListWidget;const o=t.addText("脚本出错：\n"+e);o.font=Font.systemFont(11),o.textColor=new Color("#FF453A")}
@@ -247,14 +250,14 @@ on(tn)}}catch(t){}if(y){if(!B){const t=new Alert;t.title="进度文件还没同�
 try{await t.present()}catch(t){}}Tn="首屏·云端拉取";try{ft()&amp;&amp;(await Promise.all([wt(),St(),gt(),dt(),ut()]),rt({lastPull:lt(),lastPullAt:Date.now()}))}catch(t){}const t=Date.now();if(Tn="首屏·留痕",b(e,S,t,Date.now(),"pre"),y){
 Tn="首屏·安排开机刷新";try{Timer.schedule(1.5,async()=&gt;{try{const t=await Promise.all([dt(),ut()]);let n=!1;t[0]&amp;&amp;(mergePlanInPlace(y,t[0]),n=!0),t[1]&amp;&amp;(At=t[1],n=!0),n&amp;&amp;RERENDER&amp;&amp;RERENDER()}
 catch(t){}})}catch(t){}}Tn="渲染主清单",await function(t,e){const o=D(),i=Bt(t,o),r=new UITable;r.showSeparators=!1;let a=!1,s=!1;const l={pharm:{on:!1,touched:!1},en:{on:!1,touched:!1}
-,pol:{on:!1,touched:!1}},c=()=&gt;{r.removeAllRows();const d=Pt(o,e),u=Et(o),f=i?i.tasks.filter(t=&gt;e.done[j(t)]).length:0,h=u?u.tasks.filter(t=&gt;e.done[j(t)]).length:0,p=f+(d?d.done:0)+h,w=(i?i.tasks.length:0)+(d?d.n:0)+(u?u.tasks.length:0);
-if(r.addRow(mn((i?"第 "+i.day+" 天 · ":"")+o.slice(5).replace("-","/")+" "+(i&amp;&amp;i.wd||""),"今日 "+p+"/"+w+" 项 · v"+jn)),et(r,o),i){const t=i.tasks.filter(t=&gt;!e.done[j(t)]),n=i.by&amp;&amp;Object.keys(i.by).length?Object.keys(i.by).map(t=&gt;(x[t]?x[t].name:t)+" "+i.by[t]).join(" · "):"",o=async()=&gt;{
+,pol:{on:!1,touched:!1}},c=()=&gt;{r.removeAllRows();const d=Pt(o,e),u=Ot(o),f=i?i.tasks.filter(t=&gt;e.done[j(t)]).length:0,h=u?u.tasks.filter(t=&gt;e.done[j(t)]).length:0,p=f+(d?d.done:0)+h,w=(i?i.tasks.length:0)+(d?d.n:0)+(u?u.tasks.length:0);
+if(r.addRow(mn((i?"第 "+i.day+" 天 · ":"")+o.slice(5).replace("-","/")+" "+(i&amp;&amp;i.wd||""),"今日 "+p+"/"+w+" 项 · v"+jn)),et(r,o),i){const t=i.tasks.filter(t=&gt;!e.done[j(t)]),n=i.by&amp;&amp;Object.keys(i.by).length?Object.keys(i.by).map(t=&gt;(C[t]?C[t].name:t)+" "+i.by[t]).join(" · "):"",o=async()=&gt;{
 await bn(0,e,i).present(!0),X(),c()};if(r.addRow(mn("药学 "+f+"/"+i.tasks.length+" · "+i.min+" 分钟",n,o,"全部")),t.length){if(kn(r,0,e,{date:i.date,tasks:t.slice(0,2)},c,!0),t.length&gt;2){
 const n=Ht("还有 "+(t.length-2)+" 条","",R.link,40);n.dismissOnSelect=!1,n.onSelect=o;const e=n.addButton("打开");e.titleColor=R.link,e.onTap=o,r.addRow(n)}}else{const t=Ht("药学今天已完成 ✓","共 "+i.tasks.length+" 条 · 点开看每一条的详情",R.ok,46);
-t.dismissOnSelect=!1,t.onSelect=o;const n=t.addButton("打开");n.titleColor=R.link,n.onTap=o,r.addRow(t)}}if(d){const t=d.ed.tasks.filter(t=&gt;!e.done[Tt(d.ed.date,t)]),n=async()=&gt;{await On(e,d.ed).present(!0),X(),c()}
-;if(r.addRow(mn("英语 "+d.done+"/"+d.n+" · "+d.ed.min+" 分钟",d.today?"今日":d.ed.date.slice(5).replace("-","/")+" "+d.ed.wd,n,"全部")),t.length&amp;&amp;(En(r,e,{date:d.ed.date,tasks:t.slice(0,2)}
-,c,!0),t.length&gt;2)){const n=Ht("还有 "+(t.length-2)+" 条","",R.link,40);n.dismissOnSelect=!1,n.onSelect=async()=&gt;{await On(e,d.ed).present(!0),X(),c()},r.addRow(n)}const o=d.ed.tasks.filter(t=&gt;e.done[Tt(d.ed.date,t)]);
-o.length&amp;&amp;(t.length||l.en.touched||(l.en.on=!0),Rn(r,0,o,l.en,c,t=&gt;En(r,e,{date:d.ed.date,tasks:t},c,!0),d.ed.day))}if(Rt||jt&amp;&amp;jt.items&amp;&amp;jt.items.length){const t=Rt&amp;&amp;Rt.totals&amp;&amp;Rt.totals.wrong||0,e=!Rt||function(){
+t.dismissOnSelect=!1,t.onSelect=o;const n=t.addButton("打开");n.titleColor=R.link,n.onTap=o,r.addRow(t)}}if(d){const t=d.ed.tasks.filter(t=&gt;!e.done[Tt(d.ed.date,t)]),n=async()=&gt;{await En(e,d.ed).present(!0),X(),c()}
+;if(r.addRow(mn("英语 "+d.done+"/"+d.n+" · "+d.ed.min+" 分钟",d.today?"今日":d.ed.date.slice(5).replace("-","/")+" "+d.ed.wd,n,"全部")),t.length&amp;&amp;(On(r,e,{date:d.ed.date,tasks:t.slice(0,2)}
+,c,!0),t.length&gt;2)){const n=Ht("还有 "+(t.length-2)+" 条","",R.link,40);n.dismissOnSelect=!1,n.onSelect=async()=&gt;{await En(e,d.ed).present(!0),X(),c()},r.addRow(n)}const o=d.ed.tasks.filter(t=&gt;e.done[Tt(d.ed.date,t)]);
+o.length&amp;&amp;(t.length||l.en.touched||(l.en.on=!0),Rn(r,0,o,l.en,c,t=&gt;On(r,e,{date:d.ed.date,tasks:t},c,!0),d.ed.day))}if(Rt||jt&amp;&amp;jt.items&amp;&amp;jt.items.length){const t=Rt&amp;&amp;Rt.totals&amp;&amp;Rt.totals.wrong||0,e=!Rt||function(){
 try{return n.fileExists(g)?String(n.readString(g)||"").trim().slice(0,32):""}catch(t){return""}}()===Rt.date,o=Rt&amp;&amp;Rt.push&amp;&amp;Rt.push[0]?Rt.push[0]:null,i=Ht((Rt?(e?"":"● ")+"复盘 "+String(Rt.date).slice(5).replace("-","/")+" 错 "+t:"复盘")+(jt?" ｜ 完形三空 "+jt.items.length+" 空":""),_t((o?"最弱 "+o.cn:"昨日全对，保持")+(jt?" · 完形去记录本网页":""),34),e?R.dim:t?R.pol:R.en,46);
 if(i.dismissOnSelect=!1,Rt){const t=async()=&gt;{await vt(Rt).present(!0),c()};i.onSelect=t;const n=i.addButton("复盘");n.titleColor=R.link,n.onTap=t}if(jt&amp;&amp;jt.items&amp;&amp;jt.items.length){const t=()=&gt;Safari.open("https://1123user.github.io/en-journal/journal.html");
 Rt||(i.onSelect=t);const n=i.addButton("完形");n.titleColor=R.link,n.onTap=t}r.addRow(i)}if(u){const t=u.tasks.filter(t=&gt;!e.done[j(t)]),n=async()=&gt;{await An(e,u,c).present(!0),X(),c()}
@@ -265,18 +268,17 @@ o.dismissOnSelect=!1;const i=()=&gt;{Z(e,!0),c()};o.onSelect=i;const a=o.addButt
 y.dismissOnSelect=!1;const S=async()=&gt;{const t=new Alert;t.title="设置",t.message="B站播放方式当前是「"+nn()+"」\n跨端同步当前是「"+st()+"」",t.addAction("切换播放方式"),t.addAction("跨端同步方式 · "+st()),t.addAction("立即拉取云端数据（安排/推荐/知识库）"),t.addAction("去开屏 / 去广告"+(sn().length?" · 一键安装":" · 看做法")),t.addAction("登录新东方"),t.addCancel("关闭");
 const n=await t.presentAlert();0===n?async function(t){en();const n=new Alert;n.title="B站播放方式 · 当前「"+nn()+"」",n.message=Kt.map(t=&gt;(t.k===tn?"● ":"○ ")+t.n+"："+t.d).join("\n")+"\n\n「B站 App」这一档只解决「直达视频、不绕首页」；App 自己的开屏广告要在下面「B站去开屏」里装一次代理规则才会消失。",Kt.forEach(t=&gt;n.addAction(t.n)),n.addCancelAction("不改");
 const e=await n.present();e&gt;=0&amp;&amp;e&lt;Kt.length&amp;&amp;(on(Kt[e].k),t&amp;&amp;t())}(c):1===n?gn(c):2===n?(await Promise.all([wt(!0),gt(!0),St(!0),dt(!0),ut(!0)]).catch(()=&gt;{}),rt({lastPull:lt(),lastPullAt:Date.now()}
-),c()):3===n?wn():4===n&amp;&amp;async function(){Safari.open("https://study.koolearn.com/my")}()};y.onSelect=S;const m=y.addButton("打开");m.titleColor=R.link,m.onTap=S,r.addRow(y);const k=Ht(a?"▾ 全部日程":"▸ 全部日程","药学 "+t.days.length+" 天"+(Ot?" · 英语 "+Ot.days.length+" 天":"")+" · 点开查看",R.link,46);
-k.dismissOnSelect=!1;const b=()=&gt;{a=!a,c()};k.onSelect=b;const C=k.addButton(a?"收起":"展开");C.titleColor=R.link,C.onTap=b,r.addRow(k),a&amp;&amp;(t.days.forEach(t=&gt;{const n=t.tasks.filter(t=&gt;e.done[j(t)]).length,i=Ht((t.date===o?"▸ ":"")+"D"+t.day+"  "+t.date.slice(5).replace("-","/")+" "+t.wd,n+"/"+t.tasks.length+" · "+t.min+" 分钟"+(t.date===o?" · 今天":""));
-i.dismissOnSelect=!1,i.onSelect=async()=&gt;{await bn(0,e,t).present(!0),X(),c()},r.addRow(i)}),Ot&amp;&amp;Ot.days.forEach(t=&gt;{const n=t.tasks.filter(n=&gt;e.done[Tt(t.date,n)]).length,i=Ht((t.date===o?"▸ ":"")+"E"+t.day+"  "+t.date.slice(5).replace("-","/")+" "+t.wd,n+"/"+t.tasks.length+" · "+t.min+" 分钟"+(t.date===o?" · 今天":""));
-i.dismissOnSelect=!1,i.onSelect=async()=&gt;{await On(e,t).present(!0),X(),c()},r.addRow(i)})),r.reload()};return RERENDER=c,c(),r}(y,u).present(!0),b(e,S,t,Date.now(),"full"),X(0,!0);
+),c()):3===n?wn():4===n&amp;&amp;async function(){Safari.open("https://study.koolearn.com/my")}()};y.onSelect=S;const m=y.addButton("打开");m.titleColor=R.link,m.onTap=S,r.addRow(y);const k=Ht(a?"▾ 全部日程":"▸ 全部日程","药学 "+t.days.length+" 天"+(Et?" · 英语 "+Et.days.length+" 天":"")+" · 点开查看",R.link,46);
+k.dismissOnSelect=!1;const b=()=&gt;{a=!a,c()};k.onSelect=b;const x=k.addButton(a?"收起":"展开");x.titleColor=R.link,x.onTap=b,r.addRow(k),a&amp;&amp;(t.days.forEach(t=&gt;{const n=t.tasks.filter(t=&gt;e.done[j(t)]).length,i=Ht((t.date===o?"▸ ":"")+"D"+t.day+"  "+t.date.slice(5).replace("-","/")+" "+t.wd,n+"/"+t.tasks.length+" · "+t.min+" 分钟"+(t.date===o?" · 今天":""));
+i.dismissOnSelect=!1,i.onSelect=async()=&gt;{await bn(0,e,t).present(!0),X(),c()},r.addRow(i)}),Et&amp;&amp;Et.days.forEach(t=&gt;{const n=t.tasks.filter(n=&gt;e.done[Tt(t.date,n)]).length,i=Ht((t.date===o?"▸ ":"")+"E"+t.day+"  "+t.date.slice(5).replace("-","/")+" "+t.wd,n+"/"+t.tasks.length+" · "+t.min+" 分钟"+(t.date===o?" · 今天":""));
+i.dismissOnSelect=!1,i.onSelect=async()=&gt;{await En(e,t).present(!0),X(),c()},r.addRow(i)})),r.reload()};return RERENDER=c,c(),r}(y,u).present(!0),b(e,S,t,Date.now(),"full"),X(0,!0);
 try{"off"!==at()&amp;&amp;it.pendAt&amp;&amp;("instant"===at()||ct()&amp;&amp;it.lastPush!==lt())&amp;&amp;Z(u)}catch(t){}}else{const t=new Alert;t.title="排期加载失败",t.message="还没有本地缓存，也没有网络。请连上网后重新运行一次。",t.addAction("好");
 try{await t.present()}catch(t){}}Script.complete()}}catch(t){try{const o=String(t&amp;&amp;t.message||t||""),i=String(t&amp;&amp;t.stack||""),r=("卡在："+("string"==typeof Tn&amp;&amp;Tn||"?")+"\n"+(o&amp;&amp;"undefined"!==o?o+"\n":"")+(i.indexOf("native code")&gt;=0?"（底层原生错误，无 JS 堆栈 —— 多半是 iCloud 容器这步抽风，重跑一次或重启手机后重试）":i)).slice(0,800);
 try{const t=n.joinPath(e,"run-log.txt");let o="";try{n.fileExists(t)&amp;&amp;(o=n.readString(t)||"")}catch(t){}n.writeString(t,(new Date).toISOString().slice(5,16).replace("T"," ")+"  "+y+"  BOOT-ERR  "+r.split("\n")[0]+"\n"+o)}
 catch(t){}if(config.runsInWidget){const t=new ListWidget,n=t.addText("小满启动出错\n点我重试，或跑一次「更新小满」");n.font=Font.systemFont(11),n.textColor=new Color("#FF453A"),t.url="scriptable:///run/"+encodeURIComponent(Script.name()),Script.setWidget(t)}
 else{const t=new Alert;t.title="小满启动出错（"+y+"）",t.message=r+"\n\n处理：跑一次「更新小满」—— 它会从云端拉最新版并做完整性校验，能自动修掉损坏的脚本。",t.addAction("好"),await t.present()}}catch(t){}}})();</textarea>
 <script>
-var ta = document.getElementById('src')
-var tip = document.getElementById('tip')
+var ta = document.getElementById('src'), tip = document.getElementById('tip')
 document.getElementById('copy').onclick = function () {
   var v = ta.value
   if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -287,12 +289,9 @@ document.getElementById('copy').onclick = function () {
 }
 function fallback(v) {
   try {
-    ta.focus()
-    ta.setSelectionRange(0, v.length)
+    ta.focus(); ta.setSelectionRange(0, v.length)
     var ok = document.execCommand('copy')
     tip.textContent = ok ? ('已复制 \u2713 ' + v.length + ' 字符') : '自动复制被拦：长按下面文本框 → 全选 → 拷贝'
-  } catch (e) {
-    tip.textContent = '自动复制被拦：长按下面文本框 → 全选 → 拷贝'
-  }
+  } catch (e) { tip.textContent = '自动复制被拦：长按下面文本框 → 全选 → 拷贝' }
 }
 </script>
