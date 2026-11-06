@@ -1,1 +1,1 @@
-{"file": "xiaoman-v58.js", "build": "v58-20261106-cloudfirst", "ui": "1106-cloudfirst", "size": 138334, "sha1": "d25bf767916e", "at": "2026-11-06T15:08:26+08:00", "note": "iCloud 容器抽风时进度从 Gist 云端兜底恢复；勾选推送不依赖 iCloud"}
+{"file": "xiaoman-v59.js", "build": "v59-20261106-safeboot", "ui": "1106-safeboot", "size": 138714, "sha1": "7fa001c52bd8", "at": "2026-11-06T15:13:45+08:00", "note": "每个数据加载套同步安全壳，iCloud 原生抽风只损失单项数据，脚本照常启动；进度读挂时从 Gist 云端恢复"}
