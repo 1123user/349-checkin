@@ -1,1 +1,1 @@
-{"file": "xiaoman-v62.js", "build": "v62-20261106-noicloud", "ui": "1106-noicloud", "size": 62286, "sha1": "2a7146fe5c2d", "at": "2026-11-06T16:10:42+08:00", "note": "零 iCloud 版：文件全走本机，绕开抛原生异常的 iCloud 容器；进度/排期/英语/政治从本机缓存或私有 Gist 补齐"}
+{"file": "xiaoman-v63.js", "build": "v63-20261106-lan", "ui": "1106-lan", "size": 62802, "sha1": "f8964ef0b8d6", "note": "完整功能（主线保留）+ 局域网数据源：排期/进度/AI寄语/立绘/复盘/推荐全部从 Mac 8878 取，勾选 POST 回 Mac"}
