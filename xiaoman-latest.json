@@ -1,1 +1,1 @@
-{"file": "xiaoman-v64.js", "build": "v64-20261106-lanfast", "ui": "1106-lanfast", "size": 63087, "sha1": "6d102d259b25", "note": "完整功能 + 局域网数据源；组件只做轻量进度同步（修 v63 组件拉 300KB 超时打不开），全量同步在 App 内"}
+{"file": "xiaoman-v65.js", "build": "v65-20261106-nocloudapi", "ui": "1106-nocloudapi", "size": 62526, "sha1": "df2f44063420", "note": "完整功能 + 局域网数据源；移除 iCloud 专属 API 调用（isFileStoredIniCloud/isFileDownloaded 抛原生异常）；组件只拉进度"}
