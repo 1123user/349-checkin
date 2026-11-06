@@ -1,1 +1,1 @@
-{"file": "xiaoman-v47.js", "build": "v55-20261105-timguard", "ui": "v1105-timguard", "size": 130860, "sha1": "06b9eff1e11c", "at": "2026-11-03T14:09:27+08:00", "note": "修复任务详情弹窗一点就崩（Scriptable Alert.addAction 无返回值）；政治背记任务弹窗里加「▶ 去看政治线对应板块」直达按钮"}
+{"file": "xiaoman-v56.js", "build": "v56-20261106-gist", "ui": "1106-gist", "size": 136400, "sha1": "bbb50a3630f9", "at": "2026-11-06T14:52:45+08:00", "note": "手机 → 私有 Gist → 电脑 跨网同步勾选（不依赖 iCloud）；手机运行脚本时上报心跳"}
