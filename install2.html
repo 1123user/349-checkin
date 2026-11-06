@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小满 · 手动安装 / 修复</title>
+<style>
+ body{margin:0;padding:20px 18px;background:#0A0A0C;color:#E5E5EA;font:15px/1.6 -apple-system,'PingFang SC',sans-serif}
+ h1{font-size:19px;margin:0 0 8px}
+ p{color:#8E8E93;font-size:13px;margin:0 0 14px}
+ ol{color:#8E8E93;font-size:13px;padding-left:20px;margin:0 0 16px}
+ ol b{color:#E5E5EA}
+ button,a.btn{display:block;width:100%;box-sizing:border-box;margin:12px 0;padding:16px;border:0;border-radius:13px;
+   font-size:16px;font-weight:600;text-align:center;text-decoration:none;color:#fff;background:#0A84FF;cursor:pointer}
+ a.btn{background:#30D158;color:#04140A}
+ #tip{color:#FF9F0A;font-size:13px;min-height:22px;margin:6px 0 10px}
+ textarea{width:100%;box-sizing:border-box;height:140px;background:#1C1C1E;color:#8E8E93;border:0;border-radius:10px;
+   padding:10px;font:11px/1.4 ui-monospace,Menlo,monospace;-webkit-user-select:text;user-select:text}
+</style>
+<h1>小满 · 手动安装 / 修复</h1>
+<p id="ver">正在拉取最新版本…</p>
+<ol>
+ <li>点 <b>① 复制最新脚本</b>（自动复制被拦，就用最下面框：长按 → 全选 → 拷贝）</li>
+ <li>点 <b>② 打开 Scriptable</b>，点开已有的 <b>小满</b>（没有就新建）</li>
+ <li>全选编辑区 → <b>粘贴覆盖</b> → 左上角返回保存</li>
+ <li>回桌面等组件刷新；运行「小满」完成一次性 token 配置</li>
+</ol>
+<button id="copy">① 复制最新脚本到剪贴板</button>
+<a class="btn" id="open" href="scriptable:///add">② 打开 Scriptable</a>
+<p id="tip"></p>
+<textarea id="src" readonly spellcheck="false" autocapitalize="off" autocorrect="off">（加载中…）</textarea>
+<script>
+(async () => {
+  const tip = document.getElementById('tip'), ver = document.getElementById('ver'), ta = document.getElementById('src')
+  try {
+    const m = await (await fetch('xiaoman-latest.json?t=' + Date.now(), {cache:'no-store'})).json()
+    ver.textContent = '最新版本 ' + (m.build || m.file) + '（界面 v' + (m.ui || '?') + '）'
+    const code = await (await fetch(m.file + '?t=' + Date.now(), {cache:'no-store'})).text()
+    if (code.length < 50000 || code.indexOf(m.build) < 0) throw new Error('拉到的脚本不完整，请刷新重试')
+    ta.value = code
+    tip.textContent = '已就绪：' + code.length + ' 字符'
+    document.getElementById('copy').onclick = async () => {
+      try { await navigator.clipboard.writeText(code); tip.textContent = '已复制 ✓ 去粘贴' }
+      catch (e) { ta.focus(); ta.select(); tip.textContent = '自动复制被拦：长按文本框 → 全选 → 拷贝' }
+    }
+  } catch (e) {
+    ver.textContent = '拉取失败：' + (e && e.message || e)
+    tip.textContent = '检查网络后刷新本页重试'
+  }
+})()
+</script>
