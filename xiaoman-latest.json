@@ -1,1 +1,1 @@
-{"file": "xiaoman-v63.js", "build": "v63-20261106-lan", "ui": "1106-lan", "size": 62802, "sha1": "f8964ef0b8d6", "note": "完整功能（主线保留）+ 局域网数据源：排期/进度/AI寄语/立绘/复盘/推荐全部从 Mac 8878 取，勾选 POST 回 Mac"}
+{"file": "xiaoman-v64.js", "build": "v64-20261106-lanfast", "ui": "1106-lanfast", "size": 63087, "sha1": "6d102d259b25", "note": "完整功能 + 局域网数据源；组件只做轻量进度同步（修 v63 组件拉 300KB 超时打不开），全量同步在 App 内"}
