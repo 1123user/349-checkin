@@ -1,1 +1,1 @@
-{"file": "xiaoman-v65.js", "build": "v65-20261106-nocloudapi", "ui": "1106-nocloudapi", "size": 62526, "sha1": "df2f44063420", "note": "完整功能 + 局域网数据源；移除 iCloud 专属 API 调用（isFileStoredIniCloud/isFileDownloaded 抛原生异常）；组件只拉进度"}
+{"file": "xiaoman-v66.js", "build": "v66-20261106-timerfix", "ui": "1106-timerfix", "size": 62518, "sha1": "caf79d2b77fb", "note": "完整功能 + 局域网数据源；移除 iCloud 专属 API 调用（isFileStoredIniCloud/isFileDownloaded 抛原生异常）；组件只拉进度"}
