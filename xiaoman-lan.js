@@ -9,9 +9,15 @@
   const CACHE = lf.joinPath(lf.documentsDirectory(), "xm3-cache.json")
   const PEND = lf.joinPath(lf.documentsDirectory(), "xm3-pending.json")
 
-  const SUBN = { org: "有机", ana: "分析", pha: "药理", pol: "政治", en: "英语" }
-  const SUBO = ["org", "ana", "pha", "pol", "en"]
-  const TC = { org: "#FF453A", ana: "#0A84FF", pha: "#FF9F0A", pol: "#BF5AF2", en: "#30D158", ok: "#30D158", dim: "#8E8E93" }
+  /* 科目 key 与原版一致（plan3 里药理是 pharm，不是 pha） */
+  const SUBN = { org: "有机", pharm: "药理", ana: "分析", pol: "政治", en: "英语" }
+  const SUBO = ["org", "pharm", "ana", "pol", "en"]
+  /* 原版配色：政治正红 / 有机赭橙 / 药理金 / 英语青绿 / 分析钢蓝 + 暗紫主题 */
+  const TC = {
+    org: "#F2A65A", pharm: "#F0CE6B", ana: "#7FA8E8", pol: "#FF6B5E", en: "#5CD39B",
+    ok: "#6FE0A6", dim: "#A79FC4", txt: "#F4F0FF", head: "#D9D2F2",
+    ring: "#B49CFF", ringTx: "#CBB9FF", link: "#8FB8FF"
+  }
 
   function rd(p, fb) { try { return JSON.parse(lf.readString(p)) || fb } catch (e) { return fb } }
   function wr(p, o) { try { lf.writeString(p, JSON.stringify(o)) } catch (e) {} }
@@ -102,7 +108,7 @@
     ctx.size = new Size(size, size)
     ctx.opaque = false
     const c = size / 2, r = c - 5
-    ctx.setStrokeColor(new Color("#3A3A3C"))
+    ctx.setStrokeColor(new Color("#4A3E6B"))
     ctx.setLineWidth(5)
     const p0 = new Path()
     p0.addEllipse(new Rect(5, 5, size - 10, size - 10))
@@ -124,26 +130,29 @@
     st.layoutHorizontally(); st.centerAlignContent(); st.spacing = 4
     const tag = st.addText(SUBN[t.sub] || t.sub)
     tag.font = Font.semiboldSystemFont(9.5)
-    tag.textColor = new Color("#8E8E93")
+    tag.textColor = new Color(TC.dim)
     const dot = st.addText(isDone ? "✓" : "○")
     dot.font = Font.boldSystemFont(9.5)
-    dot.textColor = new Color(isDone ? "#30D158" : "#8E8E93")
+    dot.textColor = new Color(isDone ? TC.ok : TC.dim)
     const tx = st.addText(t.title)
     tx.font = Font.systemFont(10.5)
     tx.lineLimit = 1
     tx.minimumScaleFactor = 0.7
-    tx.textColor = new Color(isDone ? "#5A5A5E" : "#E5E5EA")
+    tx.textColor = new Color(isDone ? TC.ok : TC.txt)
     st.addSpacer()
     if (t.dur) {
       const d = st.addText(t.dur)
       d.font = Font.semiboldSystemFont(9)
-      d.textColor = new Color("#636366")
+      d.textColor = new Color(TC.dim)
     }
   }
 
   function build(data, family) {
     const w = new ListWidget()
-    w.backgroundColor = new Color("#0A0A0C")
+    const gd = new LinearGradient()
+    gd.colors = [new Color("#3B2E5A"), new Color("#251D3C"), new Color("#16121F")]
+    gd.locations = [0, 0.52, 1]
+    w.backgroundGradient = gd
     w.url = "scriptable:///run/" + encodeURIComponent(Script.name())
     w.refreshAfterDate = new Date(Date.now() + 10 * 60 * 1000)
 
@@ -152,7 +161,7 @@
     const fin = tasks.filter(t => done[keyOf(t)]).length
     const total = tasks.length
     const ratio = total ? fin / total : 0
-    const color = ratio >= 1 ? "#30D158" : "#FF9F0A"
+    const color = ratio >= 1 ? TC.ok : TC.ring
 
     if (family === "small") {
       w.setPadding(12, 12, 12, 12)
@@ -161,26 +170,26 @@
       img.imageSize = new Size(46, 46)
       top.addSpacer()
       const right = top.addStack(); right.layoutVertically()
-      const n1 = right.addText(String(fin)); n1.font = Font.boldSystemFont(18); n1.textColor = new Color(color)
-      const n2 = right.addText("共 " + total); n2.font = Font.mediumSystemFont(9); n2.textColor = new Color("#8E8E93")
+      const n1 = right.addText(String(fin)); n1.font = Font.boldSystemFont(18); n1.textColor = new Color(TC.ringTx)
+      const n2 = right.addText("共 " + total); n2.font = Font.mediumSystemFont(9); n2.textColor = new Color(TC.dim)
       w.addSpacer()
       const t = w.addText(total === 0 ? "无排期" : (total - fin > 0 ? "还剩 " + (total - fin) + " 条" : "今天完成 ✓"))
-      t.font = Font.mediumSystemFont(9); t.textColor = new Color("#8E8E93")
+      t.font = Font.mediumSystemFont(9); t.textColor = new Color(TC.dim)
       return w
     }
 
     w.setPadding(10, 12, 10, 12)
     const hd = w.addStack(); hd.layoutHorizontally(); hd.centerAlignContent()
     const ttl = hd.addText("小满")
-    ttl.font = Font.boldSystemFont(13); ttl.textColor = new Color("#FFFFFF")
+    ttl.font = Font.boldSystemFont(13); ttl.textColor = new Color(TC.head)
     hd.addSpacer()
     const cnt = hd.addText(fin + "/" + total)
-    cnt.font = Font.boldSystemFont(13); cnt.textColor = new Color(color)
+    cnt.font = Font.boldSystemFont(13); cnt.textColor = new Color(ratio >= 1 ? TC.ok : TC.ringTx)
     w.addSpacer(5)
 
     if (total === 0) {
       const t = w.addText("今天没有排期数据")
-      t.font = Font.systemFont(11); t.textColor = new Color("#8E8E93")
+      t.font = Font.systemFont(11); t.textColor = new Color(TC.dim)
       return w
     }
 
@@ -197,7 +206,7 @@
     if (order.length > maxRows) {
       w.addSpacer(3)
       const more = w.addText("还有 " + (order.length - maxRows) + " 条，点开看全部")
-      more.font = Font.systemFont(9); more.textColor = new Color("#636366")
+      more.font = Font.systemFont(9); more.textColor = new Color(TC.dim)
     }
     return w
   }
@@ -264,6 +273,7 @@
       const hc = h.addText("今日 " + finN + "/" + tasks.length,
         (tasks.length - finN > 0 ? "还剩 " + (tasks.length - finN) + " 条" : "全部完成 ✓") + " · 点行看详情，右侧圆圈打勾")
       hc.titleFont = Font.boldSystemFont(15)
+      hc.titleColor = new Color(TC.txt)
       hc.subtitleFont = Font.mediumSystemFont(9.5)
       hc.subtitleColor = new Color(TC.dim)
       tbl.addRow(h)
