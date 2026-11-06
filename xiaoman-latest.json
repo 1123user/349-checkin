@@ -1,1 +1,1 @@
-{"file": "xiaoman-v57.js", "build": "v57-20261106-timer", "ui": "1106-timer", "size": 137547, "sha1": "d267b3c44d70", "at": "2026-11-06T14:57:07+08:00", "note": "修复 Scriptable 无 setTimeout 导致启动即报错（改用 Timer.schedule）；Gist 跨网同步"}
+{"file": "xiaoman-v58.js", "build": "v58-20261106-cloudfirst", "ui": "1106-cloudfirst", "size": 138334, "sha1": "d25bf767916e", "at": "2026-11-06T15:08:26+08:00", "note": "iCloud 容器抽风时进度从 Gist 云端兜底恢复；勾选推送不依赖 iCloud"}
