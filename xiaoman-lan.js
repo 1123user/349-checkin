@@ -123,20 +123,20 @@
     const st = w.addStack()
     st.layoutHorizontally(); st.centerAlignContent(); st.spacing = 4
     const tag = st.addText(SUBN[t.sub] || t.sub)
-    tag.font = Font.boldSystemFont(9)
+    tag.font = Font.semiboldSystemFont(9.5)
     tag.textColor = new Color("#8E8E93")
     const dot = st.addText(isDone ? "✓" : "○")
-    dot.font = Font.systemFont(10)
+    dot.font = Font.boldSystemFont(9.5)
     dot.textColor = new Color(isDone ? "#30D158" : "#8E8E93")
     const tx = st.addText(t.title)
-    tx.font = Font.systemFont(10)
+    tx.font = Font.systemFont(10.5)
     tx.lineLimit = 1
     tx.minimumScaleFactor = 0.7
     tx.textColor = new Color(isDone ? "#5A5A5E" : "#E5E5EA")
     st.addSpacer()
     if (t.dur) {
       const d = st.addText(t.dur)
-      d.font = Font.systemFont(8.5)
+      d.font = Font.semiboldSystemFont(9)
       d.textColor = new Color("#636366")
     }
   }
@@ -161,21 +161,21 @@
       img.imageSize = new Size(46, 46)
       top.addSpacer()
       const right = top.addStack(); right.layoutVertically()
-      const n1 = right.addText(String(fin)); n1.font = Font.boldSystemFont(20); n1.textColor = new Color(color)
-      const n2 = right.addText("共 " + total); n2.font = Font.systemFont(10); n2.textColor = new Color("#8E8E93")
+      const n1 = right.addText(String(fin)); n1.font = Font.boldSystemFont(18); n1.textColor = new Color(color)
+      const n2 = right.addText("共 " + total); n2.font = Font.mediumSystemFont(9); n2.textColor = new Color("#8E8E93")
       w.addSpacer()
       const t = w.addText(total === 0 ? "无排期" : (total - fin > 0 ? "还剩 " + (total - fin) + " 条" : "今天完成 ✓"))
-      t.font = Font.systemFont(10); t.textColor = new Color("#8E8E93")
+      t.font = Font.mediumSystemFont(9); t.textColor = new Color("#8E8E93")
       return w
     }
 
     w.setPadding(10, 12, 10, 12)
     const hd = w.addStack(); hd.layoutHorizontally(); hd.centerAlignContent()
     const ttl = hd.addText("小满")
-    ttl.font = Font.boldSystemFont(12); ttl.textColor = new Color("#FFFFFF")
+    ttl.font = Font.boldSystemFont(13); ttl.textColor = new Color("#FFFFFF")
     hd.addSpacer()
     const cnt = hd.addText(fin + "/" + total)
-    cnt.font = Font.boldSystemFont(12); cnt.textColor = new Color(color)
+    cnt.font = Font.boldSystemFont(13); cnt.textColor = new Color(color)
     w.addSpacer(5)
 
     if (total === 0) {
@@ -263,8 +263,8 @@
       h.height = 54
       const hc = h.addText("今日 " + finN + "/" + tasks.length,
         (tasks.length - finN > 0 ? "还剩 " + (tasks.length - finN) + " 条" : "全部完成 ✓") + " · 点行看详情，右侧圆圈打勾")
-      hc.titleFont = Font.boldSystemFont(17)
-      hc.subtitleFont = Font.systemFont(10.5)
+      hc.titleFont = Font.boldSystemFont(15)
+      hc.subtitleFont = Font.mediumSystemFont(9.5)
       hc.subtitleColor = new Color(TC.dim)
       tbl.addRow(h)
 
@@ -284,10 +284,10 @@
         for (const t of sorted) {
           const on = !!done[keyOf(t)]
           const r = new UITableRow()
-          r.height = 50
+          r.height = 52
           const c = r.addText(t.title, (t.dur || "") + (t.level ? " · " + t.level : "") + (on ? " · 已完成" : ""))
-          c.titleFont = Font.semiboldSystemFont(13.5)
-          c.subtitleFont = Font.systemFont(10)
+          c.titleFont = Font.semiboldSystemFont(14.5)
+          c.subtitleFont = Font.systemFont(10.5)
           c.lineLimit = 1
           c.titleColor = new Color(on ? TC.ok : (TC[sub] || "#E5E5EA"))
           c.subtitleColor = new Color(TC.dim)
