@@ -1,1 +1,1 @@
-{"file": "xiaoman-v60.js", "build": "v60-20261106-local", "ui": "1106-local", "size": 141527, "sha1": "f37144cabae7", "at": "2026-11-06T15:33:05+08:00", "note": "进度/排期/英语/政治全部本机缓存降级；iCloud 抽风时从本机或私有 Gist 恢复，勾选经 Gist 直推电脑"}
+{"file": "xiaoman-v61.js", "build": "v61-20261106-min", "ui": "1106-min", "size": 61605, "sha1": "91840a544a55", "at": "2026-11-06T15:59:12+08:00", "note": "等价压缩版：功能与 v60 完全一致（terser 压缩+安全换行+去注释），体积 141KB→61KB；可读源码见 xiaoman-v60.js"}
