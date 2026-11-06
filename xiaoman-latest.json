@@ -1,1 +1,1 @@
-{"file": "xiaoman-v61.js", "build": "v61-20261106-min", "ui": "1106-min", "size": 61605, "sha1": "91840a544a55", "at": "2026-11-06T15:59:12+08:00", "note": "等价压缩版：功能与 v60 完全一致（terser 压缩+安全换行+去注释），体积 141KB→61KB；可读源码见 xiaoman-v60.js"}
+{"file": "xiaoman-v62.js", "build": "v62-20261106-noicloud", "ui": "1106-noicloud", "size": 62286, "sha1": "2a7146fe5c2d", "at": "2026-11-06T16:10:42+08:00", "note": "零 iCloud 版：文件全走本机，绕开抛原生异常的 iCloud 容器；进度/排期/英语/政治从本机缓存或私有 Gist 补齐"}
