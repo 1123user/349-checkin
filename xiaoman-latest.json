@@ -1,1 +1,1 @@
-{"file": "xiaoman-v67.js", "build": "v67-20261106-noapp", "ui": "1106-noapp", "size": 62386, "sha1": "2106ba80cbf1", "note": "完整功能 + 局域网数据源；移除 iCloud 专属 API 调用（isFileStoredIniCloud/isFileDownloaded 抛原生异常）；组件只拉进度"}
+{"file": "xiaoman-v47.js", "build": "v67-20261107-diag", "ui": "v1107-diag", "size": 150297, "sha1": "4ccddf0c269a", "at": "2026-11-03T14:09:27+08:00", "note": "修复任务详情弹窗一点就崩（Scriptable Alert.addAction 无返回值）；政治背记任务弹窗里加「▶ 去看政治线对应板块」直达按钮"}
