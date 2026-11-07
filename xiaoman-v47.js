@@ -9,7 +9,7 @@
   // 进度存 iCloud Drive：Scriptable/349打卡/progress.json（两设备自动同步）
   
   const BASE = "https://1123user.github.io/349-checkin/"
-  const fm = FileManager.iCloud()
+  const fm = FileManager.local()   /* v62：本机存储 —— iCloud 容器抛的是原生异常，JS 无法捕获，只能完全不碰 */
   const DIR = fm.joinPath(fm.documentsDirectory(), "349打卡")
   const F_PLAN = fm.joinPath(DIR, "plan3.json")
   const F_REC = fm.joinPath(DIR, "rec.json")        // 今日视频推荐（tools/recommend.py）
@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v55-20261105-timguard"
+  const BUILD = "v67-20261107-diag"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -49,7 +49,7 @@
       /* ② iCloud 上的 349打卡/pet.png */
       const p = fm.joinPath(DIR, "pet.png")
       if (fm.fileExists(p)) {
-        if (fm.isFileStoredIniCloud(p) && !fm.isFileDownloaded(p)) {
+        if (false) {
           try { fm.downloadFileFromiCloud(p) } catch (e) {}   /* 后台下，下一轮就有 */
           return null
         }
@@ -66,6 +66,59 @@
     return _pet
   }
 
+  /* ---------- 启动监测（v67-20261107）----------
+     手机上看不到 Log 面板，出错只有一个「卡在哪一步」。
+     现在启动链每一步都记一条（步骤 + 耗时 + 错误原文）：
+     ① 启动出错时直接把明细弹在弹窗里；② 正常时进「⚙ 设置 → 🩺 启动监测」看；
+     ③ 同时追加到手机本地 xm-diag.log（FileManager.local，完全不碰 iCloud）。 */
+  const DIAG = []
+  const DIAG_MAX = 48
+  function diagPath() { return fml.joinPath(fml.documentsDirectory(), "xm-diag.log") }
+  function diag(tag, t0, err) {
+    let ms = "-"
+    try { if (t0) ms = (Date.now() - t0) + "ms" } catch (e) {}
+    let em = ""
+    try { em = err ? String((err && err.message) || err || "").replace(/[\r\n]+/g, " ").slice(0, 140) : "" } catch (e) {}
+    let line = ""
+    try { line = new Date().toTimeString().slice(0, 8) + " " + tag + "  " + ms + (em ? "  ✗ " + em : "") } catch (e) { line = tag }
+    try { DIAG.push(line); while (DIAG.length > DIAG_MAX) DIAG.shift() } catch (e) {}
+    try {
+      let old = ""
+      try { if (fml.fileExists(diagPath())) old = String(fml.readString(diagPath()) || "") } catch (e) {}
+      const all = (line + "\n" + old).split("\n").filter(x => x.trim()).slice(0, DIAG_MAX)
+      fml.writeString(diagPath(), all.join("\n"))
+    } catch (e) {}
+    return line
+  }
+  /* 启动监测面板：本次运行的每一步 + 手机本地落盘记录（重启后还看得到） */
+  async function diagSheet() {
+    const t = new UITable()
+    t.showSeparators = false
+    let old = ""
+    try { if (fml.fileExists(diagPath())) old = String(fml.readString(diagPath()) || "") } catch (e) {}
+    const disk = old.split("\n").filter(x => x.trim())
+    const put = (txt, bad, dim) => {
+      const r = new UITableRow()
+      r.dismissOnSelect = false
+      const c = r.addText(txt)
+      c.titleFont = Font.systemFont(11)
+      c.titleColor = bad ? new Color("#FF453A") : (dim ? new Color("#8E8E93") : new Color("#1C1C1E"))
+      t.addRow(r)
+    }
+    const h = new UITableRow()
+    h.dismissOnSelect = false
+    h.addText("🩺 启动监测")
+    h.addText(BUILD + "\n本次 " + DIAG.length + " 步 · 落盘 " + disk.length + " 条")
+    t.addRow(h)
+    if (!DIAG.length) put("本次还没记录（脚本刚起来就点进来了）", false, true)
+    DIAG.slice().reverse().forEach(x => put(x, x.indexOf("✗") >= 0, x.indexOf("✗") < 0))
+    const rest = disk.filter(x => DIAG.indexOf(x) < 0)
+    if (rest.length) {
+      put("—— 落盘记录 · 手机本地 xm-diag.log ——", false, true)
+      rest.slice(0, 20).forEach(x => put(x, x.indexOf("✗") >= 0, x.indexOf("✗") < 0))
+    }
+    await t.present(true)
+  }
   function trace(tag) {
     try {
       /* 启动提速：先用手机本地的标记判断「这一版已经留过痕」，
@@ -176,7 +229,7 @@
      bg=true：只把下载扔后台，本次先用别的兜底（或干脆不显示这一块），
      下次进来（组件 20 分钟一刷）自然就是新的。进度这种关键数据仍然老老实实等。 */
   async function ready(path, bg) {
-    if (fm.isFileStoredIniCloud(path) && !fm.isFileDownloaded(path)) {
+    if (false) {
       if (bg) {
         try { fm.downloadFileFromiCloud(path) } catch (e) {}
         return false
@@ -188,6 +241,7 @@
   
   /* ---------- 数据 ---------- */
   let PROG_OK = false
+  let PROG_BASE = null            // loadProg 时的 done 快照，saveProg 做三方合并用
   /* 本地兜底文件：{"done": {...}}，只在写不进 iCloud 时才有内容 */
   function pendRead() {
     try {
@@ -213,6 +267,224 @@
     }
   }
 
+  /* 三方合并：base=打开时快照 / mine=内存现值 / theirs=云端最新
+     我新增的→保留，我删掉的→删掉，别人新增的→保留，冲突取较新时间戳。
+     解决「手机打开得早、Mac 又勾了新条目，手机一勾就把 Mac 的勾写没」的问题。 */
+  function merge3(base, mine, theirs) {
+    const out = {}
+    for (const k in theirs) out[k] = theirs[k]
+    for (const k in base) if (!(k in mine)) delete out[k]
+    for (const k in mine) { const v = mine[k] || 0; if (!out[k] || v > out[k]) out[k] = v }
+    return out
+  }
+
+  /* —— 局域网直推 Mac（2026-11-06）：iCloud 手机→Mac 通道整天卡死过，
+     勾选停手 2.5s 后直接 POST 到 Mac 本机服务，秒级同步；失败静默回落 iCloud —— */
+  const MAC_TOKEN = "xiaoman-349"
+  let RECENT_DEL = {}              // 本次会话里取消勾选的键（Mac 端按时间戳决定是否删）
+  /* Scriptable 没有 setTimeout，用 Timer 包一个（给网络总超时用） */
+  function lanDelay(sec) {
+    return new Promise(res => { try { Timer.schedule(sec, () => res(1)) } catch (e) { res(0) } })
+  }
+
+  /* v63：Mac 的局域网服务地址写死 —— 排期/进度/AI 寄语/立绘全部从这台 Mac 取，
+     勾选也直接 POST 回去。不需要 token、不走外网、不碰 iCloud。 */
+  const LAN = "http://172.20.10.6:8878"
+  const LAN_FILES_FULL = ["plan3.json", "plan-en.json", "plan-pol.json", "ai.json", "rec.json",
+                          "en-review.json", "cloze-daily.json", "player.json", "tomorrow.json"]
+  const LAN_FILES_QUICK = ["ai.json", "rec.json"]
+
+  /* 把 Mac 上的数据文件搬到手机本机（之后原有代码照常读本机文件，逻辑一行不改） */
+  async function prefetchLAN(quick) {
+    try { ensureDir() } catch (e) {}
+    const list = quick ? LAN_FILES_QUICK : LAN_FILES_FULL
+    const jobs = list.map(f => (async () => {
+      try {
+        const r = new Request(LAN + "/" + f)
+        r.timeoutInterval = quick ? 5 : 8
+        const t = await r.loadString()
+        if (t && t.length > 20) fm.writeString(fm.joinPath(DIR, f), t)
+      } catch (e) {}
+    })())
+    /* 本机缺今天排期时，即使是组件也要补拉一次三件套 */
+    if (quick) {
+      let need = true
+      try {
+        const p3 = fm.joinPath(DIR, "plan3.json")
+        if (fm.fileExists(p3)) {
+          const o = JSON.parse(fm.readString(p3))
+          need = !(o && (o.days || []).some(d => d.date === todayISO()))
+        }
+      } catch (e) { need = true }
+      if (need) {
+        for (const f of ["plan3.json", "plan-en.json", "plan-pol.json"]) {
+          jobs.push((async () => {
+            try {
+              const r = new Request(LAN + "/" + f)
+              r.timeoutInterval = 10
+              const t = await r.loadString()
+              if (t && t.length > 200) fm.writeString(fm.joinPath(DIR, f), t)
+            } catch (e) {}
+          })())
+        }
+      }
+    }
+    /* 进度：以 Mac 为准（含全部历史） */
+    jobs.push((async () => {
+      try {
+        const r = new Request(LAN + "/api/done")
+        r.timeoutInterval = 6
+        const d = await r.loadJSON()
+        if (d && d.done) fm.writeString(F_PROG, JSON.stringify({ done: d.done, dels: d.dels || {} }))
+      } catch (e) {}
+    })())
+    /* 立绘：本机没有时拉一次 */
+    if (!quick) {
+      jobs.push((async () => {
+        try {
+          const pp = fm.joinPath(DIR, "pet.png")
+          if (fm.fileExists(pp)) return
+          const r = new Request(LAN + "/pet.png")
+          r.timeoutInterval = 15
+          const img = await r.loadImage()
+          if (img) { try { fm.writeImage(pp, img) } catch (e) {} }
+        } catch (e) {}
+      })())
+    }
+    /* 总超时：组件 6s / App 12s，超时就先用本机缓存，绝不无限等 */
+    await Promise.race([Promise.all(jobs), lanDelay(quick ? 6 : 12)])
+  }
+
+  function macEndpoints() {
+    return [LAN]
+  }
+  /* —— GitHub Gist 中转（跨网络）：手机勾 → 私有 Gist → Mac 每 6s 拉取合并。
+     免费方案，token 用 Mac 上已登录的 gh 账号生成，存你自己 iCloud 的 gist-conf.json —— */
+  /* Gist 凭据来源（按顺序）：iCloud 上的 gist-conf.json → 本机保险箱 → 缺失时弹一次输入框。
+     注意：token 绝不写进脚本（GitHub 会拒绝含密钥的提交），只存在这台设备本地。 */
+  const GIST_ID = "f938a331f36d51aef967acfaa73f5716"
+  const GIST_FILE = "xiaoman-progress.json"
+  function gistConf() {
+    try {
+      const f = fm.joinPath(DIR, "gist-conf.json")
+      if (fm.fileExists(f)) {
+        const o = JSON.parse(fm.readString(f))
+        if (o && o.id && o.token) return o
+      }
+    } catch (e) {}
+    try {
+      const lf = FileManager.local()
+      const p = lf.joinPath(lf.documentsDirectory(), "xiaoman-gist.json")
+      if (lf.fileExists(p)) {
+        const o = JSON.parse(lf.readString(p))
+        if (o && o.token) return { id: o.id || GIST_ID, token: o.token, file: GIST_FILE }
+      }
+    } catch (e) {}
+    return null
+  }
+  async function ensureGistConf() {
+    if (gistConf()) return true
+    if (config.runsInWidget) return false
+    try {
+      const a = new Alert()
+      a.title = "同步配置（只需一次）"
+      a.message = "把 GitHub token 粘进来（只存这台手机，不会上传、不会进脚本）"
+      a.addTextField("token", "")
+      a.addAction("保存")
+      a.addCancelAction("以后再说")
+      if (await a.presentAlert() === -1) return false
+      const tk = String(a.textFieldValue(0) || "").trim()
+      if (!tk) return false
+      const lf = FileManager.local()
+      lf.writeString(lf.joinPath(lf.documentsDirectory(), "xiaoman-gist.json"),
+        JSON.stringify({ id: GIST_ID, token: tk }))
+      return true
+    } catch (e) { return false }
+  }
+  /* v60：本机可靠存储（FileManager.local，完全不经过 iCloud 容器）——
+     iCloud 抽风时：进度从这读、往这写；排期/英语/政治也都留一份本机缓存 */
+  const progLocalPath = () => fml.joinPath(fml.documentsDirectory(), "xm-progress.json")
+  const enLocalPath = () => fml.joinPath(fml.documentsDirectory(), "xm-plan-en.json")
+  const polLocalPath = () => fml.joinPath(fml.documentsDirectory(), "xm-plan-pol.json")
+
+  /* 从私有 Gist 取任一附属文件（plan-en/plan-pol 是私人资料，只进私有 Gist，不走公开渠道） */
+  async function gistCloudFile(fname) {
+    const c = gistConf(); if (!c) return null
+    try {
+      const g = new Request("https://api.github.com/gists/" + c.id)
+      g.headers = { "Authorization": "token " + c.token, "User-Agent": "xiaoman-scriptable" }
+      g.timeoutInterval = 8
+      const t = await g.loadString()
+      if (!t) return null
+      const o = JSON.parse(t)
+      const raw = ((o.files || {})[fname] || {}).content
+      if (!raw) return null
+      return JSON.parse(raw)
+    } catch (e) { return null }
+  }
+
+  /* 只拉云端态（不回写）：iCloud 读挂时用它兜底恢复进度 */
+  async function gistCloud() {
+    const c = gistConf(); if (!c) return null
+    const gf = c.file || "xiaoman-progress.json"
+    try {
+      const g = new Request("https://api.github.com/gists/" + c.id)
+      g.headers = { "Authorization": "token " + c.token, "User-Agent": "xiaoman-scriptable" }
+      g.timeoutInterval = 8
+      const t = await g.loadString()
+      if (!t) return {}
+      const o = JSON.parse(t)
+      const raw = ((o.files || {})[gf] || {}).content || "{}"
+      try { return JSON.parse(raw) || {} } catch (e) { return {} }
+    } catch (e) { return null }
+  }
+
+  async function pushGist(S, heartbeat) {
+    const c = gistConf(); if (!c) return false
+    try {
+      const gf = c.file || "xiaoman-progress.json"
+      // 先拉云端，把别人（Mac）新勾的并进来再回写，避免覆盖
+      const cf = (await gistCloud()) || {}
+      const nd = Object.assign({}, cf.done || {}), nl = Object.assign({}, cf.dels || {})
+      const sd = S.done || {}
+      for (const k in sd) {
+        const v = sd[k] || 0
+        if ((nl[k] || 0) >= v) continue
+        if (!nd[k] || v > nd[k]) nd[k] = v
+      }
+      for (const k in RECENT_DEL) {
+        const ts = RECENT_DEL[k]
+        if ((nl[k] || 0) < ts) nl[k] = ts
+        if (nd[k] !== undefined && (nd[k] || 0) < ts) delete nd[k]
+      }
+      // 保留云端未知字段（Mac 的心跳等），并写自己的心跳，方便电脑端确认手机推成功
+      const out = Object.assign({}, cf, { done: nd, dels: nl,
+        _seen: Date.now(), _ver: "gist2", _host: "iphone", _beat: heartbeat ? 1 : 0 })
+      const req = new Request("https://api.github.com/gists/" + c.id)
+      req.method = "PATCH"
+      req.headers = { "Authorization": "token " + c.token, "Content-Type": "application/json", "User-Agent": "xiaoman-scriptable" }
+      req.body = JSON.stringify({ files: { [gf]: { content: JSON.stringify(out) } } })
+      req.timeoutInterval = 8
+      await req.loadString()
+      return true
+    } catch (e) { return false }
+  }
+  async function pushToMac(S) {
+    const urls = macEndpoints(); if (!urls.length) return
+    const body = JSON.stringify({ token: MAC_TOKEN, done: S.done || {}, del: RECENT_DEL })
+    for (const u of urls) {
+      try {
+        const req = new Request(u + "/api/sync")
+        req.method = "POST"
+        req.headers = { "Content-Type": "application/json" }
+        req.body = body
+        req.timeoutInterval = 4
+        const r = await req.loadString()
+        if (r && r.indexOf('"ok":true') >= 0) return
+      } catch (e) {}
+    }
+  }
+
   async function loadProg() {
     let done = null
     try {
@@ -221,13 +493,29 @@
         const o = JSON.parse(fm.readString(F_PROG))
         done = (o && o.done) || {}
         PROG_OK = true
+        try { fml.writeString(progLocalPath(), JSON.stringify({ done: done })) } catch (e9) {}
       } else {
         done = {}
         PROG_OK = true               // 文件不存在 = 全新开始，允许写入
+        /* v62：本机首次运行（iCloud 版文件拿不到）→ 本机缓存 → Gist 云端，把已有进度接回来 */
+        try {
+          const lp = progLocalPath()
+          if (fml.fileExists(lp)) done = (JSON.parse(fml.readString(lp)) || {}).done || {}
+        } catch (e20) {}
+        if (!done || !Object.keys(done).length) {
+          try { const cd = await gistCloud(); if (cd && cd.done) done = cd.done } catch (e21) {}
+        }
       }
     } catch (e) {
-      PROG_OK = false                // 读失败：这次只读不写，避免把真实进度覆盖成空
-      done = {}
+      /* v60：iCloud 容器抽风（原生层读写都可能炸）→ 本机缓存 → Gist 云端，进度绝不归零 */
+      PROG_OK = false
+      try {
+        const lp = progLocalPath()
+        if (fml.fileExists(lp)) done = (JSON.parse(fml.readString(lp)) || {}).done || {}
+      } catch (e2) {}
+      if (!done || !Object.keys(done).length) {
+        try { const cd = await gistCloud(); if (cd && cd.done) done = cd.done } catch (e3) {}
+      }
     }
     // 把上次没写进去的本地兜底并回来
     const pend = (pendRead().done) || {}
@@ -237,6 +525,7 @@
         try { ensureDir(); fm.writeString(F_PROG, JSON.stringify({ done: done })); pendClear() } catch (e) {}
       }
     }
+    PROG_BASE = Object.assign({}, done)
     return { done: done }
   }
 
@@ -244,11 +533,24 @@
     if (PROG_OK) {
       try {
         ensureDir()
-        fm.writeString(F_PROG, JSON.stringify(p))
+        // 写前重读云端：把其它设备（Mac）这段时间新增的勾并进来，不整份覆盖
+        let theirs = null
+        try {
+          if (fm.fileExists(F_PROG)) {
+            const o = JSON.parse(fm.readString(F_PROG))
+            theirs = (o && o.done) || null
+          }
+        } catch (e) { theirs = null }
+        const out = Object.assign({}, p)
+        if (theirs && PROG_BASE) out.done = merge3(PROG_BASE, p.done || {}, theirs)
+        fm.writeString(F_PROG, JSON.stringify(out))
+        try { fml.writeString(progLocalPath(), JSON.stringify(out)) } catch (e9) {}
+        PROG_BASE = Object.assign({}, out.done || {})
         return true
       } catch (e) {}
     }
-    // 写不进 iCloud：落本地，至少这次勾不会丢
+    // 写不进 iCloud：本机可靠落盘（下次启动降级读它）+ pend 队列，勾绝不丢
+    try { fml.writeString(progLocalPath(), JSON.stringify({ done: p.done || {} })) } catch (e9) {}
     pendWrite(p.done || {})
     return false
   }
@@ -278,7 +580,7 @@
     const mine = Date.now()
     _syncTapAt = mine
     try {
-      Timer.schedule(2.5, () => { if (_syncTapAt === mine) syncToApp(S) })
+      Timer.schedule(2.5, () => { if (_syncTapAt === mine) { syncToApp(S); pushToMac(S); pushGist(S) } })
     } catch (e) {}
   }
   function syncToApp(S, force) {
@@ -417,7 +719,7 @@
     if (!force && Date.now() - (SYNC_ST.planAt || 0) < 6 * 3600e3) return false
     let old = ''
     try {
-      if (fm.fileExists(F_PLAN) && fm.isFileDownloaded(F_PLAN)) {
+      if (fm.fileExists(F_PLAN)) {
         const o = JSON.parse(fm.readString(F_PLAN))
         old = String((o && o.meta && o.meta.plan_ver) || '')
       }
@@ -447,7 +749,7 @@
     if (!force && Date.now() - (SYNC_ST.polAt || 0) < 6 * 3600e3) return false
     let old = ''
     try {
-      if (fm.fileExists(F_POL) && fm.isFileDownloaded(F_POL)) {
+      if (fm.fileExists(F_POL)) {
         const o = JSON.parse(fm.readString(F_POL))
         old = String((o && o.meta && o.meta.pol_ver) || '')
       }
@@ -776,7 +1078,7 @@
     /* ⓪ 启动提速（2026-11-01）：iCloud 那份还没下载完时不再干等。
        先用手机本地那份（上次成功读过的排期）把界面顶起来，下载扔后台，
        下次进来/组件下一次刷新就是新的。以前这里会卡在 downloadFileFromiCloud 上几秒。 */
-    const needDl = fm.fileExists(F_PLAN) && fm.isFileStoredIniCloud(F_PLAN) && !fm.isFileDownloaded(F_PLAN)
+    const needDl = false
     if (needDl) {
       try { fm.downloadFileFromiCloud(F_PLAN) } catch (e) {}
       try {
@@ -838,11 +1140,33 @@
   }
   async function loadPol() {
     try {
-      if (!fm.fileExists(F_POL)) return null
+      if (!fm.fileExists(F_POL)) {
+        /* v62：本机没有 → 本机缓存 → 私有 Gist（政治排期是私人资料，只走私有 Gist） */
+        try {
+          const p = polLocalPath()
+          if (fml.fileExists(p)) { const j = JSON.parse(fml.readString(p)); if (j && j.days && j.days.length) return j }
+        } catch (e22) {}
+        try {
+          const j = await gistCloudFile("plan-pol.json")
+          if (j && j.days && j.days.length) { try { fml.writeString(polLocalPath(), JSON.stringify(j)) } catch (e23) {} return j }
+        } catch (e24) {}
+        return null
+      }
       await ready(F_POL)
       const j = JSON.parse(fm.readString(F_POL))
+      if (j && j.days && j.days.length) { try { fml.writeString(polLocalPath(), JSON.stringify(j)) } catch (e9) {} }
       return (j && j.days && j.days.length) ? j : null
-    } catch (e) { return null }
+    } catch (e) {
+      try {
+        const p = polLocalPath()
+        if (fml.fileExists(p)) { const j = JSON.parse(fml.readString(p)); if (j && j.days && j.days.length) return j }
+      } catch (e2) {}
+      try {
+        const j = await gistCloudFile("plan-pol.json")
+        if (j && j.days && j.days.length) { try { fml.writeString(polLocalPath(), JSON.stringify(j)) } catch (e9) {} return j }
+      } catch (e3) {}
+      return null
+    }
   }
 
   /* ---------- 英语日程（plan-en.json，与本组件中的药学并排） ---------- */
@@ -859,11 +1183,32 @@
      属于私人学习资料。只从 iCloud Drive（本人设备间同步）读取，绝不联网、绝不上传公开仓库。 */
   async function loadEn() {
     try {
-      if (!fm.fileExists(F_EN)) return null
+      if (!fm.fileExists(F_EN)) {
+        try {
+          const p = enLocalPath()
+          if (fml.fileExists(p)) { const j = JSON.parse(fml.readString(p)); if (j && j.days && j.days.length) return j }
+        } catch (e25) {}
+        try {
+          const j = await gistCloudFile("plan-en.json")
+          if (j && j.days && j.days.length) { try { fml.writeString(enLocalPath(), JSON.stringify(j)) } catch (e26) {} return j }
+        } catch (e27) {}
+        return null
+      }
       await ready(F_EN)
       const j = JSON.parse(fm.readString(F_EN))
+      if (j && j.days && j.days.length) { try { fml.writeString(enLocalPath(), JSON.stringify(j)) } catch (e9) {} }
       return (j && j.days && j.days.length) ? j : null
-    } catch (e) { return null }
+    } catch (e) {
+      try {
+        const p = enLocalPath()
+        if (fml.fileExists(p)) { const j = JSON.parse(fml.readString(p)); if (j && j.days && j.days.length) return j }
+      } catch (e2) {}
+      try {
+        const j = await gistCloudFile("plan-en.json")
+        if (j && j.days && j.days.length) { try { fml.writeString(enLocalPath(), JSON.stringify(j)) } catch (e9) {} return j }
+      } catch (e3) {}
+      return null
+    }
   }
   /* ---------- 英语阅读复盘（次日归类，2026-11-01） ----------
      方案：Day 1 做两篇 → Day 2 把前一天的错题按五类题型归类 → 推对应技巧视频。
@@ -1532,7 +1877,7 @@
     return b
   }
   function toggleDone(S, key, reason, rerender) {
-    if (S.done[key]) delete S.done[key]; else S.done[key] = Date.now()
+    if (S.done[key]) { RECENT_DEL[key] = Date.now(); delete S.done[key] } else S.done[key] = Date.now()
     saveProg(S)
     kick(reason)
     scheduleAppSync(S)
@@ -1577,7 +1922,7 @@
   function loadPlayMode() {
     try {
       if (!fm.fileExists(F_PLAY)) return PLAY_MODE
-      if (fm.isFileStoredIniCloud(F_PLAY) && !fm.isFileDownloaded(F_PLAY)) return PLAY_MODE
+      if (false) return PLAY_MODE
       const o = JSON.parse(fm.readString(F_PLAY))
       /* v2：默认从上一版的「小满内网页」改成「B站 App」，没打标记的旧文件一律按默认来 */
       if (o && o.v === 2 && PLAY_MODES.some(x => x.k === o.mode)) PLAY_MODE = o.mode
@@ -2353,7 +2698,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1105-timguard"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1107-diag"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2543,9 +2888,11 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         a.addAction("立即拉取云端数据（安排/推荐/知识库）")
         a.addAction("去开屏 / 去广告" + (detectProxies().length ? " · 一键安装" : " · 看做法"))
         a.addAction("登录新东方")
+        a.addAction("🩺 启动监测 · 最近 " + DIAG.length + " 步")
         a.addCancel("关闭")
         const i = await a.presentAlert()
-        if (i === 0) playModeSheet(render)
+        if (i === 5) diagSheet()
+        else if (i === 0) playModeSheet(render)
         else if (i === 1) syncModeSheet(render)
         else if (i === 2) {
           await Promise.all([pullTomorrowCloud(true), pullRecCloud(true), pullKbCloud(true),
@@ -2616,20 +2963,74 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
   try {
   const T0 = Date.now()
   var BOOT_STEP = "刚进入口"          /* v54：分步探针，启动出错时弹窗报「卡在哪一步」 */
-  loadPlayMode()          /* B 站播放偏好：player.json，缺省「B站 App」深链直达视频页 */
+  try { loadPlayMode() } catch (e) {}   /* v59：播放偏好读挂也不许影响启动 */
   /* 启动提速（2026-11-01）：原来六个 await 一个接一个排着，iCloud 下载 + JSON 解析全串成一条线；
      现在能并行的都并行。组件只用到 P/S/EN/POL，复盘和完形是 App 清单里的块，组件不读。 */
   const inWidget = !!config.runsInWidget
+  BOOT_STEP = "从 Mac 同步数据"
+  try {
+    /* 组件里只做极轻量的进度同步（一个小请求）；排期/立绘全量同步只在 App 内做 ——
+       Widget 执行预算很小，拉几百 KB 会超时，表现就是"组件一直空白/打不开" */
+    if (inWidget) {
+      const r = new Request(LAN + "/api/done")
+      r.timeoutInterval = 4
+      const d = await r.loadJSON()
+      if (d && d.done) fm.writeString(F_PROG, JSON.stringify({ done: d.done, dels: d.dels || {} }))
+    } else {
+      await prefetchLAN(false)
+    }
+  } catch (e) {}
   BOOT_STEP = "并行读数据（进度/排期/英语/政治）"
-  const jobs = [loadProg(), loadPlan(), loadEn(), loadPol()]
-  if (!inWidget) jobs.push(loadRv(), loadCd())
-  const R = await Promise.all(jobs.map(p => p.catch(() => null)))
-  const S = R[0] || { done: {} }
+  /* v59：iCloud 原生异常是**同步逃逸**的（不等 Promise），直接在调用点炸出来——
+     所以每个加载器都套同步安全壳：谁抽风谁变 null，绝不拖死整个脚本。
+     进度读挂时由下面的 Gist 云端兜底恢复。 */
+  /* v67：每个加载器各自计时入监测（谁慢、谁抛，一眼看到） */
+  const safe = (name, f) => {
+    const t = Date.now()
+    try {
+      return Promise.resolve(f()).then(r => { diag(name, t); return r },
+        e => { diag(name, t, e); return null })
+    } catch (e) { diag(name + "（同步抛错）", t, e); return Promise.resolve(null) }
+  }
+  const jobs = [safe("读进度", loadProg), safe("读排期", loadPlan), safe("读英语", loadEn), safe("读政治", loadPol)]
+  if (!inWidget) jobs.push(safe("读复盘", loadRv), safe("读完形", loadCd))
+  const R = await Promise.all(jobs.map(p => p.catch(e => { diag("await 兜底", 0, e); return null })))
+  let S = R[0]
+  if (!S || !S.done) {
+    /* v58：手机 iCloud 容器抽风（原生层报错）时，进度从 Gist 云端兜底恢复，
+       勾选通道完全不经过 iCloud —— 这台手机的 iCloud 已经不可靠了 */
+    try {
+      const cd = await gistCloud()
+      S = { done: (cd && cd.done) || {}, _fromCloud: true }
+      if (cd && cd.dels) {
+        for (const k in cd.dels) if ((cd.done || {})[k] === undefined && S.done[k] !== undefined) delete S.done[k]
+      }
+    } catch (e) { S = { done: {} } }
+  }
   const P = R[1]
   EN = R[2]
   POL = R[3]
   if (!inWidget) { RV = R[4]; CD = R[5] }
   const T_LOAD = Date.now()
+  /* 手机端心跳：手动运行脚本时推一次，电脑端据此判断「手机跑过、能连上 GitHub」 */
+  if (!inWidget) {
+    /* v67 真凶：Timer.schedule 的回调写成 async 函数时，Scriptable 的 Swift 桥接会把它
+       按「repeats: Bool」那个重载去解析，同步抛
+         Expected value of type boolean but got value of type {any: any}
+       这一行没有任何 try，于是整个启动炸掉 —— 表现就是「一点开只弹一个报错、界面出不来」。
+       改法：回调用**普通函数**，异步活在里面自己起 IIFE；外面再包一层 try 兜底。 */
+    BOOT_STEP = "安排心跳定时器"
+    const tHB = Date.now()
+    try {
+      Timer.schedule(0.9, () => {
+        diag("心跳定时器触发", tHB)
+        ;(async () => {
+          try { if (gistConf()) { await pushGist(S, true); diag("心跳推送完成") } } catch (e) { diag("心跳推送失败", 0, e) }
+        })()
+      })
+      diag("心跳定时器已安排", tHB)
+    } catch (e) { diag("心跳定时器抛错（已忽略，不影响启动）", tHB, e) }
+  }
 
   if (config.runsInWidget) {
     /* v47 补丁：数据过期时组件也补拉一次。之前拉取只挂在 App 内打开那条路径，
@@ -2710,16 +3111,20 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       if (P) {
         BOOT_STEP = "首屏·安排开机刷新"
         try {
-        Timer.schedule(1.5, async () => {
-          try {
-            const got = await Promise.all([pullPlanCloud(), pullPolCloud()])
-            let ch = false
-            if (got[0]) { mergePlanInPlace(P, got[0]); ch = true }
-            if (got[1]) { POL = got[1]; ch = true }
-            if (ch && RERENDER) RERENDER()
-          } catch (e) {}
+        Timer.schedule(1.5, () => {
+          diag("开机静默刷新触发")
+          ;(async () => {
+            try {
+              const got = await Promise.all([pullPlanCloud(), pullPolCloud()])
+              let ch = false
+              if (got[0]) { mergePlanInPlace(P, got[0]); ch = true }
+              if (got[1]) { POL = got[1]; ch = true }
+              if (ch && RERENDER) RERENDER()
+              diag("开机静默刷新" + (ch ? "已更新" : "无变化"))
+            } catch (e) { diag("开机静默刷新失败", 0, e) }
+          })()
         })
-        } catch (e) {}
+        } catch (e) { diag("开机静默刷新定时器抛错（已忽略）", 0, e) }
       }
       BOOT_STEP = "渲染主清单"
       await mainTable(P, S).present(true)
@@ -2751,7 +3156,8 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       if (!config.runsInWidget) {
         const a = new Alert()
         a.title = "小满启动出错（" + BUILD + "）"
-        a.message = msg + "\n\n处理：跑一次「更新小满」—— 它会从云端拉最新版并做完整性校验，能自动修掉损坏的脚本。"
+        const dg = DIAG.length ? "\n\n启动监测（从下往上看）：\n" + DIAG.slice(-14).join("\n") : ""
+        a.message = (msg + dg + "\n\n处理：跑一次「更新小满」—— 它会从云端拉最新版并做完整性校验，能自动修掉损坏的脚本。").slice(0, 1500)
         a.addAction("好")
         await a.present()
       } else {
