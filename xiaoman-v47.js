@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v67-20261107-diag"
+  const BUILD = "v69-20261109-ll5"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -715,8 +715,11 @@
      （progress.json 停在前一天，349打卡/ 零同步），plan3 同一条通道 ——
      新排期到不了手机。夜间批量 / 手动拉取时顺带从 Pages 拿一份：
      meta.plan_ver 比手上新才覆盖，拿不到就用旧数据（绝不白屏）。 */
+  /* 2026-11-08 收紧：6h 节流曾让「上午拉到旧版→白天发布新排期」整天追不平
+     （lastPull 天级记账挡住组件补拉 + 6h 内不再出网）。plan3.json 仅百余 KB，
+     节流降到 30min；超时 15→8s（两源共 16s 上限，离线不至于拖死组件）。 */
   async function pullPlanCloud(force) {
-    if (!force && Date.now() - (SYNC_ST.planAt || 0) < 6 * 3600e3) return false
+    if (!force && Date.now() - (SYNC_ST.planAt || 0) < 30 * 60e3) return false
     let old = ''
     try {
       if (fm.fileExists(F_PLAN)) {
@@ -729,7 +732,7 @@
     for (const u of SRC) {
       try {
         const r = new Request(u)
-        r.timeoutInterval = 15
+        r.timeoutInterval = 8
         const fresh = await r.loadJSON()
         if (!planOk(fresh)) continue
         const nv = String((fresh.meta && fresh.meta.plan_ver) || '')
@@ -771,6 +774,43 @@
       } catch (e) {}
     }
     return false
+  }
+
+  /* 英语排期云端刷新（2026-11-09）：plan-en.json 以前只读 iCloud，
+     手机上只要有一份旧副本，loadEn 就再也不会看云端 —— 2026-11 那周
+     iCloud 手机↔Mac 零同步，表4 五刷的单词任务整整两天没到手机，
+     用户看到的还是「单词 30 分钟 · 陈志超核心词 Unit 04-3」的老课。
+     改走私有 Gist（版权口径不变：私人资料，不进公开 Pages），
+     meta.plan_ver 变新才覆盖；2h 节流（文件 0.3–0.4MB，带全部词表）。 */
+  async function pullEnCloud(force) {
+    if (!force && Date.now() - (SYNC_ST.enAt || 0) < 2 * 3600e3) return false
+    let old = ''
+    try {
+      if (fm.fileExists(F_EN)) {
+        const o = JSON.parse(fm.readString(F_EN))
+        old = String((o && o.meta && o.meta.plan_ver) || '')
+      }
+    } catch (e) {}
+    const c = gistConf(); if (!c) return false
+    try {
+      const g = new Request("https://api.github.com/gists/" + c.id)
+      g.headers = { "Authorization": "token " + c.token, "User-Agent": "xiaoman-scriptable" }
+      g.timeoutInterval = 25
+      const txt = await g.loadString()
+      if (!txt) return false
+      const raw = (((JSON.parse(txt).files || {})["plan-en.json"] || {}).content) || ""
+      if (raw.length < 50000) return false
+      const fresh = JSON.parse(raw)
+      if (!fresh || !fresh.days || !fresh.days.length) return false
+      const nv = String((fresh.meta && fresh.meta.plan_ver) || '')
+      if (old && nv && nv <= old) { saveSyncSt({ enAt: Date.now() }); return false }
+      EN = fresh
+      try { ensureDir(); fm.writeString(F_EN, JSON.stringify(fresh)) } catch (e) {}
+      try { fml.writeString(enLocalPath(), JSON.stringify(fresh)) } catch (e) {}
+      saveSyncSt({ enAt: Date.now() })
+      diag("plan-en 已更新 · " + nv)
+      return true
+    } catch (e) { return false }
   }
 
   function needPullNow() {
@@ -2614,6 +2654,63 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
 
   /* 英语 8 周日程的行：点标题＝看这节在新东方哪（弹路径 / 播放），
      勾选只认行尾「○ / ✓」，右侧「▶ 课」同样是看课件 */
+
+  /* ── 单词任务（表4 · 5 刷，2026-11-09）──
+     排期只给「U2上 首学 39 词」，词表随 plan-en 一起下发（meta.llbook）。
+     点任务直接开全屏词表：词 + 音标 + 释义，一屏滚完一个半单元；
+     底部「✓ 标记完成」就地勾今天这条，不用再点 ⓘ。 */
+  function llBook() {
+    try {
+      const m = EN && EN.meta && EN.meta.llbook
+      return (m && m.words) ? m : null
+    } catch (e) { return null }
+  }
+  function llWord(w) {
+    const m = llBook()
+    const a = m ? m.words[w] : null
+    return a || ["", "（词表里没有这条，可能是旧排期）"]
+  }
+  function enWordTable(task, on, doToggle) {
+    const t = new UITable()
+    t.showSeparators = false
+    const ws = task.words || []
+    const render = () => {
+      t.removeAllRows()
+      const u = String(task.unit || "").replace("Unit ", "U") + (task.part || "")
+      const tag = task.kind === "rev" ? "第 " + task.pass + " 刷"
+        : (task.kind === "new" ? "首学" : "顽固词")
+      t.addRow(head(u ? u + " · " + tag : "顽固词专场",
+        ws.length + " 词 · " + (task.dur || "") + " · " + (on ? "✓ 已完成" : (task.level || "必做"))))
+      t.addRow(head(task.note || "盖中文，3 秒想不起立刻看",
+        task.kind === "rev" ? "复刷：只盯上次记不住的" : "点任意一行看完整释义"))
+      ws.forEach(w => {
+        const a = llWord(w)
+        const r = mrow(w, cut(a[1] || "", 42), TC.en, 46)
+        r.dismissOnSelect = false
+        r.onSelect = () => {
+          const x = new Alert()
+          x.title = w + (a[0] ? "  /" + a[0] + "/" : "")
+          x.message = a[1] || "（无释义）"
+          x.addAction("知道了")
+          x.present()
+        }
+        t.addRow(r)
+      })
+      if (!ws.length) t.addRow(mrow("这条没有词表", "顽固词专场请去生词本过一遍", TC.en, 44))
+      const mr = mrow(on ? "取消今天的完成勾选" : "✓ 标记完成（今天背完了）",
+        on ? "进度 -1" : "回主界面进度 +1", on ? TC.ok : TC.link, 46)
+      mr.dismissOnSelect = false
+      mr.onSelect = () => {
+        try { t.dismiss(true) } catch (e) {}
+        doToggle()
+      }
+      t.addRow(mr)
+      t.reload()
+    }
+    render()
+    return t
+  }
+
   function enRows(t, S, ed, rerender, compact) {
     ed.tasks.forEach(task => {
       const k = enTid(ed.date, task)
@@ -2622,6 +2719,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       const sb = on
         ? "英语 · " + task.dur + " · 完成于 " + (fmtStamp(S.done[k]) || "—")
         : "英语 · " + task.dur + " · " + task.level
+          + (task.unit ? " · " + String(task.unit).replace("Unit ", "U") + (task.part || "") : "")
           + (compact ? "" :
             (task.loc ? " · 📍" + task.loc : "")   // 新东方三级定位：阶段›小版块›第几课时
             + (task.note ? " · " + task.note : ""))
@@ -2634,6 +2732,10 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       /* 点标题 = 看这节课在哪（弹路径 / 播放），不动完成状态 */
       r.onSelect = () => {
         if (!task.url) {
+          /* 表4 单词任务：没链接是对的（不用看课），点开就是词表 */
+          if (task.type === "word" && (task.words || []).length) {
+            return enWordTable(task, on, () => toggleDone(S, k, "en", rerender)).present(true)
+          }
           return taskSheet(task, on, () => toggleDone(S, k, "en", rerender), null, null, S.done[k])
         }
         /* 已完成：点标题先看「完成了什么 + 什么时候」，播放放弹窗按钮里；
@@ -2698,7 +2800,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1107-diag"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1109-ll5"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2896,7 +2998,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         else if (i === 1) syncModeSheet(render)
         else if (i === 2) {
           await Promise.all([pullTomorrowCloud(true), pullRecCloud(true), pullKbCloud(true),
-            pullPlanCloud(true), pullPolCloud(true)]).catch(() => {})
+            pullPlanCloud(true), pullPolCloud(true), pullEnCloud(true)]).catch(() => {})
           saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
           render()
         }
@@ -3035,10 +3137,13 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
   if (config.runsInWidget) {
     /* v47 补丁：数据过期时组件也补拉一次。之前拉取只挂在 App 内打开那条路径，
        组件刷新永远 pull=0ms —— 用户白天看组件，看到的永远是夜里没拉成的旧数据。
-       频率兜底：needPullNow 的 lastPull 记账（最多一次/天）+ 各 pull 内部 6h 节流。 */
+       频率兜底：needPullNow 的 lastPull 记账（最多一次/天）+ 各 pull 内部节流。
+       2026-11-08：plan/pol 挪出 needPullNow 门控——它们自带 30min 节流且文件小，
+       组件每次刷新都试，白天发布的新排期 30min 内自动追平（不再被天级记账卡一天）。 */
     try {
+      await Promise.all([pullPlanCloud(), pullPolCloud(), pullEnCloud()])
       if (needPullNow()) {
-        await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud(), pullPolCloud()])
+        await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud()])
         saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
       }
     } catch (e) {}
@@ -3096,7 +3201,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       BOOT_STEP = "首屏·云端拉取"
       try {
         if (needPullNow()) {
-          await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud(), pullPolCloud()])
+          await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud(), pullPolCloud(), pullEnCloud()])
           saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
         }
       } catch (e) {}
@@ -3115,10 +3220,11 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
           diag("开机静默刷新触发")
           ;(async () => {
             try {
-              const got = await Promise.all([pullPlanCloud(), pullPolCloud()])
+              const got = await Promise.all([pullPlanCloud(), pullPolCloud(), pullEnCloud()])
               let ch = false
               if (got[0]) { mergePlanInPlace(P, got[0]); ch = true }
               if (got[1]) { POL = got[1]; ch = true }
+              if (got[2]) ch = true
               if (ch && RERENDER) RERENDER()
               diag("开机静默刷新" + (ch ? "已更新" : "无变化"))
             } catch (e) { diag("开机静默刷新失败", 0, e) }
