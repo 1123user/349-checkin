@@ -1,1 +1,1 @@
-{"file": "xiaoman-v47.js", "build": "v71-20261109-ll5", "ui": "v1109-ll5", "size": 156046, "sha1": "1b5d1c1e4922", "at": "2026-11-09T10:49:29+08:00", "note": "单词表4·5刷真正落地：plan-en 新增 pullEnCloud（私有 Gist + plan_ver 门控 + 2h 节流，开机静默拉、不拖慢首屏），修「手机整天显示旧单词任务」；单词任务点开/▶ 就是全屏词表（词+音标+释义，底部一键标记完成）"}
+{"file": "xiaoman-v47.js", "build": "v72-20261109-enw", "ui": "v1109-ll5b", "size": 161527, "sha1": "c904cc8f44fc", "at": "2026-11-09T11:08:19+08:00", "note": "单词表4 二次修：v71 走私有 Gist 失败（手机没有 gist-conf 凭据，静默退出）→ 改走 Pages，新增 en-words.json（单词排期）+ en-llbook.json（词表按需拉）；设置里加「🩺 英语排期诊断」一眼看卡在哪"}
