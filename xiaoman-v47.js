@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v69-20261109-ll5"
+  const BUILD = "v70-20261109-ll5"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2987,7 +2987,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         a.message = "B站播放方式当前是「" + playLabel() + "」\n跨端同步当前是「" + syncLabel() + "」"
         a.addAction("切换播放方式")
         a.addAction("跨端同步方式 · " + syncLabel())
-        a.addAction("立即拉取云端数据（安排/推荐/知识库）")
+        a.addAction("立即拉取云端数据（安排/英语/政治/推荐）")
         a.addAction("去开屏 / 去广告" + (detectProxies().length ? " · 一键安装" : " · 看做法"))
         a.addAction("登录新东方")
         a.addAction("🩺 启动监测 · 最近 " + DIAG.length + " 步")
@@ -3141,7 +3141,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
        2026-11-08：plan/pol 挪出 needPullNow 门控——它们自带 30min 节流且文件小，
        组件每次刷新都试，白天发布的新排期 30min 内自动追平（不再被天级记账卡一天）。 */
     try {
-      await Promise.all([pullPlanCloud(), pullPolCloud(), pullEnCloud()])
+      await Promise.all([pullPlanCloud(), pullPolCloud()])
       if (needPullNow()) {
         await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud()])
         saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
@@ -3201,7 +3201,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       BOOT_STEP = "首屏·云端拉取"
       try {
         if (needPullNow()) {
-          await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud(), pullPolCloud(), pullEnCloud()])
+          await Promise.all([pullTomorrowCloud(), pullKbCloud(), pullRecCloud(), pullPlanCloud(), pullPolCloud()])
           saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
         }
       } catch (e) {}
@@ -3212,7 +3212,9 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
          主界面弹出 1.5s 后静默拉一次安排+政治（内部 6h 节流），拉到新版就地重画，
          不用等 22:00，也不用进设置手点；失败零打扰、绝不白屏。
          v55：Timer.schedule 这一个原生调用整段兜住 —— v54 实测它抛过
-         「Expected boolean but got any」，把整个启动炸掉；定时器失败不该拦路。 */
+         「Expected boolean but got any」，把整个启动炸掉；定时器失败不该拦路。
+         v69：plan-en（表4 五刷，0.4MB 带词表）也走这条 —— 首屏不 await 它，
+         1.5s 后静默拉、拉到就地重画，开机速度不受影响。 */
       if (P) {
         BOOT_STEP = "首屏·安排开机刷新"
         try {
