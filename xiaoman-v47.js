@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v71-20261109-ll5"
+  const BUILD = "v72-20261109-enw"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -811,6 +811,43 @@
       diag("plan-en 已更新 · " + nv)
       return true
     } catch (e) { return false }
+  }
+
+
+  /* 表4 单词排期走公开 Pages（2026-11-09 二次修）：v71 的 pullEnCloud 走私有
+     Gist，但手机端大概率没有 gist-conf.json（它靠 iCloud 同步过去，而 11 月
+     这周 iCloud 手机↔Mac 零同步），`gistConf()` 返回 null 就静默退出 —— 用户
+     看到的就是「脚本更新了、单词任务还是旧的」。
+     这里只取单词行（Unit 号 + 词数 + 词数组，不含新东方课程信息），
+     覆盖本地 plan-en 的 word 行，其余任务原样。1h 节流，失败只记诊断。 */
+  async function pullEnWords(force) {
+    if (!force && Date.now() - (SYNC_ST.enwAt || 0) < 3600e3) return false
+    try {
+      const r = new Request(BASE + "en-words.json?t=" + Date.now())
+      r.timeoutInterval = 12
+      const d = await r.loadJSON()
+      if (!d || !d.days || !d.days.length) { diag("en-words 空"); return false }
+      const nv = String(d.plan_ver || "")
+      if (!force && nv && nv === String(SYNC_ST.enwVer || "")) { saveSyncSt({ enwAt: Date.now() }); return false }
+      if (!EN || !EN.days || !EN.days.length) { diag("en-words 暂缓：plan-en 还没读到"); return false }
+      const byDate = {}
+      d.days.forEach(x => { byDate[x.date] = x.tasks })
+      let hit = 0
+      EN.days.forEach(day => {
+        const nw = byDate[day.date]
+        if (!nw || !nw.length) return
+        const keep = day.tasks.filter(t => t.type !== "word")
+        day.tasks = nw.concat(keep)
+        day.min = Math.round(day.tasks.reduce((a, t) => a + (t.sec || 0), 0) / 60)
+        hit++
+      })
+      if (!hit) { diag("en-words 无匹配日期"); return false }
+      try { ensureDir(); fm.writeString(F_EN, JSON.stringify(EN)) } catch (e) {}
+      try { fml.writeString(enLocalPath(), JSON.stringify(EN)) } catch (e) {}
+      saveSyncSt({ enwAt: Date.now(), enwVer: nv })
+      diag("en-words 已合并 · " + nv + " · " + hit + " 天")
+      return true
+    } catch (e) { diag("en-words 拉取失败", 0, e); return false }
   }
 
   function needPullNow() {
@@ -2655,6 +2692,73 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
   /* 英语 8 周日程的行：点标题＝看这节在新东方哪（弹路径 / 播放），
      勾选只认行尾「○ / ✓」，右侧「▶ 课」同样是看课件 */
 
+
+  /* 词表（词 + 音标 + 释义）按需拉：134KB，只在第一次点词表时下载一次，
+     之后走本机缓存 xm-llbook.json，冷启动不再出网。 */
+  function llLocalPath() { return fml.joinPath(fml.documentsDirectory(), "xm-llbook.json") }
+  async function ensureLlbook() {
+    if (llBook()) return true
+    try {
+      const r = new Request(BASE + "en-llbook.json?t=" + Date.now())
+      r.timeoutInterval = 15
+      const j = await r.loadJSON()
+      if (!j || !j.words) return false
+      try { fml.writeString(llLocalPath(), JSON.stringify(j)) } catch (e) {}
+      try { if (EN) EN.meta = Object.assign(EN.meta || {}, { llbook: j }) } catch (e) {}
+      diag("en-llbook 已缓存 · " + (j.count || 0) + " 词")
+      return true
+    } catch (e) { diag("en-llbook 拉取失败", 0, e); return false }
+  }
+  /* 点单词任务：没词表就先拉一次，拉不到也把「排期已对」说清楚 */
+  async function openWordSheet(task, on, doToggle) {
+    if (!llBook()) {
+      const ok = await ensureLlbook()
+      if (!ok) {
+        const a = new Alert()
+        a.title = "词表还没下载"
+        a.message = "排期已经按表4 走了：这条是 " + (task.unit || "") + (task.part || "")
+          + " · " + (task.title || "") + "\n词表要联网拉一次，失败就稍后再点。"
+        a.addAction("知道了")
+        a.present()
+        return
+      }
+    }
+    enWordTable(task, on, doToggle).present(true)
+  }
+  /* 设置里的诊断：一眼看到底卡在哪一环 */
+  function enDiagSheet() {
+    const st = SYNC_ST
+    const ll = llBook()
+    const fp = t => { try { return t ? new Date(t).toLocaleString() : "—" } catch (e) { return "—" } }
+    const td = enToday(dayStr())
+    const a = new Alert()
+    a.title = "英语排期诊断"
+    a.message = [
+      "plan-en：" + (EN ? (EN.days || []).length + " 天 · " + ((EN.meta && EN.meta.plan_ver) || "无版本号") : "没读到"),
+      "单词排期：" + (st.enwVer || "从未同步"),
+      "上次拉单词：" + fp(st.enwAt),
+      "词表：" + (ll ? (ll.count || 0) + " 词（已缓存）" : "未下载"),
+      "上次拉整份：" + fp(st.enAt),
+      "Gist 凭据：" + (gistConf() ? "有" : "无（v71 那条路走不通，正常）"),
+      "今天：" + (td ? td.date + " · " + td.tasks.length + " 条 / " + td.min + " 分钟" : "无"),
+      "今天单词：" + (td ? td.tasks.filter(t => t.type === "word").length + " 条" : "—"),
+    ].join("\n")
+    a.addAction("强制重拉单词排期")
+    a.addCancel("关闭")
+    a.presentAlert().then(i => {
+      if (i !== 0) return
+      ;(async () => {
+        const got = await pullEnWords(true)
+        const aa = new Alert()
+        aa.title = got ? "已更新" : "没拉到"
+        aa.message = got ? "回主界面看今天的单词任务" : "检查网络后再试；也可重开小满让静默刷新跑一次"
+        aa.addAction("好")
+        aa.present()
+        if (got && RERENDER) RERENDER()
+      })()
+    })
+  }
+
   /* ── 单词任务（表4 · 5 刷，2026-11-09）──
      排期只给「U2上 首学 39 词」，词表随 plan-en 一起下发（meta.llbook）。
      点任务直接开全屏词表：词 + 音标 + 释义，一屏滚完一个半单元；
@@ -2662,8 +2766,19 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
   function llBook() {
     try {
       const m = EN && EN.meta && EN.meta.llbook
-      return (m && m.words) ? m : null
-    } catch (e) { return null }
+      if (m && m.words) return m
+    } catch (e) {}
+    try {
+      const p = fml.joinPath(fml.documentsDirectory(), "xm-llbook.json")
+      if (fml.fileExists(p)) {
+        const j = JSON.parse(fml.readString(p))
+        if (j && j.words) {
+          try { if (EN) EN.meta = Object.assign(EN.meta || {}, { llbook: j }) } catch (e2) {}
+          return j
+        }
+      }
+    } catch (e) {}
+    return null
   }
   function llWord(w) {
     const m = llBook()
@@ -2734,7 +2849,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         if (!task.url) {
           /* 表4 单词任务：没链接是对的（不用看课），点开就是词表 */
           if (task.type === "word" && (task.words || []).length) {
-            return enWordTable(task, on, () => toggleDone(S, k, "en", rerender)).present(true)
+            return openWordSheet(task, on, () => toggleDone(S, k, "en", rerender))
           }
           return taskSheet(task, on, () => toggleDone(S, k, "en", rerender), null, null, S.done[k])
         }
@@ -2753,7 +2868,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         b.titleColor = TC.link
         /* 单词任务没有网课链接是对的，▶ 就进词表 */
         b.onTap = () => task.url ? openEnLink(task)
-          : enWordTable(task, on, () => toggleDone(S, k, "en", rerender)).present(true)
+          : openWordSheet(task, on, () => toggleDone(S, k, "en", rerender))
       }
       const dbe = r.addButton("ⓘ")
       dbe.titleColor = TC.link
@@ -2761,7 +2876,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       dbe.onTap = () => taskSheet(task, on, () => toggleDone(S, k, "en", rerender),
         task.url ? "▶ 打开这节课" : (hasWords ? "📖 打开词表" : null),
         task.url ? () => openEnLink(task)
-          : (hasWords ? () => enWordTable(task, on, () => toggleDone(S, k, "en", rerender)).present(true) : null),
+          : (hasWords ? () => openWordSheet(task, on, () => toggleDone(S, k, "en", rerender)) : null),
         S.done[k])
       markBtn(r, on, () => toggleDone(S, k, "en", rerender))
       t.addRow(r)
@@ -2805,7 +2920,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1109-ll5"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1109-ll5b"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2995,20 +3110,22 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         a.addAction("立即拉取云端数据（安排/英语/政治/推荐）")
         a.addAction("去开屏 / 去广告" + (detectProxies().length ? " · 一键安装" : " · 看做法"))
         a.addAction("登录新东方")
+        a.addAction("🩺 英语排期诊断")
         a.addAction("🩺 启动监测 · 最近 " + DIAG.length + " 步")
         a.addCancel("关闭")
         const i = await a.presentAlert()
-        if (i === 5) diagSheet()
+        if (i === 6) diagSheet()
+        else if (i === 4) enDiagSheet()
         else if (i === 0) playModeSheet(render)
         else if (i === 1) syncModeSheet(render)
         else if (i === 2) {
           await Promise.all([pullTomorrowCloud(true), pullRecCloud(true), pullKbCloud(true),
-            pullPlanCloud(true), pullPolCloud(true), pullEnCloud(true)]).catch(() => {})
+            pullPlanCloud(true), pullPolCloud(true), pullEnCloud(true), pullEnWords(true)]).catch(() => {})
           saveSyncSt({ lastPull: dayStr(), lastPullAt: Date.now() })
           render()
         }
         else if (i === 3) noSplashSheet()
-        else if (i === 4) openKoolearnLogin()
+        else if (i === 5) openKoolearnLogin()
       }
       st.onSelect = openSettings
       const stb = st.addButton("打开")
@@ -3227,11 +3344,12 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
           diag("开机静默刷新触发")
           ;(async () => {
             try {
-              const got = await Promise.all([pullPlanCloud(), pullPolCloud(), pullEnCloud()])
+              const got = await Promise.all([pullPlanCloud(), pullPolCloud(), pullEnCloud(), pullEnWords()])
               let ch = false
               if (got[0]) { mergePlanInPlace(P, got[0]); ch = true }
               if (got[1]) { POL = got[1]; ch = true }
               if (got[2]) ch = true
+              if (got[3]) ch = true
               if (ch && RERENDER) RERENDER()
               diag("开机静默刷新" + (ch ? "已更新" : "无变化"))
             } catch (e) { diag("开机静默刷新失败", 0, e) }
