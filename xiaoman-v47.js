@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v73-20261109-pullrow"
+  const BUILD = "v74-20261109-macpull"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2920,7 +2920,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1109-ll5c"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1109-macpull"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -3265,6 +3265,25 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         for (const k in cd.dels) if ((cd.done || {})[k] === undefined && S.done[k] !== undefined) delete S.done[k]
       }
     } catch (e) { S = { done: {} } }
+  }
+  /* 2026-11-09：Mac 卡片勾选同步回来。
+     手机从 v62 起只用本机 FileManager（不碰 iCloud），所以 Mac 写 iCloud 的
+     progress.json 手机根本读不到 —— 改成直接问 Mac 上的卡片服务（同一 Wi-Fi）。 */
+  if (!inWidget && S && S.done) {
+    try {
+      const req = new Request(LAN + "/api/progress")
+      req.timeoutInterval = 1.6
+      req.headers = { "Cache-Control": "no-cache" }
+      const txt = await req.loadString()
+      const o = txt ? JSON.parse(txt) : null
+      const theirs = (o && o.done) || {}
+      let n = 0
+      for (const k in theirs) {
+        const v = theirs[k] || 0
+        if (!S.done[k] || v > S.done[k]) { S.done[k] = v; n++ }
+      }
+      if (n) { saveProg(S); diag("拉回 Mac 勾选 " + n + " 条", Date.now()) }
+    } catch (e) { diag("拉回 Mac 勾选失败", 0, e) }
   }
   const P = R[1]
   EN = R[2]
