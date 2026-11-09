@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v72-20261109-enw"
+  const BUILD = "v73-20261109-pullrow"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2920,7 +2920,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1109-ll5b"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1109-ll5c"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -3082,6 +3082,41 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       /* ---------- 底部：设置 + 全量日程（2026-11-01）----------
          播放方式 / 去开屏 / 登录都是「配一次就不用管」的东西，
          原来各占一行天天挂着，主界面越拉越长。现在收进一行「⚙ 设置」弹窗。 */
+
+      /* ⟳ 一键拉取（2026-11-09）：直接放主界面一级 —— 之前拉取藏在
+         「⚙ 设置 → 立即拉取云端数据」第二层，「☁ 跨端同步」那行的按钮
+         又只开「夜间/即时/关闭」的方式选择，用户以为点不动、没法手动强制拉。 */
+      const pullRow = mrow("⟳ 立即拉取排期（安排 · 单词 · 政治）",
+        (SYNC_ST.enwVer ? "单词 " + String(SYNC_ST.enwVer).replace("T", " ").slice(0, 16) : "单词排期未同步")
+          + " · 点一下现在就拉", TC.en, 46)
+      pullRow.dismissOnSelect = false
+      const runPullNow = async () => {
+        const t0 = Date.now()
+        const got = await Promise.all([
+          pullPlanCloud(true), pullPolCloud(true), pullEnWords(true), pullEnCloud(true),
+        ]).catch(() => [])
+        const sec = Math.round((Date.now() - t0) / 100) / 10
+        const ed = enToday(dayStr())
+        const nw = ed ? ed.tasks.filter(x => x.type === "word").length : 0
+        const a = new Alert()
+        a.title = "拉取完成 · " + sec + " 秒"
+        a.message = [
+          "安排（plan3）：" + (got[0] ? "已更新" : "无变化"),
+          "政治（plan-pol）：" + (got[1] ? "已更新" : "无变化"),
+          "单词排期：" + (got[2] ? "已更新" : (SYNC_ST.enwVer ? "已是最新" : "没拉到（检查网络）")),
+          "整份英语：" + (got[3] ? "已更新" : "没拉到（不影响单词）"),
+          "今天英语：" + (ed ? ed.date + " · " + ed.tasks.length + " 条 / " + ed.min + " 分钟（单词 " + nw + " 条）" : "无"),
+        ].join("\n")
+        a.addAction("好")
+        await a.presentAlert()
+        render()
+      }
+      pullRow.onSelect = runPullNow
+      const pbtn = pullRow.addButton("拉取")
+      pbtn.titleColor = TC.en
+      pbtn.onTap = runPullNow
+      t.addRow(pullRow)
+
       /* 跨端同步状态：白天勾的攒在这里，夜里一次推；也能手动立刻推 */
       if (syncMode() !== "off") {
         const waitPush = !!SYNC_ST.pendAt
@@ -3094,12 +3129,12 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         sy.dismissOnSelect = false
         const doNow = () => { syncToApp(S, true); render() }
         sy.onSelect = doNow
-        const syb = sy.addButton(waitPush ? "同步" : "设置")
+        const syb = sy.addButton(waitPush ? "同步" : "方式")
         syb.titleColor = TC.link
         syb.onTap = waitPush ? doNow : (() => { syncModeSheet(render) })
         t.addRow(sy)
       }
-      const st = mrow("⚙ 设置", "播放方式 · 去开屏 · 登录新东方", TC.link, 40)
+      const st = mrow("⚙ 设置", "播放方式 · 去开屏 · 登录 · 立即拉取 · 排期诊断", TC.link, 40)
       st.dismissOnSelect = false
       const openSettings = async () => {
         const a = new Alert()
