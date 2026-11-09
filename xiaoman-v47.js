@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v70-20261109-ll5"
+  const BUILD = "v71-20261109-ll5"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2746,18 +2746,23 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         }
         return openEnLink(task)
       }
-      if (task.url) {
+      const hasWords = task.type === "word" && (task.words || []).length > 0
+      if (task.url || hasWords) {
         const b = r.addButton("▶")
         try { b.width = 36 } catch (e) {}
         b.titleColor = TC.link
-        b.onTap = () => openEnLink(task)
+        /* 单词任务没有网课链接是对的，▶ 就进词表 */
+        b.onTap = () => task.url ? openEnLink(task)
+          : enWordTable(task, on, () => toggleDone(S, k, "en", rerender)).present(true)
       }
       const dbe = r.addButton("ⓘ")
       dbe.titleColor = TC.link
       try { dbe.width = 26 } catch (e) {}
       dbe.onTap = () => taskSheet(task, on, () => toggleDone(S, k, "en", rerender),
-        task.url ? "▶ 打开这节课" : null,
-        task.url ? () => openEnLink(task) : null, S.done[k])
+        task.url ? "▶ 打开这节课" : (hasWords ? "📖 打开词表" : null),
+        task.url ? () => openEnLink(task)
+          : (hasWords ? () => enWordTable(task, on, () => toggleDone(S, k, "en", rerender)).present(true) : null),
+        S.done[k])
       markBtn(r, on, () => toggleDone(S, k, "en", rerender))
       t.addRow(r)
     })
