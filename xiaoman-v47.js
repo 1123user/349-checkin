@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v74-20261109-macpull"
+  const BUILD = "v75-20261110-mustsee"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2353,6 +2353,56 @@
     return r
   }
   
+  /* 必看清单：按科目分组，可播可标已看 */
+  async function mustTable(S, rerender) {
+    const t = new UITable()
+    t.showSeparators = false
+    const rest = mustRest(S).length
+    const h = new UITableRow()
+    h.isHeader = true
+    h.height = 34
+    const hc = h.addText("必看 · 校内习题配套", "共 " + MUST.length + " 集 · 还剩 " + rest)
+    hc.titleFont = Font.boldSystemFont(13)
+    hc.titleColor = TC.dim
+    hc.subtitleFont = Font.systemFont(10)
+    hc.subtitleColor = TC.dim
+    t.addRow(h)
+    let lastSub = ""
+    MUST.forEach(x => {
+      const on = !!(S.must || {})[mustKey(x)]
+      if (x.sub !== lastSub) {
+        const hr = new UITableRow()
+        hr.isHeader = true
+        hr.height = 26
+        const c = hr.addText(x.sub, "")
+        c.titleFont = Font.boldSystemFont(11)
+        c.titleColor = TC.link
+        t.addRow(hr)
+        lastSub = x.sub
+      }
+      const r = mrow((on ? "✓ " : "") + x.n,
+        x.m + " 分" + (on ? " · 已看" : ""),
+        on ? TC.ok : TC.txt, 44)
+      r.dismissOnSelect = false
+      const pb = r.addButton("▶")
+      pb.titleColor = TC.link
+      try { pb.width = 34 } catch (e) {}
+      pb.onTap = () => openPlay(mustUrl(x), x.n)
+      const tb = r.addButton(on ? "撤销" : "已看")
+      tb.titleColor = TC.link
+      tb.onTap = () => {
+        S.must = S.must || {}
+        if (on) delete S.must[mustKey(x)]
+        else S.must[mustKey(x)] = Date.now()
+        try { saveProg(S) } catch (e) {}
+        try { t.reload() } catch (e) { mustTable(S, rerender) }
+        if (rerender) rerender()
+      }
+      t.addRow(r)
+    })
+    await t.present(true)
+  }
+
   function taskRows(t, P, S, d, rerender, compact) {
     d.tasks.forEach(task => {
       const on = !!S.done[tid(task)]
@@ -2920,7 +2970,22 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1109-macpull"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1110-mustsee"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+
+  /* ── 必看：校内新编习题配套视频（2026-11-10）──────────────────────
+     来源：20261109223314/视频排期/schedule.json 里 lv=B 的条目（三科 71 集）。
+     排序依据是校内题习惯（分类+代表药 25%、单药三件套 50%），
+     所以每章第 1 集（框架）必看，第 2 集（代表药）推荐，其余选看。
+     看完点「已看」存进 S.must，下一条自动顶上来。 */
+  const MUST = [{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":46,"n":"第二十二章 抗心律失常药 1","m":54},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":50,"n":"第二十三章 肾素-血管紧张素系统药物 1","m":47},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":52,"n":"第二十四章 利尿药 1","m":47},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":54,"n":"第二十五章 抗高血压药 1","m":51},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":58,"n":"第二十六章 治疗充血性心力衰竭的药物 1","m":50},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":62,"n":"第二十七章 调血脂药与抗动脉粥样硬化药","m":53},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":63,"n":"第二十八章 抗心绞痛药物 1","m":49},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":65,"n":"第二十九章 作用于血液及造血系统的药物 1","m":51},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":70,"n":"第三十一章 作用于呼吸系统的药物 1","m":42},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":72,"n":"第三十二章 作用于消化系统的药物 1","m":46},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":75,"n":"第三十五章 肾上腺皮质激素类药物 1","m":44},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":79,"n":"第三十六章 甲状腺激素和抗甲状腺药 1","m":38},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":81,"n":"第三十七章 胰岛素和口服降糖药 1","m":54},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":83,"n":"第三十九章 抗菌药物概论 1","m":57},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":87,"n":"第四十章 β-内酰胺类抗生素 1","m":46},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":88,"n":"第四十章 β-内酰胺类抗生素 2","m":50},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":90,"n":"第四十一章 大环内酯类、林可霉素及多肽类","m":57},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":91,"n":"第四十二章 氨基糖苷类抗生素 1","m":52},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":93,"n":"第四十三章 四环素类及氯霉素类","m":51},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":94,"n":"第四十四章 人工合成抗菌药 1","m":61},{"sub":"药理 · 忠保研道","bv":"BV1bP4y1P76R","p":98,"n":"第四十六章 抗结核病药及抗麻风病药 1","m":46},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":4,"n":"第1节 基础知识（电子效应）","m":13},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":7,"n":"第2节 命名（顺序规则）","m":22},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":10,"n":"第3节 立体化学（构象）","m":14},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":11,"n":"第3节 立体化学（优势构象）","m":19},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":12,"n":"第3节 立体化学（手性、RS）","m":11},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":16,"n":"第4节 烷烃（碳正离子稳定性）","m":9},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":20,"n":"第5节 烯炔（亲电加成）","m":29},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":22,"n":"专题：共轭、共振式、机理","m":21},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":24,"n":"第6节 芳香烃（概论、亲电取代）","m":38},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":25,"n":"第6节 芳香烃（定位效应）","m":38},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":28,"n":"第7节 氯代烃（亲核取代）","m":34},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":29,"n":"第7节 氯代烃（消除反应）","m":24},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":31,"n":"第8节 醇醚酚（醇的反应）","m":30},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":34,"n":"第9节 醛酮（概论与亲核加成）","m":33},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":35,"n":"第9节 醛酮（α氢与杂项）","m":35},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":37,"n":"第10节 羧酸（生成衍生物与还原）","m":23},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":40,"n":"第11节 羧酸衍生物（亲核取代）","m":20},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":41,"n":"第11节 羧酸衍生物（酯缩合与杂项）","m":29},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":43,"n":"第12节 胺（概论与碱性）","m":31},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":44,"n":"第12节 胺（重氮化合物）","m":13},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":47,"n":"第13节 波谱（红外 IR）","m":26},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":48,"n":"第13节 波谱（核磁 NMR）","m":27},{"sub":"有机 · 晴川edu","bv":"BV1HvRXYwExT","p":49,"n":"第13节 习题课（含不饱和度）","m":43},{"sub":"分析 · 误差与数据处理","bv":"BV1F7411U7a7","p":1,"n":"第三讲 误差的定义及种类","m":0},{"sub":"分析 · 误差与数据处理","bv":"BV1F7411U7Lb","p":1,"n":"第四讲 准确度和精密度","m":0},{"sub":"分析 · 误差与数据处理","bv":"BV1f7411m7yk","p":1,"n":"第六讲 有效数字","m":0},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":1,"n":"色谱法导论-1 原理与分析图谱","m":21},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":2,"n":"色谱法导论-2 基础术语与公式","m":24},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":3,"n":"色谱法导论-3 塔板、速率理论","m":24},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":4,"n":"色谱法导论-4 定性定量方法","m":12},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":7,"n":"液相色谱-1 仪器构成","m":17},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":8,"n":"液相色谱-2 正相/反相键合相","m":20},{"sub":"分析 · 色谱","bv":"BV1K9NXzREZS","p":12,"n":"色谱法计算题目","m":18},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":14,"n":"紫外可见-1 原理","m":20},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":15,"n":"紫外可见-2 仪器与定量","m":22},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":19,"n":"红外-1 原理与定性","m":17},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":21,"n":"红外理论-1 数据规律总结","m":22},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":23,"n":"分子荧光-1 原理","m":18},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":27,"n":"原子发射-1 原理","m":12},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":31,"n":"原子吸收-1 原理与峰值吸收","m":19},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":32,"n":"原子吸收-2 仪器","m":14},{"sub":"分析 · 光谱","bv":"BV1K9NXzREZS","p":33,"n":"原子吸收-3 干扰与消除","m":13},{"sub":"分析 · 电化学","bv":"BV1K9NXzREZS","p":37,"n":"电位分析-1 原理与离子选择电极","m":19},{"sub":"分析 · 电化学","bv":"BV1K9NXzREZS","p":39,"n":"电位分析-3 ISE 分类与定量","m":12},{"sub":"分析 · 质谱核磁","bv":"BV1K9NXzREZS","p":48,"n":"质谱-1 原理","m":11},{"sub":"分析 · 质谱核磁","bv":"BV1K9NXzREZS","p":51,"n":"质谱理论-2 分子离子峰","m":4},{"sub":"分析 · 质谱核磁","bv":"BV1K9NXzREZS","p":54,"n":"核磁-1 原理","m":16},{"sub":"分析 · 质谱核磁","bv":"BV1K9NXzREZS","p":56,"n":"核磁-3 化学位移原理","m":14},{"sub":"分析 · 质谱核磁","bv":"BV1K9NXzREZS","p":57,"n":"核磁理论-1 化学位移数值总结","m":18},{"sub":"分析 · 质谱核磁","bv":"BV1K9NXzREZS","p":58,"n":"核磁理论-2 自旋耦合裂分","m":25}]
+
+  function mustKey(x) { return x.bv + "#" + x.p }
+  function mustUrl(x) { return "https://www.bilibili.com/video/" + x.bv + "?p=" + x.p }
+  function mustRest(S) {
+    const st = S.must || {}
+    return MUST.filter(x => !st[mustKey(x)])
+  }
+
 
   function mainTable(P, S) {
     const iso = todayISO()
@@ -2947,6 +3012,38 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       t.addRow(head((d ? "第 " + d.day + " 天 · " : "") + iso.slice(5).replace("-", "/") + " " + ((d && d.wd) || ""),
         "今日 " + todayDone + "/" + todayAll + " 项 · v" + UI_VER))
       coachBlock(t, iso)
+
+      /* ---------- 必看（校内新编习题配套，2026-11-10）----------------
+         只露当前该看的这一条，点行直接播；看完在清单里标「已看」，下一条顶上来。 */
+      {
+        const rest = mustRest(S)
+        const total = MUST.length
+        const doneN = total - rest.length
+        if (rest.length) {
+          const cur = rest[0]
+          t.addRow(head("必看 · 校内习题配套", doneN + "/" + total + " · 点▶直接看",
+            () => mustTable(S, render), "全部"))
+          const r = mrow(cur.n, cur.sub + " · " + cur.m + " 分", TC.link, 46)
+          r.dismissOnSelect = false
+          r.onSelect = () => openPlay(mustUrl(cur), cur.n)
+          const pb = r.addButton("▶")
+          pb.titleColor = TC.link
+          try { pb.width = 34 } catch (e) {}
+          pb.onTap = () => openPlay(mustUrl(cur), cur.n)
+          const mb = r.addButton("已看")
+          mb.titleColor = TC.link
+          mb.onTap = () => {
+            S.must = S.must || {}
+            S.must[mustKey(cur)] = Date.now()
+            try { saveProg(S) } catch (e) {}
+            render()
+          }
+          t.addRow(r)
+        } else if (total) {
+          t.addRow(head("必看 · 校内习题配套", "全部 " + total + " 集都看完了 ✓",
+            () => mustTable(S, render), "查看"))
+        }
+      }
 
       /* ---------- 药学（有机/药理/分析 都是药学下面的小单位，不单独列行） ----------
          用户 2026-10-28：科目不要单独占一行，还是像以前一样混在药学下面；
