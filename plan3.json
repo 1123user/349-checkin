@@ -23,8 +23,8 @@
     "weight": "手册 16 章（命名/构象/反应式/鉴别）。小小米晨o 4h + 卡林鉴别专项"
    }
   },
-  "ratio": "每天 2–3 节：1 节精讲/主课（40–90min，1.5× 实际 30–60min）+ 1 节对照带背（3–25min）+ 1 组做题（20min）",
-  "principle": "11/21 换课：以校内四本习题册的 484 个问答考点为准排课。药理 8 个考点最多的章（糖皮质激素19/心衰14/抗心律12/抗高压12/呼吸11/镇痛11/血液10/抗帕金森10）用忠保研道精讲第1讲；其余 30 小章用医小晨带背。分析按小小米晨o 9h 仪器分析（色谱/质谱/NMR/紫外），AAS 与荧光用期末加油站，误差用蜂考。色谱用同一套 P05–P08（含平面色谱，别处没有）。有机用小小米晨o 4h + 卡林鉴别。原忠保研道全 102 讲不再整套看，只取 8 讲；省下的时间给做题和纸质习题册。",
+  "ratio": "每天三科并进：药理 1–2 项 + 分析/色谱 1 项 + 有机 1 项（做题也占位）",
+  "principle": "11/21 二版：按「每天都要有药理分析有机」重排。药理 8 大章（糖皮质激素19/心衰14/抗心律12/抗高压12/呼吸11/镇痛11/血液10/抗帕金森10）用忠保研道第1讲 + 医小晨带背，排在前 8 天；39 小章用医小晨，后 20 天按当天时长补 1–3 集。分析/色谱 22 个单元（长视频拆两三天）从第 7 天起每天 1 项；前 6 天用复习做题占位。有机 23 集：前 8 天短集陪跑，之后每天 1 集，最后一天卡林鉴别专项。",
   "ana_upgrade": "2026-10-23 起：人卫系统课 + 小琦《仪器分析》题目训练双轨；已剔除 2027 考纲超纲的滴定分析法，补齐原子吸收（错率 60%）",
   "pharm_upgrade": "2026-10-23 定版：每天 2 条小黄鸭单药 + 1 条药理学系统课（按 2027 考纲章定位；已全量剔除 10 个不考章系统课与超纲单药，含 N 受体阻断药/骨骼肌松弛药、抗帕金森、调血脂、性激素、免疫、抗寄生虫、抗骨质疏松等）；名额按板块权重 p4/p6 30.2 → p5/p8 27.3 → p9 24.3 与题库题量分配；同一单药优先不跨天复用，仅在小黄鸭未覆盖的板块不得已借用总览课",
   "pharm_script": "tools/gen_pharm_plan.py + tools/pharm_data.json",
@@ -3848,7 +3848,7 @@
      "sub": "pharm",
      "key": "ZBD-P75",
      "type": "video",
-     "title": "【精讲】第35章 糖皮质激素（忠保研道 P75）",
+     "title": "【精讲】第35章 糖皮质激素",
      "dur": "44:30",
      "sec": 2670,
      "bvid": "BV1bP4y1P76R",
@@ -3861,32 +3861,47 @@
      "sub": "pharm",
      "key": "YXC-P34",
      "type": "video",
-     "title": "【带背】第35章 糖皮质激素（医小晨 P34）",
+     "title": "【带背】第35章 糖皮质激素",
      "dur": "11:31",
      "sec": 691,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第35章 糖皮质激素",
-     "note": "19 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "19 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=34"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第320",
-     "type": "quiz",
-     "title": "【做题】第35章 糖皮质激素 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第35章 糖皮质激素」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "XMC9-P01",
+     "type": "video",
+     "title": "【分析/色谱】光谱分析法概论",
+     "dur": "20:08",
+     "sec": 1208,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "光谱分析法概论",
+     "note": "手册对应章节 · 光谱分析法概论",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=1"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P01",
+     "type": "video",
+     "title": "【有机】有机化学基础",
+     "dur": "11:41",
+     "sec": 701,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "11min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=1"
     }
    ],
-   "min": 76,
+   "min": 87,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -3898,7 +3913,7 @@
      "sub": "pharm",
      "key": "ZBD-P58",
      "type": "video",
-     "title": "【精讲】第26章 心衰（忠保研道 P58）",
+     "title": "【精讲】第26章 心衰",
      "dur": "50:38",
      "sec": 3038,
      "bvid": "BV1bP4y1P76R",
@@ -3911,32 +3926,47 @@
      "sub": "pharm",
      "key": "YXC-P27",
      "type": "video",
-     "title": "【带背】第26章 心衰（医小晨 P27）",
+     "title": "【带背】第26章 心衰",
      "dur": "15:55",
      "sec": 955,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第26章 心衰",
-     "note": "14 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "14 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=27"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第220",
+     "sub": "ana",
+     "key": "QZana20分析",
      "type": "quiz",
-     "title": "【做题】第26章 心衰 · 20 题",
+     "title": "【做题】分析 · 错题回炉 · 20 题",
      "dur": "20:00",
      "sec": 1200,
      "bvid": "",
      "level": "做题",
      "group": "刷题站",
-     "note": "349 站「第26章 心衰」；手机上也可做，勾掉即记完成",
+     "note": "349 站「分析 · 错题回炉」；勾掉即记完成",
      "url": "http://127.0.0.1:8790/"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P06",
+     "type": "video",
+     "title": "【有机】二烯烃",
+     "dur": "6:38",
+     "sec": 398,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "6min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=6"
     }
    ],
-   "min": 86,
+   "min": 93,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -3948,7 +3978,7 @@
      "sub": "pharm",
      "key": "ZBD-P46",
      "type": "video",
-     "title": "【精讲】第22章 抗心律失常（忠保研道 P46）",
+     "title": "【精讲】第22章 抗心律失常",
      "dur": "54:15",
      "sec": 3255,
      "bvid": "BV1bP4y1P76R",
@@ -3961,32 +3991,47 @@
      "sub": "pharm",
      "key": "YXC-P22",
      "type": "video",
-     "title": "【带背】第22章 抗心律失常（医小晨 P22）",
+     "title": "【带背】第22章 抗心律失常",
      "dur": "15:20",
      "sec": 920,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第22章 抗心律失常",
-     "note": "12 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "12 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=22"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第220",
-     "type": "quiz",
-     "title": "【做题】第22章 抗心律失常 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第22章 抗心律失常」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "XMC9-P02-上半",
+     "type": "video",
+     "title": "【分析/色谱】紫外-可见分光光度法",
+     "dur": "25:40",
+     "sec": 1540,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "紫外-可见分光光度法",
+     "note": "手册对应章节 · 紫外-可见分光光度法（上半，25:40）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=2"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P07",
+     "type": "video",
+     "title": "【有机】脂环烃",
+     "dur": "10:05",
+     "sec": 605,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "10min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=7"
     }
    ],
-   "min": 89,
+   "min": 105,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -3998,7 +4043,7 @@
      "sub": "pharm",
      "key": "ZBD-P54",
      "type": "video",
-     "title": "【精讲】第25章 抗高血压（忠保研道 P54）",
+     "title": "【精讲】第25章 抗高血压",
      "dur": "51:05",
      "sec": 3065,
      "bvid": "BV1bP4y1P76R",
@@ -4011,32 +4056,47 @@
      "sub": "pharm",
      "key": "YXC-P24",
      "type": "video",
-     "title": "【带背】第25章 抗高血压（医小晨 P24）",
+     "title": "【带背】第25章 抗高血压",
      "dur": "23:08",
      "sec": 1388,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第25章 抗高血压",
-     "note": "12 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "12 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=24"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第220",
-     "type": "quiz",
-     "title": "【做题】第25章 抗高血压 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第25章 抗高血压」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "XMC9-P02-下半",
+     "type": "video",
+     "title": "【分析/色谱】紫外-可见分光光度法",
+     "dur": "25:40",
+     "sec": 1540,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "紫外-可见分光光度法",
+     "note": "手册对应章节 · 紫外-可见分光光度法（下半，25:40）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=2"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P10",
+     "type": "video",
+     "title": "【有机】非苯芳烃",
+     "dur": "8:02",
+     "sec": 482,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "8min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=10"
     }
    ],
-   "min": 94,
+   "min": 107,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -4048,7 +4108,7 @@
      "sub": "pharm",
      "key": "ZBD-P70",
      "type": "video",
-     "title": "【精讲】第31章 呼吸系统（忠保研道 P70）",
+     "title": "【精讲】第31章 呼吸系统",
      "dur": "42:44",
      "sec": 2564,
      "bvid": "BV1bP4y1P76R",
@@ -4061,32 +4121,47 @@
      "sub": "pharm",
      "key": "YXC-P29",
      "type": "video",
-     "title": "【带背】第31章 呼吸系统（医小晨 P29）",
+     "title": "【带背】第31章 呼吸系统",
      "dur": "15:46",
      "sec": 946,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第31章 呼吸系统",
-     "note": "11 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "11 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=29"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第320",
-     "type": "quiz",
-     "title": "【做题】第31章 呼吸系统 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第31章 呼吸系统」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "QMJYZ-P10",
+     "type": "video",
+     "title": "【分析/色谱】红外吸收光谱（短版）",
+     "dur": "10:45",
+     "sec": 645,
+     "bvid": "BV1aRj9zAEyb",
+     "level": "必看",
+     "group": "红外吸收光谱（短版）",
+     "note": "手册对应章节 · 红外吸收光谱（短版）",
+     "url": "https://www.bilibili.com/video/BV1aRj9zAEyb?p=10"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P15",
+     "type": "video",
+     "title": "【有机】酚、醚、硫醇",
+     "dur": "11:32",
+     "sec": 692,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "11min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=15"
     }
    ],
-   "min": 78,
+   "min": 80,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -4098,7 +4173,7 @@
      "sub": "pharm",
      "key": "ZBD-P38",
      "type": "video",
-     "title": "【精讲】第19章 镇痛药（忠保研道 P38）",
+     "title": "【精讲】第19章 镇痛药",
      "dur": "49:10",
      "sec": 2950,
      "bvid": "BV1bP4y1P76R",
@@ -4111,32 +4186,47 @@
      "sub": "pharm",
      "key": "YXC-P20",
      "type": "video",
-     "title": "【带背】第19章 镇痛药（医小晨 P20）",
+     "title": "【带背】第19章 镇痛药",
      "dur": "6:55",
      "sec": 415,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第19章 镇痛药",
-     "note": "11 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "11 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=20"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第120",
-     "type": "quiz",
-     "title": "【做题】第19章 镇痛药 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第19章 镇痛药」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "XMC9-P03",
+     "type": "video",
+     "title": "【分析/色谱】红外吸收光谱（上）",
+     "dur": "25:13",
+     "sec": 1513,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "红外吸收光谱（上）",
+     "note": "手册对应章节 · 红外吸收光谱（上）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=3"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P18",
+     "type": "video",
+     "title": "【有机】羧酸、酰胺",
+     "dur": "7:40",
+     "sec": 460,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "7min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=18"
     }
    ],
-   "min": 76,
+   "min": 88,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -4148,7 +4238,7 @@
      "sub": "pharm",
      "key": "ZBD-P65",
      "type": "video",
-     "title": "【精讲】第29章 血液系统（忠保研道 P65）",
+     "title": "【精讲】第29章 血液系统",
      "dur": "51:44",
      "sec": 3104,
      "bvid": "BV1bP4y1P76R",
@@ -4161,32 +4251,47 @@
      "sub": "pharm",
      "key": "YXC-P28",
      "type": "video",
-     "title": "【带背】第29章 血液系统（医小晨 P28）",
+     "title": "【带背】第29章 血液系统",
      "dur": "24:25",
      "sec": 1465,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第29章 血液系统",
-     "note": "10 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "10 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=28"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第220",
-     "type": "quiz",
-     "title": "【做题】第29章 血液系统 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第29章 血液系统」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "XMC9-P10-上三分之一",
+     "type": "video",
+     "title": "【分析/色谱】质谱法",
+     "dur": "45:17",
+     "sec": 2717,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "质谱法",
+     "note": "手册对应章节 · 质谱法（上三分之一，45:17）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=10"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P23",
+     "type": "video",
+     "title": "【有机】杂环化合物",
+     "dur": "16:55",
+     "sec": 1015,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "16min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=23"
     }
    ],
-   "min": 96,
+   "min": 138,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -4198,7 +4303,7 @@
      "sub": "pharm",
      "key": "ZBD-P34",
      "type": "video",
-     "title": "【精讲】第17章 抗帕金森（忠保研道 P34）",
+     "title": "【精讲】第17章 抗帕金森",
      "dur": "54:22",
      "sec": 3262,
      "bvid": "BV1bP4y1P76R",
@@ -4211,32 +4316,47 @@
      "sub": "pharm",
      "key": "YXC-P19",
      "type": "video",
-     "title": "【带背】第17章 抗帕金森（医小晨 P19）",
+     "title": "【带背】第17章 抗帕金森",
      "dur": "9:24",
      "sec": 564,
      "bvid": "BV1LHH16GEL5",
      "level": "速过",
      "group": "第17章 抗帕金森",
-     "note": "10 个考点 · 带背对照，看完立刻回想一遍",
+     "note": "10 个考点 · 带背对照，看完立刻回想",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=19"
     },
     {
-     "sub": "pharm",
-     "key": "QZ第120",
-     "type": "quiz",
-     "title": "【做题】第17章 抗帕金森 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「第17章 抗帕金森」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
+     "sub": "ana",
+     "key": "XMC9-P10-中三分之一",
+     "type": "video",
+     "title": "【分析/色谱】质谱法",
+     "dur": "45:17",
+     "sec": 2717,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "质谱法",
+     "note": "手册对应章节 · 质谱法（中三分之一，45:17）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=10"
+    },
+    {
+     "sub": "org",
+     "key": "XMORG-P03",
+     "type": "video",
+     "title": "【有机】烯烃（上）",
+     "dur": "10:05",
+     "sec": 605,
+     "bvid": "BV1ui421U7RW",
+     "level": "速过",
+     "group": "有机",
+     "note": "10min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=3"
     }
    ],
-   "min": 83,
+   "min": 119,
    "by": {
-    "pharm": 3
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -4248,110 +4368,60 @@
      "sub": "pharm",
      "key": "YXC-P02",
      "type": "video",
-     "title": "第一章:绪论～",
+     "title": "【药理】第一章:绪论～",
      "dur": "3:42",
      "sec": 222,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
      "group": "药理小章",
-     "note": "3min · 手册同章 第一章:绪论～",
+     "note": "3min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=2"
     },
     {
      "sub": "pharm",
      "key": "YXC-P03",
      "type": "video",
-     "title": "第三章:药效学",
+     "title": "【药理】第三章:药效学",
      "dur": "21:15",
      "sec": 1275,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
      "group": "药理小章",
-     "note": "21min · 手册同章 第三章:药效学",
+     "note": "21min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=3"
     },
     {
-     "sub": "pharm",
-     "key": "YXC-P04",
-     "type": "video",
-     "title": "第二章:药代学",
-     "dur": "30:27",
-     "sec": 1827,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "30min · 手册同章 第二章:药代学",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=4"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P05",
-     "type": "video",
-     "title": "第四章:影响药物吸收的因素～",
-     "dur": "4:06",
-     "sec": 246,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章 第四章:影响药物吸收的因素～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=5"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P06",
-     "type": "video",
-     "title": "第五章:传出神经系统概论～",
-     "dur": "3:43",
-     "sec": 223,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "3min · 手册同章 第五章:传出神经系统概论～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=6"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P07",
-     "type": "video",
-     "title": "第六章:M受体激动药～毛果云香碱",
-     "dur": "4:21",
-     "sec": 261,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章 第六章:M受体激动药～毛果云",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=7"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P08",
-     "type": "video",
-     "title": "第七章①:易逆性抗胆碱酯酶药～新斯的明",
-     "dur": "8:45",
-     "sec": 525,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "8min · 手册同章 第七章①:易逆性抗胆碱酯酶药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=8"
-    },
-    {
-     "sub": "pharm",
-     "key": "QZ药理25",
+     "sub": "ana",
+     "key": "QZana20分析",
      "type": "quiz",
-     "title": "【做题】药理小章 · 25 题",
+     "title": "【做题】分析 · 错题回炉 · 20 题",
      "dur": "20:00",
      "sec": 1200,
      "bvid": "",
      "level": "做题",
      "group": "刷题站",
-     "note": "349 站「药理小章」；手机上也可做，勾掉即记完成",
+     "note": "349 站「分析 · 错题回炉」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
+    },
+    {
+     "sub": "org",
+     "key": "QZorg20有机",
+     "type": "quiz",
+     "title": "【做题】有机 · 反应式与鉴别 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「有机 · 反应式与鉴别」；勾掉即记完成",
      "url": "http://127.0.0.1:8790/"
     }
    ],
-   "min": 96,
+   "min": 64,
    "by": {
-    "pharm": 8
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -4361,950 +4431,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P09",
+     "key": "YXC-P04",
      "type": "video",
-     "title": "第七章②:难逆性抗胆碱酯酶药～有机磷中毒",
-     "dur": "4:27",
-     "sec": 267,
+     "title": "【药理】第二章:药代学",
+     "dur": "30:27",
+     "sec": 1827,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
      "group": "药理小章",
-     "note": "4min · 手册同章 第七章②:难逆性抗胆碱酯酶药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=9"
+     "note": "30min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=4"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P10",
+     "key": "YXC-P05",
      "type": "video",
-     "title": "第八章:M受体阻断药～阿托品",
-     "dur": "6:32",
-     "sec": 392,
+     "title": "【药理】第四章:影响药物吸收的因素～",
+     "dur": "4:06",
+     "sec": 246,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
      "group": "药理小章",
-     "note": "6min · 手册同章 第八章:M受体阻断药～阿托品",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=10"
+     "note": "4min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=5"
     },
-    {
-     "sub": "pharm",
-     "key": "YXC-P11",
-     "type": "video",
-     "title": "第九章:肌松药～小琥、小筒",
-     "dur": "5:00",
-     "sec": 300,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章 第九章:肌松药～小琥、小筒",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=11"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P12",
-     "type": "video",
-     "title": "第十章:肾上腺受体激动药～",
-     "dur": "22:16",
-     "sec": 1336,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "22min · 手册同章 第十章:肾上腺受体激动药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=12"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P13",
-     "type": "video",
-     "title": "第十一章:肾上腺受体阻断药～",
-     "dur": "19:16",
-     "sec": 1156,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "19min · 手册同章 第十一章:肾上腺受体阻断药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=13"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P14",
-     "type": "video",
-     "title": "第十三章:全身麻醉药～",
-     "dur": "3:27",
-     "sec": 207,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "3min · 手册同章 第十三章:全身麻醉药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=14"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P15",
-     "type": "video",
-     "title": "第十四章:局部麻醉药～",
-     "dur": "2:46",
-     "sec": 166,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "2min · 手册同章 第十四章:局部麻醉药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=15"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P16",
-     "type": "video",
-     "title": "第十五章:镇静催眠药～",
-     "dur": "4:27",
-     "sec": 267,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章 第十五章:镇静催眠药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=16"
-    },
-    {
-     "sub": "pharm",
-     "key": "QZ药理25",
-     "type": "quiz",
-     "title": "【做题】药理小章 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「药理小章」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 88,
-   "by": {
-    "pharm": 9
-   }
-  },
-  {
-   "day": 47,
-   "date": "2026-12-01",
-   "wd": "周二",
-   "tasks": [
-    {
-     "sub": "pharm",
-     "key": "YXC-P17",
-     "type": "video",
-     "title": "第十六章 抗癫痫药与抗惊厥药~",
-     "dur": "5:27",
-     "sec": 327,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章 第十六章 抗癫痫药与抗惊厥药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=17"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P18",
-     "type": "video",
-     "title": "第十七章:抗精神失常药～",
-     "dur": "9:24",
-     "sec": 564,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第十七章:抗精神失常药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=18"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P21",
-     "type": "video",
-     "title": "第二十章:解热镇痛抗炎药和抗痛风药～",
-     "dur": "10:30",
-     "sec": 630,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "10min · 手册同章 第二十章:解热镇痛抗炎药和抗",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=21"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P23",
-     "type": "video",
-     "title": "第二十四章:利尿药",
-     "dur": "14:20",
-     "sec": 860,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "14min · 手册同章 第二十四章:利尿药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=23"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P25",
-     "type": "video",
-     "title": "第二十七章:抗心绞痛药",
-     "dur": "12:38",
-     "sec": 758,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "12min · 手册同章 第二十七章:抗心绞痛药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=25"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P26",
-     "type": "video",
-     "title": "第二十八章:抗动脉粥样硬化药",
-     "dur": "11:19",
-     "sec": 679,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "11min · 手册同章 第二十八章:抗动脉粥样硬化药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=26"
-    },
-    {
-     "sub": "pharm",
-     "key": "QZ药理25",
-     "type": "quiz",
-     "title": "【做题】药理小章 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「药理小章」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 83,
-   "by": {
-    "pharm": 7
-   }
-  },
-  {
-   "day": 48,
-   "date": "2026-12-02",
-   "wd": "周三",
-   "tasks": [
-    {
-     "sub": "pharm",
-     "key": "YXC-P30",
-     "type": "video",
-     "title": "第32章:作用于消化系统的药物～",
-     "dur": "17:54",
-     "sec": 1074,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "17min · 手册同章 第32章:作用于消化系统的药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=30"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P31",
-     "type": "video",
-     "title": "第30章:影响自体活性物质的药物～",
-     "dur": "5:54",
-     "sec": 354,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章 第30章:影响自体活性物质的",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=31"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P32",
-     "type": "video",
-     "title": "第33章:子宫平滑肌兴奋药和抑制药～",
-     "dur": "5:56",
-     "sec": 356,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章 第33章:子宫平滑肌兴奋药和",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=32"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P33",
-     "type": "video",
-     "title": "第34章:性激素类药及避孕药～",
-     "dur": "9:08",
-     "sec": 548,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第34章:性激素类药及避孕药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=33"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P35",
-     "type": "video",
-     "title": "第36章:甲状腺激素及抗甲状腺素药～",
-     "dur": "9:55",
-     "sec": 595,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第36章:甲状腺激素及抗甲状",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=35"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P37",
-     "type": "video",
-     "title": "第38章:抗骨质疏松药～",
-     "dur": "9:01",
-     "sec": 541,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第38章:抗骨质疏松药～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=37"
-    },
-    {
-     "sub": "pharm",
-     "key": "QZ药理25",
-     "type": "quiz",
-     "title": "【做题】药理小章 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「药理小章」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 77,
-   "by": {
-    "pharm": 7
-   }
-  },
-  {
-   "day": 49,
-   "date": "2026-12-03",
-   "wd": "周四",
-   "tasks": [
-    {
-     "sub": "pharm",
-     "key": "YXC-P36",
-     "type": "video",
-     "title": "第37章:治疗糖尿病的药物～",
-     "dur": "25:17",
-     "sec": 1517,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "25min · 手册同章 第37章:治疗糖尿病的药物～",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=36"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P38",
-     "type": "video",
-     "title": "第39章 抗菌药物概论~",
-     "dur": "9:34",
-     "sec": 574,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第39章 抗菌药物概论~",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=38"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P39",
-     "type": "video",
-     "title": "第40章 β-内酰胺类抗生素~",
-     "dur": "14:06",
-     "sec": 846,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "14min · 手册同章 第40章 β-内酰胺类抗生素",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=39"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P40",
-     "type": "video",
-     "title": "第41章上 大环内酯类抗生素~",
-     "dur": "7:15",
-     "sec": 435,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "7min · 手册同章 第41章上 大环内酯类抗生素",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=40"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P41",
-     "type": "video",
-     "title": "第41章下 林可霉素及多肽类抗生素~",
-     "dur": "8:54",
-     "sec": 534,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "8min · 手册同章 第41章下 林可霉素及多肽类",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=41"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P42",
-     "type": "video",
-     "title": "第42章 氨基糖苷类抗生素",
-     "dur": "14:35",
-     "sec": 875,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "14min · 手册同章 第42章 氨基糖苷类抗生素",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=42"
-    },
-    {
-     "sub": "pharm",
-     "key": "QZ药理25",
-     "type": "quiz",
-     "title": "【做题】药理小章 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「药理小章」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 99,
-   "by": {
-    "pharm": 7
-   }
-  },
-  {
-   "day": 50,
-   "date": "2026-12-04",
-   "wd": "周五",
-   "tasks": [
-    {
-     "sub": "pharm",
-     "key": "YXC-P43",
-     "type": "video",
-     "title": "第43章 四环素类与氯霉素类",
-     "dur": "12:43",
-     "sec": 763,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "12min · 手册同章 第43章 四环素类与氯霉素类",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=43"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P44",
-     "type": "video",
-     "title": "第44章上 喹诺酮类抗菌药",
-     "dur": "13:43",
-     "sec": 823,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "13min · 手册同章 第44章上 喹诺酮类抗菌药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=44"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P45",
-     "type": "video",
-     "title": "第44章下 磺胺类及其他人工合成抗菌药",
-     "dur": "9:20",
-     "sec": 560,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第44章下 磺胺类及其他人工",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=45"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P46",
-     "type": "video",
-     "title": "第45章_抗病毒药",
-     "dur": "13:57",
-     "sec": 837,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "13min · 手册同章 第45章_抗病毒药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=46"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P47",
-     "type": "video",
-     "title": "第46章_抗真菌药",
-     "dur": "9:56",
-     "sec": 596,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章 第46章_抗真菌药",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=47"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P48",
-     "type": "video",
-     "title": "第47章_抗结核药及抗麻风病药",
-     "dur": "12:36",
-     "sec": 756,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "12min · 手册同章 第47章_抗结核药及抗麻风病",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=48"
-    },
-    {
-     "sub": "pharm",
-     "key": "QZ药理25",
-     "type": "quiz",
-     "title": "【做题】药理小章 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「药理小章」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 92,
-   "by": {
-    "pharm": 7
-   }
-  },
-  {
-   "day": 51,
-   "date": "2026-12-05",
-   "wd": "周六",
-   "tasks": [
     {
      "sub": "ana",
-     "key": "XMC9-P01",
+     "key": "XMC9-P10-下三分之一",
      "type": "video",
-     "title": "【仪分】光谱分析法概论",
-     "dur": "20:08",
-     "sec": 1208,
+     "title": "【分析/色谱】质谱法",
+     "dur": "45:17",
+     "sec": 2717,
      "bvid": "BV1s6pQ6jEKQ",
      "level": "必看",
-     "group": "光谱概论",
-     "note": "20min · 手册 6 个考点",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=1"
-    },
-    {
-     "sub": "ana",
-     "key": "XMC9-P02",
-     "type": "video",
-     "title": "【仪分】紫外-可见分光光度法",
-     "dur": "51:20",
-     "sec": 3080,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "紫外",
-     "note": "51min · 手册 17 个考点（3min/考点，正好）",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=2"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ紫外25",
-     "type": "quiz",
-     "title": "【做题】紫外 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「紫外」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 91,
-   "by": {
-    "ana": 3
-   }
-  },
-  {
-   "day": 52,
-   "date": "2026-12-06",
-   "wd": "周日",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "QMJYZ-P10",
-     "type": "video",
-     "title": "【仪分】红外吸收光谱（期末加油站）",
-     "dur": "10:45",
-     "sec": 645,
-     "bvid": "BV1aRj9zAEyb",
-     "level": "必看",
-     "group": "红外",
-     "note": "11min · 手册只有 6 个考点，够用",
-     "url": "https://www.bilibili.com/video/BV1aRj9zAEyb?p=10"
-    },
-    {
-     "sub": "ana",
-     "key": "XMC9-P03",
-     "type": "video",
-     "title": "【仪分】红外（上）",
-     "dur": "25:13",
-     "sec": 1513,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "选看",
-     "group": "红外",
-     "note": "25min · 需要看谱图解析时再补",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=3"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ红外20",
-     "type": "quiz",
-     "title": "【做题】红外 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「红外」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 55,
-   "by": {
-    "ana": 3
-   }
-  },
-  {
-   "day": 53,
-   "date": "2026-12-07",
-   "wd": "周一",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "XMC9-P10",
-     "type": "video",
-     "title": "【仪分】质谱法",
-     "dur": "90:35",
-     "sec": 5435,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "质谱",
-     "note": "90min · 手册 21 个考点",
+     "group": "质谱法",
+     "note": "手册对应章节 · 质谱法（下三分之一，45:17）",
      "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=10"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ质谱20",
-     "type": "quiz",
-     "title": "【做题】质谱 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「质谱」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 110,
-   "by": {
-    "ana": 2
-   }
-  },
-  {
-   "day": 54,
-   "date": "2026-12-08",
-   "wd": "周二",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "XMC9-P09",
-     "type": "video",
-     "title": "【仪分】核磁共振波谱法",
-     "dur": "59:14",
-     "sec": 3554,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "核磁",
-     "note": "59min · 手册 4 个考点（偏多，可 2×）",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=9"
-    },
-    {
-     "sub": "ana",
-     "key": "QMJYZ-P08",
-     "type": "video",
-     "title": "【仪分】分子发光（荧光）",
-     "dur": "30:34",
-     "sec": 1834,
-     "bvid": "BV1aRj9zAEyb",
-     "level": "必看",
-     "group": "荧光",
-     "note": "31min · 手册 15 个考点",
-     "url": "https://www.bilibili.com/video/BV1aRj9zAEyb?p=8"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ核磁20",
-     "type": "quiz",
-     "title": "【做题】核磁+荧光 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「核磁+荧光」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 109,
-   "by": {
-    "ana": 3
-   }
-  },
-  {
-   "day": 55,
-   "date": "2026-12-09",
-   "wd": "周三",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "QMJYZ-P06",
-     "type": "video",
-     "title": "【仪分】原子吸收光谱（重点）",
-     "dur": "33:39",
-     "sec": 2019,
-     "bvid": "BV1aRj9zAEyb",
-     "level": "必看",
-     "group": "原子吸收",
-     "note": "34min · 手册 44 个考点！B 站唯一可用的一讲",
-     "url": "https://www.bilibili.com/video/BV1aRj9zAEyb?p=6"
-    },
-    {
-     "sub": "ana",
-     "key": "FK-P02",
-     "type": "video",
-     "title": "【分析】误差及数据处理（蜂考 P02）",
-     "dur": "54:03",
-     "sec": 3243,
-     "bvid": "BV1XWN3e9EQj",
-     "level": "必看",
-     "group": "误差",
-     "note": "54min · 手册 13 个考点（含量/有效数字/显著性检验）",
-     "url": "https://www.bilibili.com/video/BV1XWN3e9EQj?p=2"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ原子25",
-     "type": "quiz",
-     "title": "【做题】原子吸收+误差 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「原子吸收+误差」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 107,
-   "by": {
-    "ana": 3
-   }
-  },
-  {
-   "day": 56,
-   "date": "2026-12-10",
-   "wd": "周四",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "XMC9-P05",
-     "type": "video",
-     "title": "【色谱】色谱分析法基本理论",
-     "dur": "69:17",
-     "sec": 4157,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "色谱概论",
-     "note": "69min · 手册 38 个考点（塔板/速率/分离度）",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=5"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ色谱20",
-     "type": "quiz",
-     "title": "【做题】色谱概论 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「色谱概论」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 89,
-   "by": {
-    "ana": 2
-   }
-  },
-  {
-   "day": 57,
-   "date": "2026-12-11",
-   "wd": "周五",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "XMC9-P06",
-     "type": "video",
-     "title": "【色谱】经典液相色谱（平面色谱）",
-     "dur": "75:52",
-     "sec": 4552,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "平面色谱",
-     "note": "76min · 手册 31 个考点（TLC/纸色谱，别处没有）",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=6"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ平面25",
-     "type": "quiz",
-     "title": "【做题】平面色谱 · 25 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「平面色谱」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 95,
-   "by": {
-    "ana": 2
-   }
-  },
-  {
-   "day": 58,
-   "date": "2026-12-12",
-   "wd": "周六",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "XMC9-P07",
-     "type": "video",
-     "title": "【色谱】气相色谱法",
-     "dur": "54:53",
-     "sec": 3293,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "气相色谱",
-     "note": "55min · 手册 22 个考点",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=7"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ气相20",
-     "type": "quiz",
-     "title": "【做题】气相色谱 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「气相色谱」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 74,
-   "by": {
-    "ana": 2
-   }
-  },
-  {
-   "day": 59,
-   "date": "2026-12-13",
-   "wd": "周日",
-   "tasks": [
-    {
-     "sub": "ana",
-     "key": "XMC9-P08",
-     "type": "video",
-     "title": "【色谱】高效液相色谱法",
-     "dur": "42:55",
-     "sec": 2575,
-     "bvid": "BV1s6pQ6jEKQ",
-     "level": "必看",
-     "group": "高效液相",
-     "note": "43min · 手册 21 个考点",
-     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=8"
-    },
-    {
-     "sub": "ana",
-     "key": "JZL-P01",
-     "type": "video",
-     "title": "【色谱】色谱概论串讲（江中丽姐）",
-     "dur": "27:44",
-     "sec": 1664,
-     "bvid": "BV1JL411M7w9",
-     "level": "选看",
-     "group": "色谱概论",
-     "note": "27min · 概论回顾，和 P05 互为补充",
-     "url": "https://www.bilibili.com/video/BV1JL411M7w9?p=1"
-    },
-    {
-     "sub": "ana",
-     "key": "QZ高效20",
-     "type": "quiz",
-     "title": "【做题】高效液相 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「高效液相」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
-    }
-   ],
-   "min": 90,
-   "by": {
-    "ana": 3
-   }
-  },
-  {
-   "day": 60,
-   "date": "2026-12-14",
-   "wd": "周一",
-   "tasks": [
-    {
-     "sub": "org",
-     "key": "XMORG-P01",
-     "type": "video",
-     "title": "【有机】有机化学基础",
-     "dur": "11:41",
-     "sec": 701,
-     "bvid": "BV1ui421U7RW",
-     "level": "必看",
-     "group": "有机",
-     "note": "11min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=1"
     },
     {
      "sub": "org",
@@ -5318,19 +4480,71 @@
      "group": "有机",
      "note": "10min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=2"
+    }
+   ],
+   "min": 90,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 47,
+   "date": "2026-12-01",
+   "wd": "周二",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P06",
+     "type": "video",
+     "title": "【药理】第五章:传出神经系统概论～",
+     "dur": "3:43",
+     "sec": 223,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "3min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=6"
     },
     {
-     "sub": "org",
-     "key": "XMORG-P03",
+     "sub": "pharm",
+     "key": "YXC-P07",
      "type": "video",
-     "title": "【有机】烯烃（上）",
-     "dur": "10:05",
-     "sec": 605,
-     "bvid": "BV1ui421U7RW",
+     "title": "【药理】第六章:M受体激动药～毛果云香碱",
+     "dur": "4:21",
+     "sec": 261,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "有机",
-     "note": "10min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=3"
+     "group": "药理小章",
+     "note": "4min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=7"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P08",
+     "type": "video",
+     "title": "【药理】第七章①:易逆性抗胆碱酯酶药～新斯的明",
+     "dur": "8:45",
+     "sec": 525,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "8min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=8"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P09-上半",
+     "type": "video",
+     "title": "【分析/色谱】核磁共振波谱法",
+     "dur": "29:37",
+     "sec": 1777,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "核磁共振波谱法",
+     "note": "手册对应章节 · 核磁共振波谱法（上半，29:37）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=9"
     },
     {
      "sub": "org",
@@ -5344,6 +4558,71 @@
      "group": "有机",
      "note": "18min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=4"
+    }
+   ],
+   "min": 64,
+   "by": {
+    "pharm": 3,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 48,
+   "date": "2026-12-02",
+   "wd": "周三",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P09",
+     "type": "video",
+     "title": "【药理】第七章②:难逆性抗胆碱酯酶药～有机磷中毒",
+     "dur": "4:27",
+     "sec": 267,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "4min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=9"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P10",
+     "type": "video",
+     "title": "【药理】第八章:M受体阻断药～阿托品",
+     "dur": "6:32",
+     "sec": 392,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "6min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=10"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P11",
+     "type": "video",
+     "title": "【药理】第九章:肌松药～小琥、小筒",
+     "dur": "5:00",
+     "sec": 300,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "5min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=11"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P09-下半",
+     "type": "video",
+     "title": "【分析/色谱】核磁共振波谱法",
+     "dur": "29:37",
+     "sec": 1777,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "核磁共振波谱法",
+     "note": "手册对应章节 · 核磁共振波谱法（下半，29:37）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=9"
     },
     {
      "sub": "org",
@@ -5357,56 +4636,58 @@
      "group": "有机",
      "note": "16min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=5"
-    },
-    {
-     "sub": "org",
-     "key": "QZ有机20",
-     "type": "quiz",
-     "title": "【做题】有机 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「有机」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
     }
    ],
-   "min": 87,
+   "min": 62,
    "by": {
-    "org": 6
+    "pharm": 3,
+    "ana": 1,
+    "org": 1
    }
   },
   {
-   "day": 61,
-   "date": "2026-12-15",
-   "wd": "周二",
+   "day": 49,
+   "date": "2026-12-03",
+   "wd": "周四",
    "tasks": [
     {
-     "sub": "org",
-     "key": "XMORG-P06",
+     "sub": "pharm",
+     "key": "YXC-P12",
      "type": "video",
-     "title": "【有机】二烯烃",
-     "dur": "6:38",
-     "sec": 398,
-     "bvid": "BV1ui421U7RW",
+     "title": "【药理】第十章:肾上腺受体激动药～",
+     "dur": "22:16",
+     "sec": 1336,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "有机",
-     "note": "6min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=6"
+     "group": "药理小章",
+     "note": "22min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=12"
     },
     {
-     "sub": "org",
-     "key": "XMORG-P07",
+     "sub": "pharm",
+     "key": "YXC-P13",
      "type": "video",
-     "title": "【有机】脂环烃",
-     "dur": "10:05",
-     "sec": 605,
-     "bvid": "BV1ui421U7RW",
+     "title": "【药理】第十一章:肾上腺受体阻断药～",
+     "dur": "19:16",
+     "sec": 1156,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "有机",
-     "note": "10min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=7"
+     "group": "药理小章",
+     "note": "19min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=13"
+    },
+    {
+     "sub": "ana",
+     "key": "QMJYZ-P08",
+     "type": "video",
+     "title": "【分析/色谱】分子发光（荧光）",
+     "dur": "30:34",
+     "sec": 1834,
+     "bvid": "BV1aRj9zAEyb",
+     "level": "必看",
+     "group": "分子发光（荧光）",
+     "note": "手册对应章节 · 分子发光（荧光）",
+     "url": "https://www.bilibili.com/video/BV1aRj9zAEyb?p=8"
     },
     {
      "sub": "org",
@@ -5420,6 +4701,58 @@
      "group": "有机",
      "note": "9min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=8"
+    }
+   ],
+   "min": 82,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 50,
+   "date": "2026-12-04",
+   "wd": "周五",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P14",
+     "type": "video",
+     "title": "【药理】第十三章:全身麻醉药～",
+     "dur": "3:27",
+     "sec": 207,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "3min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=14"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P15",
+     "type": "video",
+     "title": "【药理】第十四章:局部麻醉药～",
+     "dur": "2:46",
+     "sec": 166,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "2min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=15"
+    },
+    {
+     "sub": "ana",
+     "key": "QMJYZ-P06",
+     "type": "video",
+     "title": "【分析/色谱】原子吸收光谱（44 考点重点）",
+     "dur": "33:39",
+     "sec": 2019,
+     "bvid": "BV1aRj9zAEyb",
+     "level": "必看",
+     "group": "原子吸收光谱（44 考点重点）",
+     "note": "手册对应章节 · 原子吸收光谱（44 考点重点）",
+     "url": "https://www.bilibili.com/video/BV1aRj9zAEyb?p=6"
     },
     {
      "sub": "org",
@@ -5433,19 +4766,71 @@
      "group": "有机",
      "note": "20min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=9"
+    }
+   ],
+   "min": 60,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 51,
+   "date": "2026-12-05",
+   "wd": "周六",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P16",
+     "type": "video",
+     "title": "【药理】第十五章:镇静催眠药～",
+     "dur": "4:27",
+     "sec": 267,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "4min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=16"
     },
     {
-     "sub": "org",
-     "key": "XMORG-P10",
+     "sub": "pharm",
+     "key": "YXC-P17",
      "type": "video",
-     "title": "【有机】非苯芳烃",
-     "dur": "8:02",
-     "sec": 482,
-     "bvid": "BV1ui421U7RW",
+     "title": "【药理】第十六章 抗癫痫药与抗惊厥药~",
+     "dur": "5:27",
+     "sec": 327,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "有机",
-     "note": "8min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=10"
+     "group": "药理小章",
+     "note": "5min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=17"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P18",
+     "type": "video",
+     "title": "【药理】第十七章:抗精神失常药～",
+     "dur": "9:24",
+     "sec": 564,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=18"
+    },
+    {
+     "sub": "ana",
+     "key": "FK-P02-上半",
+     "type": "video",
+     "title": "【分析/色谱】误差及数据处理",
+     "dur": "27:01",
+     "sec": 1621,
+     "bvid": "BV1XWN3e9EQj",
+     "level": "必看",
+     "group": "误差及数据处理",
+     "note": "手册对应章节 · 误差及数据处理（上半，27:01）",
+     "url": "https://www.bilibili.com/video/BV1XWN3e9EQj?p=2"
     },
     {
      "sub": "org",
@@ -5459,31 +4844,124 @@
      "group": "有机",
      "note": "17min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=11"
+    }
+   ],
+   "min": 64,
+   "by": {
+    "pharm": 3,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 52,
+   "date": "2026-12-06",
+   "wd": "周日",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P21",
+     "type": "video",
+     "title": "【药理】第二十章:解热镇痛抗炎药和抗痛风药～",
+     "dur": "10:30",
+     "sec": 630,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "10min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=21"
     },
     {
-     "sub": "org",
-     "key": "QZ有机20",
+     "sub": "pharm",
+     "key": "YXC-P23",
+     "type": "video",
+     "title": "【药理】第二十四章:利尿药",
+     "dur": "14:20",
+     "sec": 860,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "14min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=23"
+    },
+    {
+     "sub": "ana",
+     "key": "QZana20分析",
      "type": "quiz",
-     "title": "【做题】有机 · 20 题",
+     "title": "【做题】分析 · 错题回炉 · 20 题",
      "dur": "20:00",
      "sec": 1200,
      "bvid": "",
      "level": "做题",
      "group": "刷题站",
-     "note": "349 站「有机」；手机上也可做，勾掉即记完成",
+     "note": "349 站「分析 · 错题回炉」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
+    },
+    {
+     "sub": "org",
+     "key": "QZorg20有机",
+     "type": "quiz",
+     "title": "【做题】有机 · 反应式与鉴别 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「有机 · 反应式与鉴别」；勾掉即记完成",
      "url": "http://127.0.0.1:8790/"
     }
    ],
-   "min": 93,
+   "min": 64,
    "by": {
-    "org": 7
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
-   "day": 62,
-   "date": "2026-12-16",
-   "wd": "周三",
+   "day": 53,
+   "date": "2026-12-07",
+   "wd": "周一",
    "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P25",
+     "type": "video",
+     "title": "【药理】第二十七章:抗心绞痛药",
+     "dur": "12:38",
+     "sec": 758,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "12min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=25"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P26",
+     "type": "video",
+     "title": "【药理】第二十八章:抗动脉粥样硬化药",
+     "dur": "11:19",
+     "sec": 679,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "11min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=26"
+    },
+    {
+     "sub": "ana",
+     "key": "FK-P02-下半",
+     "type": "video",
+     "title": "【分析/色谱】误差及数据处理",
+     "dur": "27:01",
+     "sec": 1621,
+     "bvid": "BV1XWN3e9EQj",
+     "level": "必看",
+     "group": "误差及数据处理",
+     "note": "手册对应章节 · 误差及数据处理（下半，27:01）",
+     "url": "https://www.bilibili.com/video/BV1XWN3e9EQj?p=2"
+    },
     {
      "sub": "org",
      "key": "XMORG-P12",
@@ -5496,6 +4974,58 @@
      "group": "有机",
      "note": "10min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=12"
+    }
+   ],
+   "min": 61,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 54,
+   "date": "2026-12-08",
+   "wd": "周二",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P30",
+     "type": "video",
+     "title": "【药理】第32章:作用于消化系统的药物～",
+     "dur": "17:54",
+     "sec": 1074,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "17min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=30"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P31",
+     "type": "video",
+     "title": "【药理】第30章:影响自体活性物质的药物～",
+     "dur": "5:54",
+     "sec": 354,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "5min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=31"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P05-上半",
+     "type": "video",
+     "title": "【分析/色谱】色谱分析法基本理论",
+     "dur": "34:38",
+     "sec": 2078,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "色谱分析法基本理论",
+     "note": "手册对应章节 · 色谱分析法基本理论（上半，34:38）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=5"
     },
     {
      "sub": "org",
@@ -5509,6 +5039,58 @@
      "group": "有机",
      "note": "18min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=13"
+    }
+   ],
+   "min": 76,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 55,
+   "date": "2026-12-09",
+   "wd": "周三",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P32",
+     "type": "video",
+     "title": "【药理】第33章:子宫平滑肌兴奋药和抑制药～",
+     "dur": "5:56",
+     "sec": 356,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "5min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=32"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P33",
+     "type": "video",
+     "title": "【药理】第34章:性激素类药及避孕药～",
+     "dur": "9:08",
+     "sec": 548,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=33"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P05-下半",
+     "type": "video",
+     "title": "【分析/色谱】色谱分析法基本理论",
+     "dur": "34:38",
+     "sec": 2078,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "色谱分析法基本理论",
+     "note": "手册对应章节 · 色谱分析法基本理论（下半，34:38）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=5"
     },
     {
      "sub": "org",
@@ -5522,19 +5104,58 @@
      "group": "有机",
      "note": "14min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=14"
+    }
+   ],
+   "min": 63,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 56,
+   "date": "2026-12-10",
+   "wd": "周四",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P35",
+     "type": "video",
+     "title": "【药理】第36章:甲状腺激素及抗甲状腺素药～",
+     "dur": "9:55",
+     "sec": 595,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=35"
     },
     {
-     "sub": "org",
-     "key": "XMORG-P15",
+     "sub": "pharm",
+     "key": "YXC-P36",
      "type": "video",
-     "title": "【有机】酚、醚、硫醇",
-     "dur": "11:32",
-     "sec": 692,
-     "bvid": "BV1ui421U7RW",
+     "title": "【药理】第37章:治疗糖尿病的药物～",
+     "dur": "25:17",
+     "sec": 1517,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "有机",
-     "note": "11min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=15"
+     "group": "药理小章",
+     "note": "25min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=36"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P06-上半",
+     "type": "video",
+     "title": "【分析/色谱】经典液相色谱（平面色谱）",
+     "dur": "37:56",
+     "sec": 2276,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "经典液相色谱（平面色谱）",
+     "note": "手册对应章节 · 经典液相色谱（平面色谱）（上半，37:56）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=6"
     },
     {
      "sub": "org",
@@ -5548,31 +5169,59 @@
      "group": "有机",
      "note": "12min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=16"
-    },
-    {
-     "sub": "org",
-     "key": "QZ有机20",
-     "type": "quiz",
-     "title": "【做题】有机 · 20 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「有机」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
     }
    ],
-   "min": 86,
+   "min": 85,
    "by": {
-    "org": 6
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
-   "day": 63,
-   "date": "2026-12-17",
-   "wd": "周四",
+   "day": 57,
+   "date": "2026-12-11",
+   "wd": "周五",
    "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P37",
+     "type": "video",
+     "title": "【药理】第38章:抗骨质疏松药～",
+     "dur": "9:01",
+     "sec": 541,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=37"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P38",
+     "type": "video",
+     "title": "【药理】第39章 抗菌药物概论~",
+     "dur": "9:34",
+     "sec": 574,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=38"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P06-下半",
+     "type": "video",
+     "title": "【分析/色谱】经典液相色谱（平面色谱）",
+     "dur": "37:56",
+     "sec": 2276,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "经典液相色谱（平面色谱）",
+     "note": "手册对应章节 · 经典液相色谱（平面色谱）（下半，37:56）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=6"
+    },
     {
      "sub": "org",
      "key": "XMORG-P17",
@@ -5585,19 +5234,58 @@
      "group": "有机",
      "note": "8min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=17"
+    }
+   ],
+   "min": 65,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 58,
+   "date": "2026-12-12",
+   "wd": "周六",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P39",
+     "type": "video",
+     "title": "【药理】第40章 β-内酰胺类抗生素~",
+     "dur": "14:06",
+     "sec": 846,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "14min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=39"
     },
     {
-     "sub": "org",
-     "key": "XMORG-P18",
+     "sub": "pharm",
+     "key": "YXC-P40",
      "type": "video",
-     "title": "【有机】羧酸、酰胺",
-     "dur": "7:40",
-     "sec": 460,
-     "bvid": "BV1ui421U7RW",
+     "title": "【药理】第41章上 大环内酯类抗生素~",
+     "dur": "7:15",
+     "sec": 435,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "有机",
+     "group": "药理小章",
      "note": "7min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=18"
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=40"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P07-上半",
+     "type": "video",
+     "title": "【分析/色谱】气相色谱法",
+     "dur": "27:26",
+     "sec": 1646,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "气相色谱法",
+     "note": "手册对应章节 · 气相色谱法（上半，27:26）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=7"
     },
     {
      "sub": "org",
@@ -5611,6 +5299,123 @@
      "group": "有机",
      "note": "12min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=19"
+    }
+   ],
+   "min": 61,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 59,
+   "date": "2026-12-13",
+   "wd": "周日",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P41",
+     "type": "video",
+     "title": "【药理】第41章下 林可霉素及多肽类抗生素~",
+     "dur": "8:54",
+     "sec": 534,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "8min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=41"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P42",
+     "type": "video",
+     "title": "【药理】第42章 氨基糖苷类抗生素",
+     "dur": "14:35",
+     "sec": 875,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "14min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=42"
+    },
+    {
+     "sub": "ana",
+     "key": "QZana20分析",
+     "type": "quiz",
+     "title": "【做题】分析 · 错题回炉 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「分析 · 错题回炉」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
+    },
+    {
+     "sub": "org",
+     "key": "QZorg20有机",
+     "type": "quiz",
+     "title": "【做题】有机 · 反应式与鉴别 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「有机 · 反应式与鉴别」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
+    }
+   ],
+   "min": 63,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 60,
+   "date": "2026-12-14",
+   "wd": "周一",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P43",
+     "type": "video",
+     "title": "【药理】第43章 四环素类与氯霉素类",
+     "dur": "12:43",
+     "sec": 763,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "12min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=43"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P44",
+     "type": "video",
+     "title": "【药理】第44章上 喹诺酮类抗菌药",
+     "dur": "13:43",
+     "sec": 823,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "13min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=44"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P07-下半",
+     "type": "video",
+     "title": "【分析/色谱】气相色谱法",
+     "dur": "27:26",
+     "sec": 1646,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "气相色谱法",
+     "note": "手册对应章节 · 气相色谱法（下半，27:26）",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=7"
     },
     {
      "sub": "org",
@@ -5624,6 +5429,45 @@
      "group": "有机",
      "note": "18min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=20"
+    }
+   ],
+   "min": 72,
+   "by": {
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 61,
+   "date": "2026-12-15",
+   "wd": "周二",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P45",
+     "type": "video",
+     "title": "【药理】第44章下 磺胺类及其他人工合成抗菌药",
+     "dur": "9:20",
+     "sec": 560,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=45"
+    },
+    {
+     "sub": "ana",
+     "key": "XMC9-P08",
+     "type": "video",
+     "title": "【分析/色谱】高效液相色谱法",
+     "dur": "42:55",
+     "sec": 2575,
+     "bvid": "BV1s6pQ6jEKQ",
+     "level": "必看",
+     "group": "高效液相色谱法",
+     "note": "手册对应章节 · 高效液相色谱法",
+     "url": "https://www.bilibili.com/video/BV1s6pQ6jEKQ?p=8"
     },
     {
      "sub": "org",
@@ -5637,6 +5481,45 @@
      "group": "有机",
      "note": "11min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=21"
+    }
+   ],
+   "min": 63,
+   "by": {
+    "pharm": 1,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 62,
+   "date": "2026-12-16",
+   "wd": "周三",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P46",
+     "type": "video",
+     "title": "【药理】第45章_抗病毒药",
+     "dur": "13:57",
+     "sec": 837,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "13min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=46"
+    },
+    {
+     "sub": "ana",
+     "key": "JZL-P01",
+     "type": "video",
+     "title": "【分析/色谱】色谱概论串讲（江中丽姐）",
+     "dur": "27:44",
+     "sec": 1664,
+     "bvid": "BV1JL411M7w9",
+     "level": "必看",
+     "group": "色谱概论串讲（江中丽姐）",
+     "note": "手册对应章节 · 色谱概论串讲（江中丽姐）",
+     "url": "https://www.bilibili.com/video/BV1JL411M7w9?p=1"
     },
     {
      "sub": "org",
@@ -5650,24 +5533,78 @@
      "group": "有机",
      "note": "20min · 手册同章",
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=22"
+    }
+   ],
+   "min": 62,
+   "by": {
+    "pharm": 1,
+    "ana": 1,
+    "org": 1
+   }
+  },
+  {
+   "day": 63,
+   "date": "2026-12-17",
+   "wd": "周四",
+   "tasks": [
+    {
+     "sub": "pharm",
+     "key": "YXC-P47",
+     "type": "video",
+     "title": "【药理】第46章_抗真菌药",
+     "dur": "9:56",
+     "sec": 596,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "9min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=47"
     },
     {
-     "sub": "org",
-     "key": "QZ有机20",
+     "sub": "pharm",
+     "key": "YXC-P48",
+     "type": "video",
+     "title": "【药理】第47章_抗结核药及抗麻风病药",
+     "dur": "12:36",
+     "sec": 756,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "药理小章",
+     "note": "12min · 手册同章",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=48"
+    },
+    {
+     "sub": "ana",
+     "key": "QZana20分析",
      "type": "quiz",
-     "title": "【做题】有机 · 20 题",
+     "title": "【做题】分析 · 错题回炉 · 20 题",
      "dur": "20:00",
      "sec": 1200,
      "bvid": "",
      "level": "做题",
      "group": "刷题站",
-     "note": "349 站「有机」；手机上也可做，勾掉即记完成",
+     "note": "349 站「分析 · 错题回炉」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
+    },
+    {
+     "sub": "org",
+     "key": "QZorg20有机",
+     "type": "quiz",
+     "title": "【做题】有机 · 反应式与鉴别 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「有机 · 反应式与鉴别」；勾掉即记完成",
      "url": "http://127.0.0.1:8790/"
     }
    ],
-   "min": 100,
+   "min": 62,
    "by": {
-    "org": 7
+    "pharm": 2,
+    "ana": 1,
+    "org": 1
    }
   },
   {
@@ -5676,17 +5613,30 @@
    "wd": "周五",
    "tasks": [
     {
-     "sub": "org",
-     "key": "XMORG-P23",
-     "type": "video",
-     "title": "【有机】杂环化合物",
-     "dur": "16:55",
-     "sec": 1015,
-     "bvid": "BV1ui421U7RW",
-     "level": "必看",
-     "group": "有机",
-     "note": "17min · 杂环（手册第12章）",
-     "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=23"
+     "sub": "pharm",
+     "key": "QZpharm20药理",
+     "type": "quiz",
+     "title": "【做题】药理 · 错题复盘 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「药理 · 错题复盘」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
+    },
+    {
+     "sub": "ana",
+     "key": "QZana20分析",
+     "type": "quiz",
+     "title": "【做题】分析 · 错题回炉 · 20 题",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「分析 · 错题回炉」；勾掉即记完成",
+     "url": "http://127.0.0.1:8790/"
     },
     {
      "sub": "org",
@@ -5698,26 +5648,15 @@
      "bvid": "BV1WH4y1K7iT",
      "level": "必看",
      "group": "有机鉴别",
-     "note": "59min · 手册每章都有鉴别题，考前一天过一遍规则",
+     "note": "60min · 手册每章都有鉴别题，考前一天过一遍规则",
      "url": "https://www.bilibili.com/video/BV1WH4y1K7iT?p=1"
-    },
-    {
-     "sub": "org",
-     "key": "QZ有机15",
-     "type": "quiz",
-     "title": "【做题】有机鉴别 · 15 题",
-     "dur": "20:00",
-     "sec": 1200,
-     "bvid": "",
-     "level": "做题",
-     "group": "刷题站",
-     "note": "349 站「有机鉴别」；手机上也可做，勾掉即记完成",
-     "url": "http://127.0.0.1:8790/"
     }
    ],
-   "min": 96,
+   "min": 99,
    "by": {
-    "org": 3
+    "pharm": 1,
+    "ana": 1,
+    "org": 1
    }
   }
  ],
@@ -5735,27 +5674,15 @@
    "desc": "（历史）有机二轮 + 学习通错题回炉"
   },
   {
-   "name": "阶段三 · 考点驱动换课",
-   "range": "11/21 – 11/28",
+   "name": "阶段三 · 三科并进冲刺",
+   "range": "11/21 – 12/18",
    "color": "#722ed1",
-   "desc": "药理 8 大章精讲（忠保研道挑讲）+ 医小晨带背对照；校内习题册纸面同步"
-  },
-  {
-   "name": "阶段四 · 药理小章 + 分析",
-   "range": "11/29 – 12/09",
-   "color": "#13c2c2",
-   "desc": "药理 30 小章带背 6 天；分析 5 天（仪分 9h + AAS/荧光/误差）"
-  },
-  {
-   "name": "阶段五 · 色谱 + 有机收尾",
-   "range": "12/10 – 12/18",
-   "color": "#52c41a",
-   "desc": "色谱 4 天（含平面色谱）+ 有机 5 天 + 考前一天鉴别专项"
+   "desc": "每天药理 + 分析/色谱 + 有机各一项：药理 8 大章精讲先行、39 小章带背跟进；分析色谱 22 单元（AAS 单独一天）；有机 23 集 + 考前鉴别专项"
   }
  ],
  "counts": {
-  "org": 134,
-  "pharm": 160,
-  "ana": 93
+  "org": 133,
+  "pharm": 147,
+  "ana": 98
  }
 }
