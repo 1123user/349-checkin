@@ -8,7 +8,7 @@
     "name": "药理学",
     "short": "药理",
     "color": "#ffa940",
-    "weight": "手册 1222 题 / 240 个问答考点。8 大章看忠保研道精讲，30 小章看医小晨带背"
+    "weight": "手册 1222 题 / 240 个问答考点。医小晨带背 43 集打底（覆盖校内册子 99.7% 章）+ 忠保研道 4 章机制 + 你终硕补 6 短章"
    },
    "ana": {
     "name": "分析化学",
@@ -33,7 +33,8 @@
   "audit": "。2026-10-31 第二批（按用户拍板）：鉴别题专项 45min 替换 11/02 的 Z1 视频（内容页 jianbie.html，含 10 道真题原型）；阶段三登记 P2 素材 BV1LY411B7bn / BV1XT411972d；11/06 核酸降为选看。2026-10-31 第三批：新增有机命名专项 NM1（BV15G4y1b7Ak 73:27）落 11/06 补盲日，口径对齐参考书目《有机化学》陆涛·人卫第9版（2017 命名原则）；备选 BV18m42137WM。",
   "extended": "2026-11-01 续排至 2026-12-18",
   "nr_plan": "2026-11-05 重排：人名反应逐反应精讲 17 集（11/05–11/21）改按 2027 大纲章序推进（六F-C → 八酚重排/取代 → 九醛酮缩合 → 十一 → 十二缩合 → 十三胺），配套 App「人名反应专项」同序挑题；全览 11/04、口诀 11/09 保留",
-  "plan_ver": "2026-11-21-rxnspecial"
+  "plan_ver": "2026-11-22-yxc-main",
+  "pharm_yxc_main": "2026-11-22 按校内《学习指导》核实后重排：医小晨 43 集（剔 肌松/全麻/局麻/抗骨质疏松/抗寄生虫/抗肿瘤/免疫 8 集）≈8.3h；忠保研道只留 糖皮质激素/心衰/抗心律/抗高压 4 章（问答最密）≈2.2h@1.5×；你终硕补 胆碱激动/胆碱阻断/抗癫痫/抗精神/甲状腺/β内酰胺 6 短章 ≈1.1h；合计约 12.5h，每天约 28min。"
  },
  "days": [
   {
@@ -3845,32 +3846,6 @@
    "wd": "周六",
    "tasks": [
     {
-     "sub": "pharm",
-     "key": "ZBD-P75",
-     "type": "video",
-     "title": "【精讲】第35章 糖皮质激素",
-     "dur": "44:30",
-     "sec": 2670,
-     "bvid": "BV1bP4y1P76R",
-     "level": "必看",
-     "group": "第35章 糖皮质激素",
-     "note": "19 个问答考点 · 精讲（1.5× ≈ 29min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=75"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P34",
-     "type": "video",
-     "title": "【带背】第35章 糖皮质激素",
-     "dur": "11:31",
-     "sec": 691,
-     "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第35章 糖皮质激素",
-     "note": "19 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=34"
-    },
-    {
      "sub": "ana",
      "key": "XMC9-P01",
      "type": "video",
@@ -3897,9 +3872,8 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=1"
     }
    ],
-   "min": 87,
+   "min": 32,
    "by": {
-    "pharm": 2,
     "ana": 1,
     "org": 1
    }
@@ -3911,29 +3885,29 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P58",
+     "key": "YXC-P02",
      "type": "video",
-     "title": "【精讲】第26章 心衰",
-     "dur": "50:38",
-     "sec": 3038,
-     "bvid": "BV1bP4y1P76R",
+     "title": "【带背】第一章:绪论～",
+     "dur": "3:42",
+     "sec": 222,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "第26章 心衰",
-     "note": "14 个问答考点 · 精讲（1.5× ≈ 33min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=58"
+     "group": "医小晨带背",
+     "note": "医小晨 3:42 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=2"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P27",
+     "key": "YXC-P03",
      "type": "video",
-     "title": "【带背】第26章 心衰",
-     "dur": "15:55",
-     "sec": 955,
+     "title": "【带背】第三章:药效学",
+     "dur": "21:15",
+     "sec": 1275,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第26章 心衰",
-     "note": "14 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=27"
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 21:15 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=3"
     },
     {
      "sub": "ana",
@@ -3962,7 +3936,7 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=6"
     }
    ],
-   "min": 93,
+   "min": 52,
    "by": {
     "pharm": 2,
     "ana": 1,
@@ -3976,29 +3950,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P46",
+     "key": "YXC-P04",
      "type": "video",
-     "title": "【精讲】第22章 抗心律失常",
-     "dur": "54:15",
-     "sec": 3255,
-     "bvid": "BV1bP4y1P76R",
-     "level": "必看",
-     "group": "第22章 抗心律失常",
-     "note": "12 个问答考点 · 精讲（1.5× ≈ 36min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=46"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P22",
-     "type": "video",
-     "title": "【带背】第22章 抗心律失常",
-     "dur": "15:20",
-     "sec": 920,
+     "title": "【带背】第二章:药代学",
+     "dur": "30:27",
+     "sec": 1827,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第22章 抗心律失常",
-     "note": "12 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=22"
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 30:27 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=4"
     },
     {
      "sub": "ana",
@@ -4027,9 +3988,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=7"
     }
    ],
-   "min": 105,
+   "min": 66,
    "by": {
-    "pharm": 2,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -4041,29 +4002,55 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P54",
+     "key": "YXC-P05",
      "type": "video",
-     "title": "【精讲】第25章 抗高血压",
-     "dur": "51:05",
-     "sec": 3065,
-     "bvid": "BV1bP4y1P76R",
+     "title": "【带背】第四章:影响药物吸收的因素～",
+     "dur": "4:06",
+     "sec": 246,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "第25章 抗高血压",
-     "note": "12 个问答考点 · 精讲（1.5× ≈ 34min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=54"
+     "group": "医小晨带背",
+     "note": "医小晨 4:06 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=5"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P24",
+     "key": "YXC-P06",
      "type": "video",
-     "title": "【带背】第25章 抗高血压",
-     "dur": "23:08",
-     "sec": 1388,
+     "title": "【带背】第五章:传出神经系统概论～",
+     "dur": "3:43",
+     "sec": 223,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第25章 抗高血压",
-     "note": "12 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=24"
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 3:43 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=6"
+    },
+    {
+     "sub": "pharm",
+     "key": "ZZS-P06",
+     "type": "video",
+     "title": "【补薄】胆碱受体激动药",
+     "dur": "13:05",
+     "sec": 785,
+     "bvid": "BV17uaRzmE4p",
+     "level": "选看",
+     "group": "薄章补丁",
+     "note": "你终硕 13:05 · 医小晨这章只有几分钟，补一遍考法",
+     "url": "https://www.bilibili.com/video/BV17uaRzmE4p?p=6"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P07",
+     "type": "video",
+     "title": "【带背】第六章:M受体激动药～毛果云香碱",
+     "dur": "4:21",
+     "sec": 261,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 4:21 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=7"
     },
     {
      "sub": "ana",
@@ -4092,9 +4079,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=10"
     }
    ],
-   "min": 107,
+   "min": 59,
    "by": {
-    "pharm": 2,
+    "pharm": 4,
     "ana": 1,
     "org": 1
    }
@@ -4106,29 +4093,55 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P70",
+     "key": "YXC-P08",
      "type": "video",
-     "title": "【精讲】第31章 呼吸系统",
-     "dur": "42:44",
-     "sec": 2564,
-     "bvid": "BV1bP4y1P76R",
+     "title": "【带背】第七章①:易逆性抗胆碱酯酶药～新斯的明",
+     "dur": "8:45",
+     "sec": 525,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "第31章 呼吸系统",
-     "note": "11 个问答考点 · 精讲（1.5× ≈ 28min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=70"
+     "group": "医小晨带背",
+     "note": "医小晨 8:45 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=8"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P29",
+     "key": "YXC-P09",
      "type": "video",
-     "title": "【带背】第31章 呼吸系统",
-     "dur": "15:46",
-     "sec": 946,
+     "title": "【带背】第七章②:难逆性抗胆碱酯酶药～有机磷中毒",
+     "dur": "4:27",
+     "sec": 267,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第31章 呼吸系统",
-     "note": "11 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=29"
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 4:27 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=9"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P10",
+     "type": "video",
+     "title": "【带背】第八章:M受体阻断药～阿托品",
+     "dur": "6:32",
+     "sec": 392,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 6:32 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=10"
+    },
+    {
+     "sub": "pharm",
+     "key": "ZZS-P08",
+     "type": "video",
+     "title": "【补薄】胆碱受体阻断药(M)",
+     "dur": "6:34",
+     "sec": 394,
+     "bvid": "BV17uaRzmE4p",
+     "level": "选看",
+     "group": "薄章补丁",
+     "note": "你终硕 6:34 · 医小晨这章只有几分钟，补一遍考法",
+     "url": "https://www.bilibili.com/video/BV17uaRzmE4p?p=8"
     },
     {
      "sub": "ana",
@@ -4157,9 +4170,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=15"
     }
    ],
-   "min": 80,
+   "min": 49,
    "by": {
-    "pharm": 2,
+    "pharm": 4,
     "ana": 1,
     "org": 1
    }
@@ -4171,29 +4184,29 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P38",
+     "key": "YXC-P12",
      "type": "video",
-     "title": "【精讲】第19章 镇痛药",
-     "dur": "49:10",
-     "sec": 2950,
-     "bvid": "BV1bP4y1P76R",
+     "title": "【带背】第十章:肾上腺受体激动药～",
+     "dur": "22:16",
+     "sec": 1336,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "第19章 镇痛药",
-     "note": "11 个问答考点 · 精讲（1.5× ≈ 32min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=38"
+     "group": "医小晨带背",
+     "note": "医小晨 22:16 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=12"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P20",
+     "key": "YXC-P13",
      "type": "video",
-     "title": "【带背】第19章 镇痛药",
-     "dur": "6:55",
-     "sec": 415,
+     "title": "【带背】第十一章:肾上腺受体阻断药～",
+     "dur": "19:16",
+     "sec": 1156,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第19章 镇痛药",
-     "note": "11 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=20"
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 19:16 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=13"
     },
     {
      "sub": "ana",
@@ -4222,7 +4235,7 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=18"
     }
    ],
-   "min": 88,
+   "min": 74,
    "by": {
     "pharm": 2,
     "ana": 1,
@@ -4236,29 +4249,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P65",
+     "key": "YXC-P16",
      "type": "video",
-     "title": "【精讲】第29章 血液系统",
-     "dur": "51:44",
-     "sec": 3104,
-     "bvid": "BV1bP4y1P76R",
+     "title": "【带背】第十五章:镇静催眠药～",
+     "dur": "4:27",
+     "sec": 267,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "第29章 血液系统",
-     "note": "10 个问答考点 · 精讲（1.5× ≈ 34min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=65"
+     "group": "医小晨带背",
+     "note": "医小晨 4:27 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=16"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P28",
+     "key": "YXC-P17",
      "type": "video",
-     "title": "【带背】第29章 血液系统",
-     "dur": "24:25",
-     "sec": 1465,
+     "title": "【带背】第十六章 抗癫痫药与抗惊厥药~",
+     "dur": "5:27",
+     "sec": 327,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第29章 血液系统",
-     "note": "10 个考点 · 带背对照，看完立刻回想",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=28"
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 5:27 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=17"
+    },
+    {
+     "sub": "pharm",
+     "key": "ZZS-P16",
+     "type": "video",
+     "title": "【补薄】抗癫痫药",
+     "dur": "14:44",
+     "sec": 884,
+     "bvid": "BV17uaRzmE4p",
+     "level": "选看",
+     "group": "薄章补丁",
+     "note": "你终硕 14:44 · 医小晨这章只有几分钟，补一遍考法",
+     "url": "https://www.bilibili.com/video/BV17uaRzmE4p?p=16"
     },
     {
      "sub": "ana",
@@ -4287,9 +4313,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=23"
     }
    ],
-   "min": 138,
+   "min": 87,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -4301,28 +4327,41 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "ZBD-P34",
+     "key": "YXC-P18",
      "type": "video",
-     "title": "【精讲】第17章 抗帕金森",
-     "dur": "54:22",
-     "sec": 3262,
-     "bvid": "BV1bP4y1P76R",
+     "title": "【带背】第十七章:抗精神失常药～",
+     "dur": "9:24",
+     "sec": 564,
+     "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "第17章 抗帕金森",
-     "note": "10 个问答考点 · 精讲（1.5× ≈ 36min）",
-     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=34"
+     "group": "医小晨带背",
+     "note": "医小晨 9:24 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=18"
+    },
+    {
+     "sub": "pharm",
+     "key": "ZZS-P18",
+     "type": "video",
+     "title": "【补薄】抗精神失常药",
+     "dur": "11:48",
+     "sec": 708,
+     "bvid": "BV17uaRzmE4p",
+     "level": "选看",
+     "group": "薄章补丁",
+     "note": "你终硕 11:48 · 医小晨这章只有几分钟，补一遍考法",
+     "url": "https://www.bilibili.com/video/BV17uaRzmE4p?p=18"
     },
     {
      "sub": "pharm",
      "key": "YXC-P19",
      "type": "video",
-     "title": "【带背】第17章 抗帕金森",
+     "title": "【带背】第十八章:抗帕金森药～",
      "dur": "9:24",
      "sec": 564,
      "bvid": "BV1LHH16GEL5",
-     "level": "速过",
-     "group": "第17章 抗帕金森",
-     "note": "10 个考点 · 带背对照，看完立刻回想",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 9:24 · 校内册子同章 · 看完做该章选择/判断",
      "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=19"
     },
     {
@@ -4352,9 +4391,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=3"
     }
    ],
-   "min": 119,
+   "min": 86,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -4366,29 +4405,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P02",
+     "key": "YXC-P20",
      "type": "video",
-     "title": "【药理】第一章:绪论～",
-     "dur": "3:42",
-     "sec": 222,
+     "title": "【带背】第十九章:中枢镇痛药～",
+     "dur": "6:55",
+     "sec": 415,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "3min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=2"
+     "group": "医小晨带背",
+     "note": "医小晨 6:55 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=20"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P03",
+     "key": "YXC-P21",
      "type": "video",
-     "title": "【药理】第三章:药效学",
-     "dur": "21:15",
-     "sec": 1275,
+     "title": "【带背】第二十章:解热镇痛抗炎药和抗痛风药～",
+     "dur": "10:30",
+     "sec": 630,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "21min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=3"
+     "group": "医小晨带背",
+     "note": "医小晨 10:30 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=21"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P22",
+     "type": "video",
+     "title": "【带背】第二十二章:抗心律失常药",
+     "dur": "15:20",
+     "sec": 920,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 15:20 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=22"
     },
     {
      "sub": "ana",
@@ -4417,9 +4469,9 @@
      "url": "https://www.bilibili.com/video/BV1pS4y1a7sx?p=1&t=0"
     }
    ],
-   "min": 64,
+   "min": 80,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -4431,29 +4483,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P04",
+     "key": "ZBD-P46",
      "type": "video",
-     "title": "【药理】第二章:药代学",
-     "dur": "30:27",
-     "sec": 1827,
-     "bvid": "BV1LHH16GEL5",
+     "title": "【机制】第22章 抗心律失常",
+     "dur": "54:15",
+     "sec": 3255,
+     "bvid": "BV1bP4y1P76R",
      "level": "必看",
-     "group": "药理小章",
-     "note": "30min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=4"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P05",
-     "type": "video",
-     "title": "【药理】第四章:影响药物吸收的因素～",
-     "dur": "4:06",
-     "sec": 246,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=5"
+     "group": "机制补丁",
+     "note": "忠保研道 54:15（1.5× ≈ 36min）· 只补机制与简答采分点，不记生理细节",
+     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=46"
     },
     {
      "sub": "ana",
@@ -4482,9 +4521,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=2"
     }
    ],
-   "min": 90,
+   "min": 110,
    "by": {
-    "pharm": 2,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -4496,42 +4535,29 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P06",
+     "key": "YXC-P23",
      "type": "video",
-     "title": "【药理】第五章:传出神经系统概论～",
-     "dur": "3:43",
-     "sec": 223,
+     "title": "【带背】第二十四章:利尿药",
+     "dur": "14:20",
+     "sec": 860,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "3min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=6"
+     "group": "医小晨带背",
+     "note": "医小晨 14:20 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=23"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P07",
+     "key": "YXC-P24",
      "type": "video",
-     "title": "【药理】第六章:M受体激动药～毛果云香碱",
-     "dur": "4:21",
-     "sec": 261,
+     "title": "【带背】第二十五章:抗高血压药",
+     "dur": "23:08",
+     "sec": 1388,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=7"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P08",
-     "type": "video",
-     "title": "【药理】第七章①:易逆性抗胆碱酯酶药～新斯的明",
-     "dur": "8:45",
-     "sec": 525,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "8min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=8"
+     "group": "医小晨带背",
+     "note": "医小晨 23:08 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=24"
     },
     {
      "sub": "ana",
@@ -4560,9 +4586,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=4"
     }
    ],
-   "min": 64,
+   "min": 85,
    "by": {
-    "pharm": 3,
+    "pharm": 2,
     "ana": 1,
     "org": 1
    }
@@ -4574,42 +4600,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P09",
+     "key": "ZBD-P54",
      "type": "video",
-     "title": "【药理】第七章②:难逆性抗胆碱酯酶药～有机磷中毒",
-     "dur": "4:27",
-     "sec": 267,
-     "bvid": "BV1LHH16GEL5",
+     "title": "【机制】第25章 抗高血压",
+     "dur": "51:05",
+     "sec": 3065,
+     "bvid": "BV1bP4y1P76R",
      "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=9"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P10",
-     "type": "video",
-     "title": "【药理】第八章:M受体阻断药～阿托品",
-     "dur": "6:32",
-     "sec": 392,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "6min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=10"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P11",
-     "type": "video",
-     "title": "【药理】第九章:肌松药～小琥、小筒",
-     "dur": "5:00",
-     "sec": 300,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=11"
+     "group": "机制补丁",
+     "note": "忠保研道 51:05（1.5× ≈ 34min）· 只补机制与简答采分点，不记生理细节",
+     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=54"
     },
     {
      "sub": "ana",
@@ -4638,9 +4638,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=5"
     }
    ],
-   "min": 62,
+   "min": 97,
    "by": {
-    "pharm": 3,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -4652,29 +4652,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P12",
+     "key": "YXC-P25",
      "type": "video",
-     "title": "【药理】第十章:肾上腺受体激动药～",
-     "dur": "22:16",
-     "sec": 1336,
+     "title": "【带背】第二十七章:抗心绞痛药",
+     "dur": "12:38",
+     "sec": 758,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "22min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=12"
+     "group": "医小晨带背",
+     "note": "医小晨 12:38 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=25"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P13",
+     "key": "YXC-P26",
      "type": "video",
-     "title": "【药理】第十一章:肾上腺受体阻断药～",
-     "dur": "19:16",
-     "sec": 1156,
+     "title": "【带背】第二十八章:抗动脉粥样硬化药",
+     "dur": "11:19",
+     "sec": 679,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "19min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=13"
+     "group": "医小晨带背",
+     "note": "医小晨 11:19 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=26"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P27",
+     "type": "video",
+     "title": "【带背】第二十六章:治疗心力衰竭的药物",
+     "dur": "15:55",
+     "sec": 955,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 15:55 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=27"
     },
     {
      "sub": "ana",
@@ -4703,9 +4716,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=8"
     }
    ],
-   "min": 82,
+   "min": 80,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -4717,29 +4730,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P14",
+     "key": "ZBD-P58",
      "type": "video",
-     "title": "【药理】第十三章:全身麻醉药～",
-     "dur": "3:27",
-     "sec": 207,
-     "bvid": "BV1LHH16GEL5",
+     "title": "【机制】第26章 心衰",
+     "dur": "50:38",
+     "sec": 3038,
+     "bvid": "BV1bP4y1P76R",
      "level": "必看",
-     "group": "药理小章",
-     "note": "3min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=14"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P15",
-     "type": "video",
-     "title": "【药理】第十四章:局部麻醉药～",
-     "dur": "2:46",
-     "sec": 166,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "2min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=15"
+     "group": "机制补丁",
+     "note": "忠保研道 50:38（1.5× ≈ 34min）· 只补机制与简答采分点，不记生理细节",
+     "url": "https://www.bilibili.com/video/BV1bP4y1P76R?p=58"
     },
     {
      "sub": "ana",
@@ -4768,9 +4768,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=9"
     }
    ],
-   "min": 60,
+   "min": 105,
    "by": {
-    "pharm": 2,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -4782,42 +4782,29 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P16",
+     "key": "YXC-P28",
      "type": "video",
-     "title": "【药理】第十五章:镇静催眠药～",
-     "dur": "4:27",
-     "sec": 267,
+     "title": "【带背】第29章:作用血液及造血系统的药物～",
+     "dur": "24:25",
+     "sec": 1465,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "4min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=16"
+     "group": "医小晨带背",
+     "note": "医小晨 24:25 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=28"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P17",
+     "key": "YXC-P29",
      "type": "video",
-     "title": "【药理】第十六章 抗癫痫药与抗惊厥药~",
-     "dur": "5:27",
-     "sec": 327,
+     "title": "【带背】第31章:作用于呼吸系统的药物～",
+     "dur": "15:46",
+     "sec": 946,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=17"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P18",
-     "type": "video",
-     "title": "【药理】第十七章:抗精神失常药～",
-     "dur": "9:24",
-     "sec": 564,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=18"
+     "group": "医小晨带背",
+     "note": "医小晨 15:46 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=29"
     },
     {
      "sub": "ana",
@@ -4846,9 +4833,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=11"
     }
    ],
-   "min": 64,
+   "min": 85,
    "by": {
-    "pharm": 3,
+    "pharm": 2,
     "ana": 1,
     "org": 1
    }
@@ -4860,29 +4847,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P21",
+     "key": "YXC-P30",
      "type": "video",
-     "title": "【药理】第二十章:解热镇痛抗炎药和抗痛风药～",
-     "dur": "10:30",
-     "sec": 630,
+     "title": "【带背】第32章:作用于消化系统的药物～",
+     "dur": "17:54",
+     "sec": 1074,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "10min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=21"
+     "group": "医小晨带背",
+     "note": "医小晨 17:54 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=30"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P23",
+     "key": "YXC-P31",
      "type": "video",
-     "title": "【药理】第二十四章:利尿药",
-     "dur": "14:20",
-     "sec": 860,
+     "title": "【带背】第30章:影响自体活性物质的药物～",
+     "dur": "5:54",
+     "sec": 354,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "14min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=23"
+     "group": "医小晨带背",
+     "note": "医小晨 5:54 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=31"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P32",
+     "type": "video",
+     "title": "【带背】第33章:子宫平滑肌兴奋药和抑制药～",
+     "dur": "5:56",
+     "sec": 356,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 5:56 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=32"
     },
     {
      "sub": "ana",
@@ -4911,9 +4911,9 @@
      "url": "https://www.bilibili.com/video/BV1pS4y1a7sx?p=1&t=1620"
     }
    ],
-   "min": 64,
+   "min": 78,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -4925,29 +4925,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P25",
+     "key": "YXC-P33",
      "type": "video",
-     "title": "【药理】第二十七章:抗心绞痛药",
-     "dur": "12:38",
-     "sec": 758,
+     "title": "【带背】第34章:性激素类药及避孕药～",
+     "dur": "9:08",
+     "sec": 548,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "12min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=25"
+     "group": "医小晨带背",
+     "note": "医小晨 9:08 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=33"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P26",
+     "key": "YXC-P34",
      "type": "video",
-     "title": "【药理】第二十八章:抗动脉粥样硬化药",
-     "dur": "11:19",
-     "sec": 679,
+     "title": "【带背】第35章:肾上腺皮质激素类药物～",
+     "dur": "11:31",
+     "sec": 691,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "11min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=26"
+     "group": "医小晨带背",
+     "note": "医小晨 11:31 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=34"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P35",
+     "type": "video",
+     "title": "【带背】第36章:甲状腺激素及抗甲状腺素药～",
+     "dur": "9:55",
+     "sec": 595,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 9:55 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=35"
     },
     {
      "sub": "ana",
@@ -4976,9 +4989,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=12"
     }
    ],
-   "min": 61,
+   "min": 68,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -4990,29 +5003,29 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P30",
+     "key": "ZZS-P36",
      "type": "video",
-     "title": "【药理】第32章:作用于消化系统的药物～",
-     "dur": "17:54",
-     "sec": 1074,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "17min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=30"
+     "title": "【补薄】甲状腺药",
+     "dur": "12:47",
+     "sec": 767,
+     "bvid": "BV17uaRzmE4p",
+     "level": "选看",
+     "group": "薄章补丁",
+     "note": "你终硕 12:47 · 医小晨这章只有几分钟，补一遍考法",
+     "url": "https://www.bilibili.com/video/BV17uaRzmE4p?p=36"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P31",
+     "key": "YXC-P36",
      "type": "video",
-     "title": "【药理】第30章:影响自体活性物质的药物～",
-     "dur": "5:54",
-     "sec": 354,
+     "title": "【带背】第37章:治疗糖尿病的药物～",
+     "dur": "25:17",
+     "sec": 1517,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=31"
+     "group": "医小晨带背",
+     "note": "医小晨 25:17 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=36"
     },
     {
      "sub": "ana",
@@ -5041,7 +5054,7 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=13"
     }
    ],
-   "min": 76,
+   "min": 91,
    "by": {
     "pharm": 2,
     "ana": 1,
@@ -5055,29 +5068,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P32",
+     "key": "YXC-P38",
      "type": "video",
-     "title": "【药理】第33章:子宫平滑肌兴奋药和抑制药～",
-     "dur": "5:56",
-     "sec": 356,
+     "title": "【带背】第39章 抗菌药物概论~",
+     "dur": "9:34",
+     "sec": 574,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "5min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=32"
+     "group": "医小晨带背",
+     "note": "医小晨 9:34 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=38"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P33",
+     "key": "YXC-P39",
      "type": "video",
-     "title": "【药理】第34章:性激素类药及避孕药～",
-     "dur": "9:08",
-     "sec": 548,
+     "title": "【带背】第40章 β-内酰胺类抗生素~",
+     "dur": "14:06",
+     "sec": 846,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=33"
+     "group": "医小晨带背",
+     "note": "医小晨 14:06 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=39"
+    },
+    {
+     "sub": "pharm",
+     "key": "ZZS-P40",
+     "type": "video",
+     "title": "【补薄】β-内酰胺类",
+     "dur": "9:20",
+     "sec": 560,
+     "bvid": "BV17uaRzmE4p",
+     "level": "选看",
+     "group": "薄章补丁",
+     "note": "你终硕 9:20 · 医小晨这章只有几分钟，补一遍考法",
+     "url": "https://www.bilibili.com/video/BV17uaRzmE4p?p=40"
     },
     {
      "sub": "ana",
@@ -5106,9 +5132,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=14"
     }
    ],
-   "min": 63,
+   "min": 82,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -5120,29 +5146,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P35",
+     "key": "YXC-P40",
      "type": "video",
-     "title": "【药理】第36章:甲状腺激素及抗甲状腺素药～",
-     "dur": "9:55",
-     "sec": 595,
+     "title": "【带背】第41章上 大环内酯类抗生素~",
+     "dur": "7:15",
+     "sec": 435,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=35"
+     "group": "医小晨带背",
+     "note": "医小晨 7:15 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=40"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P36",
+     "key": "YXC-P41",
      "type": "video",
-     "title": "【药理】第37章:治疗糖尿病的药物～",
-     "dur": "25:17",
-     "sec": 1517,
+     "title": "【带背】第41章下 林可霉素及多肽类抗生素~",
+     "dur": "8:54",
+     "sec": 534,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "25min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=36"
+     "group": "医小晨带背",
+     "note": "医小晨 8:54 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=41"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P42",
+     "type": "video",
+     "title": "【带背】第42章 氨基糖苷类抗生素",
+     "dur": "14:35",
+     "sec": 875,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 14:35 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=42"
     },
     {
      "sub": "ana",
@@ -5171,9 +5210,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=16"
     }
    ],
-   "min": 85,
+   "min": 82,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -5185,29 +5224,29 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P37",
+     "key": "YXC-P43",
      "type": "video",
-     "title": "【药理】第38章:抗骨质疏松药～",
-     "dur": "9:01",
-     "sec": 541,
+     "title": "【带背】第43章 四环素类与氯霉素类",
+     "dur": "12:43",
+     "sec": 763,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=37"
+     "group": "医小晨带背",
+     "note": "医小晨 12:43 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=43"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P38",
+     "key": "YXC-P44",
      "type": "video",
-     "title": "【药理】第39章 抗菌药物概论~",
-     "dur": "9:34",
-     "sec": 574,
+     "title": "【带背】第44章上 喹诺酮类抗菌药",
+     "dur": "13:43",
+     "sec": 823,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=38"
+     "group": "医小晨带背",
+     "note": "医小晨 13:43 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=44"
     },
     {
      "sub": "ana",
@@ -5236,7 +5275,7 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=17"
     }
    ],
-   "min": 65,
+   "min": 73,
    "by": {
     "pharm": 2,
     "ana": 1,
@@ -5250,29 +5289,42 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P39",
+     "key": "YXC-P45",
      "type": "video",
-     "title": "【药理】第40章 β-内酰胺类抗生素~",
-     "dur": "14:06",
-     "sec": 846,
+     "title": "【带背】第44章下 磺胺类及其他人工合成抗菌药",
+     "dur": "9:20",
+     "sec": 560,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "14min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=39"
+     "group": "医小晨带背",
+     "note": "医小晨 9:20 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=45"
     },
     {
      "sub": "pharm",
-     "key": "YXC-P40",
+     "key": "YXC-P46",
      "type": "video",
-     "title": "【药理】第41章上 大环内酯类抗生素~",
-     "dur": "7:15",
-     "sec": 435,
+     "title": "【带背】第45章_抗病毒药",
+     "dur": "13:57",
+     "sec": 837,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "7min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=40"
+     "group": "医小晨带背",
+     "note": "医小晨 13:57 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=46"
+    },
+    {
+     "sub": "pharm",
+     "key": "YXC-P47",
+     "type": "video",
+     "title": "【带背】第46章_抗真菌药",
+     "dur": "9:56",
+     "sec": 596,
+     "bvid": "BV1LHH16GEL5",
+     "level": "必看",
+     "group": "医小晨带背",
+     "note": "医小晨 9:56 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=47"
     },
     {
      "sub": "ana",
@@ -5301,9 +5353,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=19"
     }
    ],
-   "min": 61,
+   "min": 74,
    "by": {
-    "pharm": 2,
+    "pharm": 3,
     "ana": 1,
     "org": 1
    }
@@ -5315,29 +5367,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P41",
+     "key": "YXC-P48",
      "type": "video",
-     "title": "【药理】第41章下 林可霉素及多肽类抗生素~",
-     "dur": "8:54",
-     "sec": 534,
+     "title": "【带背】第47章_抗结核药及抗麻风病药",
+     "dur": "12:36",
+     "sec": 756,
      "bvid": "BV1LHH16GEL5",
      "level": "必看",
-     "group": "药理小章",
-     "note": "8min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=41"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P42",
-     "type": "video",
-     "title": "【药理】第42章 氨基糖苷类抗生素",
-     "dur": "14:35",
-     "sec": 875,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "14min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=42"
+     "group": "医小晨带背",
+     "note": "医小晨 12:36 · 校内册子同章 · 看完做该章选择/判断",
+     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=48"
     },
     {
      "sub": "ana",
@@ -5366,9 +5405,9 @@
      "url": "https://www.bilibili.com/video/BV1pS4y1a7sx?p=1&t=3240"
     }
    ],
-   "min": 63,
+   "min": 60,
    "by": {
-    "pharm": 2,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -5380,29 +5419,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P43",
-     "type": "video",
-     "title": "【药理】第43章 四环素类与氯霉素类",
-     "dur": "12:43",
-     "sec": 763,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "12min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=43"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P44",
-     "type": "video",
-     "title": "【药理】第44章上 喹诺酮类抗菌药",
-     "dur": "13:43",
-     "sec": 823,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "13min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=44"
+     "key": "QZpharm-R1",
+     "type": "quiz",
+     "title": "【做题】药理 · 错题回炉 · 20 题（第 1 轮）",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「药理 · 错题回炉」；勾掉即记完成；错题按章节回看医小晨对应集",
+     "url": "http://127.0.0.1:8790/"
     },
     {
      "sub": "ana",
@@ -5431,9 +5457,9 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=20"
     }
    ],
-   "min": 72,
+   "min": 66,
    "by": {
-    "pharm": 2,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -5445,16 +5471,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P45",
-     "type": "video",
-     "title": "【药理】第44章下 磺胺类及其他人工合成抗菌药",
-     "dur": "9:20",
-     "sec": 560,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=45"
+     "key": "QZpharm-R2",
+     "type": "quiz",
+     "title": "【做题】药理 · 错题回炉 · 20 题（第 2 轮）",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「药理 · 错题回炉」；勾掉即记完成；错题按章节回看医小晨对应集",
+     "url": "http://127.0.0.1:8790/"
     },
     {
      "sub": "ana",
@@ -5483,7 +5509,7 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=21"
     }
    ],
-   "min": 63,
+   "min": 74,
    "by": {
     "pharm": 1,
     "ana": 1,
@@ -5497,16 +5523,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P46",
-     "type": "video",
-     "title": "【药理】第45章_抗病毒药",
-     "dur": "13:57",
-     "sec": 837,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "13min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=46"
+     "key": "QZpharm-R3",
+     "type": "quiz",
+     "title": "【做题】药理 · 错题回炉 · 20 题（第 3 轮）",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「药理 · 错题回炉」；勾掉即记完成；错题按章节回看医小晨对应集",
+     "url": "http://127.0.0.1:8790/"
     },
     {
      "sub": "ana",
@@ -5535,7 +5561,7 @@
      "url": "https://www.bilibili.com/video/BV1ui421U7RW?p=22"
     }
    ],
-   "min": 62,
+   "min": 68,
    "by": {
     "pharm": 1,
     "ana": 1,
@@ -5549,29 +5575,16 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "YXC-P47",
-     "type": "video",
-     "title": "【药理】第46章_抗真菌药",
-     "dur": "9:56",
-     "sec": 596,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "9min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=47"
-    },
-    {
-     "sub": "pharm",
-     "key": "YXC-P48",
-     "type": "video",
-     "title": "【药理】第47章_抗结核药及抗麻风病药",
-     "dur": "12:36",
-     "sec": 756,
-     "bvid": "BV1LHH16GEL5",
-     "level": "必看",
-     "group": "药理小章",
-     "note": "12min · 手册同章",
-     "url": "https://www.bilibili.com/video/BV1LHH16GEL5?p=48"
+     "key": "QZpharm-R4",
+     "type": "quiz",
+     "title": "【做题】药理 · 错题回炉 · 20 题（第 4 轮）",
+     "dur": "20:00",
+     "sec": 1200,
+     "bvid": "",
+     "level": "做题",
+     "group": "刷题站",
+     "note": "349 站「药理 · 错题回炉」；勾掉即记完成；错题按章节回看医小晨对应集",
+     "url": "http://127.0.0.1:8790/"
     },
     {
      "sub": "ana",
@@ -5600,9 +5613,9 @@
      "url": "http://127.0.0.1:8790/有机完成反应式.html"
     }
    ],
-   "min": 62,
+   "min": 60,
    "by": {
-    "pharm": 2,
+    "pharm": 1,
     "ana": 1,
     "org": 1
    }
@@ -5614,15 +5627,15 @@
    "tasks": [
     {
      "sub": "pharm",
-     "key": "QZpharm20药理",
+     "key": "QZpharm-R5",
      "type": "quiz",
-     "title": "【做题】药理 · 错题复盘 · 20 题",
+     "title": "【做题】药理 · 错题回炉 · 20 题（第 5 轮）",
      "dur": "20:00",
      "sec": 1200,
      "bvid": "",
      "level": "做题",
      "group": "刷题站",
-     "note": "349 站「药理 · 错题复盘」；勾掉即记完成",
+     "note": "349 站「药理 · 错题回炉」；勾掉即记完成；错题按章节回看医小晨对应集",
      "url": "http://127.0.0.1:8790/"
     },
     {
@@ -5652,7 +5665,7 @@
      "url": "https://www.bilibili.com/video/BV1WH4y1K7iT?p=1"
     }
    ],
-   "min": 99,
+   "min": 100,
    "by": {
     "pharm": 1,
     "ana": 1,
@@ -5682,7 +5695,7 @@
  ],
  "counts": {
   "org": 133,
-  "pharm": 147,
+  "pharm": 148,
   "ana": 98
  }
 }
