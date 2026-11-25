@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>关键词汇总 · 27 届（手机版）</title>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="xdf.css">
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<header class="ph"><span class="ph-b">政治 · 27 届资料</span><nav><a href="kw.html" class="on">关键词</a><a href="sz.html">时政线</a><a href="bs.html">核心包</a></nav></header>
+<div class="pwrap">
+<section class="hero home-hero">
+        <span class="eyebrow">27 届 · 重庆新东方考研政治组 · 中心自研</span>
+        <h1>关键词汇总 · 一个考点一句话</h1>
+        <p>把五本教材里「会考的那句话」抽出来，按板块和章节排好：<b>马原 128 · 毛中特 60 · 新思想 124 · 史纲 25+18 张专题表 · 思法 107</b>。术语在前、解释在后，点一下术语就能遮挡自测；史纲的周年 / 会议 / 土地政策 / 著作 / 战争 / 对比六张专题表照原文保留。</p>
+        <div class="acts">
+          <a class="btn primary" href="#kwBox">开始速查</a>
+          
+          <a class="btn ghost" href="bs.html">核心背诵包</a>
+        </div>
+        <div class="kpi" id="kwKpi"></div>
+      </section>
+
+      <div class="xdf-toolbar">
+        <div class="chips" id="bkChips"></div>
+        <div class="grow"></div>
+        <button class="xbtn" id="btnMask" title="把术语遮住，点一下揭示">🫥 遮挡自测</button>
+        <button class="xbtn" id="btnUndone" title="只看还没打勾的">只看未掌握</button>
+        <label class="xsearch"><span class="ic">🔍</span><input id="q" type="search" placeholder="搜术语或内容，如 主要矛盾 / 首要任务"></label>
+      </div>
+
+      <div class="xstat" id="kwStat"></div>
+      <div id="kwBox"></div>
+
+      <div class="note tip" style="margin-top:16px">
+        <b>怎么用：</b>先按板块刷一遍「术语 → 内容」，看到红色术语能自己说出后半句就打勾；打勾的条目再出现时点「只看未掌握」过滤。
+        遮挡自测时术语会盖住，点一下揭示——这是最省时间的自测，不用另找题。
+      </div>
+      <div class="note">
+        <b>来源与口径：</b>《27 届重庆新东方考研政治关键词汇总（中心自研）》37 页，正文文字层逐条转录；已去掉页内水印图层，原文 PDF 在右上角可下载。史纲六张专题表由 PDF 表格结构直接抽取，跨页续表按原顺序拼接。
+      </div>
+
+      <footer class="foot-note">
+        关键词汇总 · 27 届 · 共 <b id="footN">444</b> 条 ·
+         ·
+        <a href="bs.html">核心背诵包</a> ·
+        <a href="sz.html">时政线</a>
+      </footer>
+</div>
+<script src="data/xdf_kw.js"></script>
+<script>
+(function(){
+  var D=(window.XDF_KW||{}).data||[];
+  var STORE='xdf.kw.v1';
+  var maskKey='xdf.kw.mask';
+  var st={bk:'all',q:'',mask:false,undone:false,marks:{}};
+  try{st.marks=JSON.parse(localStorage.getItem(STORE)||'{}')||{};}catch(e){st.marks={};}
+  try{st.mask=localStorage.getItem(maskKey)==='1';}catch(e){}
+
+  function $(s){return document.querySelector(s);}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function rich(s){
+    return esc(s).replace(/【([^】]{1,16})】/g,'<em style="font-style:normal;color:var(--org);font-weight:700">【$1】</em>');
+  }
+  function key(bk,ch,n){return bk+'|'+ch+'|'+n;}
+  function total(){
+    var n=0; D.forEach(function(b){b.chapters.forEach(function(c){n+=(c.items||[]).length;});});
+    return n;
+  }
+
+  function chapterCount(b){return (b.chapters||[]).length;}
+  function matched(bk,ch,it,q){
+    if(!q) return true;
+    var s=(bk+' '+ch+' '+((it&&it.k)||'')+' '+((it&&it.t)||'')).toLowerCase();
+    return s.indexOf(q)>=0;
+  }
+
+  function renderChips(){
+    var all=total(),html='<button class="chip'+(st.bk==='all'?' on':'')+'" data-bk="all">全部<span class="n">'+all+'</span></button>';
+    D.forEach(function(b){
+      var n=0;b.chapters.forEach(function(c){n+=(c.items||[]).length;});
+      html+='<button class="chip'+(st.bk===b.bk?' on':'')+'" data-bk="'+esc(b.bk)+'">'+esc(b.bk)+'<span class="n">'+n+'</span></button>';
+    });
+    $('#bkChips').innerHTML=html;
+    Array.prototype.forEach.call(document.querySelectorAll('#bkChips .chip'),function(el){
+      el.onclick=function(){st.bk=el.getAttribute('data-bk');render();};
+    });
+  }
+
+  function itemHTML(bk,ch,it,idx){
+    var kk=key(bk,ch,it.n),done=!!st.marks[kk];
+    var k=it.k?'<b class="kw-k" data-r="1">'+esc(it.k)+'</b>':'';
+    return '<div class="kw-item'+(done?' done':'')+'" data-k="'+esc(kk)+'">'+
+      '<span class="kw-num">'+it.n+'</span>'+
+      '<div class="kw-body">'+k+'<span class="kw-t" data-r="1">'+rich(it.t)+'</span></div>'+
+      '<button class="kw-mark" title="标记已掌握">'+(done?'✓':'')+'</button></div>';
+  }
+
+  function tableHTML(t,idx){
+    var h='<div class="xtable"><table><thead><tr>';
+    t.head.forEach(function(c){h+='<th>'+rich(c)+'</th>';});
+    h+='</tr></thead><tbody>';
+    t.rows.forEach(function(r){
+      h+='<tr>';
+      r.forEach(function(c){h+='<td>'+rich(c)+'</td>';});
+      h+='</tr>';
+    });
+    h+='</tbody></table></div>';
+    if(idx>0) h='<div class="cap">↳ 续表（PDF 跨页）</div>'+h;
+    return h;
+  }
+
+  function render(){
+    var q=(st.q||'').trim().toLowerCase();
+    var box=$('#kwBox'),html='',shown=0,chShown=0;
+    D.forEach(function(b){
+      if(st.bk!=='all'&&st.bk!==b.bk) return;
+      var bhtml='';
+      b.chapters.forEach(function(c){
+        var list=(c.items||[]).filter(function(it){
+          if(st.undone&&st.marks[key(b.bk,c.t,it.n)]) return false;
+          return matched(b.bk,c.t,it,q);
+        });
+        var tb=(c.tables||[]);
+        if(q&&!list.length&&!tb.some(function(t){
+          return t.rows.some(function(r){return r.join(' ').toLowerCase().indexOf(q)>=0;})||t.head.join(' ').toLowerCase().indexOf(q)>=0;
+        })) return;
+        if(!q&&!list.length&&!tb.length) return;
+        chShown++;
+        var open=!!q||(st.bk!=='all'&&chShown<=2)||chShown===1;
+        bhtml+='<details class="xch"'+(open?' open':'')+'>'+
+          '<summary>'+esc(c.t)+'<span class="cnt">'+(list.length||0)+(tb.length?' +'+tb.length+'表':'')+'</span></summary>'+
+          '<div class="xch-body">';
+        tb.forEach(function(t,i){bhtml+=tableHTML(t,i);});
+        list.forEach(function(it){shown++;bhtml+=itemHTML(b.bk,c.t,it);});
+        bhtml+='</div></details>';
+      });
+      if(bhtml){html+='<div class="sz-part">'+esc(b.bk)+'</div>'+bhtml;}
+    });
+    if(!html) html='<div class="xempty">没有匹配的条目，换个关键词试试。</div>';
+    box.innerHTML=html;
+    box.className=st.mask?'masked':'';
+    $('#kwStat').innerHTML='当前显示 <b>'+shown+'</b> 条 · 已掌握 <b>'+Object.keys(st.marks).length+'</b> / '+total()+' · 章节 <b>'+chShown+'</b>';
+    $('#footN').textContent=total();
+    bindItems();
+    $('#btnMask').className='xbtn'+(st.mask?' on warn':'');
+    $('#btnUndone').className='xbtn'+(st.undone?' on':'');
+  }
+
+  function bindItems(){
+    Array.prototype.forEach.call(document.querySelectorAll('.kw-mark'),function(btn){
+      btn.onclick=function(){
+        var row=btn.closest('.kw-item'),kk=row.getAttribute('data-k');
+        if(st.marks[kk]) delete st.marks[kk]; else st.marks[kk]=1;
+        try{localStorage.setItem(STORE,JSON.stringify(st.marks));}catch(e){}
+        row.classList.toggle('done');
+        btn.textContent=st.marks[kk]?'✓':'';
+        $('#kwStat').innerHTML='当前显示 <b>'+document.querySelectorAll('.kw-item').length+'</b> 条 · 已掌握 <b>'+Object.keys(st.marks).length+'</b> / '+total();
+      };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.kw-k'),function(el){
+      el.onclick=function(){el.classList.toggle('show');};
+    });
+  }
+
+  function kpi(){
+    var n=total(),bk=D.length,ch=0,tb=0;
+    D.forEach(function(b){ch+=chapterCount(b);b.chapters.forEach(function(c){tb+=(c.tables||[]).length;});});
+    $('#kwKpi').innerHTML=
+      '<div class="hl"><b>'+n+'<i>条</i></b><span>考点关键词</span></div>'+
+      '<div><b>'+bk+'<i>板块</i></b><span>马原 · 毛中特 · 新思想 · 史纲 · 思法</span></div>'+
+      '<div><b>'+ch+'<i>章</i></b><span>按教材章节归位</span></div>'+
+      '<div><b>'+tb+'<i>张</i></b><span>史纲 / 思法专题表</span></div>';
+  }
+
+  $('#btnMask').onclick=function(){
+    st.mask=!st.mask;
+    try{localStorage.setItem(maskKey,st.mask?'1':'0');}catch(e){}
+    render();
+  };
+  $('#btnUndone').onclick=function(){st.undone=!st.undone;render();};
+  var t=null;
+  $('#q').oninput=function(){clearTimeout(t);t=setTimeout(function(){st.q=$('#q').value;render();},160);};
+
+  kpi();renderChips();render();
+})();
+</script>
+</body>
+</html>
