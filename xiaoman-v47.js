@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v80-20261125-poldoc"
+  const BUILD = "v81-20261125-poldoc2"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2742,6 +2742,27 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
       const done = pd.tasks.filter(x => S.done[tid(x)]).length
       t.addRow(head("政治 · " + pd.date.slice(5).replace("-", "/") + " " + pd.wd,
         done + "/" + pd.tasks.length + " 已完成 · " + pd.min + " 分钟" + (pd.focus ? " · " + cut(pd.focus, 24) : "")))
+      /* 27 届三件套（2026-11-25）：政治清单顶部常驻资料入口，
+         不依赖当天有没有排到资料任务，随时能翻关键词 / 背诵包 / 时政线 */
+      const docRow = mrow("📖 27 届三件套资料", "关键词 444 · 背诵包 271+33 · 时政 58", TC.link, 44)
+      docRow.dismissOnSelect = false
+      const openDoc = async () => {
+        const a = new Alert()
+        a.title = "27 届三件套"
+        a.message = "在手机上看哪一页？"
+        a.addAction("关键词汇总 444 条")
+        a.addAction("核心背诵包 271+33")
+        a.addAction("时政线 58 条")
+        a.addCancelAction("取消")
+        const i = await a.present()
+        const urls = [BASE + "pol/kw.html", BASE + "pol/bs.html", BASE + "pol/sz.html"]
+        if (i >= 0 && i < urls.length) Safari.openInApp(urls[i], true)
+      }
+      docRow.onSelect = openDoc
+      const docBtn = docRow.addButton("打开")
+      docBtn.titleColor = TC.link
+      docBtn.onTap = openDoc
+      t.addRow(docRow)
       polRows(t, S, { date: pd.date, tasks: pd.tasks }, rerender)
       t.reload()
     }
@@ -2980,7 +3001,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1125-poldoc"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1125-poldoc2"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   /* ── 必看：校内新编习题配套视频（2026-11-10）──────────────────────
      来源：20261109223314/视频排期/schedule.json 里 lv=B 的条目（三科 71 集）。
