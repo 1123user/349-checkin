@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>时政线 · 27 届（手机版）</title>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="xdf.css">
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<header class="ph"><span class="ph-b">政治 · 27 届资料</span><nav><a href="kw.html">关键词</a><a href="sz.html" class="on">时政线</a><a href="bs.html">核心包</a></nav></header>
+<div class="pwrap">
+<section class="hero home-hero">
+        <span class="eyebrow">27 届 · 当代世界经济与政治 · 中心自研讲义</span>
+        <h1>时政线 · 考什么、怎么答、都发生了什么</h1>
+        <p>这一页不再用周年去猜题，而是把讲义本身拆成三段：<b>客观题</b>（基础概念 + 近年真题的命题长相）、<b>分析题</b>（三段救命模板 + 5 个常考原理的背诵要点）、<b>1—11 月时政汇总</b>（习总书记 17 场 + 其余领导人 7 场 + 两会 + 周年 + 经济 / 政治 / 文化 / 生态，每条带原文与例题）。时政汇总默认只显示标题，点开看正文。</p>
+        <div class="acts">
+          <a class="btn primary" href="#news">看时政汇总</a>
+          <a class="btn" href="#ana">分析题模板</a>
+          <a class="btn ghost" href="#obj">客观题基础</a>
+        </div>
+        <div class="kpi" id="szKpi"></div>
+      </section>
+
+      <div class="xdf-toolbar">
+        <div class="chips">
+          <a class="chip" href="#obj">① 客观题基础</a>
+          <a class="chip" href="#tips">② 命题特点</a>
+          <a class="chip" href="#ana">③ 分析题模板</a>
+          <a class="chip" href="#news">④ 时政汇总</a>
+        </div>
+      </div>
+
+      <div class="section-title" id="obj">① 客观题基础 <span class="n">概念先过关</span></div>
+      <div id="objBox"></div>
+
+      <div class="section-title" id="tips">② 命题特点 <span class="n">近年真题怎么问</span></div>
+      <div id="tipsBox"></div>
+      <div class="note tip"><b>用法：</b>这一节不是让你背答案，是让你认「长相」——单选偏文件名称 / 大会主题，题干里常藏解题信息；多选偏「意义 / 举措 / 原则」的四项并列表述。把题干读成「它在问哪一类」，比记住某个选项更稳。</div>
+
+      <div class="section-title" id="ana">③ 分析题模板 <span class="n">三段救命 + 5 个原理</span></div>
+      <div id="tplBox"></div>
+      <div id="princBox"></div>
+
+      <div class="section-title" id="news">④ 1—11 月时政汇总 <span class="n" id="newsN">58 条</span></div>
+      <div class="xdf-toolbar" style="position:static;background:transparent;backdrop-filter:none;border-bottom:0;padding:0;margin-bottom:8px">
+        <div class="chips" id="szChips"></div>
+        <div class="grow"></div>
+        <label class="xsearch"><span class="ic">🔍</span><input id="q" type="search" placeholder="搜标题或正文，如 十五五 / 上合 / 生态环境法典"></label>
+      </div>
+      <div class="xstat" id="newsStat"></div>
+      <div id="newsBox"></div>
+
+      <div class="note">
+        <b>时政怎么用：</b>客观题只考「名称 / 主题 / 数字 / 首次」这些硬信息；分析题的材料一定来自这里的某一条，答题时先认出它对应哪个原理（经济全球化 / 中美关系 / 多边主义 / 联合国 / 四大全球倡议），再套模板。
+      </div>
+
+      <footer class="foot-note">
+        27 届时政讲义 · 原文 56 页 · 已去水印 ·
+        <a href="kw.html">关键词汇总</a> ·
+        <a href="bs.html">核心背诵包</a></footer>
+</div>
+<script src="data/xdf_sz.js"></script>
+<script>
+(function(){
+  var D=(window.XDF_SZ||{}).data||{basics:[],terms:[],situation:[],tips:{single:[],multi:[]},templates:[],principles:[],news:[]};
+  var st={cat:'all',q:''};
+  function $(s){return document.querySelector(s);}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function nl2(s){return esc(s).replace(/\n+/g,'</p><p>');}
+  function stars(n){return n>0?'<span class="st">'+new Array(n+1).join('★')+'</span>':'';}
+
+  function kpi(){
+    var n=D.news.length,guo=0;
+    D.news.forEach(function(x){if(/习总书记/.test(x.sec))guo++;});
+    $('#szKpi').innerHTML=
+      '<div class="hl"><b>'+n+'<i>条</i></b><span>1—11 月时政</span></div>'+
+      '<div><b>'+guo+'<i>场</i></b><span>习总书记（国际 + 国内）</span></div>'+
+      '<div><b>'+D.principles.length+'<i>个</i></b><span>分析题常考原理</span></div>'+
+      '<div><b>'+(D.tips.single.length+D.tips.multi.length)+'<i>例</i></b><span>近年真题例证</span></div>';
+    $('#newsN').textContent=n+' 条';
+  }
+
+  function objBox(){
+    var h='';
+    h+='<div class="tpl-x"><h3><span class="no">1</span>基础积累 · 国际关系术语</h3><div class="bd">';
+    h+=D.basics.map(function(x){return x.k?('<b style="color:var(--red)">'+esc(x.k)+'：</b>'+esc(x.t)):esc(x.t);}).join('<br>');
+    h+='</div></div>';
+    h+='<details class="princ"><summary>名词了解 · 单边主义 / 保护主义 / 多边主义</summary><div class="pb">';
+    D.terms.forEach(function(x){h+='<div class="blk"><span class="h">'+esc(x.k)+'</span><div class="d">'+esc(x.t)+'</div></div>';});
+    h+='</div></details>';
+    h+='<div class="tpl-x"><h3><span class="no">2</span>当前世界形势总结</h3><div class="bd">';
+    h+=D.situation.map(function(x){return '<b style="color:var(--red)">'+esc(x.k)+'：</b>'+esc(x.t);}).join('<br>');
+    h+='</div></div>';
+    $('#objBox').innerHTML=h;
+  }
+
+  function tipCard(t,kind){
+    var h='<details class="ztip" style="display:block"><summary style="list-style:none;cursor:pointer">'+
+      '<div class="yo">'+esc(t.y)+(kind==='multi'?' · 多选':' · 单选')+'</div>'+
+      '<div class="q">'+esc(t.stem).replace(/\n/g,'')+'</div></summary>';
+    if(t.opts&&t.opts.length){
+      h+='<div style="margin-top:6px">';
+      t.opts.forEach(function(o){h+='<div class="o"><b>'+esc(o.k)+'</b><span>'+esc(o.t)+'</span></div>';});
+      h+='</div>';
+      h+='<div class="a">'+(t.ans?('答案：'+esc(t.ans)):'讲义例证 · 只讲命题方式，未给答案')+'</div>';
+    }
+    h+='</details>';
+    return h;
+  }
+  function tipsBox(){
+    var h='<div class="xstat"><b>单选 '+D.tips.single.length+' 例</b> · 偏文件名称 / 大会主题，题干常藏解题信息　·　<b>多选 '+D.tips.multi.length+' 例</b> · 偏意义 / 举措 / 原则并列表述</div>';
+    h+='<div class="section-title" style="margin-top:6px">单选题命题特点</div>';
+    h+=D.tips.single.map(function(t){return tipCard(t,'single');}).join('');
+    h+='<div class="section-title" style="margin-top:14px">多选题命题特点</div>';
+    h+=D.tips.multi.map(function(t){return tipCard(t,'multi');}).join('');
+    $('#tipsBox').innerHTML=h;
+  }
+
+  function tplBox(){
+    var h='<div class="note tip" style="margin-bottom:10px"><b>三段救命模板：</b>世界背景先定调 → 万能意义句 → 中国贡献与措施。分析题先写这三段，再按设问补材料。</div>';
+    D.templates.forEach(function(t,i){
+      h+='<details class="princ"'+(i===0?' open':'')+'><summary>'+esc(t.t)+'</summary><div class="pb"><div style="white-space:pre-wrap">'+esc(t.d)+'</div></div></details>';
+    });
+    $('#tplBox').innerHTML=h;
+    var p='<div class="section-title" style="margin-top:14px">常考原理 <span class="n">5 个 · 背要点</span></div>';
+    D.principles.forEach(function(pr,i){
+      p+='<details class="princ"'+(i===0?' open':'')+'><summary>'+esc(pr.t)+'</summary><div class="pb">';
+      pr.blocks.forEach(function(b){
+        p+='<div class="blk"><span class="h">'+esc(b.h)+'</span><div class="d">'+esc(b.d)+'</div></div>';
+      });
+      p+='</div></details>';
+    });
+    $('#princBox').innerHTML=p;
+  }
+
+  function cats(){
+    var map={all:0,'习总书记':0,'其余领导人':0};
+    D.news.forEach(function(n){
+      map.all++;
+      if(/习总书记/.test(n.sec)) map['习总书记']++;
+      else if(/其余领导人/.test(n.sec)) map['其余领导人']++;
+      else map[n.part]=(map[n.part]||0)+1;
+    });
+    return map;
+  }
+  function szChips(){
+    var map=cats(),order=['all','习总书记','其余领导人','两会','周年专题','经济板块','政治板块','文化板块','生态文明'];
+    var html='';
+    order.forEach(function(k){
+      if(k!=='all'&&!map[k])return;
+      html+='<button class="chip'+(st.cat===k?' on':'')+'" data-c="'+esc(k)+'">'+(k==='all'?'全部':k)+'<span class="n">'+map[k]+'</span></button>';
+    });
+    $('#szChips').innerHTML=html;
+    Array.prototype.forEach.call(document.querySelectorAll('#szChips .chip'),function(el){
+      el.onclick=function(){st.cat=el.getAttribute('data-c');szChips();newsBox();};
+    });
+  }
+  function pick(n){
+    if(st.cat==='all')return true;
+    if(st.cat==='习总书记')return /习总书记/.test(n.sec);
+    if(st.cat==='其余领导人')return /其余领导人/.test(n.sec);
+    return n.part===st.cat;
+  }
+  function newsBox(){
+    var q=(st.q||'').trim().toLowerCase();
+    var rows=D.news.filter(function(n){
+      if(!pick(n))return false;
+      if(!q)return true;
+      return (n.title+' '+n.body+' '+n.part+' '+n.sec).toLowerCase().indexOf(q)>=0;
+    });
+    var h='',lastPart='';
+    rows.forEach(function(n){
+      if(n.part!==lastPart){
+        h+='<div class="sz-part">'+esc(n.part)+'</div>';
+        lastPart=n.part;
+      }
+      h+='<details class="news"><summary>'+
+        (n.date?'<span class="dt">'+esc(n.date)+'</span>':'')+
+        '<span class="tt">'+esc(n.title).replace(/（\d{1,2}\s*月[^）]*）/g,'')+'</span>'+stars(n.stars)+'</summary>'+
+        '<div class="bd"><p>'+nl2(n.body)+'</p>';
+      if(n.sec&&n.sec!==n.part){h+='<div class="tag-line"><span class="tg">'+esc(n.sec)+'</span></div>';}
+      if(n.ex&&n.ex.stem){
+        h+='<div class="exm"><div class="q">【例题】'+esc(n.ex.stem).replace(/\n/g,'')+'</div>';
+        (n.ex.opts||[]).forEach(function(o){h+='<div class="o"><b>'+esc(o.k)+'</b><span>'+esc(o.t)+'</span></div>';});
+        if(n.ex.ans)h+='<div class="a">答案：'+esc(n.ex.ans)+'</div>';
+        h+='</div>';
+      }
+      h+='</div></details>';
+    });
+    if(!h)h='<div class="xempty">没有匹配的时政，换个关键词。</div>';
+    $('#newsBox').innerHTML=h;
+    $('#newsStat').innerHTML='当前显示 <b>'+rows.length+'</b> / '+D.news.length+' 条 · 带例题 <b>'+D.news.filter(function(n){return n.ex&&n.ex.stem;}).length+'</b> 条';
+  }
+
+  var t=null;
+  $('#q').oninput=function(){clearTimeout(t);t=setTimeout(function(){st.q=$('#q').value;newsBox();},150);};
+
+  kpi();objBox();tipsBox();tplBox();szChips();newsBox();
+})();
+</script>
+</body>
+</html>
