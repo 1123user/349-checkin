@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>核心背诵包 · 27 届（手机版）</title>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="xdf.css">
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<header class="ph"><span class="ph-b">政治 · 27 届资料</span><nav><a href="kw.html">关键词</a><a href="sz.html">时政线</a><a href="bs.html" class="on">核心包</a></nav></header>
+<div class="pwrap">
+<section class="hero home-hero">
+        <span class="eyebrow">27 届 · 重庆新东方考研政治组 · 中心自研</span>
+        <h1>核心背诵包 · 客观题 271 + 主观题 33</h1>
+        <p>这是讲义里最「像考题」的那一册：<b>客观题</b>按马原 / 毛中特 / 史纲 / 思法 / 形势五块，把每个「标志 / 首要 / 本质 / 根本」整理成一句话；<b>主观题</b>按热点链接给出设问、答题思路与要点。客观题可遮住后半句自测，主观题可先只看设问、自己说一遍再展开要点。</p>
+        <div class="acts">
+          <a class="btn primary" href="#bsBox">开始背</a>
+          <a class="btn" href="kw.html">关键词汇总</a>
+          <a class="btn ghost" href="sz.html">时政线</a>
+        </div>
+        <div class="kpi" id="bsKpi"></div>
+      </section>
+
+      <div class="xdf-toolbar">
+        <div class="bs-tabs">
+          <button class="xbtn on" id="tabObj">客观题 · 271</button>
+          <button class="xbtn" id="tabSubj">主观题 · 33</button>
+        </div>
+        <div class="grow"></div>
+        <button class="xbtn" id="btnMask" title="遮住后半句，点一下揭示">🫥 遮挡自测</button>
+        <label class="xsearch"><span class="ic">🔍</span><input id="q" type="search" placeholder="搜考点，如 首要 / 长征 / 全过程人民民主"></label>
+      </div>
+      <div class="xstat" id="bsStat"></div>
+      <div class="chips" id="bkChips" style="margin-bottom:10px"></div>
+      <div id="bsBox"></div>
+
+      <div class="note tip">
+        <b>和「关键词汇总」的分工：</b>关键词汇总是按教材章节铺开的「一句一考点」，用来查漏；这一册是按「今年最可能怎么考」压缩的必背清单，用来冲刺。
+        两边的条目有重叠但顺序不同，先背这一册，回关键词汇总补章节。
+      </div>
+      <div class="note">
+        <b>来源与口径：</b>《2027 考研政治核心背诵包（中心自研）》41 页，客观题 / 主观题两部分逐条转录；已去掉页内水印图层，原文 PDF 在右上角可下载。主观题要点保留原文的「第一 / 第二 / ① ②」结构，没有改写。
+      </div>
+
+      <footer class="foot-note">
+        核心背诵包 · 27 届 · 客观 <b id="fObj">271</b> 条 / 主观 <b id="fSubj">33</b> 题 ·
+         ·
+        <a href="kw.html">关键词汇总</a> ·
+        <a href="sz.html">时政线</a>
+      </footer>
+</div>
+<script src="data/xdf_bs.js"></script>
+<script>
+(function(){
+  var D=(window.XDF_BS||{}).data||{obj:[],subj:[]};
+  var STORE='xdf.bs.v1', MASK='xdf.bs.mask';
+  var st={tab:'obj',bk:'all',q:'',mask:false,marks:{}};
+  try{st.marks=JSON.parse(localStorage.getItem(STORE)||'{}')||{};}catch(e){}
+  try{st.mask=localStorage.getItem(MASK)==='1';}catch(e){}
+
+  function $(s){return document.querySelector(s);}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function totalObj(){var n=0;D.obj.forEach(function(b){n+=b.items.length;});return n;}
+  function totalSubj(){var n=0;D.subj.forEach(function(b){n+=b.topics.length;});return n;}
+  function splitKT(s){
+    var m=String(s).match(/^([^：:]{2,30})[：:]([\s\S]{2,})$/);
+    if(m) return {k:m[1],t:m[2]};
+    return {k:'',t:s};
+  }
+  function fmtPts(s){
+    return esc(s).replace(/([^\n])([①②③④⑤⑥⑦⑧⑨⑩])/g,'$1\n$2').replace(/([^\n])(第[一二三四五六七八九十]+[，、])/g,'$1\n$2');
+  }
+  function kpi(){
+    $('#bsKpi').innerHTML=
+      '<div class="hl"><b>'+totalObj()+'<i>条</i></b><span>客观题考点</span></div>'+
+      '<div><b>'+totalSubj()+'<i>题</i></b><span>主观题热点</span></div>'+
+      '<div><b>5<i>板块</i></b><span>马原 / 毛中特 / 史纲 / 思法 / 形势</span></div>'+
+      '<div><b>'+Object.keys(st.marks).length+'<i>条</i></b><span>已掌握（本机记录）</span></div>';
+    $('#fObj').textContent=totalObj();$('#fSubj').textContent=totalSubj();
+  }
+  function bkChips(){
+    var list=st.tab==='obj'?D.obj:D.subj,html='<button class="chip'+(st.bk==='all'?' on':'')+'" data-b="all">全部</button>';
+    list.forEach(function(b){
+      var n=st.tab==='obj'?b.items.length:b.topics.length;
+      html+='<button class="chip'+(st.bk===b.bk?' on':'')+'" data-b="'+esc(b.bk)+'">'+esc(b.bk.replace(/重要考点预测|重点考点预测|考点预测/g,''))+'<span class="n">'+n+'</span></button>';
+    });
+    $('#bkChips').innerHTML=html;
+    Array.prototype.forEach.call(document.querySelectorAll('#bkChips .chip'),function(el){
+      el.onclick=function(){st.bk=el.getAttribute('data-b');bkChips();render();};
+    });
+  }
+
+  function objHTML(){
+    var q=(st.q||'').trim().toLowerCase(),html='',shown=0;
+    D.obj.forEach(function(b){
+      if(st.bk!=='all'&&st.bk!==b.bk)return;
+      var items=b.items.filter(function(it){
+        if(!q)return true;
+        return (it.t+' '+b.bk).toLowerCase().indexOf(q)>=0;
+      });
+      if(!items.length)return;
+      html+='<div class="sz-part">'+esc(b.bk)+'</div>';
+      html+='<details class="xch" open><summary>'+esc(b.bk)+'<span class="cnt">'+items.length+' 条</span></summary><div class="xch-body">';
+      items.forEach(function(it){
+        shown++;
+        var kk=b.bk+'|obj|'+it.n,kv=splitKT(it.t),done=!!st.marks[kk];
+        var body=kv.k?'<b class="kw-k">'+esc(kv.k)+'</b><span class="kw-t">'+esc(kv.t)+'</span>':'<span class="kw-t">'+esc(kv.t)+'</span>';
+        html+='<div class="kw-item'+(done?' done':'')+'" data-k="'+esc(kk)+'">'+
+          '<span class="kw-num">'+it.n+'</span><div class="kw-body">'+body+'</div>'+
+          '<button class="kw-mark" title="标记已掌握">'+(done?'✓':'')+'</button></div>';
+      });
+      html+='</div></details>';
+    });
+    if(!html)html='<div class="xempty">没有匹配的考点。</div>';
+    $('#bsBox').innerHTML=html;
+    $('#bsBox').className=st.mask?'masked-sub':'';
+    $('#bsStat').innerHTML='客观题 · 当前 <b>'+shown+'</b> / '+totalObj()+' 条 · 已掌握 <b>'+Object.keys(st.marks).length+'</b>';
+    bindMark();
+  }
+
+  function subjHTML(){
+    var q=(st.q||'').trim().toLowerCase(),html='',shown=0;
+    D.subj.forEach(function(b){
+      if(st.bk!=='all'&&st.bk!==b.bk)return;
+      var list=b.topics.filter(function(t){
+        if(!q)return true;
+        var txt=t.t+' '+(t.lead||'')+' '+(t.clue||'')+' '+(t.items||[]).map(function(it){
+          return [it.q,it.idea,it.points,it.clue].join(' ');
+        }).join(' ');
+        return txt.toLowerCase().indexOf(q)>=0;
+      });
+      if(!list.length)return;
+      html+='<div class="sz-part">'+esc(b.bk)+'</div>';
+      list.forEach(function(t){
+        shown++;
+        var cnt=(t.items||[]).length;
+        html+='<details class="bs-topic"><summary><span class="tn">'+t.n+'</span><span class="tt">'+esc(t.t)+
+          (cnt>1?'<span style="font-size:11px;color:var(--muted2);font-weight:400;margin-left:6px">'+cnt+' 问</span>':'')+
+          '</span></summary><div class="body">';
+        if(t.lead)html+='<div class="idea" style="background:var(--card2);color:var(--ink2)">'+esc(t.lead).replace(/\n/g,'<br>')+'</div>';
+        if(t.clue)html+='<div class="idea" style="background:var(--gold-bg);color:var(--gold)">答题线索：'+esc(t.clue).replace(/\n/g,'、')+'</div>';
+        (t.items||[]).forEach(function(it,i){
+          if(cnt>1)html+='<div class="ask" style="border-left-color:var(--line);color:var(--muted);font-size:12px;margin-top:10px">第 '+(i+1)+' 问</div>';
+          if(it.q)html+='<div class="ask"><b>设问</b>'+esc(it.q)+'</div>';
+          if(it.clue)html+='<div class="idea" style="background:var(--gold-bg);color:var(--gold)">答题线索：'+esc(it.clue).replace(/\n/g,'、')+'</div>';
+          if(it.idea)html+='<div class="idea">答题思路：'+esc(it.idea).replace(/\n/g,'<br>')+'</div>';
+          if(it.points)html+='<div class="pts"><span class="lbl">要点</span>'+fmtPts(it.points)+'</div>';
+        });
+        html+='</div></details>';
+      });
+    });
+    if(!html)html='<div class="xempty">没有匹配的主观题。</div>';
+    $('#bsBox').innerHTML=html;
+    $('#bsBox').className=st.mask?'hidepts':'';
+    $('#bsStat').innerHTML='主观题 · 当前 <b>'+shown+'</b> / '+totalSubj()+' 题 · 点卡片展开设问与要点';
+    Array.prototype.forEach.call(document.querySelectorAll('.hidepts .pts'),function(el){
+      el.onclick=function(){el.classList.toggle('show');};
+    });
+  }
+
+  function bindMark(){
+    Array.prototype.forEach.call(document.querySelectorAll('.kw-mark'),function(btn){
+      btn.onclick=function(){
+        var row=btn.closest('.kw-item'),kk=row.getAttribute('data-k');
+        if(st.marks[kk])delete st.marks[kk];else st.marks[kk]=1;
+        try{localStorage.setItem(STORE,JSON.stringify(st.marks));}catch(e){}
+        row.classList.toggle('done');
+        btn.textContent=st.marks[kk]?'✓':'';
+        kpi();
+      };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.kw-k'),function(el){
+      el.onclick=function(){el.classList.toggle('show');};
+    });
+  }
+
+  function render(){
+    if(st.tab==='obj')objHTML();else subjHTML();
+    $('#tabObj').className='xbtn'+(st.tab==='obj'?' on':'');
+    $('#tabSubj').className='xbtn'+(st.tab==='subj'?' on':'');
+    $('#btnMask').className='xbtn'+(st.mask?' on warn':'');
+  }
+
+  $('#tabObj').onclick=function(){st.tab='obj';st.bk='all';bkChips();render();};
+  $('#tabSubj').onclick=function(){st.tab='subj';st.bk='all';bkChips();render();};
+  $('#btnMask').onclick=function(){
+    st.mask=!st.mask;
+    try{localStorage.setItem(MASK,st.mask?'1':'0');}catch(e){}
+    render();
+  };
+  var t=null;
+  $('#q').oninput=function(){clearTimeout(t);t=setTimeout(function(){st.q=$('#q').value;render();},160);};
+
+  kpi();bkChips();render();
+})();
+</script>
+</body>
+</html>
