@@ -32,7 +32,7 @@
   /* 运行留痕：把「哪一版 / 什么时候 / 什么尺寸跑过」写进 iCloud Drive：Scriptable/349打卡/run-log.txt。
      同一个 BUILD 只写一次，平时不产生任何写入。手机到底跑的是哪一版，在 Mac 上一眼就能看到，
      不用再来回截图。 */
-  const BUILD = "v79-20261110-progress"
+  const BUILD = "v80-20261125-poldoc"
   /* 英语播放一律交给新东方 App（2026-10-25 定稿）：网页端有的课有回放、单词课没入口，
      App 深链三种写法都不认、App 里也没有搜索框。所以小满只负责说明"今天看哪节课"。 */
   /* 立绘（2026-11-01 改）：原来是一段 182KB 的 base64 直接写死在脚本里，
@@ -2649,6 +2649,9 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
      点了不知道去哪。按标题关键词在政治线（POL.days）里找对应板块的
      带视频日期，弹窗里给「▶ M/D 标题」按钮，点了直接开那天的清单。 */
   function polMemoExtras(task, S, rerender) {
+    /* 27 届三件套（2026-11-25）：任务带 web 时先给「打开资料页」，
+       资料页是 GitHub Pages 的手机版（pol/kw.html / sz.html / bs.html） */
+    if (task && task.web) return [{ label: "📖 打开资料页", run: () => Safari.openInApp(task.web, true) }]
     if (!POL || task.type !== "memo") return []
     const t = String(task.title || "")
     const kws =
@@ -2691,6 +2694,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         a.present()
       }
       r.onSelect = () => {
+        if (task.web) return Safari.openInApp(task.web, true)
         if (on) {
           return taskSheet(task, on, () => toggleDone(S, id, "pol", rerender),
             task.url ? "▶ B站播放" : null,
@@ -2701,7 +2705,12 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
         if (task.type === "app") return appTip()
         taskSheet(task, on, () => toggleDone(S, id, "pol", rerender), null, null, S.done[id], extras)
       }
-      if (task.url) {
+      if (task.web) {
+        const b = r.addButton("📖")
+        try { b.width = 36 } catch (e) {}
+        b.titleColor = TC.link
+        b.onTap = () => Safari.openInApp(task.web, true)
+      } else if (task.url) {
         const b = r.addButton("▶")
         try { b.width = 36 } catch (e) {}
         b.titleColor = TC.link
@@ -2971,7 +2980,7 @@ ${showWeb ? `<a class="sub" href="${web}">在网页里播放</a>` : ""}
     rowsFn(dn)
   }
 
-  const UI_VER = "1110-progress"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
+  const UI_VER = "1125-poldoc"      /* 改了小满界面就往上写，方便确认手机上跑的是哪版 */
 
   /* ── 必看：校内新编习题配套视频（2026-11-10）──────────────────────
      来源：20261109223314/视频排期/schedule.json 里 lv=B 的条目（三科 71 集）。
