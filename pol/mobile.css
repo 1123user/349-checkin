@@ -1,0 +1,17 @@
+/* 手机版外壳：去掉侧栏，顶部三页切换 */
+.side,.topbar,.menu-btn,.scrim,#ll-review{display:none!important}
+.app{display:block}
+.app main{padding:0;max-width:none}
+.ph{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;padding:8px 13px;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ph-b{font-weight:800;font-size:13.5px;color:var(--ink)}
+.ph nav{margin-left:auto;display:flex;gap:4px}
+.ph nav a{font-size:12px;padding:4px 9px;border-radius:999px;color:var(--muted);text-decoration:none;border:1px solid transparent}
+.ph nav a.on{background:var(--brand);color:#fff}
+.pwrap{max-width:860px;margin:0 auto;padding:14px 13px 70px}
+.pwrap .hero{padding:17px 15px;border-radius:16px}
+.pwrap h1{font-size:21px}
+.pwrap .kpi>div{padding:10px 12px}
+.pwrap .kpi b{font-size:20px}
+.pwrap .foot-note{font-size:11px;color:var(--muted2);text-align:center;margin-top:18px}
+@media (max-width:400px){.pwrap{padding:12px 10px 64px}.ph nav a{padding:4px 7px}}
